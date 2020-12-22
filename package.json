@@ -1,0 +1,51 @@
+{
+  "name": "@mikk3lro/mc-fontpicker",
+  "version": "0.0.1",
+  "description": "A simple google font picker component for Vue.js. Easy to implement, easy to use.",
+  "keywords": [
+    "fontpicker",
+    "font picker",
+    "google fonts",
+    "font",
+    "vue"
+  ],
+  "homepage": "https://github.com/Mikk3lRo/vue-fontpicker#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mikk3lRo/vue-fontpicker.git"
+  },
+  "author": {
+    "name": "Mikk3lRo",
+    "email": "mikk3lro@gmail.com"
+  },
+  "license": "MIT",
+  "main": "./dist/mc-fontpicker.common.js",
+  "scripts": {
+    "serve": "vue-cli-service serve --open",
+    "build": "vue-cli-service build --dest ./docs && vue-cli-service build --dest ./dist --target lib --name mc-fontpicker ./src/components/index.js && rm ./dist/demo.html",
+    "build-font-previews": "php ./build-font-previews.php",
+    "lint": "vue-cli-service lint",
+    "deploy": "npm publish --access public"
+  },
+  "files": [
+    "dist/*",
+    "src/*",
+    "font-preview/*"
+  ],
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "vue": "^2.6.11"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-vue": "^6.2.2",
+    "prettier": "^1.19.1",
+    "vue-template-compiler": "^2.6.11"
+  }
+}
