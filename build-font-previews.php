@@ -9,7 +9,7 @@ if (!is_string($apiKey) || strlen($apiKey) < 20) {
     generate-font-previews.php)');
 }
 
-ini_set('memory_limit', '2G');
+ini_set('memory_limit', '5G');
 
 class GoogleFonts
 {
@@ -18,6 +18,7 @@ class GoogleFonts
     private static $outputPath;
 
     private static $cellHeight = 40;
+    private static $sliceSize = 200;
 
     public static function generatePreview($apiKey, $fontPath, $outputPath)
     {
@@ -34,7 +35,7 @@ class GoogleFonts
 
         $fontInfos = self::getFontList();
 
-        //$fontInfos = array_slice($fontInfos, 0, 5);
+        //$fontInfos = array_slice($fontInfos, 0, 50);
 
         $fonts = [];
         foreach ($fontInfos as $num => $font) {
@@ -42,7 +43,8 @@ class GoogleFonts
             $fonts[] = [
                 'name' => $font['family'],
                 'sanename' => $sanename,
-                'top' => $num * self::$cellHeight,
+                'slice' => intdiv($num, self::$sliceSize),
+                'top' => ($num % self::$sliceSize) * self::$cellHeight,
                 'remoteFile' => reset($font['files']),
                 'localFile' => self::$fontPath . '/' . $sanename . '.ttf'
             ];
@@ -52,7 +54,7 @@ class GoogleFonts
 
         self::makeJson($fonts);
 
-        self::makeImage($fonts);
+        self::makeImages($fonts);
 
         self::makeCss($fonts);
 
@@ -121,31 +123,64 @@ class GoogleFonts
     }
 
 
-    private static function makeImage($fonts)
+    private static function makeImages($fonts)
     {
-        $im = imagecreatetruecolor(600, self::$cellHeight * count($fonts));
-
-        $black = imagecolorallocate($im, 0, 0, 0);
-        $trans = imagecolorallocatealpha($im, 255, 255, 255, 127);
-        imagefill($im, 0, 0, $trans);
-
-        foreach ($fonts as $font) {
-            imagettftext(
-                $im,
-                16,
-                0,
-                10,
-                self::$cellHeight + $font['top'] - 12,
-                $black,
-                $font['localFile'],
-                $font['name'],
-            );
+        for ($i = 0; $i < count($fonts) / self::$sliceSize; $i++) {
+            echo 'Slice ' . ($i + 1) . '/' . (intdiv(count($fonts), self::$sliceSize) + 1) . "\n";
+            $slice = array_slice($fonts, $i * self::$sliceSize, self::$sliceSize);
+            self::makeImage($slice, self::$outputPath . '/sprite.' . ($i + 1));
         }
+    }
 
-        imagesavealpha($im, true);
-        header('Content-Type: image/png');
-        imagepng($im, self::$outputPath . '/sprite.png');
-        imagedestroy($im);
+
+    private static function makeImage($fonts, $outFile)
+    {
+        foreach ([1, 1.5, 2] as $outScale) {
+            echo $outScale . "x\n";
+            $scale = $outScale * 2;
+
+            $dstW = intval(ceil(600 * $outScale));
+            $dstH = intval(ceil(self::$cellHeight * count($fonts) * $outScale));
+            $dstCellH = intval(ceil(self::$cellHeight * $outScale));
+
+            $srcW = intval(ceil(600 * $scale));
+            $srcH = intval(ceil(self::$cellHeight * $scale));
+
+            $fontSize = 16 * $scale;
+            $indent = intval(ceil(10 * $scale));
+            $baseline = intval(ceil((self::$cellHeight - 12) * $scale));
+
+            $dst = imagecreatetruecolor($dstW, $dstH);
+            $trans = imagecolorallocatealpha($dst, 255, 255, 255, 127);
+            imagealphablending($dst, true);
+            imagefill($dst, 0, 0, $trans);
+
+            foreach ($fonts as $num => $font) {
+                $src = imagecreatetruecolor($srcW, $srcH);
+                $trans = imagecolorallocatealpha($src, 255, 255, 255, 127);
+                $black = imagecolorallocate($src, 0, 0, 0);
+                imagefill($src, 0, 0, $trans);
+                imagealphablending($src, true);
+
+                imagettftext(
+                    $src,
+                    $fontSize,
+                    0,
+                    $indent,
+                    $baseline,
+                    $black,
+                    $font['localFile'],
+                    $font['name'],
+                );
+                $dstTop = intval(ceil($font['top'] * $outScale));
+                imagecopyresampled($dst, $src, 0, $dstTop, 0, 0, $dstW, $dstCellH, $srcW, $srcH);
+                imagedestroy($src);
+            }
+
+            imagesavealpha($dst, true);
+            imagepng($dst, $outFile . '.' . $outScale . 'x.png');
+            imagedestroy($dst);
+        }
     }
 
 
@@ -155,11 +190,48 @@ class GoogleFonts
 
         $css[] = '[class*=" font-preview-"],';
         $css[] = '[class^="font-preview-"] {';
-        $css[] = '    background: url(sprite.png);';
-        $css[] = '    background-size: 600px auto;';
-        $css[] = '    background-repeat: no-repeat;';
-        $css[] = '    height: 40px;';
-        $css[] = '    width: 600px;';
+        $css[] = '  background-size: 600px auto;';
+        $css[] = '  background-repeat: no-repeat;';
+        $css[] = '  height: 40px;';
+        $css[] = '  width: 600px;';
+        $css[] = '  image-rendering: optimizequality;';
+        $css[] = '}';
+
+        for ($i = 0; $i < count($fonts) / self::$sliceSize; $i++) {
+            $slice = array_slice($fonts, $i * self::$sliceSize, self::$sliceSize);
+            foreach ($slice as $font) {
+                $css[] = '.font-preview-' . $font['sanename'] . ',';
+            }
+            $css[] = '.font-preview-on-medium-sized-screens {';
+            $css[] = '  background-image: url(sprite.' . ($i + 1) . '.1.5x.png);';
+            $css[] = '}';
+        }
+
+        $css[] = '@media';
+        $css[] = '(-webkit-max-device-pixel-ratio: 1),';
+        $css[] = '(max-resolution: 96dpi) {';
+        for ($i = 0; $i < count($fonts) / self::$sliceSize; $i++) {
+            $slice = array_slice($fonts, $i * self::$sliceSize, self::$sliceSize);
+            foreach ($slice as $font) {
+                $css[] = '  .font-preview-' . $font['sanename'] . ',';
+            }
+            $css[] = '  .font-preview-on-worse-than-1x {';
+            $css[] = '    background-image: url(sprite.' . ($i + 1) . '.1x.png);';
+            $css[] = '  }';
+        }
+        $css[] = '}';
+        $css[] = '@media';
+        $css[] = '(-webkit-min-device-pixel-ratio: 1.51),';
+        $css[] = '(min-resolution: 145dpi) {';
+        for ($i = 0; $i < count($fonts) / self::$sliceSize; $i++) {
+            $slice = array_slice($fonts, $i * self::$sliceSize, self::$sliceSize);
+            foreach ($slice as $font) {
+                $css[] = '  .font-preview-' . $font['sanename'] . ',';
+            }
+            $css[] = '  .font-preview-on-better-than-1-and-a-half-x {';
+            $css[] = '    background-image: url(sprite.' . ($i + 1) . '.2x.png);';
+            $css[] = '  }';
+        }
         $css[] = '}';
 
         foreach ($fonts as $font) {
