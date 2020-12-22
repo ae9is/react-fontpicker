@@ -1,22 +1,26 @@
 <?php declare(strict_types = 1);
 
+namespace Mikk3lRo\vueFontpicker;
+
 $apiKey = file_get_contents(__DIR__ . '/GOOGLE_API_KEY');
 
 if (!is_string($apiKey) || strlen($apiKey) < 20) {
-  die('Invalid api key - get an api key for google fonts and put it in a file called GOOGLE_API_KEY (or hardcode it in generate-font-previews.php)');
+    die('Invalid api key - get an api key for google fonts and put it in a file called GOOGLE_API_KEY (or hardcode it in
+    generate-font-previews.php)');
 }
 
 ini_set('memory_limit', '2G');
 
 class GoogleFonts
 {
-    static $apiKey;
-    static $fontPath;
-    static $outputPath;
+    private static $apiKey;
+    private static $fontPath;
+    private static $outputPath;
 
-    static $cellHeight = 40;
+    private static $cellHeight = 40;
 
-    public static function generatePreview($apiKey, $fontPath, $outputPath) {
+    public static function generatePreview($apiKey, $fontPath, $outputPath)
+    {
         self::$fontPath = $fontPath;
         self::$outputPath = $outputPath;
         self::$apiKey = $apiKey;
@@ -60,7 +64,11 @@ class GoogleFonts
     {
         $localJsonFile = self::$fontPath . '/fonts.json';
         if (!is_file($localJsonFile) || filemtime($localJsonFile) < time() - 60 * 60 * 24) {
-            $remoteJson = json_decode(file_get_contents('https://www.googleapis.com/webfonts/v1/webfonts?key=' . self::$apiKey . '&sort=alpha'), true);
+            $url = 'https://www.googleapis.com/webfonts/v1/webfonts?key=' . self::$apiKey . '&sort=alpha';
+            $remoteJson = json_decode(
+                file_get_contents($url),
+                true,
+            );
             if (is_array($remoteJson) && isset($remoteJson['items'])) {
                 file_put_contents($localJsonFile, json_encode($remoteJson));
             }
@@ -70,7 +78,7 @@ class GoogleFonts
             throw new Exception('Failed to get fonts');
         }
 
-        $fonts = array_filter($localJson['items'], function($font) {
+        $fonts = array_filter($localJson['items'], function ($font) {
             //We only want fonts with a latin subset
             if (!in_array('latin', $font['subsets'])) {
                 return false;
@@ -89,7 +97,8 @@ class GoogleFonts
     }
 
 
-    private static function fetchFonts($fontInfo) {
+    private static function fetchFonts($fontInfo)
+    {
         foreach ($fontInfo as $font) {
             if (!file_exists($font['localFile'])) {
                 file_put_contents($font['localFile'], file_get_contents($font['remoteFile']));
@@ -98,20 +107,22 @@ class GoogleFonts
     }
 
 
-    private static function makeJson($fonts) {
+    private static function makeJson($fonts)
+    {
         $json = [];
 
-        foreach($fonts as $font) {
-          $json[] = [
-            'name' => $font['name'],
-            'sane' => $font['sanename'],
-          ];
+        foreach ($fonts as $font) {
+            $json[] = [
+                'name' => $font['name'],
+                'sane' => $font['sanename'],
+            ];
         }
         file_put_contents(self::$outputPath . '/fontInfo.json', json_encode($json, JSON_PRETTY_PRINT));
     }
 
 
-    private static function makeImage($fonts) {
+    private static function makeImage($fonts)
+    {
         $im = imagecreatetruecolor(600, self::$cellHeight * count($fonts));
 
         $black = imagecolorallocate($im, 0, 0, 0);
@@ -119,7 +130,16 @@ class GoogleFonts
         imagefill($im, 0, 0, $trans);
 
         foreach ($fonts as $font) {
-            imagettftext($im, 16, 0, 10, self::$cellHeight + $font['top'] - 12, $black, $font['localFile'], $font['name']);
+            imagettftext(
+                $im,
+                16,
+                0,
+                10,
+                self::$cellHeight + $font['top'] - 12,
+                $black,
+                $font['localFile'],
+                $font['name'],
+            );
         }
 
         imagesavealpha($im, true);
@@ -129,7 +149,8 @@ class GoogleFonts
     }
 
 
-    private static function makeCss($fonts) {
+    private static function makeCss($fonts)
+    {
         $css = [];
 
         $css[] = '[class*=" font-preview-"],';
@@ -149,7 +170,8 @@ class GoogleFonts
     }
 
 
-    private static function makeHtml($fonts) {
+    private static function makeHtml($fonts)
+    {
         $html = [];
 
         $html[] = '<!DOCTYPE html>';
@@ -170,11 +192,11 @@ class GoogleFonts
 
         file_put_contents(self::$outputPath . '/font-previews.html', implode("\n", $html));
     }
- }
+}
 
 
 GoogleFonts::generatePreview(
-  $apiKey,
-  __DIR__ . '/font-cache',
-  __DIR__ . '/font-preview',
+    $apiKey,
+    __DIR__ . '/font-cache',
+    __DIR__ . '/font-preview',
 );
