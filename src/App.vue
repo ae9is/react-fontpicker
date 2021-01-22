@@ -25,7 +25,9 @@
 
     <h3 id="default">Default behaviour</h3>
     <div class="example">
+      <a href="#">Before</a>
       <McFontpicker v-model="font1" />
+      <a href="#">After</a>
     </div>
     <pre>&lt;McFontpicker v-model="font1" /></pre>
     <pre>Current value: {{ font1 }}</pre>
