@@ -170,14 +170,14 @@ export default {
       }
     },
 
-    showSelectedFont() {
+    showSelectedFont(pos = 'nearest') {
       let selectedFont = this.matchingFonts[this.selectedFontIndex]
       this.searchContent = selectedFont.name
       let font = this.$refs['popout'].querySelector(
         '.font-preview-' + selectedFont.sane,
       )
       if (font) {
-        font.scrollIntoView({ block: 'nearest' })
+        font.scrollIntoView({ block: pos })
       }
     },
 
@@ -192,6 +192,15 @@ export default {
     },
     show() {
       this.focused = true
+      setTimeout(() => {
+        for (var i in this.matchingFonts) {
+          if (this.matchingFonts[i].name == this.current.name) {
+            this.selectedFontIndex = i
+            break
+          }
+        }
+        this.showSelectedFont('center')
+      }, 1)
     },
     hide() {
       this.focused = false
