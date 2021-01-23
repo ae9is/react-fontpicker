@@ -13,8 +13,10 @@
     <div ref="activator" :class="activatorClasses"></div>
     <div ref="popout" tabindex="-1" :class="popoutClasses">
       <div
-        class="mcfontpicker__option"
-        v-for="font in matchingFonts"
+        :class="
+          'mcfontpicker__option' + (i == selectedFontIndex ? ' selected' : '')
+        "
+        v-for="(font, i) in matchingFonts"
         v-bind:key="font.sane"
         @mousedown="e => onClick(font)"
       >
@@ -48,6 +50,7 @@ export default {
       fonts: [],
       typedSearch: '',
       searchContent: '',
+      selectedFontIndex: -1,
       current: {
         name: 'Open Sans',
         sane: 'open-sans',
@@ -103,6 +106,7 @@ export default {
       this.typedSearch = this.searchContent = newValue
     },
     searchChanged(e) {
+      this.selectedFontIndex = -1
       //console.log(e.target.value)
       let isLonger = this.typedSearch.length < e.target.value.length
       this.typedSearch = e.target.value
@@ -120,7 +124,11 @@ export default {
         let firstMatch = matches[0].name
         this.searchContent = firstMatch
         e.target.value = firstMatch
-        this.setInputSelection(e.target, this.typedSearch.length, this.searchContent.length)
+        this.setInputSelection(
+          e.target,
+          this.typedSearch.length,
+          this.searchContent.length,
+        )
         //console.log(firstMatch)
       } else {
         this.searchContent = e.target.value
@@ -154,12 +162,34 @@ export default {
           //console.log('3', this.current)
           this.setCurrent(this.current)
         }
-      } else if (e.key && e.key === 'DownArrow') {
-        //TODO !!!
-      } else if (e.key && e.key === 'UpArrow') {
-        //TODO !!!
+      } else if (e.key && e.key === 'ArrowDown') {
+        e.preventDefault()
+        if (this.selectedFontIndex < this.matchingFonts.length - 1) {
+          //console.log('down', this.selectedFontIndex)
+          this.selectedFontIndex++
+          this.showSelectedFont()
+        }
+      } else if (e.key && e.key === 'ArrowUp') {
+        e.preventDefault()
+        if (this.selectedFontIndex > 0) {
+          //console.log('up', this.selectedFontIndex)
+          this.selectedFontIndex--
+          this.showSelectedFont()
+        }
       }
     },
+
+    showSelectedFont() {
+      let selectedFont = this.matchingFonts[this.selectedFontIndex]
+      this.searchContent = selectedFont.name
+      let font = this.$refs['popout'].querySelector(
+        '.font-preview-' + selectedFont.sane,
+      )
+      if (font) {
+        font.scrollIntoView({ block: 'nearest' })
+      }
+    },
+
     onFocus() {
       this.$refs['input'].select()
       this.typedSearch = ''
@@ -252,6 +282,7 @@ export default {
 .mcfontpicker__popout .mcfontpicker__option {
   background: #fff;
 }
+.mcfontpicker__popout .mcfontpicker__option.selected,
 .mcfontpicker__popout .mcfontpicker__option:hover {
   background: #6789ab;
 }
