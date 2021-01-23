@@ -11,7 +11,12 @@
       :value="searchContent"
     />
     <div ref="activator" :class="activatorClasses"></div>
-    <div ref="popout" tabindex="-1" :class="popoutClasses">
+    <div
+      ref="popout"
+      tabindex="-1"
+      :class="popoutClasses"
+      @mousedown="cancelBlur"
+    >
       <div
         :class="
           'mcfontpicker__option' + (i == selectedFontIndex ? ' selected' : '')
@@ -19,6 +24,7 @@
         v-for="(font, i) in matchingFonts"
         v-bind:key="font.sane"
         @mousedown="e => onClick(font)"
+        @mouseenter="() => (selectedFontIndex = i)"
       >
         <div :class="'font-preview-' + font.sane">
           <span style="display:none">{{ font.name }}</span>
@@ -94,13 +100,16 @@ export default {
       ifonts.push(font)
     }
     this.fonts = ifonts
-    this.addListeners()
+    //this.addListeners()
     this.handleNewValue(this.value)
   },
-  beforeDestroy() {
+  /*beforeDestroy() {
     this.removeListeners()
-  },
+  },*/
   methods: {
+    cancelBlur(e) {
+      e.preventDefault()
+    },
     handleNewValue(newValue) {
       this.setCurrentByName(newValue)
       this.typedSearch = this.searchContent = newValue
@@ -205,6 +214,7 @@ export default {
     hide() {
       this.focused = false
     },
+    /*
     addListeners() {
       window.addEventListener('click', this.clickoutside, false)
     },
@@ -220,6 +230,8 @@ export default {
         this.hide()
       }
     },
+    */
+
     setCurrent(newValue) {
       this.current = newValue
       this.typedSearch = this.searchContent = this.current.name
@@ -280,8 +292,7 @@ export default {
 .mcfontpicker__popout .mcfontpicker__option {
   background: #fff;
 }
-.mcfontpicker__popout .mcfontpicker__option.selected,
-.mcfontpicker__popout .mcfontpicker__option:hover {
+.mcfontpicker__popout .mcfontpicker__option.selected {
   background: #6789ab;
 }
 </style>
