@@ -46,8 +46,8 @@ export default {
     return {
       focused: false,
       fonts: [],
-      search: 'Open Sans',
-      searchContent: 'Open Sans',
+      typedSearch: '',
+      searchContent: '',
       current: {
         name: 'Open Sans',
         sane: 'open-sans',
@@ -79,7 +79,7 @@ export default {
       return ret
     },
     matchingFonts() {
-      let search = this.search.toLowerCase().trim()
+      let search = this.typedSearch.toLowerCase().trim()
       return this.fonts.filter(a => a.cased.includes(search))
     },
   },
@@ -100,12 +100,12 @@ export default {
   methods: {
     handleNewValue(newValue) {
       this.setCurrentByName(newValue)
-      this.search = newValue
+      this.typedSearch = this.searchContent = newValue
     },
     searchChanged(e) {
       //console.log(e.target.value)
-      let isLonger = this.search.length < e.target.value.length
-      this.search = e.target.value
+      let isLonger = this.typedSearch.length < e.target.value.length
+      this.typedSearch = e.target.value
 
       if (!isLonger) {
         //Don't autocomplete when using backspace
@@ -113,21 +113,18 @@ export default {
         return
       }
 
-      let cased = this.search.toLowerCase()
+      let cased = this.typedSearch.toLowerCase()
 
       let matches = this.fonts.filter(a => a.cased.startsWith(cased))
       if (matches.length) {
         let firstMatch = matches[0].name
         this.searchContent = firstMatch
         e.target.value = firstMatch
-        this.setInputSelection(e.target, this.search.length, this.searchContent.length)
+        this.setInputSelection(e.target, this.typedSearch.length, this.searchContent.length)
         //console.log(firstMatch)
       } else {
         this.searchContent = e.target.value
       }
-
-      //let search = newValue.toLowerCase().trim()
-      //return this.fonts.filter(a => a.cased.includes(search))
     },
     setInputSelection(input, startPos, endPos) {
       if (input.setSelectionRange) {
@@ -165,7 +162,7 @@ export default {
     },
     onFocus() {
       this.$refs['input'].select()
-      this.search = ''
+      this.typedSearch = ''
       this.show()
     },
     onClick(font) {
@@ -197,7 +194,7 @@ export default {
     setCurrent(newValue) {
       //console.log('setCurrent', newValue)
       this.current = newValue
-      this.search = this.searchContent = this.current.name
+      this.typedSearch = this.searchContent = this.current.name
       this.$emit('input', this.current.name)
       this.$refs['input'].blur()
     },
