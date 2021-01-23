@@ -107,7 +107,6 @@ export default {
     },
     searchChanged(e) {
       this.selectedFontIndex = -1
-      //console.log(e.target.value)
       let isLonger = this.typedSearch.length < e.target.value.length
       this.typedSearch = e.target.value
 
@@ -129,7 +128,6 @@ export default {
           this.typedSearch.length,
           this.searchContent.length,
         )
-        //console.log(firstMatch)
       } else {
         this.searchContent = e.target.value
       }
@@ -147,32 +145,25 @@ export default {
     },
 
     onKeyDown(e) {
-      //console.log(e)
       if (e.key && e.key === 'Enter') {
         let cased = this.searchContent.toLowerCase()
         let preciseMatches = this.fonts.filter(a => a.cased == cased)
-        //console.log(preciseMatches)
         if (preciseMatches.length == 1) {
-          //console.log('1', preciseMatches)
           this.setCurrent(preciseMatches[0])
         } else if (this.matchingFonts.length > 0) {
-          //console.log('2', this.matchingFonts)
           this.setCurrent(this.matchingFonts[0])
         } else {
-          //console.log('3', this.current)
           this.setCurrent(this.current)
         }
       } else if (e.key && e.key === 'ArrowDown') {
         e.preventDefault()
         if (this.selectedFontIndex < this.matchingFonts.length - 1) {
-          //console.log('down', this.selectedFontIndex)
           this.selectedFontIndex++
           this.showSelectedFont()
         }
       } else if (e.key && e.key === 'ArrowUp') {
         e.preventDefault()
         if (this.selectedFontIndex > 0) {
-          //console.log('up', this.selectedFontIndex)
           this.selectedFontIndex--
           this.showSelectedFont()
         }
@@ -217,12 +208,10 @@ export default {
       if (this.$el.contains(e.target)) {
         //We handle this elsewhere
       } else {
-        //console.log(e.target)
         this.hide()
       }
     },
     setCurrent(newValue) {
-      //console.log('setCurrent', newValue)
       this.current = newValue
       this.typedSearch = this.searchContent = this.current.name
       this.$emit('input', this.current.name)
