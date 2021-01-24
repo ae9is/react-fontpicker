@@ -175,14 +175,24 @@ export default {
       }
     },
 
-    showSelectedFont(pos = 'nearest') {
+    showSelectedFont(why = 'key') {
       let selectedFont = this.matchingFonts[this.selectedFontIndex]
       this.searchContent = selectedFont.name
       let font = this.$refs['popout'].querySelector(
         '.font-preview-' + selectedFont.sane,
       )
       if (font) {
-        font.scrollIntoView({ block: pos })
+        let fontTop = font.offsetTop
+        let fontBottom = fontTop + font.offsetHeight
+        let popTop = this.$refs['popout'].scrollTop
+        let popBottom = popTop + this.$refs['popout'].clientHeight
+        console.log(fontTop, fontBottom, popTop, popBottom)
+        if (why == 'opening' || fontTop <= popTop) {
+          this.$refs['popout'].scrollTop = fontTop
+        } else if (fontBottom >= popBottom) {
+          this.$refs['popout'].scrollTop =
+            fontBottom - this.$refs['popout'].clientHeight
+        }
       }
     },
 
@@ -204,7 +214,7 @@ export default {
             break
           }
         }
-        this.showSelectedFont('center')
+        this.showSelectedFont('opening')
       }, 1)
     },
     hide() {
@@ -257,7 +267,7 @@ export default {
   left: 0;
   width: 100%;
   border: 1px solid;
-  max-height: 200px;
+  max-height: 12em;
   overflow-y: scroll;
   overflow-x: hidden;
   z-index: 2;
