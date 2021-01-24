@@ -111,6 +111,7 @@ export default {
       this.typedSearch = this.searchContent = newValue
     },
     searchChanged(e) {
+      this.$refs['popout'].scrollTop = 0
       this.selectedFontIndex = -1
       let isLonger = this.typedSearch.length < e.target.value.length
       this.typedSearch = e.target.value
@@ -153,7 +154,9 @@ export default {
       if (e.key && e.key === 'Enter') {
         let cased = this.searchContent.toLowerCase()
         let preciseMatches = this.fonts.filter(a => a.cased == cased)
-        if (preciseMatches.length == 1) {
+        if (this.selectedFontIndex > -1) {
+          this.setCurrent(this.matchingFonts[this.selectedFontIndex])
+        } else if (preciseMatches.length == 1) {
           this.setCurrent(preciseMatches[0])
         } else if (this.matchingFonts.length > 0) {
           this.setCurrent(this.matchingFonts[0])
@@ -163,12 +166,14 @@ export default {
       } else if (e.key && e.key === 'ArrowDown') {
         e.preventDefault()
         if (this.selectedFontIndex < this.matchingFonts.length - 1) {
+          this.searchContent = this.typedSearch
           this.selectedFontIndex++
           this.showSelectedFont()
         }
       } else if (e.key && e.key === 'ArrowUp') {
         e.preventDefault()
         if (this.selectedFontIndex > 0) {
+          this.searchContent = this.typedSearch
           this.selectedFontIndex--
           this.showSelectedFont()
         }
@@ -177,7 +182,6 @@ export default {
 
     showSelectedFont(why = 'key') {
       let selectedFont = this.matchingFonts[this.selectedFontIndex]
-      this.searchContent = selectedFont.name
       let font = this.$refs['popout'].querySelector(
         '.font-preview-' + selectedFont.sane,
       )
@@ -213,6 +217,7 @@ export default {
             break
           }
         }
+        this.searchContent = this.current.name
         this.showSelectedFont('opening')
       }, 1)
     },
