@@ -28,6 +28,7 @@
       >
         <div :class="'font-preview-' + font.sane" />
       </div>
+      <div v-if="matchingFonts.length == 0" class="mcfontpicker__nomatches">{{ noMatchesText }}</div>
     </div>
     <!--pre>{{ focused }}</pre-->
   </div>
@@ -42,6 +43,10 @@ export default {
     value: {
       type: [String],
       default: 'Open Sans',
+    },
+    noMatchesText: {
+      type: [String],
+      default: 'No matches',
     },
   },
   data() {
@@ -283,5 +288,12 @@ export default {
 }
 .mcfontpicker__popout .mcfontpicker__option.selected {
   background: #6789ab;
+}
+.mcfontpicker__nomatches {
+  height: 2em;
+  line-height: 2em;
+  background: #fff;
+  text-align: center;
+  color: #888;
 }
 </style>
