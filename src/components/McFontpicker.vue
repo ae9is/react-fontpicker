@@ -186,7 +186,6 @@ export default {
         let fontBottom = fontTop + font.offsetHeight
         let popTop = this.$refs['popout'].scrollTop
         let popBottom = popTop + this.$refs['popout'].clientHeight
-        console.log(fontTop, fontBottom, popTop, popBottom)
         if (why == 'opening' || fontTop <= popTop) {
           this.$refs['popout'].scrollTop = fontTop
         } else if (fontBottom >= popBottom) {
