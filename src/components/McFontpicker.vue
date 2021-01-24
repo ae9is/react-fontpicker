@@ -24,7 +24,7 @@
         v-for="(font, i) in matchingFonts"
         v-bind:key="font.sane"
         @mousedown="e => onClick(font)"
-        @mouseenter="() => (selectedFontIndex = i)"
+        @mousemove="() => (selectedFontIndex = i)"
       >
         <div :class="'font-preview-' + font.sane" />
       </div>
