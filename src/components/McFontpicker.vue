@@ -191,7 +191,7 @@ export default {
           this.$refs['popout'].scrollTop = fontTop
         } else if (fontBottom >= popBottom) {
           this.$refs['popout'].scrollTop =
-            fontBottom - this.$refs['popout'].clientHeight
+            fontBottom - this.$refs['popout'].clientHeight - 1
         }
       }
     },
@@ -267,7 +267,7 @@ export default {
   left: 0;
   width: 100%;
   border: 1px solid;
-  max-height: 12em;
+  max-height: calc(12em + 1px);
   overflow-y: scroll;
   overflow-x: hidden;
   z-index: 2;
