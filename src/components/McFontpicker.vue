@@ -10,7 +10,7 @@
       class="mcfontpicker__search"
       :value="searchContent"
     />
-    <div ref="activator" :class="activatorClasses"></div>
+    <div ref="preview" :class="previewClasses"></div>
     <div
       ref="popout"
       tabindex="-1"
@@ -82,8 +82,8 @@ export default {
       }
       return ret
     },
-    activatorClasses() {
-      let ret = ['mccolorpicker__activator']
+    previewClasses() {
+      let ret = ['mcfontpicker__preview']
       ret.push('font-preview-' + this.current.sane)
       return ret
     },
