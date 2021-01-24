@@ -26,9 +26,7 @@
         @mousedown="e => onClick(font)"
         @mouseenter="() => (selectedFontIndex = i)"
       >
-        <div :class="'font-preview-' + font.sane">
-          <span style="display:none">{{ font.name }}</span>
-        </div>
+        <div :class="'font-preview-' + font.sane" />
       </div>
     </div>
     <!--pre>{{ focused }}</pre-->
@@ -44,10 +42,6 @@ export default {
     value: {
       type: [String],
       default: 'Open Sans',
-    },
-    noAutoHide: {
-      type: Boolean,
-      default: false,
     },
   },
   data() {
