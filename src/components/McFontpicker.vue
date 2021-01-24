@@ -100,12 +100,8 @@ export default {
       ifonts.push(font)
     }
     this.fonts = ifonts
-    //this.addListeners()
     this.handleNewValue(this.value)
   },
-  /*beforeDestroy() {
-    this.removeListeners()
-  },*/
   methods: {
     cancelBlur(e) {
       e.preventDefault()
@@ -214,23 +210,6 @@ export default {
     hide() {
       this.focused = false
     },
-    /*
-    addListeners() {
-      window.addEventListener('click', this.clickoutside, false)
-    },
-
-    removeListeners() {
-      window.removeEventListener('click', this.clickoutside, false)
-    },
-
-    clickoutside(e) {
-      if (this.$el.contains(e.target)) {
-        //We handle this elsewhere
-      } else {
-        this.hide()
-      }
-    },
-    */
 
     setCurrent(newValue) {
       this.current = newValue
