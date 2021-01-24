@@ -261,6 +261,7 @@ export default {
   opacity: 0;
   padding: 0 10px;
   cursor: pointer;
+  font-size: 16px;
 }
 .mcfontpicker__search:focus {
   cursor: text;
