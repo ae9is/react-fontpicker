@@ -564,6 +564,10 @@
         "sane": "blinker"
     },
     {
+        "name": "Bodoni Moda",
+        "sane": "bodoni-moda"
+    },
+    {
         "name": "Bonbon",
         "sane": "bonbon"
     },
@@ -1324,6 +1328,10 @@
         "sane": "frank-ruhl-libre"
     },
     {
+        "name": "Fraunces",
+        "sane": "fraunces"
+    },
+    {
         "name": "Freckle Face",
         "sane": "freckle-face"
     },
@@ -1524,6 +1532,10 @@
         "sane": "habibi"
     },
     {
+        "name": "Hachi Maru Pop",
+        "sane": "hachi-maru-pop"
+    },
+    {
         "name": "Halant",
         "sane": "halant"
     },
@@ -1674,6 +1686,10 @@
     {
         "name": "Iceland",
         "sane": "iceland"
+    },
+    {
+        "name": "Imbue",
+        "sane": "imbue"
     },
     {
         "name": "Imprima",
@@ -2948,6 +2964,10 @@
         "sane": "port-lligat-slab"
     },
     {
+        "name": "Potta One",
+        "sane": "potta-one"
+    },
+    {
         "name": "Pragati Narrow",
         "sane": "pragati-narrow"
     },
@@ -3946,6 +3966,10 @@
     {
         "name": "Yrsa",
         "sane": "yrsa"
+    },
+    {
+        "name": "Yusei Magic",
+        "sane": "yusei-magic"
     },
     {
         "name": "ZCOOL KuaiLe",

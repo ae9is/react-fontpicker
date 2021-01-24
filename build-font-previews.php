@@ -190,10 +190,9 @@ class GoogleFonts
 
         $css[] = '[class*=" font-preview-"],';
         $css[] = '[class^="font-preview-"] {';
-        $css[] = '  background-size: 600px auto;';
+        $css[] = '  background-size: 30em auto;';
         $css[] = '  background-repeat: no-repeat;';
-        $css[] = '  height: 40px;';
-        $css[] = '  width: 600px;';
+        $css[] = '  height: 2em;';
         $css[] = '  image-rendering: optimizequality;';
         $css[] = '}';
 
@@ -235,7 +234,7 @@ class GoogleFonts
         $css[] = '}';
 
         foreach ($fonts as $font) {
-            $css[] = '.font-preview-' . $font['sanename'] . '{ background-position: 0px -' . $font['top'] . 'px }';
+            $css[] = '.font-preview-' . $font['sanename'] . '{ background-position: 0px -' . ($font['top'] / 20) . 'em }';
         }
 
         file_put_contents(self::$outputPath . '/font-previews.css', implode("\n", $css));
