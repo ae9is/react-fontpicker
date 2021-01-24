@@ -263,6 +263,7 @@ export default {
   cursor: pointer;
 }
 .mcfontpicker__search:focus {
+  cursor: text;
   opacity: 1;
 }
 .mcfontpicker__popout {
