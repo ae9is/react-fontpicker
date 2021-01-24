@@ -272,7 +272,7 @@ export default {
   width: 100%;
   border: 1px solid;
   max-height: calc(12em + 1px);
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
   z-index: 2;
   background: #fff;
