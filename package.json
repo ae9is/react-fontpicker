@@ -1,6 +1,6 @@
 {
   "name": "@mikk3lro/mc-fontpicker",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A simple google font picker component for Vue.js. Easy to implement, easy to use.",
   "keywords": [
     "fontpicker",
