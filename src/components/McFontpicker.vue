@@ -28,7 +28,9 @@
       >
         <div :class="'font-preview-' + font.sane" />
       </div>
-      <div v-if="matchingFonts.length == 0" class="mcfontpicker__nomatches">{{ noMatches }}</div>
+      <div v-if="matchingFonts.length == 0" class="mcfontpicker__nomatches">
+        {{ noMatches }}
+      </div>
     </div>
     <!--pre>{{ focused }}</pre-->
   </div>
