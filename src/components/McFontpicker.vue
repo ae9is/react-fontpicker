@@ -259,6 +259,8 @@ export default {
         link.href =
           'https://fonts.googleapis.com/css2?family=' +
           font.name +
+          ':ital,wght@' +
+          font.variants.sort().join(';') +
           '&display=swap'
         document.getElementsByTagName('head')[0].appendChild(link)
       }
