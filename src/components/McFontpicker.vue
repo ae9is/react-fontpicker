@@ -28,7 +28,7 @@
       >
         <div :class="'font-preview-' + font.sane" />
       </div>
-      <div v-if="matchingFonts.length == 0" class="mcfontpicker__nomatches">{{ noMatchesText }}</div>
+      <div v-if="matchingFonts.length == 0" class="mcfontpicker__nomatches">{{ noMatches }}</div>
     </div>
     <!--pre>{{ focused }}</pre-->
   </div>
@@ -44,9 +44,13 @@ export default {
       type: [String],
       default: 'Open Sans',
     },
-    noMatchesText: {
+    noMatches: {
       type: [String],
       default: 'No matches',
+    },
+    autoLoad: {
+      type: Boolean,
+      default: false,
     },
   },
   data() {
@@ -229,6 +233,7 @@ export default {
       this.typedSearch = this.searchContent = this.current.name
       this.$emit('input', this.current.name)
       this.$refs['input'].blur()
+      this.loadfont(this.current)
     },
     setCurrentByName(newName) {
       for (var i in this.fonts) {
@@ -236,6 +241,24 @@ export default {
           this.current = this.fonts[i]
           break
         }
+      }
+      this.loadfont(this.current)
+    },
+    loadfont(font) {
+      if (!this.autoLoad) {
+        return
+      }
+      let cssId = 'google-font-' + font.sane
+      let existing = document.getElementById(cssId)
+      if (!existing) {
+        var link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.id = cssId
+        link.href =
+          'https://fonts.googleapis.com/css2?family=' +
+          font.name +
+          '&display=swap'
+        document.getElementsByTagName('head')[0].appendChild(link)
       }
     },
   },

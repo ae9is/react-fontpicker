@@ -20,15 +20,46 @@
       <h3>TOC</h3>
       <ul>
         <li><a href="#default">Default behaviour</a></li>
+        <li><a href="#autoload">Autoload fonts</a></li>
+        <li><a href="#nomatches">No matches</a></li>
       </ul>
     </div>
 
     <h3 id="default">Default behaviour</h3>
+    <p>
+      By default the fontpicker is <strong>only</strong> a picker. The selected
+      font is not loaded.
+    </p>
     <div class="example">
       <McFontpicker v-model="font1" />
     </div>
     <pre>&lt;McFontpicker v-model="font1" /></pre>
-    <pre>Current value: {{ font1 }}</pre>
+    <p>
+      Current value: <span :style="'font-family: ' + font1">{{ font1 }}</span>
+    </p>
+
+    <h3 id="autoload">Autoload fonts</h3>
+    <p>Automatically load fonts by setting the <code>auto-load</code>-prop.</p>
+    <div class="example">
+      <McFontpicker auto-load v-model="font2" />
+    </div>
+    <pre>&lt;McFontpicker auto-load v-model="font2" /></pre>
+    <p>
+      Current value: <span :style="'font-family: ' + font2">{{ font2 }}</span>
+    </p>
+
+    <h3 id="nomatches">No matches</h3>
+    <p>
+      Customize the message when autocomplete yields no results using the
+      <code>no-matches</code>-prop.
+    </p>
+    <div class="example">
+      <McFontpicker no-matches="I've got nothing" v-model="font3" />
+    </div>
+    <pre>&lt;McFontpicker no-matches="I've got nothing" v-model="font3" /></pre>
+    <p>
+      Current value: <span :style="'font-family: ' + font3">{{ font3 }}</span>
+    </p>
   </div>
 </template>
 
@@ -43,6 +74,8 @@ export default {
   data() {
     return {
       font1: 'Tenor Sans',
+      font2: 'Open Sans',
+      font3: 'Open Sans',
     }
   },
 }
