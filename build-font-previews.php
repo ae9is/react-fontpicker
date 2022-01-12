@@ -46,7 +46,9 @@ class GoogleFonts
                 'slice' => intdiv($num, self::$sliceSize),
                 'top' => ($num % self::$sliceSize) * self::$cellHeight,
                 'remoteFile' => reset($font['files']),
-                'localFile' => self::$fontPath . '/' . $sanename . '.ttf'
+                'localFile' => self::$fontPath . '/' . $sanename . '.ttf',
+                'subsets' => $font['subsets'],
+                'variants' => $font['variants'],
             ];
         }
 
@@ -117,6 +119,8 @@ class GoogleFonts
             $json[] = [
                 'name' => $font['name'],
                 'sane' => $font['sanename'],
+                'subsets' => $font['subsets'],
+                'variants' => $font['variants'],
             ];
         }
         file_put_contents(self::$outputPath . '/fontInfo.json', json_encode($json, JSON_PRETTY_PRINT));
