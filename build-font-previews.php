@@ -46,7 +46,8 @@ class GoogleFonts
                 'slice' => intdiv($num, self::$sliceSize),
                 'top' => ($num % self::$sliceSize) * self::$cellHeight,
                 'remoteFile' => reset($font['files']),
-                'localFile' => self::$fontPath . '/' . $sanename . '.ttf'
+                'localFile' => self::$fontPath . '/' . $sanename . '.ttf',
+                'variants' => $font['variants'],
             ];
         }
 
@@ -117,9 +118,31 @@ class GoogleFonts
             $json[] = [
                 'name' => $font['name'],
                 'sane' => $font['sanename'],
+                'variants' => self::shortVariants($font),
             ];
         }
         file_put_contents(self::$outputPath . '/fontInfo.json', json_encode($json, JSON_PRETTY_PRINT));
+    }
+
+
+    private static function shortVariants($font)
+    {
+        $shortVariants = [];
+        foreach ($font['variants'] as $longVariant) {
+            if ($longVariant == 'regular') {
+                $shortVariants[] = '0,400';
+            } elseif ($longVariant == 'italic') {
+                $shortVariants[] = '1,400';
+            } elseif (is_numeric($longVariant)) {
+                $shortVariants[] = '0,' . $longVariant;
+            } elseif (preg_match('#^([0-9]+)italic$#', $longVariant, $matches)) {
+                $shortVariants[] = '1,' . $matches[1];
+            } else {
+                die($longVariant);
+            }
+        }
+
+        return $shortVariants;
     }
 
 
