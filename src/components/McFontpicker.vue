@@ -1,5 +1,5 @@
 <template>
-  <div :class="outerClasses">
+  <div :class="outerClasses" v-if="!loaderOnly">
     <input
       ref="input"
       type="text"
@@ -54,6 +54,14 @@ export default {
       type: Boolean,
       default: false,
     },
+    loaderOnly: {
+      type: Boolean,
+      default: false,
+    },
+    loadFonts: {
+      type: String,
+      default: '',
+    },
   },
   data() {
     return {
@@ -71,6 +79,9 @@ export default {
   watch: {
     value(newValue) {
       this.handleNewValue(newValue)
+    },
+    loadFonts(newValue) {
+      this.handleLoadFont()
     },
   },
   computed: {
@@ -106,6 +117,8 @@ export default {
     }
     this.fonts = ifonts
     this.handleNewValue(this.value)
+
+    this.handleLoadFont()
   },
   methods: {
     cancelBlur(e) {
@@ -114,6 +127,12 @@ export default {
     handleNewValue(newValue) {
       this.setCurrentByName(newValue)
       this.typedSearch = this.searchContent = newValue
+    },
+    handleLoadFont() {
+      let fontNames = this.loadFonts.split(',')
+      for (var i in fontNames) {
+        this.loadFontByName(fontNames[i])
+      }
     },
     searchChanged(e) {
       this.$refs['popout'].scrollTop = 0
@@ -229,27 +248,52 @@ export default {
     hide() {
       this.focused = false
     },
-
+    getFontByName(name) {
+      for (var i in this.fonts) {
+        if (this.fonts[i].name == name.trim()) {
+          return this.fonts[i]
+        }
+      }
+      return null
+    },
     setCurrent(newValue) {
       this.current = newValue
       this.typedSearch = this.searchContent = this.current.name
       this.$emit('input', this.current.name)
       this.$refs['input'].blur()
-      this.loadfont(this.current)
+      this.autoLoadFont()
     },
     setCurrentByName(newName) {
-      for (var i in this.fonts) {
-        if (this.fonts[i].name == newName) {
-          this.current = this.fonts[i]
-          break
-        }
+      let font = this.getFontByName(newName)
+      if (font) {
+        this.current = font
+        this.autoLoadFont()
       }
-      this.loadfont(this.current)
     },
-    loadfont(font) {
-      if (!this.autoLoad) {
+    autoLoadFont(font) {
+      if (this.autoLoad) {
+        this.loadFontFromObject(this.current)
+      }
+    },
+    loadFontByName(font) {
+      if (font === '') {
         return
       }
+      let origFont = font
+      if (typeof font == 'string') {
+        font = this.getFontByName(font)
+      }
+      if (
+        font == null ||
+        typeof font != 'object' ||
+        typeof font.sane != 'string'
+      ) {
+        console.log('Unknown font', origFont)
+      } else {
+        this.loadFontFromObject(font)
+      }
+    },
+    loadFontFromObject(font) {
       let cssId = 'google-font-' + font.sane
       let existing = document.getElementById(cssId)
       if (!existing) {

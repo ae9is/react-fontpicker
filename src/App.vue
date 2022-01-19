@@ -20,8 +20,10 @@
       <h3>TOC</h3>
       <ul>
         <li><a href="#default">Default behaviour</a></li>
-        <li><a href="#autoload">Autoload fonts</a></li>
         <li><a href="#nomatches">No matches</a></li>
+        <li><a href="#autoload">Autoload fonts</a></li>
+        <li><a href="#manualload">Manually load fonts</a></li>
+        <li><a href="#loaderonly">Font loader only</a></li>
       </ul>
     </div>
 
@@ -33,20 +35,14 @@
     <div class="example">
       <McFontpicker v-model="font1" />
     </div>
-    <pre>&lt;McFontpicker v-model="font1" /></pre>
     <p>
       Current value: <span :style="'font-family: ' + font1">{{ font1 }}</span>
     </p>
-
-    <h3 id="autoload">Autoload fonts</h3>
-    <p>Automatically load fonts by setting the <code>auto-load</code>-prop.</p>
-    <div class="example">
-      <McFontpicker auto-load v-model="font2" />
-    </div>
-    <pre>&lt;McFontpicker auto-load v-model="font2" /></pre>
-    <p>
-      Current value: <span :style="'font-family: ' + font2">{{ font2 }}</span>
-    </p>
+    <pre v-pre>
+&lt;McFontpicker v-model="font1" />
+Current value: &lt;span :style="'font-family: ' + font1">{{ font1 }}&lt;/span>
+</pre
+    >
 
     <h3 id="nomatches">No matches</h3>
     <p>
@@ -54,17 +50,73 @@
       <code>no-matches</code>-prop.
     </p>
     <div class="example">
-      <McFontpicker no-matches="I've got nothing" v-model="font3" />
+      <McFontpicker ref="fontloader" no-matches="I've got nothing" />
     </div>
-    <pre>&lt;McFontpicker no-matches="I've got nothing" v-model="font3" /></pre>
+    <pre>&lt;McFontpicker no-matches="I've got nothing" /></pre>
+
+    <h3 id="autoload">Autoload fonts</h3>
+    <p>Automatically load fonts by setting the <code>auto-load</code>-prop.</p>
+    <div class="example">
+      <McFontpicker auto-load v-model="font2" />
+    </div>
     <p>
-      Current value: <span :style="'font-family: ' + font3">{{ font3 }}</span>
+      Current value: <span :style="'font-family: ' + font2">{{ font2 }}</span>
     </p>
+    <pre v-pre>
+&lt;McFontpicker auto-load v-model="font2" />
+Current value: &lt;span :style="'font-family: ' + font2">{{ font2 }}&lt;/span>
+</pre
+    >
+
+    <h3 id="manualload">Manually load fonts</h3>
+    <p>Manually load fonts by setting the <code>load-fonts</code>-prop.</p>
+    <p>Several fonts may be loaded by comma-separating the names.</p>
+    <div class="example">
+      <McFontpicker :load-fonts="manuallyLoadFonts1" />
+      <div style="text-align: center">
+        <button @click="manuallyLoadFonts1 = 'Rubik Beastly'">
+          Load <span style="font-family: Rubik Beastly">"Rubik Beastly"</span>
+        </button>
+        <button @click="manuallyLoadFonts1 = 'Pacifico, Teko'">
+          Load <span style="font-family: Pacifico">"Pacifico"</span> and
+          <span style="font-family: Teko">"Teko"</span>
+        </button>
+      </div>
+    </div>
+    <pre>
+&lt;McFontpicker :load-fonts="manuallyLoadFonts1" />
+&lt;button @click="manuallyLoadFonts1 = 'Rubik Beastly'">One font&lt;/button>
+&lt;button @click="manuallyLoadFonts1 = 'Pacifico, Teko'">Two fonts&lt;/button>
+</pre
+    >
+
+    <h3 id="loaderonly">Font loader only</h3>
+    <p>
+      Set the <code>loader-only</code>-prop to completely hide the font picker if you just need to load one or more fonts.
+    </p>
+    <div class="example">
+      <McFontpicker :load-fonts="manuallyLoadFonts2" loader-only />
+      <div style="text-align: center">
+        <button @click="manuallyLoadFonts1 = 'Rancho'">
+          Load <span style="font-family: Rancho">"Rancho"</span>
+        </button>
+        <button @click="manuallyLoadFonts1 = 'Smooch, Risque'">
+          Load <span style="font-family: Smooch">"Smooch"</span> and
+          <span style="font-family: Risque">"Risque"</span>
+        </button>
+      </div>
+    </div>
+    <pre>
+&lt;McFontpicker :load-fonts="manuallyLoadFonts2" loader-only />
+&lt;button @click="manuallyLoadFonts2 = 'Rancho'">Rancho&lt;/button>
+&lt;button @click="manuallyLoadFonts2 = 'Smooch, Risque'">Two fonts&lt;/button>
+</pre
+    >
   </div>
 </template>
 
 <script>
-import McFontpicker from './components/McFontpicker'
+import McFontpicker from './components/index'
 
 export default {
   name: 'App',
@@ -75,7 +127,8 @@ export default {
     return {
       font1: 'Tenor Sans',
       font2: 'Open Sans',
-      font3: 'Open Sans',
+      manuallyLoadFonts1: '',
+      manuallyLoadFonts2: '',
     }
   },
 }
@@ -96,6 +149,14 @@ export default {
 * {
   vertical-align: baseline;
   box-sizing: border-box;
+}
+button {
+  height: 3em;
+  line-height: 1em;
+  padding: 0.5em 1em;
+  box-sizing: border-box;
+  margin: 0.5em;
+  width: 20em;
 }
 a {
   color: #379bff;
