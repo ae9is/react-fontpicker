@@ -40,12 +40,23 @@ class GoogleFonts
         $fonts = [];
         foreach ($fontInfos as $num => $font) {
             $sanename = strtolower(preg_replace('#[^a-zA-Z0-9\-]#', '', str_replace(' ', '-', $font['family'])));
+            if (isset($font['files']['regular'])) {
+                $remoteFile = $font['files']['regular'];
+            } elseif (isset($font['files']['400'])) {
+                $remoteFile = $font['files']['400'];
+            } elseif (isset($font['files']['300'])) {
+                $remoteFile = $font['files']['300'];
+            } elseif (isset($font['files']['500'])) {
+                $remoteFile = $font['files']['500'];
+            } else {
+                $remoteFile = reset($font['files']);
+            }
             $fonts[] = [
                 'name' => $font['family'],
                 'sanename' => $sanename,
                 'slice' => intdiv($num, self::$sliceSize),
                 'top' => ($num % self::$sliceSize) * self::$cellHeight,
-                'remoteFile' => reset($font['files']),
+                'remoteFile' => $remoteFile,
                 'localFile' => self::$fontPath . '/' . $sanename . '.ttf',
                 'variants' => $font['variants'],
             ];
@@ -105,6 +116,7 @@ class GoogleFonts
         foreach ($fontInfo as $font) {
             if (!file_exists($font['localFile'])) {
                 file_put_contents($font['localFile'], file_get_contents($font['remoteFile']));
+                sleep(1);
             }
         }
     }
