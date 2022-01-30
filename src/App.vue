@@ -113,7 +113,8 @@ Current value: &lt;span :style="'font-family: ' + font2">{{ font2 }}&lt;/span>
 
     <h3 id="loaderonly">Font loader only</h3>
     <p>
-      Set the <code>loader-only</code>-prop to completely hide the font picker if you just need to load one or more fonts.
+      Set the <code>loader-only</code>-prop to completely hide the font picker
+      if you just need to load one or more fonts.
     </p>
     <div class="example">
       <McFontpicker :load-fonts="manuallyLoadFonts2" loader-only />
