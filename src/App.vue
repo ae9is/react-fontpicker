@@ -20,6 +20,7 @@
       <h3>TOC</h3>
       <ul>
         <li><a href="#default">Default behaviour</a></li>
+        <li><a href="#fontVariants">Font variants</a></li>
         <li><a href="#nomatches">No matches</a></li>
         <li><a href="#autoload">Autoload fonts</a></li>
         <li><a href="#manualload">Manually load fonts</a></li>
@@ -41,6 +42,26 @@
     <pre v-pre>
 &lt;McFontpicker v-model="font1" />
 Current value: &lt;span :style="'font-family: ' + font1">{{ font1 }}&lt;/span>
+</pre
+    >
+
+    <h3 id="fontVariants">Font variants</h3>
+    <p>
+      When a new font is selected the <code>fontVariants</code> event is
+      triggered in addition to the <code>input</code> event.
+    </p>
+    <p>
+      This is useful if you need to know which variants of the font are
+      available.
+    </p>
+    <div class="example">
+      <McFontpicker @fontVariants="i => (fontVariants = i)" />
+    </div>
+    <p>fontVariants:</p>
+    <pre>{{ fontVariants }}</pre>
+    <pre v-pre>
+&lt;McFontpicker @fontVariants="i => (fontVariants = i)" />
+fontVariants: &lt;pre>{{ fontVariants }}&lt;/pre>
 </pre
     >
 
@@ -127,6 +148,7 @@ export default {
     return {
       font1: 'Tenor Sans',
       font2: 'Open Sans',
+      fontVariants: null,
       manuallyLoadFonts1: '',
       manuallyLoadFonts2: '',
     }

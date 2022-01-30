@@ -262,13 +262,26 @@ export default {
       this.$emit('input', this.current.name)
       this.$refs['input'].blur()
       this.autoLoadFont()
+      this.emitFontVariants()
     },
     setCurrentByName(newName) {
       let font = this.getFontByName(newName)
       if (font) {
         this.current = font
         this.autoLoadFont()
+        this.emitFontVariants()
       }
+    },
+    emitFontVariants() {
+      this.$emit(
+        'fontVariants',
+        this.current.variants.map(v => {
+          return {
+            italic: v.substring(0, 2) == '1,',
+            weight: v.substring(2),
+          }
+        }),
+      )
     },
     autoLoadFont(font) {
       if (this.autoLoad) {
