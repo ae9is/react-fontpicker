@@ -24,6 +24,7 @@
         <li><a href="#nomatches">No matches</a></li>
         <li><a href="#autoload">Autoload fonts</a></li>
         <li><a href="#manualload">Manually load fonts</a></li>
+        <li><a href="#loadallvariants">Load all variants</a></li>
         <li><a href="#loadspecific">Load specific variants</a></li>
         <li><a href="#loaderonly">Font loader only</a></li>
       </ul>
@@ -54,7 +55,10 @@ Current value: &lt;span :style="'font-family: ' + font1">{{ font1 }}&lt;/span>
       variants of the current font.
     </p>
     <div class="example">
-      <McFontpicker @fontVariants="i => (fontVariants = i)" />
+      <McFontpicker
+        value="Oranienbaum"
+        @fontVariants="i => (fontVariants = i)"
+      />
     </div>
     <p>fontVariants:</p>
     <pre>{{ fontVariants }}</pre>
@@ -107,6 +111,24 @@ Current value: &lt;span :style="'font-family: ' + font2">{{ font2 }}&lt;/span>
 &lt;McFontpicker :load-fonts="manuallyLoadFonts1" />
 &lt;button @click="manuallyLoadFonts1 = 'Rubik Beastly'">One font&lt;/button>
 &lt;button @click="manuallyLoadFonts1 = 'Pacifico, Teko'">Two fonts&lt;/button>
+</pre
+    >
+
+    <h3 id="loadallvariants">Load all variants</h3>
+    <p>
+      By default only the four most common variants (regular, bold, italic and
+      bold italic) are loaded. You can make sure all variants are loaded by
+      setting the <code>load-all-variants</code> prop.
+    </p>
+    <div class="example">
+      <McFontpicker auto-load load-all-variants v-model="font3" />
+    </div>
+    <p>
+      Current value: <span :style="'font-family: ' + font3">{{ font3 }}</span>
+    </p>
+    <pre v-pre>
+&lt;McFontpicker auto-load load-all-variants v-model="font3" />
+Current value: &lt;span :style="'font-family: ' + font3">{{ font3 }}&lt;/span>
 </pre
     >
 
@@ -226,6 +248,7 @@ export default {
     return {
       font1: 'Tenor Sans',
       font2: 'Open Sans',
+      font3: 'Open Sans',
       fontVariants: null,
       manuallyLoadFonts1: '',
       manuallyLoadFonts2: '',

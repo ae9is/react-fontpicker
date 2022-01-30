@@ -58,6 +58,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    loadAllVariants: {
+      type: Boolean,
+      default: false,
+    },
     loadFonts: {
       type: [Array, String],
       default: '',
@@ -140,7 +144,14 @@ export default {
           if (!font.font) {
             continue
           }
-          this.loadFontByName(font.font, font.variants)
+          if (font.variants) {
+            this.loadFontByName(
+              font.font,
+              font.variants.map(v => (v.italic ? '1' : '0') + ',' + v.weight),
+            )
+          } else {
+            this.loadFontByName(font.font)
+          }
         }
       }
     },
@@ -306,12 +317,6 @@ export default {
       if (typeof font == 'string') {
         font = this.getFontByName(font)
       }
-      if (variants) {
-        let wantedVariants = variants.map(
-          v => (v.italic ? '1' : '0') + ',' + v.weight,
-        )
-        font.variants = font.variants.filter(v => wantedVariants.includes(v))
-      }
       if (
         font == null ||
         typeof font != 'object' ||
@@ -321,21 +326,82 @@ export default {
       } else if (font.variants.length < 1) {
         console.error('No valid variants of font', variants)
       } else {
-        this.loadFontFromObject(font)
+        this.loadFontFromObject(font, variants)
       }
     },
-    loadFontFromObject(font) {
-      let cssId =
-        'google-font-' +
-        font.sane +
-        '-' +
-        font.variants
-          .sort()
-          .join('-')
-          .replaceAll('1,', 'i')
-          .replaceAll('0,', '')
+    getFourVariants(variants) {
+      let regularWeights = variants
+        .filter(v => v.substring(0, 2) == '0,')
+        .map(v => parseInt(v.substring(2)))
+        .sort((a, b) => a - b)
+      let italicWeights = variants
+        .filter(v => v.substring(0, 2) == '1,')
+        .map(v => parseInt(v.substring(2)))
+        .sort((a, b) => a - b)
+
+      let fourFonts = {}
+
+      // Best regular font is whatever is closest to 400 (but use 300 if only 300 and 500 available)
+      fourFonts.regular = regularWeights
+        .sort((a, b) => Math.abs(399 - a) - Math.abs(399 - b))
+        .shift()
+
+      // Best bold font is whatever is larger than regular, and closest to 700
+      fourFonts.bold = regularWeights
+        .filter(v => v > fourFonts.regular)
+        .sort((a, b) => Math.abs(700 - a) - Math.abs(700 - b))
+        .shift()
+
+      // Same for italics
+      fourFonts.italic = italicWeights
+        .sort((a, b) => Math.abs(399 - a) - Math.abs(399 - b))
+        .shift()
+      fourFonts.boldItalic = italicWeights
+        .filter(v => v > fourFonts.italic)
+        .sort((a, b) => Math.abs(700 - a) - Math.abs(700 - b))
+        .shift()
+
+      let loadFonts = []
+      if (fourFonts.regular) {
+        loadFonts.push('0,' + fourFonts.regular)
+      }
+      if (fourFonts.bold) {
+        loadFonts.push('0,' + fourFonts.bold)
+      }
+      if (fourFonts.italic) {
+        loadFonts.push('1,' + fourFonts.italic)
+      }
+      if (fourFonts.boldItalic) {
+        loadFonts.push('1,' + fourFonts.boldItalic)
+      }
+      return loadFonts
+    },
+    loadFontFromObject(font, variants) {
+      if (variants) {
+        variants = font.variants.filter(v => variants.includes(v))
+      } else if (this.loadAllVariants) {
+        variants = font.variants
+      } else {
+        variants = this.getFourVariants(font.variants)
+      }
+
+      let cssId = 'google-font-' + font.sane
+      let cssIdAll = cssId + '-all'
+      if (variants.length == font.variants.length) {
+        cssId = cssIdAll
+      } else {
+        cssId +=
+          '-' +
+          variants
+            .sort()
+            .join('-')
+            .replaceAll('1,', 'i')
+            .replaceAll('0,', '')
+      }
+
       let existing = document.getElementById(cssId)
-      if (!existing) {
+      let existingAll = document.getElementById(cssIdAll)
+      if (!existing && !existingAll) {
         var link = document.createElement('link')
         link.rel = 'stylesheet'
         link.id = cssId
@@ -343,7 +409,7 @@ export default {
           'https://fonts.googleapis.com/css2?family=' +
           font.name +
           ':ital,wght@' +
-          font.variants.sort().join(';') +
+          variants.sort().join(';') +
           '&display=swap'
         document.getElementsByTagName('head')[0].appendChild(link)
       }
