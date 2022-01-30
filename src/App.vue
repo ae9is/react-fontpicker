@@ -24,6 +24,7 @@
         <li><a href="#nomatches">No matches</a></li>
         <li><a href="#autoload">Autoload fonts</a></li>
         <li><a href="#manualload">Manually load fonts</a></li>
+        <li><a href="#loadspecific">Load specific variants</a></li>
         <li><a href="#loaderonly">Font loader only</a></li>
       </ul>
     </div>
