@@ -47,12 +47,10 @@ Current value: &lt;span :style="'font-family: ' + font1">{{ font1 }}&lt;/span>
 
     <h3 id="fontVariants">Font variants</h3>
     <p>
-      When a new font is selected the <code>fontVariants</code> event is
-      triggered in addition to the <code>input</code> event.
-    </p>
-    <p>
-      This is useful if you need to know which variants of the font are
-      available.
+      On mount and when a new font is selected the
+      <code>fontVariants</code> event is triggered. The main difference from the
+      <code>input</code> event is that it provides details about available
+      variants of the current font.
     </p>
     <div class="example">
       <McFontpicker @fontVariants="i => (fontVariants = i)" />
@@ -111,6 +109,84 @@ Current value: &lt;span :style="'font-family: ' + font2">{{ font2 }}&lt;/span>
 </pre
     >
 
+    <h3 id="loadspecific">Load specific variants</h3>
+    <p>
+      The <code>load-fonts</code>-prop can also accept an array of objects
+      specifying fonts and variants. Example:
+    </p>
+    <pre>
+[
+  {
+    font: "Open Sans",
+    variants: [
+      { italic: false, weight: 400 },
+      { italic: true, weight: 400 },
+      { italic: false, weight: 700 },
+      { italic: true, weight: 700 },
+    ]
+  },
+  {
+    font: "Rancho",
+    variants: [
+      { italic: false, weight: 400 },
+    ]
+  }
+]</pre
+    >
+    <p>
+      Note that many fonts exist only in a few variants, so make sure the
+      variants you request actually exist. For instance by filtering the values
+      emitted from <code>fontVariants</code> events.
+    </p>
+    <p>
+      One use case could be loading only one variant - in this example whichever
+      is first (least bold):
+    </p>
+    <div class="example">
+      <McFontpicker
+        :load-fonts="[thinnestFont]"
+        @fontVariants="
+          v =>
+            (thinnestFont = {
+              font: v.font,
+              variants: v.variants.slice(0, 1),
+            })
+        "
+      />
+    </div>
+    <p v-if="typeof thinnestFont == 'object'">
+      Current value:
+      <span
+        :style="{
+          fontFamily: thinnestFont.font,
+          fontWeight: thinnestFont.variants[0].weight,
+        }"
+      >
+        {{ thinnestFont.font }}
+      </span>
+    </p>
+    <pre v-pre>
+&lt;McFontpicker
+  :load-fonts="[thinnestFont]"
+  @fontVariants="
+    v => (thinnestFont = {
+      font: v.font,
+      variants: v.variants.slice(0, 1),
+    })
+  "
+/>
+Current value:
+&lt;span
+  :style="{
+    fontFamily: thinnestFont.font,
+    fontWeight: thinnestFont.variants[0].weight,
+  }"
+>
+  {{ thinnestFont.font }}
+&lt;/span>
+</pre
+    >
+
     <h3 id="loaderonly">Font loader only</h3>
     <p>
       Set the <code>loader-only</code>-prop to completely hide the font picker
@@ -152,6 +228,7 @@ export default {
       fontVariants: null,
       manuallyLoadFonts1: '',
       manuallyLoadFonts2: '',
+      thinnestFont: '',
     }
   },
 }

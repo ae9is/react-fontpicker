@@ -59,7 +59,7 @@ export default {
       default: false,
     },
     loadFonts: {
-      type: String,
+      type: [Array, String],
       default: '',
     },
   },
@@ -129,9 +129,19 @@ export default {
       this.typedSearch = this.searchContent = newValue
     },
     handleLoadFont() {
-      let fontNames = this.loadFonts.split(',')
-      for (var i in fontNames) {
-        this.loadFontByName(fontNames[i])
+      if (typeof this.loadFonts === 'string') {
+        let fontNames = this.loadFonts.split(',')
+        for (var i in fontNames) {
+          this.loadFontByName(fontNames[i])
+        }
+      } else {
+        for (i in this.loadFonts) {
+          let font = this.loadFonts[i]
+          if (!font.font) {
+            continue
+          }
+          this.loadFontByName(font.font, font.variants)
+        }
       }
     },
     searchChanged(e) {
@@ -273,22 +283,22 @@ export default {
       }
     },
     emitFontVariants() {
-      this.$emit(
-        'fontVariants',
-        this.current.variants.map(v => {
+      this.$emit('fontVariants', {
+        font: this.current.name,
+        variants: this.current.variants.map(v => {
           return {
             italic: v.substring(0, 2) == '1,',
             weight: v.substring(2),
           }
         }),
-      )
+      })
     },
     autoLoadFont(font) {
       if (this.autoLoad) {
         this.loadFontFromObject(this.current)
       }
     },
-    loadFontByName(font) {
+    loadFontByName(font, variants) {
       if (font === '') {
         return
       }
@@ -296,18 +306,34 @@ export default {
       if (typeof font == 'string') {
         font = this.getFontByName(font)
       }
+      if (variants) {
+        let wantedVariants = variants.map(
+          v => (v.italic ? '1' : '0') + ',' + v.weight,
+        )
+        font.variants = font.variants.filter(v => wantedVariants.includes(v))
+      }
       if (
         font == null ||
         typeof font != 'object' ||
         typeof font.sane != 'string'
       ) {
-        console.log('Unknown font', origFont)
+        console.error('Unknown font', origFont)
+      } else if (font.variants.length < 1) {
+        console.error('No valid variants of font', variants)
       } else {
         this.loadFontFromObject(font)
       }
     },
     loadFontFromObject(font) {
-      let cssId = 'google-font-' + font.sane
+      let cssId =
+        'google-font-' +
+        font.sane +
+        '-' +
+        font.variants
+          .sort()
+          .join('-')
+          .replaceAll('1,', 'i')
+          .replaceAll('0,', '')
       let existing = document.getElementById(cssId)
       if (!existing) {
         var link = document.createElement('link')
