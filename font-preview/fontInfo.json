@@ -16,7 +16,7 @@
     },
     {
         "name": "Abhaya Libre",
-        "sane": "abhaya-libre",
+        "sane": "abhaya_libre",
         "variants": [
             "0,400",
             "0,500",
@@ -27,7 +27,7 @@
     },
     {
         "name": "Abril Fatface",
-        "sane": "abril-fatface",
+        "sane": "abril_fatface",
         "variants": [
             "0,400"
         ]
@@ -62,7 +62,7 @@
     },
     {
         "name": "Advent Pro",
-        "sane": "advent-pro",
+        "sane": "advent_pro",
         "variants": [
             "0,100",
             "0,200",
@@ -75,21 +75,21 @@
     },
     {
         "name": "Aguafina Script",
-        "sane": "aguafina-script",
+        "sane": "aguafina_script",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Akaya Kanadaka",
-        "sane": "akaya-kanadaka",
+        "sane": "akaya_kanadaka",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Akaya Telivigala",
-        "sane": "akaya-telivigala",
+        "sane": "akaya_telivigala",
         "variants": [
             "0,400"
         ]
@@ -157,7 +157,7 @@
     },
     {
         "name": "Alegreya SC",
-        "sane": "alegreya-sc",
+        "sane": "alegreya_sc",
         "variants": [
             "0,400",
             "1,400",
@@ -173,7 +173,7 @@
     },
     {
         "name": "Alegreya Sans",
-        "sane": "alegreya-sans",
+        "sane": "alegreya_sans",
         "variants": [
             "0,100",
             "1,100",
@@ -193,7 +193,7 @@
     },
     {
         "name": "Alegreya Sans SC",
-        "sane": "alegreya-sans-sc",
+        "sane": "alegreya_sans_sc",
         "variants": [
             "0,100",
             "1,100",
@@ -225,14 +225,14 @@
     },
     {
         "name": "Alex Brush",
-        "sane": "alex-brush",
+        "sane": "alex_brush",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Alfa Slab One",
-        "sane": "alfa-slab-one",
+        "sane": "alfa_slab_one",
         "variants": [
             "0,400"
         ]
@@ -253,7 +253,7 @@
     },
     {
         "name": "Alike Angular",
-        "sane": "alike-angular",
+        "sane": "alike_angular",
         "variants": [
             "0,400"
         ]
@@ -275,7 +275,7 @@
     },
     {
         "name": "Allerta Stencil",
-        "sane": "allerta-stencil",
+        "sane": "allerta_stencil",
         "variants": [
             "0,400"
         ]
@@ -306,21 +306,21 @@
     },
     {
         "name": "Almendra Display",
-        "sane": "almendra-display",
+        "sane": "almendra_display",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Almendra SC",
-        "sane": "almendra-sc",
+        "sane": "almendra_sc",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Alumni Sans",
-        "sane": "alumni-sans",
+        "sane": "alumni_sans",
         "variants": [
             "0,100",
             "0,200",
@@ -343,6 +343,14 @@
         ]
     },
     {
+        "name": "Alumni Sans Inline One",
+        "sane": "alumni_sans_inline_one",
+        "variants": [
+            "0,400",
+            "1,400"
+        ]
+    },
+    {
         "name": "Amarante",
         "sane": "amarante",
         "variants": [
@@ -361,7 +369,7 @@
     },
     {
         "name": "Amatic SC",
-        "sane": "amatic-sc",
+        "sane": "amatic_sc",
         "variants": [
             "0,400",
             "0,700"
@@ -410,7 +418,7 @@
     },
     {
         "name": "Andada Pro",
-        "sane": "andada-pro",
+        "sane": "andada_pro",
         "variants": [
             "0,400",
             "0,500",
@@ -433,12 +441,152 @@
     },
     {
         "name": "Andika New Basic",
-        "sane": "andika-new-basic",
+        "sane": "andika_new_basic",
         "variants": [
             "0,400",
             "1,400",
             "0,700",
             "1,700"
+        ]
+    },
+    {
+        "name": "Anek Bangla",
+        "sane": "anek_bangla",
+        "variants": [
+            "0,100",
+            "0,200",
+            "0,300",
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700",
+            "0,800"
+        ]
+    },
+    {
+        "name": "Anek Devanagari",
+        "sane": "anek_devanagari",
+        "variants": [
+            "0,100",
+            "0,200",
+            "0,300",
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700",
+            "0,800"
+        ]
+    },
+    {
+        "name": "Anek Gujarati",
+        "sane": "anek_gujarati",
+        "variants": [
+            "0,100",
+            "0,200",
+            "0,300",
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700",
+            "0,800"
+        ]
+    },
+    {
+        "name": "Anek Gurmukhi",
+        "sane": "anek_gurmukhi",
+        "variants": [
+            "0,100",
+            "0,200",
+            "0,300",
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700",
+            "0,800"
+        ]
+    },
+    {
+        "name": "Anek Kannada",
+        "sane": "anek_kannada",
+        "variants": [
+            "0,100",
+            "0,200",
+            "0,300",
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700",
+            "0,800"
+        ]
+    },
+    {
+        "name": "Anek Latin",
+        "sane": "anek_latin",
+        "variants": [
+            "0,100",
+            "0,200",
+            "0,300",
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700",
+            "0,800"
+        ]
+    },
+    {
+        "name": "Anek Malayalam",
+        "sane": "anek_malayalam",
+        "variants": [
+            "0,100",
+            "0,200",
+            "0,300",
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700",
+            "0,800"
+        ]
+    },
+    {
+        "name": "Anek Odia",
+        "sane": "anek_odia",
+        "variants": [
+            "0,100",
+            "0,200",
+            "0,300",
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700",
+            "0,800"
+        ]
+    },
+    {
+        "name": "Anek Tamil",
+        "sane": "anek_tamil",
+        "variants": [
+            "0,100",
+            "0,200",
+            "0,300",
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700",
+            "0,800"
+        ]
+    },
+    {
+        "name": "Anek Telugu",
+        "sane": "anek_telugu",
+        "variants": [
+            "0,100",
+            "0,200",
+            "0,300",
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700",
+            "0,800"
         ]
     },
     {
@@ -450,14 +598,14 @@
     },
     {
         "name": "Annie Use Your Telescope",
-        "sane": "annie-use-your-telescope",
+        "sane": "annie_use_your_telescope",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Anonymous Pro",
-        "sane": "anonymous-pro",
+        "sane": "anonymous_pro",
         "variants": [
             "0,400",
             "1,400",
@@ -474,14 +622,14 @@
     },
     {
         "name": "Antic Didone",
-        "sane": "antic-didone",
+        "sane": "antic_didone",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Antic Slab",
-        "sane": "antic-slab",
+        "sane": "antic_slab",
         "variants": [
             "0,400"
         ]
@@ -507,6 +655,30 @@
         ]
     },
     {
+        "name": "Anybody",
+        "sane": "anybody",
+        "variants": [
+            "0,100",
+            "0,200",
+            "0,300",
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700",
+            "0,800",
+            "0,900",
+            "1,100",
+            "1,200",
+            "1,300",
+            "1,400",
+            "1,500",
+            "1,600",
+            "1,700",
+            "1,800",
+            "1,900"
+        ]
+    },
+    {
         "name": "Arapey",
         "sane": "arapey",
         "variants": [
@@ -523,14 +695,14 @@
     },
     {
         "name": "Arbutus Slab",
-        "sane": "arbutus-slab",
+        "sane": "arbutus_slab",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Architects Daughter",
-        "sane": "architects-daughter",
+        "sane": "architects_daughter",
         "variants": [
             "0,400"
         ]
@@ -561,14 +733,14 @@
     },
     {
         "name": "Archivo Black",
-        "sane": "archivo-black",
+        "sane": "archivo_black",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Archivo Narrow",
-        "sane": "archivo-narrow",
+        "sane": "archivo_narrow",
         "variants": [
             "0,400",
             "0,500",
@@ -582,14 +754,14 @@
     },
     {
         "name": "Are You Serious",
-        "sane": "are-you-serious",
+        "sane": "are_you_serious",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Aref Ruqaa",
-        "sane": "aref-ruqaa",
+        "sane": "aref_ruqaa",
         "variants": [
             "0,400",
             "0,700"
@@ -597,7 +769,7 @@
     },
     {
         "name": "Arima Madurai",
-        "sane": "arima-madurai",
+        "sane": "arima_madurai",
         "variants": [
             "0,100",
             "0,200",
@@ -688,7 +860,7 @@
     },
     {
         "name": "Asap Condensed",
-        "sane": "asap-condensed",
+        "sane": "asap_condensed",
         "variants": [
             "0,400",
             "1,400",
@@ -757,7 +929,7 @@
     },
     {
         "name": "Atkinson Hyperlegible",
-        "sane": "atkinson-hyperlegible",
+        "sane": "atkinson_hyperlegible",
         "variants": [
             "0,400",
             "1,400",
@@ -778,7 +950,7 @@
     },
     {
         "name": "Atomic Age",
-        "sane": "atomic-age",
+        "sane": "atomic_age",
         "variants": [
             "0,400"
         ]
@@ -799,7 +971,7 @@
     },
     {
         "name": "Autour One",
-        "sane": "autour-one",
+        "sane": "autour_one",
         "variants": [
             "0,400"
         ]
@@ -813,21 +985,21 @@
     },
     {
         "name": "Average Sans",
-        "sane": "average-sans",
+        "sane": "average_sans",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Averia Gruesa Libre",
-        "sane": "averia-gruesa-libre",
+        "sane": "averia_gruesa_libre",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Averia Libre",
-        "sane": "averia-libre",
+        "sane": "averia_libre",
         "variants": [
             "0,300",
             "1,300",
@@ -839,7 +1011,7 @@
     },
     {
         "name": "Averia Sans Libre",
-        "sane": "averia-sans-libre",
+        "sane": "averia_sans_libre",
         "variants": [
             "0,300",
             "1,300",
@@ -851,7 +1023,7 @@
     },
     {
         "name": "Averia Serif Libre",
-        "sane": "averia-serif-libre",
+        "sane": "averia_serif_libre",
         "variants": [
             "0,300",
             "1,300",
@@ -863,7 +1035,7 @@
     },
     {
         "name": "Azeret Mono",
-        "sane": "azeret-mono",
+        "sane": "azeret_mono",
         "variants": [
             "0,100",
             "0,200",
@@ -897,7 +1069,7 @@
     },
     {
         "name": "B612 Mono",
-        "sane": "b612-mono",
+        "sane": "b612_mono",
         "variants": [
             "0,400",
             "1,400",
@@ -906,8 +1078,45 @@
         ]
     },
     {
+        "name": "BIZ UDGothic",
+        "sane": "biz_udgothic",
+        "variants": [
+            "0,400",
+            "0,700"
+        ]
+    },
+    {
+        "name": "BIZ UDMincho",
+        "sane": "biz_udmincho",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "name": "BIZ UDPGothic",
+        "sane": "biz_udpgothic",
+        "variants": [
+            "0,400",
+            "0,700"
+        ]
+    },
+    {
+        "name": "BIZ UDPMincho",
+        "sane": "biz_udpmincho",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "name": "Babylonica",
+        "sane": "babylonica",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
         "name": "Bad Script",
-        "sane": "bad-script",
+        "sane": "bad_script",
         "variants": [
             "0,400"
         ]
@@ -928,7 +1137,7 @@
     },
     {
         "name": "Bai Jamjuree",
-        "sane": "bai-jamjuree",
+        "sane": "bai_jamjuree",
         "variants": [
             "0,200",
             "1,200",
@@ -946,7 +1155,7 @@
     },
     {
         "name": "Bakbak One",
-        "sane": "bakbak-one",
+        "sane": "bakbak_one",
         "variants": [
             "0,400"
         ]
@@ -960,7 +1169,7 @@
     },
     {
         "name": "Baloo 2",
-        "sane": "baloo-2",
+        "sane": "baloo_2",
         "variants": [
             "0,400",
             "0,500",
@@ -971,7 +1180,7 @@
     },
     {
         "name": "Baloo Bhai 2",
-        "sane": "baloo-bhai-2",
+        "sane": "baloo_bhai_2",
         "variants": [
             "0,400",
             "0,500",
@@ -982,7 +1191,7 @@
     },
     {
         "name": "Baloo Bhaijaan 2",
-        "sane": "baloo-bhaijaan-2",
+        "sane": "baloo_bhaijaan_2",
         "variants": [
             "0,400",
             "0,500",
@@ -993,7 +1202,7 @@
     },
     {
         "name": "Baloo Bhaina 2",
-        "sane": "baloo-bhaina-2",
+        "sane": "baloo_bhaina_2",
         "variants": [
             "0,400",
             "0,500",
@@ -1004,7 +1213,7 @@
     },
     {
         "name": "Baloo Chettan 2",
-        "sane": "baloo-chettan-2",
+        "sane": "baloo_chettan_2",
         "variants": [
             "0,400",
             "0,500",
@@ -1015,7 +1224,7 @@
     },
     {
         "name": "Baloo Da 2",
-        "sane": "baloo-da-2",
+        "sane": "baloo_da_2",
         "variants": [
             "0,400",
             "0,500",
@@ -1026,7 +1235,7 @@
     },
     {
         "name": "Baloo Paaji 2",
-        "sane": "baloo-paaji-2",
+        "sane": "baloo_paaji_2",
         "variants": [
             "0,400",
             "0,500",
@@ -1037,7 +1246,7 @@
     },
     {
         "name": "Baloo Tamma 2",
-        "sane": "baloo-tamma-2",
+        "sane": "baloo_tamma_2",
         "variants": [
             "0,400",
             "0,500",
@@ -1048,7 +1257,7 @@
     },
     {
         "name": "Baloo Tammudu 2",
-        "sane": "baloo-tammudu-2",
+        "sane": "baloo_tammudu_2",
         "variants": [
             "0,400",
             "0,500",
@@ -1059,7 +1268,7 @@
     },
     {
         "name": "Baloo Thambi 2",
-        "sane": "baloo-thambi-2",
+        "sane": "baloo_thambi_2",
         "variants": [
             "0,400",
             "0,500",
@@ -1070,7 +1279,7 @@
     },
     {
         "name": "Balsamiq Sans",
-        "sane": "balsamiq-sans",
+        "sane": "balsamiq_sans",
         "variants": [
             "0,400",
             "1,400",
@@ -1118,7 +1327,7 @@
     },
     {
         "name": "Barlow Condensed",
-        "sane": "barlow-condensed",
+        "sane": "barlow_condensed",
         "variants": [
             "0,100",
             "1,100",
@@ -1142,7 +1351,7 @@
     },
     {
         "name": "Barlow Semi Condensed",
-        "sane": "barlow-semi-condensed",
+        "sane": "barlow_semi_condensed",
         "variants": [
             "0,100",
             "1,100",
@@ -1220,7 +1429,7 @@
     },
     {
         "name": "Be Vietnam Pro",
-        "sane": "be-vietnam-pro",
+        "sane": "be_vietnam_pro",
         "variants": [
             "0,100",
             "1,100",
@@ -1243,8 +1452,15 @@
         ]
     },
     {
+        "name": "Beau Rivage",
+        "sane": "beau_rivage",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
         "name": "Bebas Neue",
-        "sane": "bebas-neue",
+        "sane": "bebas_neue",
         "variants": [
             "0,400"
         ]
@@ -1284,7 +1500,7 @@
     },
     {
         "name": "Bellota Text",
-        "sane": "bellota-text",
+        "sane": "bellota_text",
         "variants": [
             "0,300",
             "1,300",
@@ -1319,7 +1535,7 @@
     },
     {
         "name": "Berkshire Swash",
-        "sane": "berkshire-swash",
+        "sane": "berkshire_swash",
         "variants": [
             "0,400"
         ]
@@ -1344,7 +1560,7 @@
     },
     {
         "name": "Beth Ellen",
-        "sane": "beth-ellen",
+        "sane": "beth_ellen",
         "variants": [
             "0,400"
         ]
@@ -1358,8 +1574,15 @@
         ]
     },
     {
+        "name": "BhuTuka Expanded One",
+        "sane": "bhutuka_expanded_one",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
         "name": "Big Shoulders Display",
-        "sane": "big-shoulders-display",
+        "sane": "big_shoulders_display",
         "variants": [
             "0,100",
             "0,200",
@@ -1374,7 +1597,7 @@
     },
     {
         "name": "Big Shoulders Inline Display",
-        "sane": "big-shoulders-inline-display",
+        "sane": "big_shoulders_inline_display",
         "variants": [
             "0,100",
             "0,200",
@@ -1389,7 +1612,7 @@
     },
     {
         "name": "Big Shoulders Inline Text",
-        "sane": "big-shoulders-inline-text",
+        "sane": "big_shoulders_inline_text",
         "variants": [
             "0,100",
             "0,200",
@@ -1404,7 +1627,7 @@
     },
     {
         "name": "Big Shoulders Stencil Display",
-        "sane": "big-shoulders-stencil-display",
+        "sane": "big_shoulders_stencil_display",
         "variants": [
             "0,100",
             "0,200",
@@ -1419,7 +1642,7 @@
     },
     {
         "name": "Big Shoulders Stencil Text",
-        "sane": "big-shoulders-stencil-text",
+        "sane": "big_shoulders_stencil_text",
         "variants": [
             "0,100",
             "0,200",
@@ -1434,7 +1657,7 @@
     },
     {
         "name": "Big Shoulders Text",
-        "sane": "big-shoulders-text",
+        "sane": "big_shoulders_text",
         "variants": [
             "0,100",
             "0,200",
@@ -1449,14 +1672,14 @@
     },
     {
         "name": "Bigelow Rules",
-        "sane": "bigelow-rules",
+        "sane": "bigelow_rules",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Bigshot One",
-        "sane": "bigshot-one",
+        "sane": "bigshot_one",
         "variants": [
             "0,400"
         ]
@@ -1470,7 +1693,7 @@
     },
     {
         "name": "Bilbo Swash Caps",
-        "sane": "bilbo-swash-caps",
+        "sane": "bilbo_swash_caps",
         "variants": [
             "0,400"
         ]
@@ -1488,7 +1711,7 @@
     },
     {
         "name": "BioRhyme Expanded",
-        "sane": "biorhyme-expanded",
+        "sane": "biorhyme_expanded",
         "variants": [
             "0,200",
             "0,300",
@@ -1506,7 +1729,7 @@
     },
     {
         "name": "Birthstone Bounce",
-        "sane": "birthstone-bounce",
+        "sane": "birthstone_bounce",
         "variants": [
             "0,400",
             "0,500"
@@ -1551,21 +1774,21 @@
     },
     {
         "name": "Black And White Picture",
-        "sane": "black-and-white-picture",
+        "sane": "black_and_white_picture",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Black Han Sans",
-        "sane": "black-han-sans",
+        "sane": "black_han_sans",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Black Ops One",
-        "sane": "black-ops-one",
+        "sane": "black_ops_one",
         "variants": [
             "0,400"
         ]
@@ -1586,7 +1809,7 @@
     },
     {
         "name": "Bodoni Moda",
-        "sane": "bodoni-moda",
+        "sane": "bodoni_moda",
         "variants": [
             "0,400",
             "0,500",
@@ -1611,7 +1834,7 @@
     },
     {
         "name": "Bona Nova",
-        "sane": "bona-nova",
+        "sane": "bona_nova",
         "variants": [
             "0,400",
             "1,400",
@@ -1627,7 +1850,7 @@
     },
     {
         "name": "Bonheur Royale",
-        "sane": "bonheur-royale",
+        "sane": "bonheur_royale",
         "variants": [
             "0,400"
         ]
@@ -1641,14 +1864,14 @@
     },
     {
         "name": "Bowlby One",
-        "sane": "bowlby-one",
+        "sane": "bowlby_one",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Bowlby One SC",
-        "sane": "bowlby-one-sc",
+        "sane": "bowlby_one_sc",
         "variants": [
             "0,400"
         ]
@@ -1657,19 +1880,20 @@
         "name": "Brawler",
         "sane": "brawler",
         "variants": [
-            "0,400"
+            "0,400",
+            "0,700"
         ]
     },
     {
         "name": "Bree Serif",
-        "sane": "bree-serif",
+        "sane": "bree_serif",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Brygada 1918",
-        "sane": "brygada-1918",
+        "sane": "brygada_1918",
         "variants": [
             "0,400",
             "0,500",
@@ -1683,14 +1907,14 @@
     },
     {
         "name": "Bubblegum Sans",
-        "sane": "bubblegum-sans",
+        "sane": "bubblegum_sans",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Bubbler One",
-        "sane": "bubbler-one",
+        "sane": "bubbler_one",
         "variants": [
             "0,400"
         ]
@@ -1719,28 +1943,28 @@
     },
     {
         "name": "Bungee Hairline",
-        "sane": "bungee-hairline",
+        "sane": "bungee_hairline",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Bungee Inline",
-        "sane": "bungee-inline",
+        "sane": "bungee_inline",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Bungee Outline",
-        "sane": "bungee-outline",
+        "sane": "bungee_outline",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Bungee Shade",
-        "sane": "bungee-shade",
+        "sane": "bungee_shade",
         "variants": [
             "0,400"
         ]
@@ -1754,7 +1978,7 @@
     },
     {
         "name": "Butterfly Kids",
-        "sane": "butterfly-kids",
+        "sane": "butterfly_kids",
         "variants": [
             "0,400"
         ]
@@ -1775,7 +1999,7 @@
     },
     {
         "name": "Cabin Condensed",
-        "sane": "cabin-condensed",
+        "sane": "cabin_condensed",
         "variants": [
             "0,400",
             "0,500",
@@ -1785,7 +2009,7 @@
     },
     {
         "name": "Cabin Sketch",
-        "sane": "cabin-sketch",
+        "sane": "cabin_sketch",
         "variants": [
             "0,400",
             "0,700"
@@ -1793,7 +2017,7 @@
     },
     {
         "name": "Caesar Dressing",
-        "sane": "caesar-dressing",
+        "sane": "caesar_dressing",
         "variants": [
             "0,400"
         ]
@@ -1879,14 +2103,14 @@
     },
     {
         "name": "Cantata One",
-        "sane": "cantata-one",
+        "sane": "cantata_one",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Cantora One",
-        "sane": "cantora-one",
+        "sane": "cantora_one",
         "variants": [
             "0,400"
         ]
@@ -1930,21 +2154,21 @@
     },
     {
         "name": "Carrois Gothic",
-        "sane": "carrois-gothic",
+        "sane": "carrois_gothic",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Carrois Gothic SC",
-        "sane": "carrois-gothic-sc",
+        "sane": "carrois_gothic_sc",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Carter One",
-        "sane": "carter-one",
+        "sane": "carter_one",
         "variants": [
             "0,400"
         ]
@@ -1994,28 +2218,28 @@
     },
     {
         "name": "Caveat Brush",
-        "sane": "caveat-brush",
+        "sane": "caveat_brush",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Cedarville Cursive",
-        "sane": "cedarville-cursive",
+        "sane": "cedarville_cursive",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Ceviche One",
-        "sane": "ceviche-one",
+        "sane": "ceviche_one",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Chakra Petch",
-        "sane": "chakra-petch",
+        "sane": "chakra_petch",
         "variants": [
             "0,300",
             "1,300",
@@ -2044,7 +2268,7 @@
     },
     {
         "name": "Changa One",
-        "sane": "changa-one",
+        "sane": "changa_one",
         "variants": [
             "0,400",
             "1,400"
@@ -2086,7 +2310,7 @@
     },
     {
         "name": "Chau Philomene One",
-        "sane": "chau-philomene-one",
+        "sane": "chau_philomene_one",
         "variants": [
             "0,400",
             "1,400"
@@ -2094,14 +2318,14 @@
     },
     {
         "name": "Chela One",
-        "sane": "chela-one",
+        "sane": "chela_one",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Chelsea Market",
-        "sane": "chelsea-market",
+        "sane": "chelsea_market",
         "variants": [
             "0,400"
         ]
@@ -2115,14 +2339,14 @@
     },
     {
         "name": "Cherry Cream Soda",
-        "sane": "cherry-cream-soda",
+        "sane": "cherry_cream_soda",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Cherry Swash",
-        "sane": "cherry-swash",
+        "sane": "cherry_swash",
         "variants": [
             "0,400",
             "0,700"
@@ -2184,7 +2408,7 @@
     },
     {
         "name": "Cinzel Decorative",
-        "sane": "cinzel-decorative",
+        "sane": "cinzel_decorative",
         "variants": [
             "0,400",
             "0,700",
@@ -2193,7 +2417,7 @@
     },
     {
         "name": "Clicker Script",
-        "sane": "clicker-script",
+        "sane": "clicker_script",
         "variants": [
             "0,400"
         ]
@@ -2208,7 +2432,7 @@
     },
     {
         "name": "Coda Caption",
-        "sane": "coda-caption",
+        "sane": "coda_caption",
         "variants": [
             "0,800"
         ]
@@ -2255,14 +2479,14 @@
     },
     {
         "name": "Comforter Brush",
-        "sane": "comforter-brush",
+        "sane": "comforter_brush",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Comic Neue",
-        "sane": "comic-neue",
+        "sane": "comic_neue",
         "variants": [
             "0,300",
             "1,300",
@@ -2274,7 +2498,7 @@
     },
     {
         "name": "Coming Soon",
-        "sane": "coming-soon",
+        "sane": "coming_soon",
         "variants": [
             "0,400"
         ]
@@ -2296,7 +2520,7 @@
     },
     {
         "name": "Concert One",
-        "sane": "concert-one",
+        "sane": "concert_one",
         "variants": [
             "0,400"
         ]
@@ -2310,7 +2534,7 @@
     },
     {
         "name": "Contrail One",
-        "sane": "contrail-one",
+        "sane": "contrail_one",
         "variants": [
             "0,400"
         ]
@@ -2370,7 +2594,7 @@
     },
     {
         "name": "Cormorant Garamond",
-        "sane": "cormorant-garamond",
+        "sane": "cormorant_garamond",
         "variants": [
             "0,300",
             "1,300",
@@ -2386,7 +2610,7 @@
     },
     {
         "name": "Cormorant Infant",
-        "sane": "cormorant-infant",
+        "sane": "cormorant_infant",
         "variants": [
             "0,300",
             "1,300",
@@ -2402,7 +2626,7 @@
     },
     {
         "name": "Cormorant SC",
-        "sane": "cormorant-sc",
+        "sane": "cormorant_sc",
         "variants": [
             "0,300",
             "0,400",
@@ -2413,7 +2637,7 @@
     },
     {
         "name": "Cormorant Unicase",
-        "sane": "cormorant-unicase",
+        "sane": "cormorant_unicase",
         "variants": [
             "0,300",
             "0,400",
@@ -2424,7 +2648,7 @@
     },
     {
         "name": "Cormorant Upright",
-        "sane": "cormorant-upright",
+        "sane": "cormorant_upright",
         "variants": [
             "0,300",
             "0,400",
@@ -2442,7 +2666,7 @@
     },
     {
         "name": "Courier Prime",
-        "sane": "courier-prime",
+        "sane": "courier_prime",
         "variants": [
             "0,400",
             "1,400",
@@ -2470,14 +2694,14 @@
     },
     {
         "name": "Covered By Your Grace",
-        "sane": "covered-by-your-grace",
+        "sane": "covered_by_your_grace",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Crafty Girls",
-        "sane": "crafty-girls",
+        "sane": "crafty_girls",
         "variants": [
             "0,400"
         ]
@@ -2491,7 +2715,7 @@
     },
     {
         "name": "Crete Round",
-        "sane": "crete-round",
+        "sane": "crete_round",
         "variants": [
             "0,400",
             "1,400"
@@ -2499,7 +2723,7 @@
     },
     {
         "name": "Crimson Pro",
-        "sane": "crimson-pro",
+        "sane": "crimson_pro",
         "variants": [
             "0,200",
             "0,300",
@@ -2521,7 +2745,7 @@
     },
     {
         "name": "Croissant One",
-        "sane": "croissant-one",
+        "sane": "croissant_one",
         "variants": [
             "0,400"
         ]
@@ -2549,7 +2773,7 @@
     },
     {
         "name": "Cute Font",
-        "sane": "cute-font",
+        "sane": "cute_font",
         "variants": [
             "0,400"
         ]
@@ -2563,14 +2787,14 @@
     },
     {
         "name": "Cutive Mono",
-        "sane": "cutive-mono",
+        "sane": "cutive_mono",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "DM Mono",
-        "sane": "dm-mono",
+        "sane": "dm_mono",
         "variants": [
             "0,300",
             "1,300",
@@ -2582,7 +2806,7 @@
     },
     {
         "name": "DM Sans",
-        "sane": "dm-sans",
+        "sane": "dm_sans",
         "variants": [
             "0,400",
             "1,400",
@@ -2594,7 +2818,7 @@
     },
     {
         "name": "DM Serif Display",
-        "sane": "dm-serif-display",
+        "sane": "dm_serif_display",
         "variants": [
             "0,400",
             "1,400"
@@ -2602,7 +2826,7 @@
     },
     {
         "name": "DM Serif Text",
-        "sane": "dm-serif-text",
+        "sane": "dm_serif_text",
         "variants": [
             "0,400",
             "1,400"
@@ -2617,7 +2841,7 @@
     },
     {
         "name": "Dancing Script",
-        "sane": "dancing-script",
+        "sane": "dancing_script",
         "variants": [
             "0,400",
             "0,500",
@@ -2634,7 +2858,7 @@
     },
     {
         "name": "Darker Grotesque",
-        "sane": "darker-grotesque",
+        "sane": "darker_grotesque",
         "variants": [
             "0,300",
             "0,400",
@@ -2647,7 +2871,7 @@
     },
     {
         "name": "David Libre",
-        "sane": "david-libre",
+        "sane": "david_libre",
         "variants": [
             "0,400",
             "0,500",
@@ -2656,14 +2880,14 @@
     },
     {
         "name": "Dawning of a New Day",
-        "sane": "dawning-of-a-new-day",
+        "sane": "dawning_of_a_new_day",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Days One",
-        "sane": "days-one",
+        "sane": "days_one",
         "variants": [
             "0,400"
         ]
@@ -2677,7 +2901,7 @@
     },
     {
         "name": "Dela Gothic One",
-        "sane": "dela-gothic-one",
+        "sane": "dela_gothic_one",
         "variants": [
             "0,400"
         ]
@@ -2691,14 +2915,14 @@
     },
     {
         "name": "Delius Swash Caps",
-        "sane": "delius-swash-caps",
+        "sane": "delius_swash_caps",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Delius Unicase",
-        "sane": "delius-unicase",
+        "sane": "delius_unicase",
         "variants": [
             "0,400",
             "0,700"
@@ -2706,14 +2930,14 @@
     },
     {
         "name": "Della Respira",
-        "sane": "della-respira",
+        "sane": "della_respira",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Denk One",
-        "sane": "denk-one",
+        "sane": "denk_one",
         "variants": [
             "0,400"
         ]
@@ -2734,7 +2958,7 @@
     },
     {
         "name": "Didact Gothic",
-        "sane": "didact-gothic",
+        "sane": "didact_gothic",
         "variants": [
             "0,400"
         ]
@@ -2748,14 +2972,14 @@
     },
     {
         "name": "Diplomata SC",
-        "sane": "diplomata-sc",
+        "sane": "diplomata_sc",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Do Hyeon",
-        "sane": "do-hyeon",
+        "sane": "do_hyeon",
         "variants": [
             "0,400"
         ]
@@ -2779,7 +3003,7 @@
     },
     {
         "name": "Donegal One",
-        "sane": "donegal-one",
+        "sane": "donegal_one",
         "variants": [
             "0,400"
         ]
@@ -2795,7 +3019,7 @@
     },
     {
         "name": "Doppio One",
-        "sane": "doppio-one",
+        "sane": "doppio_one",
         "variants": [
             "0,400"
         ]
@@ -2829,14 +3053,14 @@
     },
     {
         "name": "Dr Sugiyama",
-        "sane": "dr-sugiyama",
+        "sane": "dr_sugiyama",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Duru Sans",
-        "sane": "duru-sans",
+        "sane": "duru_sans",
         "variants": [
             "0,400"
         ]
@@ -2850,7 +3074,7 @@
     },
     {
         "name": "EB Garamond",
-        "sane": "eb-garamond",
+        "sane": "eb_garamond",
         "variants": [
             "0,400",
             "0,500",
@@ -2866,14 +3090,14 @@
     },
     {
         "name": "Eagle Lake",
-        "sane": "eagle-lake",
+        "sane": "eagle_lake",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "East Sea Dokdo",
-        "sane": "east-sea-dokdo",
+        "sane": "east_sea_dokdo",
         "variants": [
             "0,400"
         ]
@@ -2908,7 +3132,7 @@
     },
     {
         "name": "El Messiri",
-        "sane": "el-messiri",
+        "sane": "el_messiri",
         "variants": [
             "0,400",
             "0,500",
@@ -2933,7 +3157,7 @@
     },
     {
         "name": "Elsie Swash Caps",
-        "sane": "elsie-swash-caps",
+        "sane": "elsie_swash_caps",
         "variants": [
             "0,400",
             "0,900"
@@ -2941,21 +3165,21 @@
     },
     {
         "name": "Emblema One",
-        "sane": "emblema-one",
+        "sane": "emblema_one",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Emilys Candy",
-        "sane": "emilys-candy",
+        "sane": "emilys_candy",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Encode Sans",
-        "sane": "encode-sans",
+        "sane": "encode_sans",
         "variants": [
             "0,100",
             "0,200",
@@ -2970,7 +3194,7 @@
     },
     {
         "name": "Encode Sans Condensed",
-        "sane": "encode-sans-condensed",
+        "sane": "encode_sans_condensed",
         "variants": [
             "0,100",
             "0,200",
@@ -2985,7 +3209,7 @@
     },
     {
         "name": "Encode Sans Expanded",
-        "sane": "encode-sans-expanded",
+        "sane": "encode_sans_expanded",
         "variants": [
             "0,100",
             "0,200",
@@ -3000,7 +3224,7 @@
     },
     {
         "name": "Encode Sans SC",
-        "sane": "encode-sans-sc",
+        "sane": "encode_sans_sc",
         "variants": [
             "0,100",
             "0,200",
@@ -3015,7 +3239,7 @@
     },
     {
         "name": "Encode Sans Semi Condensed",
-        "sane": "encode-sans-semi-condensed",
+        "sane": "encode_sans_semi_condensed",
         "variants": [
             "0,100",
             "0,200",
@@ -3030,7 +3254,7 @@
     },
     {
         "name": "Encode Sans Semi Expanded",
-        "sane": "encode-sans-semi-expanded",
+        "sane": "encode_sans_semi_expanded",
         "variants": [
             "0,100",
             "0,200",
@@ -3100,7 +3324,7 @@
     },
     {
         "name": "Erica One",
-        "sane": "erica-one",
+        "sane": "erica_one",
         "variants": [
             "0,400"
         ]
@@ -3121,7 +3345,7 @@
     },
     {
         "name": "Euphoria Script",
-        "sane": "euphoria-script",
+        "sane": "euphoria_script",
         "variants": [
             "0,400"
         ]
@@ -3159,7 +3383,7 @@
     },
     {
         "name": "Exo 2",
-        "sane": "exo-2",
+        "sane": "exo_2",
         "variants": [
             "0,100",
             "0,200",
@@ -3183,7 +3407,7 @@
     },
     {
         "name": "Expletus Sans",
-        "sane": "expletus-sans",
+        "sane": "expletus_sans",
         "variants": [
             "0,400",
             "0,500",
@@ -3221,8 +3445,22 @@
         ]
     },
     {
+        "name": "Familjen Grotesk",
+        "sane": "familjen_grotesk",
+        "variants": [
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700",
+            "1,400",
+            "1,500",
+            "1,600",
+            "1,700"
+        ]
+    },
+    {
         "name": "Fanwood Text",
-        "sane": "fanwood-text",
+        "sane": "fanwood_text",
         "variants": [
             "0,400",
             "1,400"
@@ -3254,14 +3492,14 @@
     },
     {
         "name": "Fascinate Inline",
-        "sane": "fascinate-inline",
+        "sane": "fascinate_inline",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Faster One",
-        "sane": "faster-one",
+        "sane": "faster_one",
         "variants": [
             "0,400"
         ]
@@ -3275,7 +3513,7 @@
     },
     {
         "name": "Fauna One",
-        "sane": "fauna-one",
+        "sane": "fauna_one",
         "variants": [
             "0,400"
         ]
@@ -3335,14 +3573,14 @@
     },
     {
         "name": "Finger Paint",
-        "sane": "finger-paint",
+        "sane": "finger_paint",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Fira Code",
-        "sane": "fira-code",
+        "sane": "fira_code",
         "variants": [
             "0,300",
             "0,400",
@@ -3353,7 +3591,7 @@
     },
     {
         "name": "Fira Mono",
-        "sane": "fira-mono",
+        "sane": "fira_mono",
         "variants": [
             "0,400",
             "0,500",
@@ -3362,7 +3600,7 @@
     },
     {
         "name": "Fira Sans",
-        "sane": "fira-sans",
+        "sane": "fira_sans",
         "variants": [
             "0,100",
             "1,100",
@@ -3386,7 +3624,7 @@
     },
     {
         "name": "Fira Sans Condensed",
-        "sane": "fira-sans-condensed",
+        "sane": "fira_sans_condensed",
         "variants": [
             "0,100",
             "1,100",
@@ -3410,7 +3648,7 @@
     },
     {
         "name": "Fira Sans Extra Condensed",
-        "sane": "fira-sans-extra-condensed",
+        "sane": "fira_sans_extra_condensed",
         "variants": [
             "0,100",
             "1,100",
@@ -3434,14 +3672,14 @@
     },
     {
         "name": "Fjalla One",
-        "sane": "fjalla-one",
+        "sane": "fjalla_one",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Fjord One",
-        "sane": "fjord-one",
+        "sane": "fjord_one",
         "variants": [
             "0,400"
         ]
@@ -3463,28 +3701,28 @@
     },
     {
         "name": "Fleur De Leah",
-        "sane": "fleur-de-leah",
+        "sane": "fleur_de_leah",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Flow Block",
-        "sane": "flow-block",
+        "sane": "flow_block",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Flow Circular",
-        "sane": "flow-circular",
+        "sane": "flow_circular",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Flow Rounded",
-        "sane": "flow-rounded",
+        "sane": "flow_rounded",
         "variants": [
             "0,400"
         ]
@@ -3499,7 +3737,7 @@
     },
     {
         "name": "Fontdiner Swanky",
-        "sane": "fontdiner-swanky",
+        "sane": "fontdiner_swanky",
         "variants": [
             "0,400"
         ]
@@ -3513,14 +3751,14 @@
     },
     {
         "name": "Francois One",
-        "sane": "francois-one",
+        "sane": "francois_one",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Frank Ruhl Libre",
-        "sane": "frank-ruhl-libre",
+        "sane": "frank_ruhl_libre",
         "variants": [
             "0,300",
             "0,400",
@@ -3555,21 +3793,32 @@
     },
     {
         "name": "Freckle Face",
-        "sane": "freckle-face",
+        "sane": "freckle_face",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Fredericka the Great",
-        "sane": "fredericka-the-great",
+        "sane": "fredericka_the_great",
         "variants": [
             "0,400"
         ]
     },
     {
+        "name": "Fredoka",
+        "sane": "fredoka",
+        "variants": [
+            "0,300",
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700"
+        ]
+    },
+    {
         "name": "Fredoka One",
-        "sane": "fredoka-one",
+        "sane": "fredoka_one",
         "variants": [
             "0,400"
         ]
@@ -3604,7 +3853,7 @@
     },
     {
         "name": "Fugaz One",
-        "sane": "fugaz-one",
+        "sane": "fugaz_one",
         "variants": [
             "0,400"
         ]
@@ -3618,7 +3867,7 @@
     },
     {
         "name": "Fuzzy Bubbles",
-        "sane": "fuzzy-bubbles",
+        "sane": "fuzzy_bubbles",
         "variants": [
             "0,400",
             "0,700"
@@ -3670,7 +3919,7 @@
     },
     {
         "name": "Gamja Flower",
-        "sane": "gamja-flower",
+        "sane": "gamja_flower",
         "variants": [
             "0,400"
         ]
@@ -3700,7 +3949,7 @@
     },
     {
         "name": "Gemunu Libre",
-        "sane": "gemunu-libre",
+        "sane": "gemunu_libre",
         "variants": [
             "0,200",
             "0,300",
@@ -3737,7 +3986,7 @@
     },
     {
         "name": "Gentium Basic",
-        "sane": "gentium-basic",
+        "sane": "gentium_basic",
         "variants": [
             "0,400",
             "1,400",
@@ -3747,7 +3996,7 @@
     },
     {
         "name": "Gentium Book Basic",
-        "sane": "gentium-book-basic",
+        "sane": "gentium_book_basic",
         "variants": [
             "0,400",
             "1,400",
@@ -3796,21 +4045,21 @@
     },
     {
         "name": "Geostar Fill",
-        "sane": "geostar-fill",
+        "sane": "geostar_fill",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Germania One",
-        "sane": "germania-one",
+        "sane": "germania_one",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Gideon Roman",
-        "sane": "gideon-roman",
+        "sane": "gideon_roman",
         "variants": [
             "0,400"
         ]
@@ -3824,7 +4073,7 @@
     },
     {
         "name": "Gilda Display",
-        "sane": "gilda-display",
+        "sane": "gilda_display",
         "variants": [
             "0,400"
         ]
@@ -3838,14 +4087,14 @@
     },
     {
         "name": "Give You Glory",
-        "sane": "give-you-glory",
+        "sane": "give_you_glory",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Glass Antiqua",
-        "sane": "glass-antiqua",
+        "sane": "glass_antiqua",
         "variants": [
             "0,400"
         ]
@@ -3860,7 +4109,7 @@
     },
     {
         "name": "Gloria Hallelujah",
-        "sane": "gloria-hallelujah",
+        "sane": "gloria_hallelujah",
         "variants": [
             "0,400"
         ]
@@ -3904,14 +4153,14 @@
     },
     {
         "name": "Goblin One",
-        "sane": "goblin-one",
+        "sane": "goblin_one",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Gochi Hand",
-        "sane": "gochi-hand",
+        "sane": "gochi_hand",
         "variants": [
             "0,400"
         ]
@@ -3934,7 +4183,7 @@
     },
     {
         "name": "Gothic A1",
-        "sane": "gothic-a1",
+        "sane": "gothic_a1",
         "variants": [
             "0,100",
             "0,200",
@@ -3956,14 +4205,14 @@
     },
     {
         "name": "Goudy Bookletter 1911",
-        "sane": "goudy-bookletter-1911",
+        "sane": "goudy_bookletter_1911",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Gowun Batang",
-        "sane": "gowun-batang",
+        "sane": "gowun_batang",
         "variants": [
             "0,400",
             "0,700"
@@ -3971,7 +4220,7 @@
     },
     {
         "name": "Gowun Dodum",
-        "sane": "gowun-dodum",
+        "sane": "gowun_dodum",
         "variants": [
             "0,400"
         ]
@@ -3985,7 +4234,7 @@
     },
     {
         "name": "Grand Hotel",
-        "sane": "grand-hotel",
+        "sane": "grand_hotel",
         "variants": [
             "0,400"
         ]
@@ -4015,22 +4264,29 @@
         ]
     },
     {
+        "name": "Grape Nuts",
+        "sane": "grape_nuts",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
         "name": "Gravitas One",
-        "sane": "gravitas-one",
+        "sane": "gravitas_one",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Great Vibes",
-        "sane": "great-vibes",
+        "sane": "great_vibes",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Grechen Fuemen",
-        "sane": "grechen-fuemen",
+        "sane": "grechen_fuemen",
         "variants": [
             "0,400"
         ]
@@ -4061,7 +4317,7 @@
     },
     {
         "name": "Grenze Gotisch",
-        "sane": "grenze-gotisch",
+        "sane": "grenze_gotisch",
         "variants": [
             "0,100",
             "0,200",
@@ -4076,7 +4332,7 @@
     },
     {
         "name": "Grey Qo",
-        "sane": "grey-qo",
+        "sane": "grey_qo",
         "variants": [
             "0,400"
         ]
@@ -4144,7 +4400,7 @@
     },
     {
         "name": "Hachi Maru Pop",
-        "sane": "hachi-maru-pop",
+        "sane": "hachi_maru_pop",
         "variants": [
             "0,400"
         ]
@@ -4177,7 +4433,7 @@
     },
     {
         "name": "Hammersmith One",
-        "sane": "hammersmith-one",
+        "sane": "hammersmith_one",
         "variants": [
             "0,400"
         ]
@@ -4191,7 +4447,7 @@
     },
     {
         "name": "Hanalei Fill",
-        "sane": "hanalei-fill",
+        "sane": "hanalei_fill",
         "variants": [
             "0,400"
         ]
@@ -4216,7 +4472,7 @@
     },
     {
         "name": "Happy Monkey",
-        "sane": "happy-monkey",
+        "sane": "happy_monkey",
         "variants": [
             "0,400"
         ]
@@ -4231,7 +4487,7 @@
     },
     {
         "name": "Headland One",
-        "sane": "headland-one",
+        "sane": "headland_one",
         "variants": [
             "0,400"
         ]
@@ -4253,14 +4509,14 @@
     },
     {
         "name": "Henny Penny",
-        "sane": "henny-penny",
+        "sane": "henny_penny",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Hepta Slab",
-        "sane": "hepta-slab",
+        "sane": "hepta_slab",
         "variants": [
             "0,100",
             "0,200",
@@ -4275,21 +4531,21 @@
     },
     {
         "name": "Herr Von Muellerhoff",
-        "sane": "herr-von-muellerhoff",
+        "sane": "herr_von_muellerhoff",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Hi Melody",
-        "sane": "hi-melody",
+        "sane": "hi_melody",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Hina Mincho",
-        "sane": "hina-mincho",
+        "sane": "hina_mincho",
         "variants": [
             "0,400"
         ]
@@ -4307,7 +4563,7 @@
     },
     {
         "name": "Hind Guntur",
-        "sane": "hind-guntur",
+        "sane": "hind_guntur",
         "variants": [
             "0,300",
             "0,400",
@@ -4318,7 +4574,7 @@
     },
     {
         "name": "Hind Madurai",
-        "sane": "hind-madurai",
+        "sane": "hind_madurai",
         "variants": [
             "0,300",
             "0,400",
@@ -4329,7 +4585,7 @@
     },
     {
         "name": "Hind Siliguri",
-        "sane": "hind-siliguri",
+        "sane": "hind_siliguri",
         "variants": [
             "0,300",
             "0,400",
@@ -4340,7 +4596,7 @@
     },
     {
         "name": "Hind Vadodara",
-        "sane": "hind-vadodara",
+        "sane": "hind_vadodara",
         "variants": [
             "0,300",
             "0,400",
@@ -4351,14 +4607,14 @@
     },
     {
         "name": "Holtwood One SC",
-        "sane": "holtwood-one-sc",
+        "sane": "holtwood_one_sc",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Homemade Apple",
-        "sane": "homemade-apple",
+        "sane": "homemade_apple",
         "variants": [
             "0,400"
         ]
@@ -4366,6 +4622,13 @@
     {
         "name": "Homenaje",
         "sane": "homenaje",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "name": "Hubballi",
+        "sane": "hubballi",
         "variants": [
             "0,400"
         ]
@@ -4379,7 +4642,7 @@
     },
     {
         "name": "IBM Plex Mono",
-        "sane": "ibm-plex-mono",
+        "sane": "ibm_plex_mono",
         "variants": [
             "0,100",
             "1,100",
@@ -4399,7 +4662,7 @@
     },
     {
         "name": "IBM Plex Sans",
-        "sane": "ibm-plex-sans",
+        "sane": "ibm_plex_sans",
         "variants": [
             "0,100",
             "1,100",
@@ -4419,7 +4682,7 @@
     },
     {
         "name": "IBM Plex Sans Arabic",
-        "sane": "ibm-plex-sans-arabic",
+        "sane": "ibm_plex_sans_arabic",
         "variants": [
             "0,100",
             "0,200",
@@ -4432,7 +4695,7 @@
     },
     {
         "name": "IBM Plex Sans Condensed",
-        "sane": "ibm-plex-sans-condensed",
+        "sane": "ibm_plex_sans_condensed",
         "variants": [
             "0,100",
             "1,100",
@@ -4452,7 +4715,7 @@
     },
     {
         "name": "IBM Plex Sans Devanagari",
-        "sane": "ibm-plex-sans-devanagari",
+        "sane": "ibm_plex_sans_devanagari",
         "variants": [
             "0,100",
             "0,200",
@@ -4465,7 +4728,7 @@
     },
     {
         "name": "IBM Plex Sans Hebrew",
-        "sane": "ibm-plex-sans-hebrew",
+        "sane": "ibm_plex_sans_hebrew",
         "variants": [
             "0,100",
             "0,200",
@@ -4478,7 +4741,7 @@
     },
     {
         "name": "IBM Plex Sans KR",
-        "sane": "ibm-plex-sans-kr",
+        "sane": "ibm_plex_sans_kr",
         "variants": [
             "0,100",
             "0,200",
@@ -4491,7 +4754,7 @@
     },
     {
         "name": "IBM Plex Sans Thai",
-        "sane": "ibm-plex-sans-thai",
+        "sane": "ibm_plex_sans_thai",
         "variants": [
             "0,100",
             "0,200",
@@ -4504,7 +4767,7 @@
     },
     {
         "name": "IBM Plex Sans Thai Looped",
-        "sane": "ibm-plex-sans-thai-looped",
+        "sane": "ibm_plex_sans_thai_looped",
         "variants": [
             "0,100",
             "0,200",
@@ -4517,7 +4780,7 @@
     },
     {
         "name": "IBM Plex Serif",
-        "sane": "ibm-plex-serif",
+        "sane": "ibm_plex_serif",
         "variants": [
             "0,100",
             "1,100",
@@ -4537,7 +4800,7 @@
     },
     {
         "name": "IM Fell DW Pica",
-        "sane": "im-fell-dw-pica",
+        "sane": "im_fell_dw_pica",
         "variants": [
             "0,400",
             "1,400"
@@ -4545,14 +4808,14 @@
     },
     {
         "name": "IM Fell DW Pica SC",
-        "sane": "im-fell-dw-pica-sc",
+        "sane": "im_fell_dw_pica_sc",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "IM Fell Double Pica",
-        "sane": "im-fell-double-pica",
+        "sane": "im_fell_double_pica",
         "variants": [
             "0,400",
             "1,400"
@@ -4560,14 +4823,14 @@
     },
     {
         "name": "IM Fell Double Pica SC",
-        "sane": "im-fell-double-pica-sc",
+        "sane": "im_fell_double_pica_sc",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "IM Fell English",
-        "sane": "im-fell-english",
+        "sane": "im_fell_english",
         "variants": [
             "0,400",
             "1,400"
@@ -4575,14 +4838,14 @@
     },
     {
         "name": "IM Fell English SC",
-        "sane": "im-fell-english-sc",
+        "sane": "im_fell_english_sc",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "IM Fell French Canon",
-        "sane": "im-fell-french-canon",
+        "sane": "im_fell_french_canon",
         "variants": [
             "0,400",
             "1,400"
@@ -4590,14 +4853,14 @@
     },
     {
         "name": "IM Fell French Canon SC",
-        "sane": "im-fell-french-canon-sc",
+        "sane": "im_fell_french_canon_sc",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "IM Fell Great Primer",
-        "sane": "im-fell-great-primer",
+        "sane": "im_fell_great_primer",
         "variants": [
             "0,400",
             "1,400"
@@ -4605,14 +4868,14 @@
     },
     {
         "name": "IM Fell Great Primer SC",
-        "sane": "im-fell-great-primer-sc",
+        "sane": "im_fell_great_primer_sc",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Ibarra Real Nova",
-        "sane": "ibarra-real-nova",
+        "sane": "ibarra_real_nova",
         "variants": [
             "0,400",
             "0,500",
@@ -4655,7 +4918,7 @@
     },
     {
         "name": "Imperial Script",
-        "sane": "imperial-script",
+        "sane": "imperial_script",
         "variants": [
             "0,400"
         ]
@@ -4690,7 +4953,14 @@
     },
     {
         "name": "Indie Flower",
-        "sane": "indie-flower",
+        "sane": "indie_flower",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "name": "Ingrid Darling",
+        "sane": "ingrid_darling",
         "variants": [
             "0,400"
         ]
@@ -4705,7 +4975,7 @@
     },
     {
         "name": "Inknut Antiqua",
-        "sane": "inknut-antiqua",
+        "sane": "inknut_antiqua",
         "variants": [
             "0,300",
             "0,400",
@@ -4718,7 +4988,7 @@
     },
     {
         "name": "Inria Sans",
-        "sane": "inria-sans",
+        "sane": "inria_sans",
         "variants": [
             "0,300",
             "1,300",
@@ -4730,7 +5000,7 @@
     },
     {
         "name": "Inria Serif",
-        "sane": "inria-serif",
+        "sane": "inria_serif",
         "variants": [
             "0,300",
             "1,300",
@@ -4764,21 +5034,21 @@
     },
     {
         "name": "Irish Grover",
-        "sane": "irish-grover",
+        "sane": "irish_grover",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Island Moments",
-        "sane": "island-moments",
+        "sane": "island_moments",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Istok Web",
-        "sane": "istok-web",
+        "sane": "istok_web",
         "variants": [
             "0,400",
             "1,400",
@@ -4809,14 +5079,14 @@
     },
     {
         "name": "Jacques Francois",
-        "sane": "jacques-francois",
+        "sane": "jacques_francois",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Jacques Francois Shadow",
-        "sane": "jacques-francois-shadow",
+        "sane": "jacques_francois_shadow",
         "variants": [
             "0,400"
         ]
@@ -4831,7 +5101,7 @@
     },
     {
         "name": "JetBrains Mono",
-        "sane": "jetbrains-mono",
+        "sane": "jetbrains_mono",
         "variants": [
             "0,100",
             "0,200",
@@ -4853,21 +5123,21 @@
     },
     {
         "name": "Jim Nightshade",
-        "sane": "jim-nightshade",
+        "sane": "jim_nightshade",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Jockey One",
-        "sane": "jockey-one",
+        "sane": "jockey_one",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Jolly Lodger",
-        "sane": "jolly-lodger",
+        "sane": "jolly_lodger",
         "variants": [
             "0,400"
         ]
@@ -4888,7 +5158,7 @@
     },
     {
         "name": "Josefin Sans",
-        "sane": "josefin-sans",
+        "sane": "josefin_sans",
         "variants": [
             "0,100",
             "0,200",
@@ -4908,7 +5178,7 @@
     },
     {
         "name": "Josefin Slab",
-        "sane": "josefin-slab",
+        "sane": "josefin_slab",
         "variants": [
             "0,100",
             "0,200",
@@ -4952,7 +5222,7 @@
     },
     {
         "name": "Joti One",
-        "sane": "joti-one",
+        "sane": "joti_one",
         "variants": [
             "0,400"
         ]
@@ -4982,7 +5252,7 @@
     },
     {
         "name": "Julius Sans One",
-        "sane": "julius-sans-one",
+        "sane": "julius_sans_one",
         "variants": [
             "0,400"
         ]
@@ -5007,14 +5277,14 @@
     },
     {
         "name": "Just Another Hand",
-        "sane": "just-another-hand",
+        "sane": "just_another_hand",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Just Me Again Down Here",
-        "sane": "just-me-again-down-here",
+        "sane": "just_me_again_down_here",
         "variants": [
             "0,400"
         ]
@@ -5051,7 +5321,7 @@
     },
     {
         "name": "Kaisei Decol",
-        "sane": "kaisei-decol",
+        "sane": "kaisei_decol",
         "variants": [
             "0,400",
             "0,500",
@@ -5060,7 +5330,7 @@
     },
     {
         "name": "Kaisei HarunoUmi",
-        "sane": "kaisei-harunoumi",
+        "sane": "kaisei_harunoumi",
         "variants": [
             "0,400",
             "0,500",
@@ -5069,7 +5339,7 @@
     },
     {
         "name": "Kaisei Opti",
-        "sane": "kaisei-opti",
+        "sane": "kaisei_opti",
         "variants": [
             "0,400",
             "0,500",
@@ -5078,7 +5348,7 @@
     },
     {
         "name": "Kaisei Tokumin",
-        "sane": "kaisei-tokumin",
+        "sane": "kaisei_tokumin",
         "variants": [
             "0,400",
             "0,500",
@@ -5176,7 +5446,7 @@
     },
     {
         "name": "Kaushan Script",
-        "sane": "kaushan-script",
+        "sane": "kaushan_script",
         "variants": [
             "0,400"
         ]
@@ -5197,14 +5467,14 @@
     },
     {
         "name": "Keania One",
-        "sane": "keania-one",
+        "sane": "keania_one",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Kelly Slab",
-        "sane": "kelly-slab",
+        "sane": "kelly_slab",
         "variants": [
             "0,400"
         ]
@@ -5247,21 +5517,21 @@
     },
     {
         "name": "Kirang Haerang",
-        "sane": "kirang-haerang",
+        "sane": "kirang_haerang",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Kite One",
-        "sane": "kite-one",
+        "sane": "kite_one",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Kiwi Maru",
-        "sane": "kiwi-maru",
+        "sane": "kiwi_maru",
         "variants": [
             "0,300",
             "0,400",
@@ -5270,7 +5540,7 @@
     },
     {
         "name": "Klee One",
-        "sane": "klee-one",
+        "sane": "klee_one",
         "variants": [
             "0,400",
             "0,600"
@@ -5321,7 +5591,7 @@
     },
     {
         "name": "Koh Santepheap",
-        "sane": "koh-santepheap",
+        "sane": "koh_santepheap",
         "variants": [
             "0,100",
             "0,300",
@@ -5332,7 +5602,7 @@
     },
     {
         "name": "Kolker Brush",
-        "sane": "kolker-brush",
+        "sane": "kolker_brush",
         "variants": [
             "0,400"
         ]
@@ -5346,14 +5616,14 @@
     },
     {
         "name": "Kosugi Maru",
-        "sane": "kosugi-maru",
+        "sane": "kosugi_maru",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Kotta One",
-        "sane": "kotta-one",
+        "sane": "kotta_one",
         "variants": [
             "0,400"
         ]
@@ -5392,7 +5662,7 @@
     },
     {
         "name": "Krona One",
-        "sane": "krona-one",
+        "sane": "krona_one",
         "variants": [
             "0,400"
         ]
@@ -5435,7 +5705,7 @@
     },
     {
         "name": "Kulim Park",
-        "sane": "kulim-park",
+        "sane": "kulim_park",
         "variants": [
             "0,200",
             "1,200",
@@ -5451,7 +5721,7 @@
     },
     {
         "name": "Kumbh Sans",
-        "sane": "kumbh-sans",
+        "sane": "kumbh_sans",
         "variants": [
             "0,100",
             "0,200",
@@ -5473,7 +5743,7 @@
     },
     {
         "name": "La Belle Aurore",
-        "sane": "la-belle-aurore",
+        "sane": "la_belle_aurore",
         "variants": [
             "0,400"
         ]
@@ -5498,7 +5768,7 @@
     },
     {
         "name": "Lakki Reddy",
-        "sane": "lakki-reddy",
+        "sane": "lakki_reddy",
         "variants": [
             "0,400"
         ]
@@ -5548,15 +5818,44 @@
         ]
     },
     {
-        "name": "League Script",
-        "sane": "league-script",
+        "name": "Lavishly Yours",
+        "sane": "lavishly_yours",
         "variants": [
             "0,400"
         ]
     },
     {
+        "name": "League Gothic",
+        "sane": "league_gothic",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "name": "League Script",
+        "sane": "league_script",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "name": "League Spartan",
+        "sane": "league_spartan",
+        "variants": [
+            "0,100",
+            "0,200",
+            "0,300",
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700",
+            "0,800",
+            "0,900"
+        ]
+    },
+    {
         "name": "Leckerli One",
-        "sane": "leckerli-one",
+        "sane": "leckerli_one",
         "variants": [
             "0,400"
         ]
@@ -5612,7 +5911,7 @@
     },
     {
         "name": "Lexend Deca",
-        "sane": "lexend-deca",
+        "sane": "lexend_deca",
         "variants": [
             "0,100",
             "0,200",
@@ -5627,7 +5926,7 @@
     },
     {
         "name": "Lexend Exa",
-        "sane": "lexend-exa",
+        "sane": "lexend_exa",
         "variants": [
             "0,100",
             "0,200",
@@ -5642,7 +5941,7 @@
     },
     {
         "name": "Lexend Giga",
-        "sane": "lexend-giga",
+        "sane": "lexend_giga",
         "variants": [
             "0,100",
             "0,200",
@@ -5657,7 +5956,7 @@
     },
     {
         "name": "Lexend Mega",
-        "sane": "lexend-mega",
+        "sane": "lexend_mega",
         "variants": [
             "0,100",
             "0,200",
@@ -5672,7 +5971,7 @@
     },
     {
         "name": "Lexend Peta",
-        "sane": "lexend-peta",
+        "sane": "lexend_peta",
         "variants": [
             "0,100",
             "0,200",
@@ -5687,7 +5986,7 @@
     },
     {
         "name": "Lexend Tera",
-        "sane": "lexend-tera",
+        "sane": "lexend_tera",
         "variants": [
             "0,100",
             "0,200",
@@ -5702,7 +6001,7 @@
     },
     {
         "name": "Lexend Zetta",
-        "sane": "lexend-zetta",
+        "sane": "lexend_zetta",
         "variants": [
             "0,100",
             "0,200",
@@ -5717,56 +6016,56 @@
     },
     {
         "name": "Libre Barcode 128",
-        "sane": "libre-barcode-128",
+        "sane": "libre_barcode_128",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Libre Barcode 128 Text",
-        "sane": "libre-barcode-128-text",
+        "sane": "libre_barcode_128_text",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Libre Barcode 39",
-        "sane": "libre-barcode-39",
+        "sane": "libre_barcode_39",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Libre Barcode 39 Extended",
-        "sane": "libre-barcode-39-extended",
+        "sane": "libre_barcode_39_extended",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Libre Barcode 39 Extended Text",
-        "sane": "libre-barcode-39-extended-text",
+        "sane": "libre_barcode_39_extended_text",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Libre Barcode 39 Text",
-        "sane": "libre-barcode-39-text",
+        "sane": "libre_barcode_39_text",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Libre Barcode EAN13 Text",
-        "sane": "libre-barcode-ean13-text",
+        "sane": "libre_barcode_ean13_text",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Libre Baskerville",
-        "sane": "libre-baskerville",
+        "sane": "libre_baskerville",
         "variants": [
             "0,400",
             "1,400",
@@ -5775,14 +6074,14 @@
     },
     {
         "name": "Libre Caslon Display",
-        "sane": "libre-caslon-display",
+        "sane": "libre_caslon_display",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Libre Caslon Text",
-        "sane": "libre-caslon-text",
+        "sane": "libre_caslon_text",
         "variants": [
             "0,400",
             "1,400",
@@ -5791,7 +6090,7 @@
     },
     {
         "name": "Libre Franklin",
-        "sane": "libre-franklin",
+        "sane": "libre_franklin",
         "variants": [
             "0,100",
             "0,200",
@@ -5822,7 +6121,7 @@
     },
     {
         "name": "Life Savers",
-        "sane": "life-savers",
+        "sane": "life_savers",
         "variants": [
             "0,400",
             "0,700",
@@ -5831,14 +6130,14 @@
     },
     {
         "name": "Lilita One",
-        "sane": "lilita-one",
+        "sane": "lilita_one",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Lily Script One",
-        "sane": "lily-script-one",
+        "sane": "lily_script_one",
         "variants": [
             "0,400"
         ]
@@ -5852,7 +6151,7 @@
     },
     {
         "name": "Linden Hill",
-        "sane": "linden-hill",
+        "sane": "linden_hill",
         "variants": [
             "0,400",
             "1,400"
@@ -5882,7 +6181,7 @@
     },
     {
         "name": "Liu Jian Mao Cao",
-        "sane": "liu-jian-mao-cao",
+        "sane": "liu_jian_mao_cao",
         "variants": [
             "0,400"
         ]
@@ -5918,7 +6217,7 @@
     },
     {
         "name": "Lobster Two",
-        "sane": "lobster-two",
+        "sane": "lobster_two",
         "variants": [
             "0,400",
             "1,400",
@@ -5928,28 +6227,28 @@
     },
     {
         "name": "Londrina Outline",
-        "sane": "londrina-outline",
+        "sane": "londrina_outline",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Londrina Shadow",
-        "sane": "londrina-shadow",
+        "sane": "londrina_shadow",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Londrina Sketch",
-        "sane": "londrina-sketch",
+        "sane": "londrina_sketch",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Londrina Solid",
-        "sane": "londrina-solid",
+        "sane": "londrina_solid",
         "variants": [
             "0,100",
             "0,300",
@@ -5959,7 +6258,7 @@
     },
     {
         "name": "Long Cang",
-        "sane": "long-cang",
+        "sane": "long_cang",
         "variants": [
             "0,400"
         ]
@@ -5980,35 +6279,35 @@
     },
     {
         "name": "Love Light",
-        "sane": "love-light",
+        "sane": "love_light",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Love Ya Like A Sister",
-        "sane": "love-ya-like-a-sister",
+        "sane": "love_ya_like_a_sister",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Loved by the King",
-        "sane": "loved-by-the-king",
+        "sane": "loved_by_the_king",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Lovers Quarrel",
-        "sane": "lovers-quarrel",
+        "sane": "lovers_quarrel",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Luckiest Guy",
-        "sane": "luckiest-guy",
+        "sane": "luckiest_guy",
         "variants": [
             "0,400"
         ]
@@ -6030,21 +6329,21 @@
     },
     {
         "name": "Luxurious Roman",
-        "sane": "luxurious-roman",
+        "sane": "luxurious_roman",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Luxurious Script",
-        "sane": "luxurious-script",
+        "sane": "luxurious_script",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "M PLUS 1",
-        "sane": "m-plus-1",
+        "sane": "m_plus_1",
         "variants": [
             "0,100",
             "0,200",
@@ -6059,7 +6358,7 @@
     },
     {
         "name": "M PLUS 1 Code",
-        "sane": "m-plus-1-code",
+        "sane": "m_plus_1_code",
         "variants": [
             "0,100",
             "0,200",
@@ -6072,7 +6371,7 @@
     },
     {
         "name": "M PLUS 1p",
-        "sane": "m-plus-1p",
+        "sane": "m_plus_1p",
         "variants": [
             "0,100",
             "0,300",
@@ -6085,7 +6384,7 @@
     },
     {
         "name": "M PLUS 2",
-        "sane": "m-plus-2",
+        "sane": "m_plus_2",
         "variants": [
             "0,100",
             "0,200",
@@ -6100,7 +6399,7 @@
     },
     {
         "name": "M PLUS Code Latin",
-        "sane": "m-plus-code-latin",
+        "sane": "m_plus_code_latin",
         "variants": [
             "0,100",
             "0,200",
@@ -6113,7 +6412,7 @@
     },
     {
         "name": "M PLUS Rounded 1c",
-        "sane": "m-plus-rounded-1c",
+        "sane": "m_plus_rounded_1c",
         "variants": [
             "0,100",
             "0,300",
@@ -6126,7 +6425,7 @@
     },
     {
         "name": "Ma Shan Zheng",
-        "sane": "ma-shan-zheng",
+        "sane": "ma_shan_zheng",
         "variants": [
             "0,400"
         ]
@@ -6140,7 +6439,7 @@
     },
     {
         "name": "Macondo Swash Caps",
-        "sane": "macondo-swash-caps",
+        "sane": "macondo_swash_caps",
         "variants": [
             "0,400"
         ]
@@ -6168,7 +6467,7 @@
     },
     {
         "name": "Maiden Orange",
-        "sane": "maiden-orange",
+        "sane": "maiden_orange",
         "variants": [
             "0,400"
         ]
@@ -6187,7 +6486,7 @@
     },
     {
         "name": "Major Mono Display",
-        "sane": "major-mono-display",
+        "sane": "major_mono_display",
         "variants": [
             "0,400"
         ]
@@ -6287,14 +6586,14 @@
     },
     {
         "name": "Marcellus SC",
-        "sane": "marcellus-sc",
+        "sane": "marcellus_sc",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Marck Script",
-        "sane": "marck-script",
+        "sane": "marck_script",
         "variants": [
             "0,400"
         ]
@@ -6308,7 +6607,7 @@
     },
     {
         "name": "Markazi Text",
-        "sane": "markazi-text",
+        "sane": "markazi_text",
         "variants": [
             "0,400",
             "0,500",
@@ -6318,7 +6617,7 @@
     },
     {
         "name": "Marko One",
-        "sane": "marko-one",
+        "sane": "marko_one",
         "variants": [
             "0,400"
         ]
@@ -6345,7 +6644,7 @@
     },
     {
         "name": "Martel Sans",
-        "sane": "martel-sans",
+        "sane": "martel_sans",
         "variants": [
             "0,200",
             "0,300",
@@ -6376,14 +6675,14 @@
     },
     {
         "name": "Mate SC",
-        "sane": "mate-sc",
+        "sane": "mate_sc",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Maven Pro",
-        "sane": "maven-pro",
+        "sane": "maven_pro",
         "variants": [
             "0,400",
             "0,500",
@@ -6402,7 +6701,7 @@
     },
     {
         "name": "Mea Culpa",
-        "sane": "mea-culpa",
+        "sane": "mea_culpa",
         "variants": [
             "0,400"
         ]
@@ -6423,14 +6722,14 @@
     },
     {
         "name": "Medula One",
-        "sane": "medula-one",
+        "sane": "medula_one",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Meera Inimai",
-        "sane": "meera-inimai",
+        "sane": "meera_inimai",
         "variants": [
             "0,400"
         ]
@@ -6444,14 +6743,14 @@
     },
     {
         "name": "Meie Script",
-        "sane": "meie-script",
+        "sane": "meie_script",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Meow Script",
-        "sane": "meow-script",
+        "sane": "meow_script",
         "variants": [
             "0,400"
         ]
@@ -6466,7 +6765,7 @@
     },
     {
         "name": "Merienda One",
-        "sane": "merienda-one",
+        "sane": "merienda_one",
         "variants": [
             "0,400"
         ]
@@ -6487,7 +6786,7 @@
     },
     {
         "name": "Merriweather Sans",
-        "sane": "merriweather-sans",
+        "sane": "merriweather_sans",
         "variants": [
             "0,300",
             "0,400",
@@ -6512,7 +6811,7 @@
     },
     {
         "name": "Metal Mania",
-        "sane": "metal-mania",
+        "sane": "metal_mania",
         "variants": [
             "0,400"
         ]
@@ -6554,7 +6853,7 @@
     },
     {
         "name": "Miltonian Tattoo",
-        "sane": "miltonian-tattoo",
+        "sane": "miltonian_tattoo",
         "variants": [
             "0,400"
         ]
@@ -6576,7 +6875,7 @@
     },
     {
         "name": "Miriam Libre",
-        "sane": "miriam-libre",
+        "sane": "miriam_libre",
         "variants": [
             "0,400",
             "0,700"
@@ -6594,7 +6893,7 @@
     },
     {
         "name": "Miss Fajardose",
-        "sane": "miss-fajardose",
+        "sane": "miss_fajardose",
         "variants": [
             "0,400"
         ]
@@ -6613,14 +6912,14 @@
     },
     {
         "name": "Mochiy Pop One",
-        "sane": "mochiy-pop-one",
+        "sane": "mochiy_pop_one",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Mochiy Pop P One",
-        "sane": "mochiy-pop-p-one",
+        "sane": "mochiy_pop_p_one",
         "variants": [
             "0,400"
         ]
@@ -6634,7 +6933,7 @@
     },
     {
         "name": "Modern Antiqua",
-        "sane": "modern-antiqua",
+        "sane": "modern_antiqua",
         "variants": [
             "0,400"
         ]
@@ -6700,7 +6999,7 @@
     },
     {
         "name": "Monsieur La Doulaise",
-        "sane": "monsieur-la-doulaise",
+        "sane": "monsieur_la_doulaise",
         "variants": [
             "0,400"
         ]
@@ -6714,7 +7013,7 @@
     },
     {
         "name": "Montagu Slab",
-        "sane": "montagu-slab",
+        "sane": "montagu_slab",
         "variants": [
             "0,100",
             "0,200",
@@ -6765,7 +7064,7 @@
     },
     {
         "name": "Montserrat Alternates",
-        "sane": "montserrat-alternates",
+        "sane": "montserrat_alternates",
         "variants": [
             "0,100",
             "1,100",
@@ -6789,7 +7088,7 @@
     },
     {
         "name": "Montserrat Subrayada",
-        "sane": "montserrat-subrayada",
+        "sane": "montserrat_subrayada",
         "variants": [
             "0,400",
             "0,700"
@@ -6797,14 +7096,14 @@
     },
     {
         "name": "Moo Lah Lah",
-        "sane": "moo-lah-lah",
+        "sane": "moo_lah_lah",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Moon Dance",
-        "sane": "moon-dance",
+        "sane": "moon_dance",
         "variants": [
             "0,400"
         ]
@@ -6825,7 +7124,7 @@
     },
     {
         "name": "Mountains of Christmas",
-        "sane": "mountains-of-christmas",
+        "sane": "mountains_of_christmas",
         "variants": [
             "0,400",
             "0,700"
@@ -6833,42 +7132,42 @@
     },
     {
         "name": "Mouse Memoirs",
-        "sane": "mouse-memoirs",
+        "sane": "mouse_memoirs",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Mr Bedfort",
-        "sane": "mr-bedfort",
+        "sane": "mr_bedfort",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Mr Dafoe",
-        "sane": "mr-dafoe",
+        "sane": "mr_dafoe",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Mr De Haviland",
-        "sane": "mr-de-haviland",
+        "sane": "mr_de_haviland",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Mrs Saint Delafield",
-        "sane": "mrs-saint-delafield",
+        "sane": "mrs_saint_delafield",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Mrs Sheppards",
-        "sane": "mrs-sheppards",
+        "sane": "mrs_sheppards",
         "variants": [
             "0,400"
         ]
@@ -6888,7 +7187,7 @@
     },
     {
         "name": "Mukta Mahee",
-        "sane": "mukta-mahee",
+        "sane": "mukta_mahee",
         "variants": [
             "0,200",
             "0,300",
@@ -6901,7 +7200,7 @@
     },
     {
         "name": "Mukta Malar",
-        "sane": "mukta-malar",
+        "sane": "mukta_malar",
         "variants": [
             "0,200",
             "0,300",
@@ -6914,7 +7213,7 @@
     },
     {
         "name": "Mukta Vaani",
-        "sane": "mukta-vaani",
+        "sane": "mukta_vaani",
         "variants": [
             "0,200",
             "0,300",
@@ -6979,7 +7278,7 @@
     },
     {
         "name": "Mystery Quest",
-        "sane": "mystery-quest",
+        "sane": "mystery_quest",
         "variants": [
             "0,400"
         ]
@@ -6993,14 +7292,14 @@
     },
     {
         "name": "Nanum Brush Script",
-        "sane": "nanum-brush-script",
+        "sane": "nanum_brush_script",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Nanum Gothic",
-        "sane": "nanum-gothic",
+        "sane": "nanum_gothic",
         "variants": [
             "0,400",
             "0,700",
@@ -7009,7 +7308,7 @@
     },
     {
         "name": "Nanum Gothic Coding",
-        "sane": "nanum-gothic-coding",
+        "sane": "nanum_gothic_coding",
         "variants": [
             "0,400",
             "0,700"
@@ -7017,7 +7316,7 @@
     },
     {
         "name": "Nanum Myeongjo",
-        "sane": "nanum-myeongjo",
+        "sane": "nanum_myeongjo",
         "variants": [
             "0,400",
             "0,700",
@@ -7026,7 +7325,7 @@
     },
     {
         "name": "Nanum Pen Script",
-        "sane": "nanum-pen-script",
+        "sane": "nanum_pen_script",
         "variants": [
             "0,400"
         ]
@@ -7040,7 +7339,7 @@
     },
     {
         "name": "Nerko One",
-        "sane": "nerko-one",
+        "sane": "nerko_one",
         "variants": [
             "0,400"
         ]
@@ -7066,21 +7365,21 @@
     },
     {
         "name": "New Rocker",
-        "sane": "new-rocker",
+        "sane": "new_rocker",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "New Tegomin",
-        "sane": "new-tegomin",
+        "sane": "new_tegomin",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "News Cycle",
-        "sane": "news-cycle",
+        "sane": "news_cycle",
         "variants": [
             "0,400",
             "0,700"
@@ -7133,7 +7432,7 @@
     },
     {
         "name": "Nixie One",
-        "sane": "nixie-one",
+        "sane": "nixie_one",
         "variants": [
             "0,400"
         ]
@@ -7184,14 +7483,14 @@
     },
     {
         "name": "Nothing You Could Do",
-        "sane": "nothing-you-could-do",
+        "sane": "nothing_you_could_do",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Noticia Text",
-        "sane": "noticia-text",
+        "sane": "noticia_text",
         "variants": [
             "0,400",
             "1,400",
@@ -7201,17 +7500,31 @@
     },
     {
         "name": "Noto Sans",
-        "sane": "noto-sans",
+        "sane": "noto_sans",
         "variants": [
+            "0,100",
+            "1,100",
+            "0,200",
+            "1,200",
+            "0,300",
+            "1,300",
             "0,400",
             "1,400",
+            "0,500",
+            "1,500",
+            "0,600",
+            "1,600",
             "0,700",
-            "1,700"
+            "1,700",
+            "0,800",
+            "1,800",
+            "0,900",
+            "1,900"
         ]
     },
     {
         "name": "Noto Sans Display",
-        "sane": "noto-sans-display",
+        "sane": "noto_sans_display",
         "variants": [
             "0,100",
             "0,200",
@@ -7235,7 +7548,7 @@
     },
     {
         "name": "Noto Sans HK",
-        "sane": "noto-sans-hk",
+        "sane": "noto_sans_hk",
         "variants": [
             "0,100",
             "0,300",
@@ -7247,7 +7560,7 @@
     },
     {
         "name": "Noto Sans JP",
-        "sane": "noto-sans-jp",
+        "sane": "noto_sans_jp",
         "variants": [
             "0,100",
             "0,300",
@@ -7259,7 +7572,7 @@
     },
     {
         "name": "Noto Sans KR",
-        "sane": "noto-sans-kr",
+        "sane": "noto_sans_kr",
         "variants": [
             "0,100",
             "0,300",
@@ -7271,7 +7584,7 @@
     },
     {
         "name": "Noto Sans Mono",
-        "sane": "noto-sans-mono",
+        "sane": "noto_sans_mono",
         "variants": [
             "0,100",
             "0,200",
@@ -7286,7 +7599,7 @@
     },
     {
         "name": "Noto Sans SC",
-        "sane": "noto-sans-sc",
+        "sane": "noto_sans_sc",
         "variants": [
             "0,100",
             "0,300",
@@ -7298,7 +7611,7 @@
     },
     {
         "name": "Noto Sans TC",
-        "sane": "noto-sans-tc",
+        "sane": "noto_sans_tc",
         "variants": [
             "0,100",
             "0,300",
@@ -7310,7 +7623,7 @@
     },
     {
         "name": "Noto Serif",
-        "sane": "noto-serif",
+        "sane": "noto_serif",
         "variants": [
             "0,400",
             "1,400",
@@ -7320,7 +7633,7 @@
     },
     {
         "name": "Noto Serif Display",
-        "sane": "noto-serif-display",
+        "sane": "noto_serif_display",
         "variants": [
             "0,100",
             "0,200",
@@ -7344,7 +7657,7 @@
     },
     {
         "name": "Noto Serif JP",
-        "sane": "noto-serif-jp",
+        "sane": "noto_serif_jp",
         "variants": [
             "0,200",
             "0,300",
@@ -7357,7 +7670,7 @@
     },
     {
         "name": "Noto Serif KR",
-        "sane": "noto-serif-kr",
+        "sane": "noto_serif_kr",
         "variants": [
             "0,200",
             "0,300",
@@ -7370,7 +7683,7 @@
     },
     {
         "name": "Noto Serif SC",
-        "sane": "noto-serif-sc",
+        "sane": "noto_serif_sc",
         "variants": [
             "0,200",
             "0,300",
@@ -7383,7 +7696,7 @@
     },
     {
         "name": "Noto Serif TC",
-        "sane": "noto-serif-tc",
+        "sane": "noto_serif_tc",
         "variants": [
             "0,200",
             "0,300",
@@ -7396,56 +7709,56 @@
     },
     {
         "name": "Nova Cut",
-        "sane": "nova-cut",
+        "sane": "nova_cut",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Nova Flat",
-        "sane": "nova-flat",
+        "sane": "nova_flat",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Nova Mono",
-        "sane": "nova-mono",
+        "sane": "nova_mono",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Nova Oval",
-        "sane": "nova-oval",
+        "sane": "nova_oval",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Nova Round",
-        "sane": "nova-round",
+        "sane": "nova_round",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Nova Script",
-        "sane": "nova-script",
+        "sane": "nova_script",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Nova Slim",
-        "sane": "nova-slim",
+        "sane": "nova_slim",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Nova Square",
-        "sane": "nova-square",
+        "sane": "nova_square",
         "variants": [
             "0,400"
         ]
@@ -7481,7 +7794,7 @@
     },
     {
         "name": "Nunito Sans",
-        "sane": "nunito-sans",
+        "sane": "nunito_sans",
         "variants": [
             "0,200",
             "1,200",
@@ -7501,14 +7814,14 @@
     },
     {
         "name": "Odibee Sans",
-        "sane": "odibee-sans",
+        "sane": "odibee_sans",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Odor Mean Chey",
-        "sane": "odor-mean-chey",
+        "sane": "odor_mean_chey",
         "variants": [
             "0,400"
         ]
@@ -7529,7 +7842,7 @@
     },
     {
         "name": "Old Standard TT",
-        "sane": "old-standard-tt",
+        "sane": "old_standard_tt",
         "variants": [
             "0,400",
             "1,400",
@@ -7552,7 +7865,7 @@
     },
     {
         "name": "Oleo Script",
-        "sane": "oleo-script",
+        "sane": "oleo_script",
         "variants": [
             "0,400",
             "0,700"
@@ -7560,7 +7873,7 @@
     },
     {
         "name": "Oleo Script Swash Caps",
-        "sane": "oleo-script-swash-caps",
+        "sane": "oleo_script_swash_caps",
         "variants": [
             "0,400",
             "0,700"
@@ -7568,14 +7881,14 @@
     },
     {
         "name": "Oooh Baby",
-        "sane": "oooh-baby",
+        "sane": "oooh_baby",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Open Sans",
-        "sane": "open-sans",
+        "sane": "open_sans",
         "variants": [
             "0,300",
             "0,400",
@@ -7589,15 +7902,6 @@
             "1,600",
             "1,700",
             "1,800"
-        ]
-    },
-    {
-        "name": "Open Sans Condensed",
-        "sane": "open-sans-condensed",
-        "variants": [
-            "0,300",
-            "1,300",
-            "0,700"
         ]
     },
     {
@@ -7629,7 +7933,7 @@
     },
     {
         "name": "Orelega One",
-        "sane": "orelega-one",
+        "sane": "orelega_one",
         "variants": [
             "0,400"
         ]
@@ -7643,7 +7947,7 @@
     },
     {
         "name": "Original Surfer",
-        "sane": "original-surfer",
+        "sane": "original_surfer",
         "variants": [
             "0,400"
         ]
@@ -7662,7 +7966,7 @@
     },
     {
         "name": "Otomanopee One",
-        "sane": "otomanopee-one",
+        "sane": "otomanopee_one",
         "variants": [
             "0,400"
         ]
@@ -7684,7 +7988,7 @@
     },
     {
         "name": "Over the Rainbow",
-        "sane": "over-the-rainbow",
+        "sane": "over_the_rainbow",
         "variants": [
             "0,400"
         ]
@@ -7703,7 +8007,7 @@
     },
     {
         "name": "Overlock SC",
-        "sane": "overlock-sc",
+        "sane": "overlock_sc",
         "variants": [
             "0,400"
         ]
@@ -7734,7 +8038,7 @@
     },
     {
         "name": "Overpass Mono",
-        "sane": "overpass-mono",
+        "sane": "overpass_mono",
         "variants": [
             "0,300",
             "0,400",
@@ -7774,21 +8078,21 @@
     },
     {
         "name": "Oxygen Mono",
-        "sane": "oxygen-mono",
+        "sane": "oxygen_mono",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "PT Mono",
-        "sane": "pt-mono",
+        "sane": "pt_mono",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "PT Sans",
-        "sane": "pt-sans",
+        "sane": "pt_sans",
         "variants": [
             "0,400",
             "1,400",
@@ -7798,7 +8102,7 @@
     },
     {
         "name": "PT Sans Caption",
-        "sane": "pt-sans-caption",
+        "sane": "pt_sans_caption",
         "variants": [
             "0,400",
             "0,700"
@@ -7806,7 +8110,7 @@
     },
     {
         "name": "PT Sans Narrow",
-        "sane": "pt-sans-narrow",
+        "sane": "pt_sans_narrow",
         "variants": [
             "0,400",
             "0,700"
@@ -7814,7 +8118,7 @@
     },
     {
         "name": "PT Serif",
-        "sane": "pt-serif",
+        "sane": "pt_serif",
         "variants": [
             "0,400",
             "1,400",
@@ -7824,7 +8128,7 @@
     },
     {
         "name": "PT Serif Caption",
-        "sane": "pt-serif-caption",
+        "sane": "pt_serif_caption",
         "variants": [
             "0,400",
             "1,400"
@@ -7860,7 +8164,7 @@
     },
     {
         "name": "Palanquin Dark",
-        "sane": "palanquin-dark",
+        "sane": "palanquin_dark",
         "variants": [
             "0,400",
             "0,500",
@@ -7870,7 +8174,7 @@
     },
     {
         "name": "Palette Mosaic",
-        "sane": "palette-mosaic",
+        "sane": "palette_mosaic",
         "variants": [
             "0,400"
         ]
@@ -7898,14 +8202,14 @@
     },
     {
         "name": "Passero One",
-        "sane": "passero-one",
+        "sane": "passero_one",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Passion One",
-        "sane": "passion-one",
+        "sane": "passion_one",
         "variants": [
             "0,400",
             "0,700",
@@ -7914,28 +8218,28 @@
     },
     {
         "name": "Passions Conflict",
-        "sane": "passions-conflict",
+        "sane": "passions_conflict",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Pathway Gothic One",
-        "sane": "pathway-gothic-one",
+        "sane": "pathway_gothic_one",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Patrick Hand",
-        "sane": "patrick-hand",
+        "sane": "patrick_hand",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Patrick Hand SC",
-        "sane": "patrick-hand-sc",
+        "sane": "patrick_hand_sc",
         "variants": [
             "0,400"
         ]
@@ -7949,7 +8253,7 @@
     },
     {
         "name": "Patua One",
-        "sane": "patua-one",
+        "sane": "patua_one",
         "variants": [
             "0,400"
         ]
@@ -7963,7 +8267,7 @@
     },
     {
         "name": "Paytone One",
-        "sane": "paytone-one",
+        "sane": "paytone_one",
         "variants": [
             "0,400"
         ]
@@ -7984,7 +8288,7 @@
     },
     {
         "name": "Permanent Marker",
-        "sane": "permanent-marker",
+        "sane": "permanent_marker",
         "variants": [
             "0,400"
         ]
@@ -7998,7 +8302,7 @@
     },
     {
         "name": "Petit Formal Script",
-        "sane": "petit-formal-script",
+        "sane": "petit_formal_script",
         "variants": [
             "0,400"
         ]
@@ -8070,14 +8374,14 @@
     },
     {
         "name": "Pinyon Script",
-        "sane": "pinyon-script",
+        "sane": "pinyon_script",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Pirata One",
-        "sane": "pirata-one",
+        "sane": "pirata_one",
         "variants": [
             "0,400"
         ]
@@ -8106,7 +8410,7 @@
     },
     {
         "name": "Playfair Display",
-        "sane": "playfair-display",
+        "sane": "playfair_display",
         "variants": [
             "0,400",
             "0,500",
@@ -8124,7 +8428,7 @@
     },
     {
         "name": "Playfair Display SC",
-        "sane": "playfair-display-sc",
+        "sane": "playfair_display_sc",
         "variants": [
             "0,400",
             "1,400",
@@ -8147,14 +8451,14 @@
     },
     {
         "name": "Poiret One",
-        "sane": "poiret-one",
+        "sane": "poiret_one",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Poller One",
-        "sane": "poller-one",
+        "sane": "poller_one",
         "variants": [
             "0,400"
         ]
@@ -8176,14 +8480,14 @@
     },
     {
         "name": "Pontano Sans",
-        "sane": "pontano-sans",
+        "sane": "pontano_sans",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Poor Story",
-        "sane": "poor-story",
+        "sane": "poor_story",
         "variants": [
             "0,400"
         ]
@@ -8214,28 +8518,28 @@
     },
     {
         "name": "Port Lligat Sans",
-        "sane": "port-lligat-sans",
+        "sane": "port_lligat_sans",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Port Lligat Slab",
-        "sane": "port-lligat-slab",
+        "sane": "port_lligat_slab",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Potta One",
-        "sane": "potta-one",
+        "sane": "potta_one",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Pragati Narrow",
-        "sane": "pragati-narrow",
+        "sane": "pragati_narrow",
         "variants": [
             "0,400",
             "0,700"
@@ -8264,7 +8568,7 @@
     },
     {
         "name": "Press Start 2P",
-        "sane": "press-start-2p",
+        "sane": "press_start_2p",
         "variants": [
             "0,400"
         ]
@@ -8283,7 +8587,7 @@
     },
     {
         "name": "Princess Sofia",
-        "sane": "princess-sofia",
+        "sane": "princess_sofia",
         "variants": [
             "0,400"
         ]
@@ -8321,14 +8625,14 @@
     },
     {
         "name": "Prosto One",
-        "sane": "prosto-one",
+        "sane": "prosto_one",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Proza Libre",
-        "sane": "proza-libre",
+        "sane": "proza_libre",
         "variants": [
             "0,400",
             "1,400",
@@ -8344,7 +8648,7 @@
     },
     {
         "name": "Public Sans",
-        "sane": "public-sans",
+        "sane": "public_sans",
         "variants": [
             "0,100",
             "0,200",
@@ -8368,7 +8672,7 @@
     },
     {
         "name": "Puppies Play",
-        "sane": "puppies-play",
+        "sane": "puppies_play",
         "variants": [
             "0,400"
         ]
@@ -8385,7 +8689,7 @@
     },
     {
         "name": "Purple Purse",
-        "sane": "purple-purse",
+        "sane": "purple_purse",
         "variants": [
             "0,400"
         ]
@@ -8424,7 +8728,7 @@
     },
     {
         "name": "Quattrocento Sans",
-        "sane": "quattrocento-sans",
+        "sane": "quattrocento_sans",
         "variants": [
             "0,400",
             "1,400",
@@ -8466,7 +8770,7 @@
     },
     {
         "name": "Qwitcher Grypen",
-        "sane": "qwitcher-grypen",
+        "sane": "qwitcher_grypen",
         "variants": [
             "0,400",
             "0,700"
@@ -8474,7 +8778,7 @@
     },
     {
         "name": "Racing Sans One",
-        "sane": "racing-sans-one",
+        "sane": "racing_sans_one",
         "variants": [
             "0,400"
         ]
@@ -8531,7 +8835,7 @@
     },
     {
         "name": "Raleway Dots",
-        "sane": "raleway-dots",
+        "sane": "raleway_dots",
         "variants": [
             "0,400"
         ]
@@ -8562,14 +8866,14 @@
     },
     {
         "name": "Rammetto One",
-        "sane": "rammetto-one",
+        "sane": "rammetto_one",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Rampart One",
-        "sane": "rampart-one",
+        "sane": "rampart_one",
         "variants": [
             "0,400"
         ]
@@ -8621,14 +8925,14 @@
     },
     {
         "name": "Ravi Prakash",
-        "sane": "ravi-prakash",
+        "sane": "ravi_prakash",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Readex Pro",
-        "sane": "readex-pro",
+        "sane": "readex_pro",
         "variants": [
             "0,200",
             "0,300",
@@ -8653,7 +8957,7 @@
     },
     {
         "name": "Red Hat Display",
-        "sane": "red-hat-display",
+        "sane": "red_hat_display",
         "variants": [
             "0,300",
             "0,400",
@@ -8673,7 +8977,7 @@
     },
     {
         "name": "Red Hat Mono",
-        "sane": "red-hat-mono",
+        "sane": "red_hat_mono",
         "variants": [
             "0,300",
             "0,400",
@@ -8689,7 +8993,7 @@
     },
     {
         "name": "Red Hat Text",
-        "sane": "red-hat-text",
+        "sane": "red_hat_text",
         "variants": [
             "0,300",
             "0,400",
@@ -8705,7 +9009,7 @@
     },
     {
         "name": "Red Rose",
-        "sane": "red-rose",
+        "sane": "red_rose",
         "variants": [
             "0,300",
             "0,400",
@@ -8723,7 +9027,7 @@
     },
     {
         "name": "Redacted Script",
-        "sane": "redacted-script",
+        "sane": "redacted_script",
         "variants": [
             "0,300",
             "0,400",
@@ -8739,7 +9043,7 @@
     },
     {
         "name": "Reem Kufi",
-        "sane": "reem-kufi",
+        "sane": "reem_kufi",
         "variants": [
             "0,400",
             "0,500",
@@ -8749,14 +9053,14 @@
     },
     {
         "name": "Reenie Beanie",
-        "sane": "reenie-beanie",
+        "sane": "reenie_beanie",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Reggae One",
-        "sane": "reggae-one",
+        "sane": "reggae_one",
         "variants": [
             "0,400"
         ]
@@ -8770,7 +9074,7 @@
     },
     {
         "name": "Rhodium Libre",
-        "sane": "rhodium-libre",
+        "sane": "rhodium_libre",
         "variants": [
             "0,400"
         ]
@@ -8784,7 +9088,7 @@
     },
     {
         "name": "Ribeye Marrow",
-        "sane": "ribeye-marrow",
+        "sane": "ribeye_marrow",
         "variants": [
             "0,400"
         ]
@@ -8805,7 +9109,7 @@
     },
     {
         "name": "Road Rage",
-        "sane": "road-rage",
+        "sane": "road_rage",
         "variants": [
             "0,400"
         ]
@@ -8830,7 +9134,7 @@
     },
     {
         "name": "Roboto Condensed",
-        "sane": "roboto-condensed",
+        "sane": "roboto_condensed",
         "variants": [
             "0,300",
             "1,300",
@@ -8842,7 +9146,7 @@
     },
     {
         "name": "Roboto Mono",
-        "sane": "roboto-mono",
+        "sane": "roboto_mono",
         "variants": [
             "0,100",
             "0,200",
@@ -8861,8 +9165,32 @@
         ]
     },
     {
+        "name": "Roboto Serif",
+        "sane": "roboto_serif",
+        "variants": [
+            "0,100",
+            "0,200",
+            "0,300",
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700",
+            "0,800",
+            "0,900",
+            "1,100",
+            "1,200",
+            "1,300",
+            "1,400",
+            "1,500",
+            "1,600",
+            "1,700",
+            "1,800",
+            "1,900"
+        ]
+    },
+    {
         "name": "Roboto Slab",
-        "sane": "roboto-slab",
+        "sane": "roboto_slab",
         "variants": [
             "0,100",
             "0,200",
@@ -8884,21 +9212,21 @@
     },
     {
         "name": "Rock 3D",
-        "sane": "rock-3d",
+        "sane": "rock_3d",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Rock Salt",
-        "sane": "rock-salt",
+        "sane": "rock_salt",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "RocknRoll One",
-        "sane": "rocknroll-one",
+        "sane": "rocknroll_one",
         "variants": [
             "0,400"
         ]
@@ -8927,7 +9255,7 @@
     },
     {
         "name": "Ropa Sans",
-        "sane": "ropa-sans",
+        "sane": "ropa_sans",
         "variants": [
             "0,400",
             "1,400"
@@ -8959,7 +9287,7 @@
     },
     {
         "name": "Rouge Script",
-        "sane": "rouge-script",
+        "sane": "rouge_script",
         "variants": [
             "0,400"
         ]
@@ -8975,7 +9303,7 @@
     },
     {
         "name": "Rozha One",
-        "sane": "rozha-one",
+        "sane": "rozha_one",
         "variants": [
             "0,400"
         ]
@@ -9002,14 +9330,56 @@
     },
     {
         "name": "Rubik Beastly",
-        "sane": "rubik-beastly",
+        "sane": "rubik_beastly",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "name": "Rubik Bubbles",
+        "sane": "rubik_bubbles",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "name": "Rubik Glitch",
+        "sane": "rubik_glitch",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "name": "Rubik Microbe",
+        "sane": "rubik_microbe",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Rubik Mono One",
-        "sane": "rubik-mono-one",
+        "sane": "rubik_mono_one",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "name": "Rubik Moonrocks",
+        "sane": "rubik_moonrocks",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "name": "Rubik Puddles",
+        "sane": "rubik_puddles",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "name": "Rubik Wet Paint",
+        "sane": "rubik_wet_paint",
         "variants": [
             "0,400"
         ]
@@ -9036,7 +9406,7 @@
     },
     {
         "name": "Ruge Boogie",
-        "sane": "ruge-boogie",
+        "sane": "ruge_boogie",
         "variants": [
             "0,400"
         ]
@@ -9050,21 +9420,21 @@
     },
     {
         "name": "Rum Raisin",
-        "sane": "rum-raisin",
+        "sane": "rum_raisin",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Ruslan Display",
-        "sane": "ruslan-display",
+        "sane": "ruslan_display",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Russo One",
-        "sane": "russo-one",
+        "sane": "russo_one",
         "variants": [
             "0,400"
         ]
@@ -9085,7 +9455,7 @@
     },
     {
         "name": "STIX Two Text",
-        "sane": "stix-two-text",
+        "sane": "stix_two_text",
         "variants": [
             "0,400",
             "0,500",
@@ -9145,7 +9515,7 @@
     },
     {
         "name": "Saira Condensed",
-        "sane": "saira-condensed",
+        "sane": "saira_condensed",
         "variants": [
             "0,100",
             "0,200",
@@ -9160,7 +9530,7 @@
     },
     {
         "name": "Saira Extra Condensed",
-        "sane": "saira-extra-condensed",
+        "sane": "saira_extra_condensed",
         "variants": [
             "0,100",
             "0,200",
@@ -9175,7 +9545,7 @@
     },
     {
         "name": "Saira Semi Condensed",
-        "sane": "saira-semi-condensed",
+        "sane": "saira_semi_condensed",
         "variants": [
             "0,100",
             "0,200",
@@ -9190,7 +9560,7 @@
     },
     {
         "name": "Saira Stencil One",
-        "sane": "saira-stencil-one",
+        "sane": "saira_stencil_one",
         "variants": [
             "0,400"
         ]
@@ -9233,7 +9603,7 @@
     },
     {
         "name": "Sansita Swashed",
-        "sane": "sansita-swashed",
+        "sane": "sansita_swashed",
         "variants": [
             "0,300",
             "0,400",
@@ -9295,7 +9665,7 @@
     },
     {
         "name": "Sassy Frass",
-        "sane": "sassy-frass",
+        "sane": "sassy_frass",
         "variants": [
             "0,400"
         ]
@@ -9309,14 +9679,14 @@
     },
     {
         "name": "Sawarabi Gothic",
-        "sane": "sawarabi-gothic",
+        "sane": "sawarabi_gothic",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Sawarabi Mincho",
-        "sane": "sawarabi-mincho",
+        "sane": "sawarabi_mincho",
         "variants": [
             "0,400"
         ]
@@ -9333,7 +9703,7 @@
     },
     {
         "name": "Scheherazade New",
-        "sane": "scheherazade-new",
+        "sane": "scheherazade_new",
         "variants": [
             "0,400",
             "0,700"
@@ -9348,35 +9718,35 @@
     },
     {
         "name": "Scope One",
-        "sane": "scope-one",
+        "sane": "scope_one",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Seaweed Script",
-        "sane": "seaweed-script",
+        "sane": "seaweed_script",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Secular One",
-        "sane": "secular-one",
+        "sane": "secular_one",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Sedgwick Ave",
-        "sane": "sedgwick-ave",
+        "sane": "sedgwick_ave",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Sedgwick Ave Display",
-        "sane": "sedgwick-ave-display",
+        "sane": "sedgwick_ave_display",
         "variants": [
             "0,400"
         ]
@@ -9391,6 +9761,13 @@
         ]
     },
     {
+        "name": "Send Flowers",
+        "sane": "send_flowers",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
         "name": "Sevillana",
         "sane": "sevillana",
         "variants": [
@@ -9399,21 +9776,21 @@
     },
     {
         "name": "Seymour One",
-        "sane": "seymour-one",
+        "sane": "seymour_one",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Shadows Into Light",
-        "sane": "shadows-into-light",
+        "sane": "shadows_into_light",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Shadows Into Light Two",
-        "sane": "shadows-into-light-two",
+        "sane": "shadows_into_light_two",
         "variants": [
             "0,400"
         ]
@@ -9444,35 +9821,35 @@
     },
     {
         "name": "Share Tech",
-        "sane": "share-tech",
+        "sane": "share_tech",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Share Tech Mono",
-        "sane": "share-tech-mono",
+        "sane": "share_tech_mono",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Shippori Antique",
-        "sane": "shippori-antique",
+        "sane": "shippori_antique",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Shippori Antique B1",
-        "sane": "shippori-antique-b1",
+        "sane": "shippori_antique_b1",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Shippori Mincho",
-        "sane": "shippori-mincho",
+        "sane": "shippori_mincho",
         "variants": [
             "0,400",
             "0,500",
@@ -9483,7 +9860,7 @@
     },
     {
         "name": "Shippori Mincho B1",
-        "sane": "shippori-mincho-b1",
+        "sane": "shippori_mincho_b1",
         "variants": [
             "0,400",
             "0,500",
@@ -9508,7 +9885,7 @@
     },
     {
         "name": "Short Stack",
-        "sane": "short-stack",
+        "sane": "short_stack",
         "variants": [
             "0,400"
         ]
@@ -9522,7 +9899,7 @@
     },
     {
         "name": "Sigmar One",
-        "sane": "sigmar-one",
+        "sane": "sigmar_one",
         "variants": [
             "0,400"
         ]
@@ -9540,7 +9917,7 @@
     },
     {
         "name": "Signika Negative",
-        "sane": "signika-negative",
+        "sane": "signika_negative",
         "variants": [
             "0,300",
             "0,400",
@@ -9569,14 +9946,14 @@
     },
     {
         "name": "Sirin Stencil",
-        "sane": "sirin-stencil",
+        "sane": "sirin_stencil",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Six Caps",
-        "sane": "six-caps",
+        "sane": "six_caps",
         "variants": [
             "0,400"
         ]
@@ -9591,14 +9968,14 @@
     },
     {
         "name": "Slabo 13px",
-        "sane": "slabo-13px",
+        "sane": "slabo_13px",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Slabo 27px",
-        "sane": "slabo-27px",
+        "sane": "slabo_27px",
         "variants": [
             "0,400"
         ]
@@ -9625,6 +10002,21 @@
         ]
     },
     {
+        "name": "Smooch Sans",
+        "sane": "smooch_sans",
+        "variants": [
+            "0,100",
+            "0,200",
+            "0,300",
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700",
+            "0,800",
+            "0,900"
+        ]
+    },
+    {
         "name": "Smythe",
         "sane": "smythe",
         "variants": [
@@ -9648,14 +10040,14 @@
     },
     {
         "name": "Snowburst One",
-        "sane": "snowburst-one",
+        "sane": "snowburst_one",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Sofadi One",
-        "sane": "sofadi-one",
+        "sane": "sofadi_one",
         "variants": [
             "0,400"
         ]
@@ -9680,14 +10072,14 @@
     },
     {
         "name": "Song Myung",
-        "sane": "song-myung",
+        "sane": "song_myung",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Sonsie One",
-        "sane": "sonsie-one",
+        "sane": "sonsie_one",
         "variants": [
             "0,400"
         ]
@@ -9708,7 +10100,7 @@
     },
     {
         "name": "Sorts Mill Goudy",
-        "sane": "sorts-mill-goudy",
+        "sane": "sorts_mill_goudy",
         "variants": [
             "0,400",
             "1,400"
@@ -9716,7 +10108,7 @@
     },
     {
         "name": "Source Code Pro",
-        "sane": "source-code-pro",
+        "sane": "source_code_pro",
         "variants": [
             "0,200",
             "0,300",
@@ -9738,7 +10130,7 @@
     },
     {
         "name": "Source Sans 3",
-        "sane": "source-sans-3",
+        "sane": "source_sans_3",
         "variants": [
             "0,200",
             "0,300",
@@ -9760,7 +10152,7 @@
     },
     {
         "name": "Source Sans Pro",
-        "sane": "source-sans-pro",
+        "sane": "source_sans_pro",
         "variants": [
             "0,200",
             "1,200",
@@ -9778,7 +10170,7 @@
     },
     {
         "name": "Source Serif 4",
-        "sane": "source-serif-4",
+        "sane": "source_serif_4",
         "variants": [
             "0,200",
             "0,300",
@@ -9800,7 +10192,7 @@
     },
     {
         "name": "Source Serif Pro",
-        "sane": "source-serif-pro",
+        "sane": "source_serif_pro",
         "variants": [
             "0,200",
             "1,200",
@@ -9818,7 +10210,7 @@
     },
     {
         "name": "Space Grotesk",
-        "sane": "space-grotesk",
+        "sane": "space_grotesk",
         "variants": [
             "0,300",
             "0,400",
@@ -9829,7 +10221,7 @@
     },
     {
         "name": "Space Mono",
-        "sane": "space-mono",
+        "sane": "space_mono",
         "variants": [
             "0,400",
             "1,400",
@@ -9854,7 +10246,7 @@
     },
     {
         "name": "Special Elite",
-        "sane": "special-elite",
+        "sane": "special_elite",
         "variants": [
             "0,400"
         ]
@@ -9881,7 +10273,7 @@
     },
     {
         "name": "Spectral SC",
-        "sane": "spectral-sc",
+        "sane": "spectral_sc",
         "variants": [
             "0,200",
             "1,200",
@@ -9901,7 +10293,7 @@
     },
     {
         "name": "Spicy Rice",
-        "sane": "spicy-rice",
+        "sane": "spicy_rice",
         "variants": [
             "0,400"
         ]
@@ -9922,7 +10314,7 @@
     },
     {
         "name": "Spline Sans",
-        "sane": "spline-sans",
+        "sane": "spline_sans",
         "variants": [
             "0,300",
             "0,400",
@@ -9933,14 +10325,14 @@
     },
     {
         "name": "Squada One",
-        "sane": "squada-one",
+        "sane": "squada_one",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Sree Krushnadevaraya",
-        "sane": "sree-krushnadevaraya",
+        "sane": "sree_krushnadevaraya",
         "variants": [
             "0,400"
         ]
@@ -9976,14 +10368,14 @@
     },
     {
         "name": "Stalinist One",
-        "sane": "stalinist-one",
+        "sane": "stalinist_one",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Stardos Stencil",
-        "sane": "stardos-stencil",
+        "sane": "stardos_stencil",
         "variants": [
             "0,400",
             "0,700"
@@ -9998,7 +10390,7 @@
     },
     {
         "name": "Stick No Bills",
-        "sane": "stick-no-bills",
+        "sane": "stick_no_bills",
         "variants": [
             "0,200",
             "0,300",
@@ -10011,14 +10403,14 @@
     },
     {
         "name": "Stint Ultra Condensed",
-        "sane": "stint-ultra-condensed",
+        "sane": "stint_ultra_condensed",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Stint Ultra Expanded",
-        "sane": "stint-ultra-expanded",
+        "sane": "stint_ultra_expanded",
         "variants": [
             "0,400"
         ]
@@ -10040,7 +10432,7 @@
     },
     {
         "name": "Style Script",
-        "sane": "style-script",
+        "sane": "style_script",
         "variants": [
             "0,400"
         ]
@@ -10054,21 +10446,21 @@
     },
     {
         "name": "Sue Ellen Francisco",
-        "sane": "sue-ellen-francisco",
+        "sane": "sue_ellen_francisco",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Suez One",
-        "sane": "suez-one",
+        "sane": "suez_one",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Sulphur Point",
-        "sane": "sulphur-point",
+        "sane": "sulphur_point",
         "variants": [
             "0,300",
             "0,400",
@@ -10101,7 +10493,7 @@
     },
     {
         "name": "Supermercado One",
-        "sane": "supermercado-one",
+        "sane": "supermercado_one",
         "variants": [
             "0,400"
         ]
@@ -10141,7 +10533,7 @@
     },
     {
         "name": "Swanky and Moo Moo",
-        "sane": "swanky-and-moo-moo",
+        "sane": "swanky_and_moo_moo",
         "variants": [
             "0,400"
         ]
@@ -10167,14 +10559,14 @@
     },
     {
         "name": "Syne Mono",
-        "sane": "syne-mono",
+        "sane": "syne_mono",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Syne Tactile",
-        "sane": "syne-tactile",
+        "sane": "syne_tactile",
         "variants": [
             "0,400"
         ]
@@ -10258,21 +10650,21 @@
     },
     {
         "name": "Tenali Ramakrishna",
-        "sane": "tenali-ramakrishna",
+        "sane": "tenali_ramakrishna",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Tenor Sans",
-        "sane": "tenor-sans",
+        "sane": "tenor_sans",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Text Me One",
-        "sane": "text-me-one",
+        "sane": "text_me_one",
         "variants": [
             "0,400"
         ]
@@ -10313,14 +10705,14 @@
     },
     {
         "name": "The Girl Next Door",
-        "sane": "the-girl-next-door",
+        "sane": "the_girl_next_door",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "The Nautigal",
-        "sane": "the-nautigal",
+        "sane": "the_nautigal",
         "variants": [
             "0,400",
             "0,700"
@@ -10365,14 +10757,14 @@
     },
     {
         "name": "Titan One",
-        "sane": "titan-one",
+        "sane": "titan_one",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Titillium Web",
-        "sane": "titillium-web",
+        "sane": "titillium_web",
         "variants": [
             "0,200",
             "1,200",
@@ -10437,14 +10829,14 @@
     },
     {
         "name": "Trade Winds",
-        "sane": "trade-winds",
+        "sane": "trade_winds",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Train One",
-        "sane": "train-one",
+        "sane": "train_one",
         "variants": [
             "0,400"
         ]
@@ -10527,14 +10919,14 @@
     },
     {
         "name": "Tulpen One",
-        "sane": "tulpen-one",
+        "sane": "tulpen_one",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Turret Road",
-        "sane": "turret-road",
+        "sane": "turret_road",
         "variants": [
             "0,200",
             "0,300",
@@ -10546,7 +10938,7 @@
     },
     {
         "name": "Twinkle Star",
-        "sane": "twinkle-star",
+        "sane": "twinkle_star",
         "variants": [
             "0,400"
         ]
@@ -10567,14 +10959,14 @@
     },
     {
         "name": "Ubuntu Condensed",
-        "sane": "ubuntu-condensed",
+        "sane": "ubuntu_condensed",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Ubuntu Mono",
-        "sane": "ubuntu-mono",
+        "sane": "ubuntu_mono",
         "variants": [
             "0,400",
             "1,400",
@@ -10598,7 +10990,7 @@
     },
     {
         "name": "Uncial Antiqua",
-        "sane": "uncial-antiqua",
+        "sane": "uncial_antiqua",
         "variants": [
             "0,400"
         ]
@@ -10612,7 +11004,7 @@
     },
     {
         "name": "Unica One",
-        "sane": "unica-one",
+        "sane": "unica_one",
         "variants": [
             "0,400"
         ]
@@ -10689,7 +11081,7 @@
     },
     {
         "name": "Vampiro One",
-        "sane": "vampiro-one",
+        "sane": "vampiro_one",
         "variants": [
             "0,400"
         ]
@@ -10703,7 +11095,7 @@
     },
     {
         "name": "Varela Round",
-        "sane": "varela-round",
+        "sane": "varela_round",
         "variants": [
             "0,400"
         ]
@@ -10721,14 +11113,29 @@
     },
     {
         "name": "Vast Shadow",
-        "sane": "vast-shadow",
+        "sane": "vast_shadow",
         "variants": [
             "0,400"
         ]
     },
     {
+        "name": "Vazirmatn",
+        "sane": "vazirmatn",
+        "variants": [
+            "0,100",
+            "0,200",
+            "0,300",
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700",
+            "0,800",
+            "0,900"
+        ]
+    },
+    {
         "name": "Vesper Libre",
-        "sane": "vesper-libre",
+        "sane": "vesper_libre",
         "variants": [
             "0,400",
             "0,500",
@@ -10738,7 +11145,7 @@
     },
     {
         "name": "Viaoda Libre",
-        "sane": "viaoda-libre",
+        "sane": "viaoda_libre",
         "variants": [
             "0,400"
         ]
@@ -10808,7 +11215,7 @@
     },
     {
         "name": "Vollkorn SC",
-        "sane": "vollkorn-sc",
+        "sane": "vollkorn_sc",
         "variants": [
             "0,400",
             "0,600",
@@ -10825,14 +11232,14 @@
     },
     {
         "name": "Vujahday Script",
-        "sane": "vujahday-script",
+        "sane": "vujahday_script",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Waiting for the Sunrise",
-        "sane": "waiting-for-the-sunrise",
+        "sane": "waiting_for_the_sunrise",
         "variants": [
             "0,400"
         ]
@@ -10846,7 +11253,7 @@
     },
     {
         "name": "Walter Turncoat",
-        "sane": "walter-turncoat",
+        "sane": "walter_turncoat",
         "variants": [
             "0,400"
         ]
@@ -10874,7 +11281,7 @@
     },
     {
         "name": "Wendy One",
-        "sane": "wendy-one",
+        "sane": "wendy_one",
         "variants": [
             "0,400"
         ]
@@ -10889,14 +11296,14 @@
     },
     {
         "name": "Wire One",
-        "sane": "wire-one",
+        "sane": "wire_one",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Work Sans",
-        "sane": "work-sans",
+        "sane": "work_sans",
         "variants": [
             "0,100",
             "0,200",
@@ -10920,7 +11327,7 @@
     },
     {
         "name": "Xanh Mono",
-        "sane": "xanh-mono",
+        "sane": "xanh_mono",
         "variants": [
             "0,400",
             "1,400"
@@ -10940,7 +11347,7 @@
     },
     {
         "name": "Yanone Kaffeesatz",
-        "sane": "yanone-kaffeesatz",
+        "sane": "yanone_kaffeesatz",
         "variants": [
             "0,200",
             "0,300",
@@ -10964,7 +11371,7 @@
     },
     {
         "name": "Yatra One",
-        "sane": "yatra-one",
+        "sane": "yatra_one",
         "variants": [
             "0,400"
         ]
@@ -10978,14 +11385,14 @@
     },
     {
         "name": "Yeon Sung",
-        "sane": "yeon-sung",
+        "sane": "yeon_sung",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Yeseva One",
-        "sane": "yeseva-one",
+        "sane": "yeseva_one",
         "variants": [
             "0,400"
         ]
@@ -11022,91 +11429,91 @@
     },
     {
         "name": "Yuji Boku",
-        "sane": "yuji-boku",
+        "sane": "yuji_boku",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Yuji Hentaigana Akari",
-        "sane": "yuji-hentaigana-akari",
+        "sane": "yuji_hentaigana_akari",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Yuji Hentaigana Akebono",
-        "sane": "yuji-hentaigana-akebono",
+        "sane": "yuji_hentaigana_akebono",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Yuji Mai",
-        "sane": "yuji-mai",
+        "sane": "yuji_mai",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Yuji Syuku",
-        "sane": "yuji-syuku",
+        "sane": "yuji_syuku",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Yusei Magic",
-        "sane": "yusei-magic",
+        "sane": "yusei_magic",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "ZCOOL KuaiLe",
-        "sane": "zcool-kuaile",
+        "sane": "zcool_kuaile",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "ZCOOL QingKe HuangYou",
-        "sane": "zcool-qingke-huangyou",
+        "sane": "zcool_qingke_huangyou",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "ZCOOL XiaoWei",
-        "sane": "zcool-xiaowei",
+        "sane": "zcool_xiaowei",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Zen Antique",
-        "sane": "zen-antique",
+        "sane": "zen_antique",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Zen Antique Soft",
-        "sane": "zen-antique-soft",
+        "sane": "zen_antique_soft",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Zen Dots",
-        "sane": "zen-dots",
+        "sane": "zen_dots",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Zen Kaku Gothic Antique",
-        "sane": "zen-kaku-gothic-antique",
+        "sane": "zen_kaku_gothic_antique",
         "variants": [
             "0,300",
             "0,400",
@@ -11117,7 +11524,7 @@
     },
     {
         "name": "Zen Kaku Gothic New",
-        "sane": "zen-kaku-gothic-new",
+        "sane": "zen_kaku_gothic_new",
         "variants": [
             "0,300",
             "0,400",
@@ -11128,14 +11535,14 @@
     },
     {
         "name": "Zen Kurenaido",
-        "sane": "zen-kurenaido",
+        "sane": "zen_kurenaido",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Zen Loop",
-        "sane": "zen-loop",
+        "sane": "zen_loop",
         "variants": [
             "0,400",
             "1,400"
@@ -11143,7 +11550,7 @@
     },
     {
         "name": "Zen Maru Gothic",
-        "sane": "zen-maru-gothic",
+        "sane": "zen_maru_gothic",
         "variants": [
             "0,300",
             "0,400",
@@ -11154,7 +11561,7 @@
     },
     {
         "name": "Zen Old Mincho",
-        "sane": "zen-old-mincho",
+        "sane": "zen_old_mincho",
         "variants": [
             "0,400",
             "0,700",
@@ -11163,7 +11570,7 @@
     },
     {
         "name": "Zen Tokyo Zoo",
-        "sane": "zen-tokyo-zoo",
+        "sane": "zen_tokyo_zoo",
         "variants": [
             "0,400"
         ]
@@ -11177,14 +11584,14 @@
     },
     {
         "name": "Zhi Mang Xing",
-        "sane": "zhi-mang-xing",
+        "sane": "zhi_mang_xing",
         "variants": [
             "0,400"
         ]
     },
     {
         "name": "Zilla Slab",
-        "sane": "zilla-slab",
+        "sane": "zilla_slab",
         "variants": [
             "0,300",
             "1,300",
@@ -11200,7 +11607,7 @@
     },
     {
         "name": "Zilla Slab Highlight",
-        "sane": "zilla-slab-highlight",
+        "sane": "zilla_slab_highlight",
         "variants": [
             "0,400",
             "0,700"
