@@ -2,33 +2,63 @@
 
 namespace Mikk3lRo\vueFontpicker;
 
-$apiKey = file_get_contents(__DIR__ . '/GOOGLE_API_KEY');
+ini_set('memory_limit', '5G');
 
-if (!is_string($apiKey) || strlen($apiKey) < 20) {
-    die('Invalid api key - get an api key for google fonts and put it in a file called GOOGLE_API_KEY (or hardcode it in
-    generate-font-previews.php)');
+if (!isset($argv[1]) || $argv[1] == 'googlefonts') {
+    $apiKey = file_exists(__DIR__ . '/GOOGLE_API_KEY') ? file_get_contents(__DIR__ . '/GOOGLE_API_KEY') : '';
+
+    if (!is_string($apiKey) || strlen($apiKey) < 20) {
+        die('Invalid api key - get an api key for google fonts and put it in a file called GOOGLE_API_KEY (or hardcode it in
+        build-font-previews.php)');
+    }
+
+    $fonts = GoogleFonts::fetchAll(
+        $apiKey,
+        __DIR__ . '/font-cache',
+    );
+    $outpath = __DIR__ . '/font-preview';
+} else {
+    $fonts = array();
+    $dummy = array_shift($argv);
+    $outpath = array_shift($argv);
+    if (!is_dir(dirname($outpath))) {
+        die('Need outpath as first argument!');
+    }
+    if (!is_dir($outpath)) {
+        mkdir($outpath);
+    }
+    foreach ($argv as $arg) {
+        if (preg_match('#^(.+)\|((?:[0,1],[0-9]{1,4}\+)*(?:[0,1],[0-9]{1,4}))\|(.+)$#', $arg, $matches)) {
+            $fontName = $matches[1];
+            $fontVariants = explode('+', $matches[2]);
+            $fontFile = $matches[3];
+            if (substr($fontFile, -4) !== '.ttf') {
+                die('Not a TTF file: ' . $fontFile);
+            } else if (!file_exists($fontFile)) {
+                die('File does not exist: ' . $fontFile);
+            }
+
+            $fonts[] = [
+                'name' => $fontName,
+                'localFile' => $fontFile,
+                'variants' => $fontVariants,
+            ];
+        }
+    }
 }
 
-ini_set('memory_limit', '5G');
+fontPreviewBuilder::generatePreview($fonts, $outpath);
 
 class GoogleFonts
 {
     private static $apiKey;
     private static $fontPath;
-    private static $outputPath;
 
-    private static $cellHeight = 40;
-    private static $sliceSize = 200;
-
-    public static function generatePreview($apiKey, $fontPath, $outputPath)
+    public static function fetchAll($apiKey, $fontPath)
     {
         self::$fontPath = $fontPath;
-        self::$outputPath = $outputPath;
         self::$apiKey = $apiKey;
 
-        if (!file_exists(self::$outputPath)) {
-            mkdir(self::$outputPath, 0700, true);
-        }
         if (!file_exists(self::$fontPath)) {
             mkdir(self::$fontPath, 0700, true);
         }
@@ -39,7 +69,6 @@ class GoogleFonts
 
         $fonts = [];
         foreach ($fontInfos as $num => $font) {
-            $sanename = strtolower(preg_replace('#[^a-zA-Z0-9\-]#', '', str_replace(' ', '-', $font['family'])));
             if (isset($font['files']['regular'])) {
                 $remoteFile = $font['files']['regular'];
             } elseif (isset($font['files']['400'])) {
@@ -51,28 +80,43 @@ class GoogleFonts
             } else {
                 $remoteFile = reset($font['files']);
             }
+
+            $localFile = self::$fontPath . '/' . strtolower(preg_replace('#[^a-zA-Z0-9\-]#', '', str_replace(' ', '-', $font['family']))) . '.ttf';
+
+            if (!file_exists($localFile)) {
+                file_put_contents($localFile, file_get_contents($remoteFile));
+                sleep(1);
+            }
+
             $fonts[] = [
                 'name' => $font['family'],
-                'sanename' => $sanename,
-                'slice' => intdiv($num, self::$sliceSize),
-                'top' => ($num % self::$sliceSize) * self::$cellHeight,
-                'remoteFile' => $remoteFile,
-                'localFile' => self::$fontPath . '/' . $sanename . '.ttf',
-                'variants' => $font['variants'],
+                'localFile' => $localFile,
+                'variants' => self::shortVariants($font),
             ];
         }
-
-        self::fetchFonts($fonts);
-
-        self::makeJson($fonts);
-
-        self::makeImages($fonts);
-
-        self::makeCss($fonts);
-
-        self::makeHtml($fonts);
+        return $fonts;
     }
 
+
+    private static function shortVariants($font)
+    {
+        $shortVariants = [];
+        foreach ($font['variants'] as $longVariant) {
+            if ($longVariant == 'regular') {
+                $shortVariants[] = '0,400';
+            } elseif ($longVariant == 'italic') {
+                $shortVariants[] = '1,400';
+            } elseif (is_numeric($longVariant)) {
+                $shortVariants[] = '0,' . $longVariant;
+            } elseif (preg_match('#^([0-9]+)italic$#', $longVariant, $matches)) {
+                $shortVariants[] = '1,' . $matches[1];
+            } else {
+                die($longVariant);
+            }
+        }
+
+        return $shortVariants;
+    }
 
     private static function getFontList()
     {
@@ -109,16 +153,33 @@ class GoogleFonts
 
         return array_values($fonts);
     }
+}
 
 
-    private static function fetchFonts($fontInfo)
-    {
-        foreach ($fontInfo as $font) {
-            if (!file_exists($font['localFile'])) {
-                file_put_contents($font['localFile'], file_get_contents($font['remoteFile']));
-                sleep(1);
-            }
+class fontPreviewBuilder {
+    private static $outputPath;
+    private static $cellHeight = 40;
+    private static $sliceSize = 200;
+
+
+    public static function generatePreview($fonts, $outputPath) {
+        self::$outputPath = $outputPath;
+        if (!file_exists(self::$outputPath)) {
+            mkdir(self::$outputPath, 0700, true);
         }
+
+        foreach ($fonts as $num => &$font) {
+            $font['sanename'] = strtolower(preg_replace('#[^a-zA-Z0-9\_]#', '', str_replace(' ', '_', $font['name'])));
+            $font['top'] = ($num % self::$sliceSize) * self::$cellHeight;
+        }
+
+        self::makeJson($fonts);
+
+        self::makeImages($fonts);
+
+        self::makeCss($fonts);
+
+        self::makeHtml($fonts);
     }
 
 
@@ -130,31 +191,10 @@ class GoogleFonts
             $json[] = [
                 'name' => $font['name'],
                 'sane' => $font['sanename'],
-                'variants' => self::shortVariants($font),
+                'variants' => $font['variants'],
             ];
         }
         file_put_contents(self::$outputPath . '/fontInfo.json', json_encode($json, JSON_PRETTY_PRINT));
-    }
-
-
-    private static function shortVariants($font)
-    {
-        $shortVariants = [];
-        foreach ($font['variants'] as $longVariant) {
-            if ($longVariant == 'regular') {
-                $shortVariants[] = '0,400';
-            } elseif ($longVariant == 'italic') {
-                $shortVariants[] = '1,400';
-            } elseif (is_numeric($longVariant)) {
-                $shortVariants[] = '0,' . $longVariant;
-            } elseif (preg_match('#^([0-9]+)italic$#', $longVariant, $matches)) {
-                $shortVariants[] = '1,' . $matches[1];
-            } else {
-                die($longVariant);
-            }
-        }
-
-        return $shortVariants;
     }
 
 
@@ -299,10 +339,3 @@ class GoogleFonts
         file_put_contents(self::$outputPath . '/font-previews.html', implode("\n", $html));
     }
 }
-
-
-GoogleFonts::generatePreview(
-    $apiKey,
-    __DIR__ . '/font-cache',
-    __DIR__ . '/font-preview',
-);
