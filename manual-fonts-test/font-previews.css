@@ -1,0 +1,28 @@
+[class*=" font-preview-"],
+[class^="font-preview-"] {
+  background-size: 30em auto;
+  background-repeat: no-repeat;
+  height: 2em;
+  image-rendering: optimizequality;
+}
+.font-preview-bickleyscript,
+.font-preview-on-medium-sized-screens {
+  background-image: url(sprite.1.1.5x.png);
+}
+@media
+(-webkit-max-device-pixel-ratio: 1),
+(max-resolution: 96dpi) {
+  .font-preview-bickleyscript,
+  .font-preview-on-worse-than-1x {
+    background-image: url(sprite.1.1x.png);
+  }
+}
+@media
+(-webkit-min-device-pixel-ratio: 1.51),
+(min-resolution: 145dpi) {
+  .font-preview-bickleyscript,
+  .font-preview-on-better-than-1-and-a-half-x {
+    background-image: url(sprite.1.2x.png);
+  }
+}
+.font-preview-bickleyscript{ background-position: 0px -0em }

@@ -66,11 +66,19 @@ export default {
       type: [Array, String],
       default: '',
     },
+    googleFonts: {
+      type: [Array, String],
+      default: () => 'all',
+    },
+    localFonts: {
+      type: Array,
+      default: () => [],
+    },
   },
   data() {
     return {
       focused: false,
-      fonts: [],
+      allGoogleFonts: [],
       typedSearch: '',
       searchContent: '',
       selectedFontIndex: -1,
@@ -107,6 +115,37 @@ export default {
       ret.push('font-preview-' + this.current.sane)
       return ret
     },
+    fonts() {
+      let activeFonts
+
+      if (this.googleFonts == 'all') {
+        activeFonts = [...this.allGoogleFonts]
+      } else if (typeof this.googleFonts === 'string') {
+        let fontNames = this.googleFonts.split(',').map(v => v.toLowerCase())
+        activeFonts = [...this.allGoogleFonts.filter(a => fontNames.includes(a.cased))]
+      } else {
+        let fontNames = this.googleFonts.map(v => v.toLowerCase())
+        activeFonts = [...this.allGoogleFonts.filter(a => fontNames.includes(a.cased))]
+      }
+
+      for (var i in this.localFonts) {
+        activeFonts.push({
+          name: this.localFonts[i].name,
+          cased: this.localFonts[i].name.toLowerCase(),
+          sane: this.localFonts[i].name
+            .replaceAll(' ', '_')
+            .replaceAll(/[^a-zA-Z0-9-]/g, '')
+            .toLowerCase(),
+          variants: this.localFonts[i].variants.map(v => {
+            if (typeof v === 'string') {
+              return v
+            }
+            return (v.italic ? '1' : '0') + ',' + v.weight
+          }),
+        })
+      }
+      return activeFonts
+    },
     matchingFonts() {
       let search = this.typedSearch.toLowerCase().trim()
       return this.fonts.filter(a => a.cased.includes(search))
@@ -119,7 +158,7 @@ export default {
       font.cased = font.name.toLowerCase()
       ifonts.push(font)
     }
-    this.fonts = ifonts
+    this.allGoogleFonts = ifonts
     this.handleNewValue(this.value)
 
     this.handleLoadFont()

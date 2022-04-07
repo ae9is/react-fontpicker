@@ -27,6 +27,8 @@
         <li><a href="#loadallvariants">Load all variants</a></li>
         <li><a href="#loadspecific">Load specific variants</a></li>
         <li><a href="#loaderonly">Font loader only</a></li>
+        <li><a href="#choosegooglefonts">Choose google fonts</a></li>
+        <li><a href="#manuallyadd">Manually add fonts</a></li>
       </ul>
     </div>
 
@@ -233,11 +235,84 @@ Current value:
 &lt;button @click="manuallyLoadFonts2 = 'Smooch, Risque'">Two fonts&lt;/button>
 </pre
     >
+
+    <h3 id="choosegooglefonts">Choose google fonts</h3>
+    <p>
+      You can limit the included google fonts using the
+      <code>google-fonts</code>-prop.
+    </p>
+    <p>You can supply font names as an array or as a comma-seperated string.</p>
+    <p>
+      Do note that the previews are crazy inefficient if you only use a few
+      fonts - in that case you are probably better off recompiling all previews
+      - which is beyond the scope of this document at the moment.
+    </p>
+    <div class="example">
+      <McFontpicker :google-fonts="['Tinos', 'Open Sans']" />
+    </div>
+    <pre>&lt;McFontpicker :google-fonts="['Tinos', 'Open Sans']" /></pre>
+
+    <h3 id="manuallyadd">Manually add fonts</h3>
+    <p>Manually add fonts using the <code>local-fonts</code>-prop.</p>
+    <p>
+      You need to provide your own styling of the previews, how to create this
+      is again beyond the scope of this document for now. Local fonts are also
+      not auto-loaded, so depending on use case you may need to handle that too.
+    </p>
+    <div class="example">
+      <McFontpicker
+        v-model="manuallyAddFontValue"
+        :google-fonts="['Tinos', 'Open Sans']"
+        :local-fonts="[
+          {
+            name: 'BickleyScript',
+            variants: [
+              {
+                italic: false,
+                weight: 400,
+              },
+              '1,400',
+            ],
+          },
+        ]"
+      />
+    </div>
+    <p v-if="typeof manuallyAddFontValue == 'string'">
+      Current value:
+      <span
+        :style="{
+          fontFamily: manuallyAddFontValue,
+        }"
+      >
+        {{ manuallyAddFontValue }}
+      </span>
+    </p>
+    <pre v-pre>
+&lt;McFontpicker
+  v-model="manuallyAddFontValue"
+  :google-fonts="['Tinos', 'Open Sans']"
+  :local-fonts="[
+    {
+      name: 'BickleyScript',
+      variants: [{ italic: false, weight: 400, '1,400' }],
+    },
+  ]"
+/>
+Current value:
+&lt;span
+  :style="{
+    fontFamily: manuallyAddFontValue,
+  }"
+>
+  {{ manuallyAddFontValue }}
+&lt;/span></pre
+    >
   </div>
 </template>
 
 <script>
 import McFontpicker from './components/index'
+import '../manual-fonts-test/font-previews.css'
 
 export default {
   name: 'App',
@@ -253,6 +328,7 @@ export default {
       manuallyLoadFonts1: '',
       manuallyLoadFonts2: '',
       thinnestFont: '',
+      manuallyAddFontValue: 'Tinos',
     }
   },
 }
