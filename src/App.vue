@@ -334,7 +334,7 @@ Current value:
   :local-fonts="[
     {
       name: 'BickleyScript',
-      variants: [{ italic: false, weight: 400, '1,400' }],
+      variants: [{ italic: false, weight: 400 }, '1,400' ],
     },
   ]"
 />
