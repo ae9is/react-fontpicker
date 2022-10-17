@@ -32,7 +32,7 @@
         {{ noMatches }}
       </div>
     </div>
-    <!--pre>{{ focused }}</pre-->
+    <!--pre>{{ current }}</pre-->
   </div>
 </template>
 
@@ -70,6 +70,10 @@ export default {
       type: [Array, String],
       default: () => 'all',
     },
+    fontCategories: {
+      type: [Array, String],
+      default: () => 'all',
+    },
     localFonts: {
       type: Array,
       default: () => [],
@@ -94,6 +98,9 @@ export default {
     },
     loadFonts(newValue) {
       this.handleLoadFont()
+    },
+    fontCategories(newValue) {
+      this.handleNewValue(this.current.name)
     },
   },
   computed: {
@@ -144,7 +151,19 @@ export default {
           }),
         })
       }
-      return activeFonts
+
+      let activeFontsInCategory
+      if (this.fontCategories == 'all') {
+        activeFontsInCategory = [...activeFonts]
+      } else if (typeof this.fontCategories === 'string') {
+        let fontCategories = this.fontCategories.split(',').map(v => v.trim().toLowerCase())
+        activeFontsInCategory = [...this.allGoogleFonts.filter(a => fontCategories.includes(a.category))]
+      } else {
+        let fontCategories = this.fontCategories.map(v => v.toLowerCase())
+        activeFontsInCategory = [...this.allGoogleFonts.filter(a => fontCategories.includes(a.category))]
+      }
+
+      return activeFontsInCategory
     },
     matchingFonts() {
       let search = this.typedSearch.toLowerCase().trim()
@@ -328,6 +347,10 @@ export default {
       let font = this.getFontByName(newName)
       if (font) {
         this.current = font
+        this.autoLoadFont()
+        this.emitFontVariants()
+      } else if (this.fonts.length > 0) {
+        this.current = this.fonts[0]
         this.autoLoadFont()
         this.emitFontVariants()
       }

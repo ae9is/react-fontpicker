@@ -28,6 +28,7 @@
         <li><a href="#loadspecific">Load specific variants</a></li>
         <li><a href="#loaderonly">Font loader only</a></li>
         <li><a href="#choosegooglefonts">Choose google fonts</a></li>
+        <li><a href="#fontcategories">Filter font categories</a></li>
         <li><a href="#manuallyadd">Manually add fonts</a></li>
       </ul>
     </div>
@@ -252,6 +253,45 @@ Current value:
     </div>
     <pre>&lt;McFontpicker :google-fonts="['Tinos', 'Open Sans']" /></pre>
 
+    <h3 id="fontcategories">Filter font categories</h3>
+    <p>
+      You can filter the fonts by category using the
+      <code>font-categories</code>-prop.
+    </p>
+    <p>
+      You can supply category names as an array or as a comma-seperated string.
+    </p>
+    <div class="example">
+      <select v-model="fontCategories">
+        <option value="all">All</option>
+        <option value="serif">Serif</option>
+        <option value="sans-serif">Sans-serif</option>
+        <option value="display">Display</option>
+        <option value="handwriting">Handwriting</option>
+        <option value="monospace">Monospace</option>
+        <option value="display, serif">display, serif</option>
+        <option :value="['display', 'handwriting']">
+          ['display', 'handwriting']
+        </option>
+      </select>
+      <McFontpicker :font-categories="fontCategories" />
+    </div>
+    <pre>
+&lt;select v-model="fontCategories">
+  &lt;option value="all">All&lt;/option>
+  &lt;option value="serif">Serif&lt;/option>
+  &lt;option value="sans-serif">Sans-serif&lt;/option>
+  &lt;option value="display">Display&lt;/option>
+  &lt;option value="handwriting">Handwriting&lt;/option>
+  &lt;option value="monospace">Monospace&lt;/option>
+  &lt;option value="display, serif">display, serif&lt;/option>
+  &lt;option :value="['display', 'handwriting']">
+    ['display', 'handwriting']
+  &lt;/option>
+&lt;/select>
+&lt;McFontpicker :font-categories="fontCategories" />
+    </pre>
+
     <h3 id="manuallyadd">Manually add fonts</h3>
     <p>Manually add fonts using the <code>local-fonts</code>-prop.</p>
     <p>
@@ -325,6 +365,7 @@ export default {
       font2: 'Open Sans',
       font3: 'Open Sans',
       fontVariants: null,
+      fontCategories: 'sans-serif',
       manuallyLoadFonts1: '',
       manuallyLoadFonts2: '',
       thinnestFont: '',

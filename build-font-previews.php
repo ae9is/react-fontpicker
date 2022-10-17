@@ -28,10 +28,12 @@ if (!isset($argv[1]) || $argv[1] == 'googlefonts') {
         mkdir($outpath);
     }
     foreach ($argv as $arg) {
-        if (preg_match('#^(.+)\|((?:[0,1],[0-9]{1,4}\+)*(?:[0,1],[0-9]{1,4}))\|(.+)$#', $arg, $matches)) {
+        // build-font-previews.php "FontName|sans-serif|0,400+0,700+1,400+1,700|/path/to/font.ttf" "Font2|serif|0,400|/path/to/font2.ttf"
+        if (preg_match('#^(.+)\|(.+)\|((?:[0,1],[0-9]{1,4}\+)*(?:[0,1],[0-9]{1,4}))\|(.+)$#', $arg, $matches)) {
             $fontName = $matches[1];
-            $fontVariants = explode('+', $matches[2]);
-            $fontFile = $matches[3];
+            $fontCategory = $matches[2];
+            $fontVariants = explode('+', $matches[3]);
+            $fontFile = $matches[4];
             if (substr($fontFile, -4) !== '.ttf') {
                 die('Not a TTF file: ' . $fontFile);
             } else if (!file_exists($fontFile)) {
@@ -40,6 +42,7 @@ if (!isset($argv[1]) || $argv[1] == 'googlefonts') {
 
             $fonts[] = [
                 'name' => $fontName,
+                'category' => $fontCategory,
                 'localFile' => $fontFile,
                 'variants' => $fontVariants,
             ];
@@ -90,6 +93,7 @@ class GoogleFonts
 
             $fonts[] = [
                 'name' => $font['family'],
+                'category' => $font['category'],
                 'localFile' => $localFile,
                 'variants' => self::shortVariants($font),
             ];
@@ -189,6 +193,7 @@ class fontPreviewBuilder {
 
         foreach ($fonts as $font) {
             $json[] = [
+                'category' => $font['category'],
                 'name' => $font['name'],
                 'sane' => $font['sanename'],
                 'variants' => $font['variants'],
