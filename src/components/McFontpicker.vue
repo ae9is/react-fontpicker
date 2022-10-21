@@ -344,6 +344,7 @@ export default {
       this.emitFontVariants()
     },
     setCurrentByName(newName) {
+      let prev = this.current
       let font = this.getFontByName(newName)
       if (font) {
         this.current = font
@@ -353,6 +354,9 @@ export default {
         this.current = this.fonts[0]
         this.autoLoadFont()
         this.emitFontVariants()
+      }
+      if (prev !== this.current) {
+        this.$emit('input', this.current.name)
       }
     },
     emitFontVariants() {
