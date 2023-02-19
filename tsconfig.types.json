@@ -1,0 +1,27 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    // @tsconfig/recommended
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "commonjs",
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "ES2015",
+
+    // extra
+    "declarationDir": "dist",
+    "declaration": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": true,
+    "noEmit": false,
+    "outDir": "dist",
+    "tsBuildInfoFile": ".tsbuildinfo",
+  },
+  "include": [
+    "index.ts",
+    "src/components/FontPicker.tsx",
+    "font-preview/**/*.json",
+    ".eslintrc.js",
+  ],
+}

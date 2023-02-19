@@ -1,0 +1,61 @@
+.fontpicker,
+.fontpicker * {
+  box-sizing: border-box;
+}
+.fontpicker {
+  border: 1px solid;
+  display: block;
+  position: relative;
+  background: #333;
+}
+.fontpicker__preview {
+  -webkit-filter: invert(100%);
+  filter: invert(100%);
+}
+.fontpicker__search {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  padding: 0 10px;
+  cursor: pointer;
+  font-size: 16px;
+  background-color: #555;
+}
+.fontpicker__search:focus {
+  cursor: text;
+  opacity: 1;
+}
+.fontpicker__popout {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  border: 1px solid;
+  max-height: calc(12em + 1px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 2;
+  background: #555;
+  opacity: 0;
+  transform: scaleY(0.001);
+}
+.fontpicker__popout.fontpicker__active {
+  opacity: 1;
+  transform: scale(1);
+}
+.fontpicker__option {
+  background: #555;
+}
+.fontpicker__option.selected {
+  background: #6789ab;
+}
+.fontpicker__nomatches {
+  height: 2em;
+  line-height: 2em;
+  background: #555;
+  text-align: center;
+  color: #eee;
+}

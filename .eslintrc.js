@@ -1,32 +1,28 @@
 module.exports = {
   root: true,
   env: {
+    browser: true,
     node: true,
   },
-  extends: ['plugin:vue/essential', 'eslint:recommended', '@vue/prettier'],
+  extends: [
+    //
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
+    'prettier',
+  ],
+  parser: '@typescript-eslint/parser',
+  plugins: ['@typescript-eslint'],
   parserOptions: {
-    parser: 'babel-eslint',
+    project: [
+      //
+      './tsconfig.json',
+      './tsconfig.types.json',
+    ],
   },
   rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'prettier/prettier': [
-      'warn',
-      {
-        '#': 'prettier config in here :)',
-        singleQuote: true,
-        semi: false,
-        trailingComma: 'all',
-        arrowParens: 'avoid',
-      },
-    ],
-    'no-unused-vars': [
-      'error',
-      {
-        vars: 'all',
-        args: 'none',
-        ignoreRestSiblings: true,
-      },
-    ],
+    'react/jsx-uses-react': 'off',
+    'react/react-in-jsx-scope': 'off',
   },
 }
