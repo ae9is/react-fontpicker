@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
 import fontInfos from '../../font-preview/fontInfo.json'
 import '../../font-preview/font-previews.css'
 import './FontPicker.css'
@@ -80,6 +80,7 @@ export default function FontPicker({
   fontVariants,
   value,
 }: FontPickerProps) {
+  const [prevDefault, setPrevDefault] = useState('')
   const [focused, setFocused] = useState(false)
   const [typedSearch, setTypedSearch] = useState('')
   const [searchContent, setSearchContent] = useState('')
@@ -122,9 +123,6 @@ export default function FontPicker({
     }
   }
 
-  // defaultValue should run once on component mount but only after fonts initialised
-  const [handledProps, setHandledProps] = useState(false)
-
   // Dynamic refs to allow immediately updating highlighted state of selected font option in picker
   const fontPickerOptionsRef = useRef<Map<string, HTMLDivElement | null> | null>(null)
 
@@ -142,18 +140,6 @@ export default function FontPicker({
       fontPickerOptionsRef.current = new Map()
     }
     return fontPickerOptionsRef.current
-  }
-
-  const setValue = (newValue: any) => {
-    handleNewValue(newValue)
-  }
-
-  const setLoadFonts = (newValue: any) => {
-    handleLoadFont()
-  }
-
-  const setFontCategories = (newValue: any) => {
-    handleNewValue(current.name)
   }
 
   const outerClasses = () => {
@@ -177,8 +163,8 @@ export default function FontPicker({
 
   const allGoogleFonts: Font[] = useMemo(() => {
     const ifonts: Font[] = []
-    fontInfos.forEach((font: any) => {
-      font.cased = font.name.toLowerCase()
+    fontInfos.forEach((info: Omit<Font, 'cased'>) => {
+      const font: Font = { ...info, cased: info.name.toLowerCase() }
       ifonts.push(font)
     })
     return [...ifonts]
@@ -237,7 +223,7 @@ export default function FontPicker({
     return fonts.filter((a) => a.cased.includes(search))
   }, [typedSearch, fonts])
 
-  const cancelBlur = (e: any) => {
+  const cancelBlur = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault()
   }
 
@@ -446,10 +432,10 @@ export default function FontPicker({
   }
 
   interface FourFonts {
-    regular?: any
-    bold?: any
-    italic?: any
-    boldItalic?: any
+    regular?: number
+    bold?: number
+    italic?: number
+    boldItalic?: number
   }
 
   const getFourVariants = (variants: string[]) => {
@@ -469,14 +455,14 @@ export default function FontPicker({
 
     // Best bold font is whatever is larger than regular, and closest to 700
     fourFonts.bold = regularWeights
-      .filter((v) => v > fourFonts.regular)
+      .filter((v) => v > (fourFonts.regular || 0))
       .sort((a, b) => Math.abs(700 - a) - Math.abs(700 - b))
       .shift()
 
     // Same for italics
     fourFonts.italic = italicWeights.sort((a, b) => Math.abs(399 - a) - Math.abs(399 - b)).shift()
     fourFonts.boldItalic = italicWeights
-      .filter((v) => v > fourFonts.italic)
+      .filter((v) => v > (fourFonts.italic || 0))
       .sort((a, b) => Math.abs(700 - a) - Math.abs(700 - b))
       .shift()
 
@@ -529,12 +515,11 @@ export default function FontPicker({
     }
   }
 
-  useEffect(() => {
-    if (fonts && fonts.length > 0 && !handledProps) {
-      handleNewValue(defaultValue)
-      setHandledProps(true)
-    }
-  }, [defaultValue, handledProps])
+  // Prevents infinite re-renders
+  if (defaultValue !== prevDefault) {
+    setPrevDefault(defaultValue)
+    handleNewValue(defaultValue)
+  }
 
   handleLoadFont()
 
@@ -564,8 +549,8 @@ export default function FontPicker({
                 ref={saveOptionsRef(font.sane)}
                 key={font.sane + i}
                 className={'fontpicker__option' + (i === selectedFontIndex ? ' selected' : '')}
-                onMouseDown={(e) => onClick(font)}
-                onMouseMove={(e) => {
+                onMouseDown={() => onClick(font)}
+                onMouseMove={() => {
                   setSelectedFontIndex(i)
                 }}
               >
