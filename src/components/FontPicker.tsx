@@ -9,17 +9,15 @@ export interface FontPickerProps {
   autoLoad?: boolean
   loaderOnly?: boolean
   loadAllVariants?: boolean
-  loadFonts?: string[] | Font[] | string
+  loadFonts?: string[] | FontToVariant[] | string
   googleFonts?: string[] | Font[] | string
   fontCategories?: string[] | string
   localFonts?: Font[] | undefined
 
   // Callbacks to emit selected font
-  fontVariants?: (fontVariants: FontVariantMap) => void
+  fontVariants?: (fontVariants: FontToVariant) => void
   value?: (value: string) => void
 }
-
-type FontName = Font | string
 
 interface Font {
   category: string
@@ -50,10 +48,6 @@ const defaultFont: Font = {
   ],
 }
 
-interface FontWithCategory extends Font {
-  category: string
-}
-
 export type Variant = FontVariant | string
 
 export interface FontVariant {
@@ -61,7 +55,7 @@ export interface FontVariant {
   weight: number
 }
 
-export interface FontVariantMap {
+export interface FontToVariant {
   fontName: string
   variants: Variant[]
 }
@@ -78,7 +72,7 @@ export default function FontPicker({
   noMatches = 'No matches',
   autoLoad = false,
   loaderOnly = false,
-  loadAllVariants = autoLoad,
+  loadAllVariants = false,
   loadFonts = '',
   googleFonts = 'all',
   fontCategories = 'all',
@@ -91,11 +85,44 @@ export default function FontPicker({
   const [searchContent, setSearchContent] = useState('')
   const [selectedFontIndex, setSelectedFontIndex] = useState(-1)
   const [current, setCurrentState] = useState<Font>(defaultFont)
+  const [prevLoadFonts, setPrevLoadFonts] = useState<string[]>([])
   const inputRef = useRef<HTMLInputElement>(null)
   const popoutRef = useRef<HTMLDivElement>(null)
   const previewRef = useRef<HTMLDivElement>(null)
 
-  // loadFonts and defaultValue should run once on component mount but only after fonts initialised
+  const handleLoadFont = () => {
+    if (typeof loadFonts === 'string') {
+      if (loadFonts !== '') {
+        const fontNames = loadFonts.trim().split(',')
+        fontNames?.forEach((fontName: string) => {
+          if (!prevLoadFonts.includes(fontName)) {
+            setPrevLoadFonts([...prevLoadFonts, fontName])
+            loadFontByName(fontName)
+          }
+        })
+      }
+    } else {
+      loadFonts.forEach((font: FontToVariant | string) => {
+        const fontName = typeof font === 'string' ? font : font?.fontName
+        if (!fontName) {
+          return
+        }
+        if (!prevLoadFonts.includes(fontName)) {
+          setPrevLoadFonts([...prevLoadFonts, fontName])
+          if (typeof font === 'object' && font.variants) {
+            loadFontByName(
+              fontName,
+              font.variants.map((v) => toString(v))
+            )
+          } else {
+            loadFontByName(fontName)
+          }
+        }
+      })
+    }
+  }
+
+  // defaultValue should run once on component mount but only after fonts initialised
   const [handledProps, setHandledProps] = useState(false)
 
   // Dynamic refs to allow immediately updating highlighted state of selected font option in picker
@@ -148,7 +175,7 @@ export default function FontPicker({
     return [...ret]
   }
 
-  const allGoogleFonts: FontWithCategory[] = useMemo(() => {
+  const allGoogleFonts: Font[] = useMemo(() => {
     const ifonts: Font[] = []
     fontInfos.forEach((font: any) => {
       font.cased = font.name.toLowerCase()
@@ -162,7 +189,10 @@ export default function FontPicker({
     if (googleFonts === 'all') {
       activeFonts = [...allGoogleFonts]
     } else if (typeof googleFonts === 'string') {
-      const fontNames = googleFonts.split(',').map((v) => v.toLowerCase())
+      const fontNames = googleFonts
+        .trim()
+        .split(',')
+        .map((v) => v.toLowerCase())
       activeFonts = [...allGoogleFonts.filter((a: Font) => fontNames.includes(a.cased))]
     } else {
       const fontNames = googleFonts.map((v) => {
@@ -190,34 +220,22 @@ export default function FontPicker({
     if (fontCategories === 'all') {
       activeFontsInCategory = [...activeFonts]
     } else if (typeof fontCategories === 'string') {
-      const newFontCategories: string[] = fontCategories.split(',').map((v: string) => v.trim().toLowerCase())
-      activeFontsInCategory = [
-        ...allGoogleFonts.filter((a: FontWithCategory) => newFontCategories.includes(a.category)),
-      ]
+      const newFontCategories: string[] = fontCategories
+        .trim()
+        .split(',')
+        .map((v: string) => v.trim().toLowerCase())
+      activeFontsInCategory = [...allGoogleFonts.filter((a: Font) => newFontCategories.includes(a.category))]
     } else {
       const newFontCategories = fontCategories.map((v) => v.toLowerCase())
-      activeFontsInCategory = [
-        ...allGoogleFonts.filter((a: FontWithCategory) => newFontCategories.includes(a.category)),
-      ]
+      activeFontsInCategory = [...allGoogleFonts.filter((a: Font) => newFontCategories.includes(a.category))]
     }
     return [...activeFontsInCategory]
   }, [googleFonts, allGoogleFonts, localFonts, fontCategories])
 
-  //const matchingFonts = useMemo(() => {
-  //  const search = typedSearch.toLowerCase().trim()
-  //  return fonts.filter((a) => a.cased.includes(search))
-  //}, [typedSearch, fonts])
-  const search = typedSearch.toLowerCase().trim()
-  const matchingFonts = fonts.filter((a) => a.cased.includes(search))
-
-  /*
-  useEffect(() => {
-    const len = matchingFonts?.length
-    if (!len || selectedFontIndex >= len) {
-      setSelectedFontIndex(-1)
-    }
-  }, [matchingFonts, selectedFontIndex])
-  */
+  const matchingFonts = useMemo(() => {
+    const search = typedSearch.toLowerCase().trim()
+    return fonts.filter((a) => a.cased.includes(search))
+  }, [typedSearch, fonts])
 
   const cancelBlur = (e: any) => {
     e.preventDefault()
@@ -228,32 +246,6 @@ export default function FontPicker({
     setTypedSearch(newValue)
     setSearchContent(newValue)
     value?.(newValue)
-  }
-
-  const handleLoadFont = () => {
-    if (typeof loadFonts === 'string') {
-      if (loadFonts !== '') {
-        const fontNames = loadFonts.split(',')
-        fontNames?.forEach((fontName: string) => {
-          loadFontByName(fontName)
-        })
-      }
-    } else {
-      loadFonts.forEach((font: Font | string) => {
-        const fontName = typeof font === 'string' ? font : font?.name
-        if (!fontName) {
-          return
-        }
-        if (typeof font === 'object' && font.variants) {
-          loadFontByName(
-            font.name,
-            font.variants.map((v) => toString(v))
-          )
-        } else {
-          loadFontByName(fontName)
-        }
-      })
-    }
   }
 
   const searchChanged = (e: React.FormEvent<HTMLInputElement>) => {
@@ -289,13 +281,7 @@ export default function FontPicker({
   const setInputSelection = (input: EventTarget & HTMLInputElement, startPos: number, endPos: number) => {
     if (input.setSelectionRange) {
       input.setSelectionRange(startPos, endPos)
-    } /* else if (input.createTextRange) {
-      const range = input.createTextRange()
-      range.collapse(true)
-      range.moveEnd('character', endPos)
-      range.moveStart('character', startPos)
-      range.select()
-    } */
+    }
   }
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -336,22 +322,23 @@ export default function FontPicker({
     const popout = popoutRef?.current
     if (popout && index >= 0) {
       const selectedFont = matchingFonts[index]
-      if (!selectedFont) {
-        console.error('undefined selected font')
-      }
-      const fontElement = popout.querySelector('.font-preview-' + selectedFont.sane) as HTMLElement
-      if (fontElement && fontElement instanceof HTMLElement) {
-        const fontTop = fontElement.offsetTop
-        const fontBottom = fontTop + fontElement.offsetHeight
-        const popTop = popout.scrollTop
-        const popBottom = popTop + popout.clientHeight
-        if (why === 'opening' || fontTop <= popTop) {
-          popout.scrollTop = fontTop
-          fontElement.parentElement?.classList.add('selected')
-          const optionRef = getOptionsRef()?.get(selectedFont.sane)
-          optionRef?.classList.add('selected')
-        } else if (fontBottom >= popBottom) {
-          popout.scrollTop = fontBottom - popout.clientHeight - 1
+      // selectedFont should be undefined IFF fontCategories is changed and the currently
+      //  selectedFont is not in the new category.
+      if (selectedFont) {
+        const fontElement = popout.querySelector('.font-preview-' + selectedFont.sane) as HTMLElement
+        if (fontElement && fontElement instanceof HTMLElement) {
+          const fontTop = fontElement.offsetTop
+          const fontBottom = fontTop + fontElement.offsetHeight
+          const popTop = popout.scrollTop
+          const popBottom = popTop + popout.clientHeight
+          if (why === 'opening' || fontTop <= popTop) {
+            popout.scrollTop = fontTop
+            fontElement.parentElement?.classList.add('selected')
+            const optionRef = getOptionsRef()?.get(selectedFont.sane)
+            optionRef?.classList.add('selected')
+          } else if (fontBottom >= popBottom) {
+            popout.scrollTop = fontBottom - popout.clientHeight - 1
+          }
         }
       }
     }
@@ -493,20 +480,20 @@ export default function FontPicker({
       .sort((a, b) => Math.abs(700 - a) - Math.abs(700 - b))
       .shift()
 
-    const loadFonts: string[] = []
+    const fourVariants: string[] = []
     if (fourFonts.regular) {
-      loadFonts.push('0,' + fourFonts.regular)
+      fourVariants.push('0,' + fourFonts.regular)
     }
     if (fourFonts.bold) {
-      loadFonts.push('0,' + fourFonts.bold)
+      fourVariants.push('0,' + fourFonts.bold)
     }
     if (fourFonts.italic) {
-      loadFonts.push('1,' + fourFonts.italic)
+      fourVariants.push('1,' + fourFonts.italic)
     }
     if (fourFonts.boldItalic) {
-      loadFonts.push('1,' + fourFonts.boldItalic)
+      fourVariants.push('1,' + fourFonts.boldItalic)
     }
-    return loadFonts
+    return fourVariants
   }
 
   const loadFontFromObject = (font: Font, variants: Variant[] = []) => {
@@ -514,6 +501,8 @@ export default function FontPicker({
       variants = font.variants.filter((v: Variant) => variants.includes(v))
     } else if (loadAllVariants) {
       variants = font.variants
+    } else {
+      variants = getFourVariants(font.variants.map((v) => toString(v)))
     }
 
     let cssId = 'google-font-' + font.sane
@@ -543,10 +532,11 @@ export default function FontPicker({
   useEffect(() => {
     if (fonts && fonts.length > 0 && !handledProps) {
       handleNewValue(defaultValue)
-      handleLoadFont()
       setHandledProps(true)
     }
   }, [defaultValue, handledProps])
+
+  handleLoadFont()
 
   return (
     <>
@@ -584,7 +574,6 @@ export default function FontPicker({
             ))}
             {matchingFonts.length === 0 && <div className={'fontpicker__nomatches'}>{noMatches}</div>}
           </div>
-          {/* <pre>{{ current }}</pre> */}
         </div>
       )}
     </>
