@@ -1,17 +1,18 @@
 import { useState } from 'react'
-import FontPicker, { FontVariantMap } from './FontPicker'
+import FontPicker, { FontToVariant } from './FontPicker'
 import cs from './App.module.css'
 
 export default function App() {
   const [font1, setFont1] = useState('')
   const [font2, setFont2] = useState('Open Sans')
   const [font3, setFont3] = useState('Open Sans')
-  const [fontVariants, setFontVariants] = useState<FontVariantMap>()
-  const fontCategories = 'sans-serif'
-  const manuallyLoadFonts1 = ''
-  const manuallyLoadFonts2 = ''
-  const thinnestFont = ''
-  const manuallyAddFontValue = 'Tinos'
+  const [fontVariants, setFontVariants] = useState<FontToVariant>()
+  const [fontVariants3, setFontVariants3] = useState<FontToVariant>()
+  const [fontCategories, setFontCategories] = useState<string | string[]>('sans-serif')
+  const [manuallyLoadFonts1, setManuallyLoadFonts1] = useState('')
+  const [manuallyLoadFonts2, setManuallyLoadFonts2] = useState('')
+  const [thinnestFont, setThinnestFont] = useState<FontToVariant>()
+  const [manuallyAddFontValue, setManuallyAddFontValue] = useState('Tinos')
 
   return (
     <>
@@ -50,7 +51,7 @@ export default function App() {
               <a href="#loaderonly">Font loader only</a>
             </li>
             <li>
-              <a href="#choosegooglefonts">Choose google fonts</a>
+              <a href="#choosegooglefonts">Choose Google fonts</a>
             </li>
             <li>
               <a href="#fontcategories">Filter font categories</a>
@@ -79,7 +80,7 @@ export default function App() {
         <div className={cs.example}>
           <FontPicker
             defaultValue="Mountains of Christmas"
-            fontVariants={(variants: FontVariantMap) => {
+            fontVariants={(variants: FontToVariant) => {
               setFontVariants(variants)
             }}
           />
@@ -87,7 +88,12 @@ export default function App() {
         <p>fontVariants:</p>
         <pre>{fontVariants?.variants?.join('\n') ?? 'None'}</pre>
         <pre>
-          {`<FontPicker defaultValue="Mountains of Christmas" fontVariants={(variants: FontVariantMap) => { setFontVariants(variants) }} />
+          {`<FontPicker
+  defaultValue="Mountains of Christmas"
+  fontVariants={(variants: FontToVariant) => {
+    setFontVariants(variants)
+  }}
+/>
 <pre>{fontVariants?.variants?.join('\\n') ?? 'None'}</pre>
 `}
         </pre>
@@ -111,185 +117,225 @@ export default function App() {
         <p>
           Current value: <span style={{ fontFamily: font2 }}>{font2}</span>
         </p>
-        <pre>{`<FontPicker autoLoad defaultValue="Rock Salt" value={(font2: string) => setFont2(font2)} />
+        <pre>{`<FontPicker
+  autoLoad
+  defaultValue="Rock Salt"
+  value={(font2: string) => setFont2(font2)}
+/>
 <p>Current value: <span style={{ fontFamily: font2 }}>{font2}</span></p>`}</pre>
         <p>This works by injecting a stylesheet link in the current document to:</p>
         <pre>
           {"https://fonts.googleapis.com/css2?family=${font.name}:ital,wght@${variants.sort().join(';')}&display=swap"}
         </pre>
         <p>For example:</p>
-        <pre>{`<link rel="stylesheet" id="google-font-open_sans-all" href="https://fonts.googleapis.com/css2?family=Open Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&amp;display=swap">`}</pre>
+        <pre>{`<link rel="stylesheet"
+  id="google-font-open_sans-all"
+  href="https://fonts.googleapis.com/css2?family=Open Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&amp;display=swap"
+>`}</pre>
 
         <h3 id="manualload">Manually load fonts</h3>
-        <p>TODO...</p>
-        {/*
-        <p>Manually load fonts by setting the <code>load-fonts</code>-prop.</p>
+        <p>
+          Manually load fonts by setting the <code>loadFonts</code> prop.
+        </p>
         <p>Several fonts may be loaded by comma-separating the names.</p>
         <div className={cs.example}>
-          <FontPicker :load-fonts="manuallyLoadFonts1" />
-          <div style="text-align: center">
-            <button @click="manuallyLoadFonts1 = 'Rubik Beastly'">
-              Load <span style="font-family: Rubik Beastly">"Rubik Beastly"</span>
+          <FontPicker loadFonts={manuallyLoadFonts1} />
+          <div className={cs.buttonGroup}>
+            <button onClick={() => setManuallyLoadFonts1('Rubik Beastly')}>
+              Load <span style={{ fontFamily: 'Rubik Beastly' }}>Rubik Beastly</span>
             </button>
-            <button @click="manuallyLoadFonts1 = 'Pacifico, Teko'">
-              Load <span style="font-family: Pacifico">"Pacifico"</span> and
-              <span style="font-family: Teko">"Teko"</span>
+            <button onClick={() => setManuallyLoadFonts1('Pacifico, Teko')}>
+              Load <span style={{ fontFamily: 'Pacifico' }}>Pacifico</span> and{' '}
+              <span style={{ fontFamily: 'Teko' }}>Teko</span>
             </button>
           </div>
         </div>
         <pre>
-    &lt;FontPicker :load-fonts="manuallyLoadFonts1" />
-    &lt;button @click="manuallyLoadFonts1 = 'Rubik Beastly'">One font&lt;/button>
-    &lt;button @click="manuallyLoadFonts1 = 'Pacifico, Teko'">Two fonts&lt;/button>
-    </pre
-        >
-
+          {`<FontPicker loadFonts={manuallyLoadFonts1} />
+<button onClick={() => setManuallyLoadFonts1('Rubik Beastly')}>
+  Load <span style={{ fontFamily: 'Rubik Beastly' }}>Rubik Beastly</span>
+</button>
+<button onClick={() => setManuallyLoadFonts1('Pacifico, Teko')}>
+  Load <span style={{ fontFamily: 'Pacifico' }}>Pacifico</span> and
+  <span style={{ fontFamily: 'Teko' }}>Teko</span>
+</button>`}
+        </pre>
         <h3 id="loadallvariants">Load all variants</h3>
         <p>
-          By default only the four most common variants (regular, bold, italic and
-          bold italic) are loaded. You can make sure all variants are loaded by
-          setting the <code>load-all-variants</code> prop.
-        </p>
-        <div className={cs.example}>
-          <FontPicker auto-load load-all-variants v-model="font3" />
-        </div>
-        <p>
-          Current value: <span :style="'font-family: ' + font3">{font3}</span>
-        </p>
-        <pre v-pre>
-    &lt;FontPicker auto-load load-all-variants v-model="font3" />
-    Current value: &lt;span :style="'font-family: ' + font3">{font3}&lt;/span>
-    </pre
-        >
-
-        <h3 id="loadspecific">Load specific variants</h3>
-        <p>
-          The <code>load-fonts</code>-prop can also accept an array of objects
-          specifying fonts and variants. Example:
-        </p>
-        <pre>
-    [
-      {
-        font: "Open Sans",
-        variants: [
-          { italic: false, weight: 400 },
-          { italic: true, weight: 400 },
-          { italic: false, weight: 700 },
-          { italic: true, weight: 700 },
-        ]
-      },
-      {
-        font: "Rancho",
-        variants: [
-          { italic: false, weight: 400 },
-        ]
-      }
-    ]</pre
-        >
-        <p>
-          Note that many fonts exist only in a few variants, so make sure the
-          variants you request actually exist. For instance by filtering the values
-          emitted from <code>fontVariants</code> events.
-        </p>
-        <p>
-          One use case could be loading only one variant - in this example whichever
-          is first (least bold):
+          By default only the four most common variants (regular, bold, italic and bold italic) are loaded. You can make
+          sure all variants are loaded by setting the <code>loadAllVariants</code> prop.
         </p>
         <div className={cs.example}>
           <FontPicker
-            :load-fonts="[thinnestFont]"
-            @fontVariants="
-              v =>
-                (thinnestFont = {
-                  font: v.font,
-                  variants: v.variants.slice(0, 1),
-                })
-            "
+            autoLoad
+            loadAllVariants
+            value={(font3: string) => setFont3(font3)}
+            fontVariants={(variants: FontToVariant) => {
+              setFontVariants3(variants)
+            }}
           />
         </div>
-        <p v-if="typeof thinnestFont == 'object'">
-          Current value:
-          <span
-            :style="{
-              fontFamily: thinnestFont.font,
-              fontWeight: thinnestFont.variants[0].weight,
-            }"
-          >
-            {thinnestFont.font}
-          </span>
+        <p>
+          Current value: <span style={{ fontFamily: font3 }}>{font3}</span>
         </p>
-        <pre v-pre>
-    &lt;FontPicker
-      :load-fonts="[thinnestFont]"
-      @fontVariants="
-        v => (thinnestFont = {
-          font: v.font,
-          variants: v.variants.slice(0, 1),
-        })
-      "
-    />
-    Current value:
-    &lt;span
-      :style="{
-        fontFamily: thinnestFont.font,
-        fontWeight: thinnestFont.variants[0].weight,
-      }"
-    >
-      {thinnestFont.font}
-    &lt;/span>
-    </pre
-        >
+        <pre>
+          {`<FontPicker
+  autoLoad
+  loadAllVariants
+  value={(font3: string) => setFont3(font3)}
+  fontVariants={(variants: FontToVariant) => {
+    setFontVariants3(variants)
+  }}
+/>
+<p>Current value: <span style={{fontFamily: font3}}>{font3}</span></p>
+`}
+        </pre>
+        <p>fontVariants:</p>
+        <pre>
+          {fontVariants3 &&
+            fontVariants3.variants?.map((value, index) => {
+              const fontFamily = fontVariants3.fontName
+              const [isItalic = '0', fontWeight = '400'] = value.toString().split(',')
+              const fontStyle = isItalic === '1' ? 'italic' : 'normal'
+              return (
+                <div key={index} style={{ fontFamily, fontWeight, fontStyle }}>
+                  {fontVariants3.fontName + ' - ' + value ?? 'None'}
+                </div>
+              )
+            })}
+        </pre>
+
+        <h3 id="loadspecific">Load specific variants</h3>
+        <p>
+          The <code>loadFonts</code> prop can also accept an array of objects specifying fonts and variants. Example:
+        </p>
+        <pre>
+          {`[
+  {
+    fontName: "Open Sans",
+    variants: [
+      { italic: false, weight: 400 },
+      { italic: true, weight: 400 },
+      { italic: false, weight: 700 },
+      { italic: true, weight: 700 },
+    ]
+  },
+  {
+    fontName: "Rancho",
+    variants: [
+      { italic: false, weight: 400 },
+    ]
+  }
+]
+`}
+        </pre>
+        <p>
+          Note that many fonts exist only in a few variants, so make sure the variants you request actually exist. For
+          instance by filtering the values emitted from <code>fontVariants</code> events.
+        </p>
+        <p>One use case could be loading only one variant - in this example whichever is first (least bold):</p>
+        <div className={cs.example}>
+          <FontPicker
+            loadFonts={thinnestFont ? [thinnestFont] : undefined}
+            fontVariants={(v: FontToVariant) => {
+              const thinnestFont: FontToVariant = {
+                fontName: v.fontName,
+                variants: v.variants.slice(0, 1),
+              }
+              setThinnestFont(thinnestFont)
+            }}
+          />
+        </div>
+        <p>
+          Current value:{' '}
+          {
+            // prettier-ignore
+            (thinnestFont && (
+              <span
+                style={{
+                  fontFamily: thinnestFont?.fontName,
+                  fontWeight: thinnestFont?.variants?.[0].toString().split(',')[1],
+                }}
+              >
+                {thinnestFont?.fontName}
+              </span>
+            )) || 'None'
+          }
+        </p>
+        <pre>
+          {`<FontPicker
+  loadFonts={thinnestFont ? [thinnestFont] : undefined}
+  fontVariants={(v: FontToVariant) => {
+    const thinnestFont: FontToVariant = {
+      fontName: v.fontName,
+      variants: v.variants.slice(0, 1),
+    }
+    setThinnestFont(thinnestFont)
+  }}
+/>
+
+Current value:
+<span
+  style={{
+    fontFamily: thinnestFont?.fontName,
+    fontWeight: thinnestFont?.variants?.[0].toString().split(',')[1],
+  }}
+>
+  {thinnestFont?.fontName}
+</span>
+`}
+        </pre>
 
         <h3 id="loaderonly">Font loader only</h3>
         <p>
-          Set the <code>loader-only</code>-prop to completely hide the font picker
-          if you just need to load one or more fonts.
+          Set the <code>loaderOnly</code> prop to completely hide the font picker if you just need to load one or more
+          fonts.
         </p>
         <div className={cs.example}>
-          <FontPicker :load-fonts="manuallyLoadFonts2" loader-only />
-          <div style="text-align: center">
-            <button @click="manuallyLoadFonts1 = 'Rancho'">
-              Load <span style="font-family: Rancho">"Rancho"</span>
+          <FontPicker loadFonts={manuallyLoadFonts2} loaderOnly />
+          <div className={cs.buttonGroup}>
+            <button onClick={() => setManuallyLoadFonts2('Rancho')}>
+              Load <span style={{ fontFamily: 'Rancho' }}>Rancho</span>
             </button>
-            <button @click="manuallyLoadFonts1 = 'Smooch, Risque'">
-              Load <span style="font-family: Smooch">"Smooch"</span> and
-              <span style="font-family: Risque">"Risque"</span>
+            <button onClick={() => setManuallyLoadFonts2('Smooch, Risque')}>
+              Load <span style={{ fontFamily: 'Smooch' }}>Smooch</span> and{' '}
+              <span style={{ fontFamily: 'Risque' }}>Risque</span>
             </button>
           </div>
         </div>
         <pre>
-    &lt;FontPicker :load-fonts="manuallyLoadFonts2" loader-only />
-    &lt;button @click="manuallyLoadFonts2 = 'Rancho'">Rancho&lt;/button>
-    &lt;button @click="manuallyLoadFonts2 = 'Smooch, Risque'">Two fonts&lt;/button>
-    </pre
-        >
+          {`<FontPicker loadFonts="manuallyLoadFonts2" loaderOnly />
+<button onClick={() => setManuallyLoadFonts1('Rancho')}>
+  Load <span style={{ fontFamily: 'Rancho' }}>Rancho</span>
+</button>
+<button onClick={() => setManuallyLoadFonts1('Smooch, Risque')}>
+  Load <span style={{ fontFamily: 'Smooch' }}>Smooch</span> and{' '}
+  <span style={{ fontFamily: 'Risque' }}>Risque</span>
+</button>
+`}
+        </pre>
 
-        <h3 id="choosegooglefonts">Choose google fonts</h3>
+        <h3 id="choosegooglefonts">Choose Google fonts</h3>
         <p>
-          You can limit the included google fonts using the
-          <code>google-fonts</code>-prop.
+          You can limit the included Google fonts using the <code>googleFonts</code> prop.
         </p>
-        <p>You can supply font names as an array or as a comma-seperated string.</p>
+        <p>You can supply font names as an array or as a comma separated string.</p>
         <p>
-          Do note that the previews are crazy inefficient if you only use a few
-          fonts - in that case you are probably better off recompiling all previews
-          - which is beyond the scope of this document at the moment.
+          Do note that the previews are crazy inefficient if you only use a few fonts - in that case you are probably
+          better off recompiling all previews - which is beyond the scope of this document at the moment.
         </p>
         <div className={cs.example}>
-          <FontPicker :google-fonts="['Tinos', 'Open Sans']" />
+          <FontPicker googleFonts={['Tinos', 'Open Sans']} />
         </div>
-        <pre>&lt;FontPicker :google-fonts="['Tinos', 'Open Sans']" /></pre>
+        <pre>{`<FontPicker googleFonts={['Tinos', 'Open Sans']} />`}</pre>
 
         <h3 id="fontcategories">Filter font categories</h3>
         <p>
-          You can filter the fonts by category using the
-          <code>font-categories</code>-prop.
+          You can filter the fonts by category using the <code>fontCategories</code> prop.
         </p>
-        <p>
-          You can supply category names as an array or as a comma-seperated string.
-        </p>
+        <p>You can supply category names as an array or as a comma-seperated string.</p>
         <div className={cs.example}>
-          <select v-model="fontCategories">
+          <select value={fontCategories} onChange={(e) => setFontCategories(e.currentTarget.value)}>
             <option value="all">All</option>
             <option value="serif">Serif</option>
             <option value="sans-serif">Sans-serif</option>
@@ -297,42 +343,43 @@ export default function App() {
             <option value="handwriting">Handwriting</option>
             <option value="monospace">Monospace</option>
             <option value="display, serif">display, serif</option>
-            <option :value="['display', 'handwriting']">
-              ['display', 'handwriting']
-            </option>
+            <option value={['display', 'handwriting']}>display, handwriting</option>
           </select>
-          <FontPicker :font-categories="fontCategories" />
+          <FontPicker fontCategories={fontCategories} />
         </div>
         <pre>
-    &lt;select v-model="fontCategories">
-      &lt;option value="all">All&lt;/option>
-      &lt;option value="serif">Serif&lt;/option>
-      &lt;option value="sans-serif">Sans-serif&lt;/option>
-      &lt;option value="display">Display&lt;/option>
-      &lt;option value="handwriting">Handwriting&lt;/option>
-      &lt;option value="monospace">Monospace&lt;/option>
-      &lt;option value="display, serif">display, serif&lt;/option>
-      &lt;option :value="['display', 'handwriting']">
-        ['display', 'handwriting']
-      &lt;/option>
-    &lt;/select>
-    &lt;FontPicker :font-categories="fontCategories" />
+          {`<select value={fontCategories}>
+  <option value="all">All</option>
+  <option value="serif">Serif</option>
+  <option value="sans-serif">Sans-serif</option>
+  <option value="display">Display</option>
+  <option value="handwriting">Handwriting</option>
+  <option value="monospace">Monospace</option>
+  <option value="display, serif">display, serif</option>
+  <option value={['display', 'handwriting']}>display, handwriting</option>
+</select>
+<FontPicker fontCategories={fontCategories} />`}
         </pre>
 
         <h3 id="manuallyadd">Manually add fonts</h3>
-        <p>Manually add fonts using the <code>local-fonts</code>-prop.</p>
         <p>
-          You need to provide your own styling of the previews, how to create this
-          is again beyond the scope of this document for now. Local fonts are also
-          not auto-loaded, so depending on use case you may need to handle that too.
+          Manually add fonts using the <code>localFonts</code> prop.
+        </p>
+        <p>
+          You need to provide your own styling of the previews, how to create this is again beyond the scope of this
+          document for now. Local fonts are also not auto-loaded, so depending on use case you may need to handle that
+          too.
         </p>
         <div className={cs.example}>
           <FontPicker
-            v-model="manuallyAddFontValue"
-            :google-fonts="['Tinos', 'Open Sans']"
-            :local-fonts="[
+            value={(font: string) => setManuallyAddFontValue(font)}
+            googleFonts={['Tinos', 'Open Sans']}
+            localFonts={[
               {
-                name: 'BickleyScript',
+                name: 'Bickley Script',
+                sane: 'bickley_script',
+                cased: 'bickley script',
+                category: 'handwriting',
                 variants: [
                   {
                     italic: false,
@@ -341,36 +388,51 @@ export default function App() {
                   '1,400',
                 ],
               },
-            ]"
+            ]}
           />
         </div>
-        <p v-if="typeof manuallyAddFontValue == 'string'">
-          Current value:
-          <span
-            :style="{
-              fontFamily: manuallyAddFontValue,
-            }"
-          >
-            {manuallyAddFontValue}
-          </span>
-        </p>
+        {typeof manuallyAddFontValue == 'string' && (
+          <p>
+            Current value:{' '}
+            <span
+              style={{
+                fontFamily: manuallyAddFontValue,
+              }}
+            >
+              {manuallyAddFontValue}
+            </span>
+          </p>
+        )}
         <pre>
-          &lt;FontPicker
-            v-model="manuallyAddFontValue"
-            :google-fonts="['Tinos', 'Open Sans']"
-            :local-fonts="[
-              {
-                name: 'BickleyScript',
-                variants: [{ italic: false, weight: 400 }, '1,400' ],
-              },
-            ]"
-        /&gt;
-        Current value:
-        &lt;span style='{ fontFamily: manuallyAddFontValue, }'&gt;
-          {manuallyAddFontValue}
-        &lt;/span&gt;</pre>
-
-      */}
+          {`<FontPicker
+  value={(font: string) => setManuallyAddFontValue(font)}
+  googleFonts={['Tinos', 'Open Sans']}
+  localFonts={[
+    {
+      name: 'Bickley Script',
+      sane: 'bickley_script',
+      cased: 'bickley script',
+      category: 'handwriting',
+      variants: [
+        {
+          italic: false,
+          weight: 400,
+        },
+        '1,400',
+      ],
+    },
+  ]}
+/>
+<p>Current value:
+  <span style={{
+      fontFamily: manuallyAddFontValue,
+    }}
+  >
+    {manuallyAddFontValue}
+  </span>
+</p>
+`}
+        </pre>
       </div>
     </>
   )

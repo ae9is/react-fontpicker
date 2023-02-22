@@ -2,12 +2,12 @@
 
 A Google font picker component for React.
 
-Forked from https://github.com/Mikk3lRo/vue-fontpicker/
-
 - No dependencies (other than React)
 - 1330 Google fonts
 - Font previews from pre-generated images
 - Optionally autoloads fonts
+
+Forked from https://github.com/Mikk3lRo/vue-fontpicker/
 
 # Documentation
 
