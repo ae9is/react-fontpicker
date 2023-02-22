@@ -111,10 +111,21 @@ li {
   text-align: center;
   position: relative;
 }
+.example select {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 0.5em;
+}
 .example.overflow {
   overflow: scroll;
   padding: 1em 0;
   border: 1px solid;
+}
+.buttonGroup {
+  margin-top: 0.5em;
+  display: flex;
+  gap: 1em;
+  text-align: center;
 }
 pre,
 code {
