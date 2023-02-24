@@ -6,6 +6,12 @@ export default defineConfig({
   plugins: [react()],
   build: {
     outDir: './docs',
+    rollupOptions: {
+      output: {
+        assetFileNames: 'assets/[name][extname]',
+        entryFileNames: 'assets/[name].js',
+      },
+    },
   },
   base: '/react-fontpicker/',
 })
