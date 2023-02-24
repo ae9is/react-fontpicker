@@ -80,12 +80,10 @@ export default function FontPicker({
   fontVariants,
   value,
 }: FontPickerProps) {
-  const [prevDefault, setPrevDefault] = useState('')
   const [focused, setFocused] = useState(false)
-  const [typedSearch, setTypedSearch] = useState('')
-  const [searchContent, setSearchContent] = useState('')
+  const [typedSearch, setTypedSearch] = useState(defaultValue)
+  const [searchContent, setSearchContent] = useState(defaultValue)
   const [selectedFontIndex, setSelectedFontIndex] = useState(-1)
-  const [current, setCurrentState] = useState<Font>(defaultFont)
   const [prevLoadFonts, setPrevLoadFonts] = useState<string[]>([])
   const inputRef = useRef<HTMLInputElement>(null)
   const popoutRef = useRef<HTMLDivElement>(null)
@@ -225,13 +223,6 @@ export default function FontPicker({
 
   const cancelBlur = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault()
-  }
-
-  const handleNewValue = (newValue: string) => {
-    setCurrentByName(newValue)
-    setTypedSearch(newValue)
-    setSearchContent(newValue)
-    value?.(newValue)
   }
 
   const searchChanged = (e: React.FormEvent<HTMLInputElement>) => {
@@ -384,15 +375,6 @@ export default function FontPicker({
     emitValue(font)
   }
 
-  const setCurrentByName = (newName: string) => {
-    const font = getFontByName(newName)
-    if (font) {
-      setCurrent(font)
-    } else if (fonts.length > 0) {
-      setCurrent(fonts[0])
-    }
-  }
-
   const emitFontVariants = (font: Font) => {
     if (font?.name && font?.variants) {
       fontVariants?.({
@@ -515,11 +497,7 @@ export default function FontPicker({
     }
   }
 
-  // Prevents infinite re-renders
-  if (defaultValue !== prevDefault) {
-    setPrevDefault(defaultValue)
-    handleNewValue(defaultValue)
-  }
+  const [current, setCurrentState] = useState<Font>(getFontByName(defaultValue) || defaultFont)
 
   handleLoadFont()
 
