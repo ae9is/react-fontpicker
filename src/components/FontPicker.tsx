@@ -19,12 +19,38 @@ export interface FontPickerProps {
   value?: (value: string) => void
 }
 
-interface Font {
+export interface Font {
   category: string
   name: string
   sane: string
   cased: string
   variants: Variant[]
+}
+
+export interface FourFonts {
+  regular?: number
+  bold?: number
+  italic?: number
+  boldItalic?: number
+}
+
+export type Variant = FontVariant | string
+
+export interface FontVariant {
+  italic: boolean
+  weight: number
+}
+
+export interface FontToVariant {
+  fontName: string
+  variants: Variant[]
+}
+
+export function toString(v: Variant) {
+  if (typeof v === 'string') {
+    return v
+  }
+  return (v.italic ? '1' : '0') + ',' + v.weight
 }
 
 const defaultFont: Font = {
@@ -46,25 +72,6 @@ const defaultFont: Font = {
     '1,700',
     '1,800',
   ],
-}
-
-export type Variant = FontVariant | string
-
-export interface FontVariant {
-  italic: boolean
-  weight: number
-}
-
-export interface FontToVariant {
-  fontName: string
-  variants: Variant[]
-}
-
-function toString(v: Variant) {
-  if (typeof v === 'string') {
-    return v
-  }
-  return (v.italic ? '1' : '0') + ',' + v.weight
 }
 
 export default function FontPicker({
@@ -411,13 +418,6 @@ export default function FontPicker({
     } else {
       loadFontFromObject(loaded, variants)
     }
-  }
-
-  interface FourFonts {
-    regular?: number
-    bold?: number
-    italic?: number
-    boldItalic?: number
   }
 
   const getFourVariants = (variants: string[]) => {
