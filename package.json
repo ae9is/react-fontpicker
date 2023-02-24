@@ -39,7 +39,7 @@
   ],
   "scripts": {
     "build": "run-s build:*",
-    "build:clean": "rm -rf dist && rm -rf docs",
+    "build:clean": "rm -rf dist .tsbuildinfo && rm -rf docs",
     "build:tsup": "tsup",
     "build:types": "tsc -p tsconfig.types.json",
     "build:vite": "vite build",
