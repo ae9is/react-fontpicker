@@ -48,7 +48,7 @@
     "format": "prettier --write src",
     "lint": "eslint src",
     "build-font-previews": "php ./build-font-previews.php",
-    "preview": "vite preview"
+    "preview": "vite preview --outDir docs"
   },
   "tsup": {
     "entry": ["index.ts"],
