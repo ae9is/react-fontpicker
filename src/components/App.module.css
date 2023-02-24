@@ -202,7 +202,8 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-  pre, code {
+  pre,
+  code {
     background-color: #eee;
   }
 }
