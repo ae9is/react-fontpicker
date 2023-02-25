@@ -1,5 +1,5 @@
 {
-  "name": "react-fontpicker",
+  "name": "react-fontpicker-ts",
   "version": "0.0.1",
   "private": true,
   "description": "A Google font picker component for React.js",

@@ -18,16 +18,16 @@ https://ae9is.github.io/react-fontpicker/
 
 ```bash
 # npm
-npm i react-fontpicker
+npm i react-fontpicker-ts
 # yarn
-yarn add react-fontpicker
+yarn add react-fontpicker-ts
 ```
 
 Then, import the component and stylesheet:
 
 ```js
-import FontPicker from 'react-fontpicker'
-import 'react-fontpicker/dist/index.css'
+import FontPicker from 'react-fontpicker-ts'
+import 'react-fontpicker-ts/dist/index.css'
 ```
 
 # Styling

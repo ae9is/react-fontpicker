@@ -21,7 +21,7 @@ export default function App() {
         <p>This is a live demo showing how to use react-fontpicker.</p>
         <p>
           See <a href="https://github.com/ae9is/react-fontpicker#readme">github repo</a> or{' '}
-          <a href="https://www.npmjs.com/package/react-fontpicker">npm package</a> for installation instructions.
+          <a href="https://www.npmjs.com/package/react-fontpicker-ts">npm package</a> for installation instructions.
         </p>
         <div id={cs.toc}>
           <h3>TOC</h3>
