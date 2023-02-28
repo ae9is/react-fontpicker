@@ -406,11 +406,50 @@ export default function FontPicker({
     [value]
   )
 
-  const autoLoadFont = (font: Font) => {
-    if (autoLoad) {
-      loadFontFromObject(font)
-    }
-  }
+  const loadFontFromObject = useCallback(
+    (font: Font, variants: Variant[] = []) => {
+      if (variants?.length > 0) {
+        variants = font.variants.filter((v: Variant) => variants.includes(v))
+      } else if (loadAllVariants) {
+        variants = font.variants
+      } else {
+        variants = getFourVariants(font.variants.map((v) => toString(v)))
+      }
+
+      let cssId = 'google-font-' + font.sane
+      const cssIdAll = cssId + '-all'
+      if (variants.length === font.variants.length) {
+        cssId = cssIdAll
+      } else {
+        cssId += '-' + variants.sort().join('-').replaceAll('1,', 'i').replaceAll('0,', '')
+      }
+
+      const existing = document.getElementById(cssId)
+      const existingAll = document.getElementById(cssIdAll)
+      if (!existing && !existingAll && font?.name && variants?.length > 0) {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.id = cssId
+        link.href =
+          'https://fonts.googleapis.com/css2?family=' +
+          font.name +
+          ':ital,wght@' +
+          variants.sort().join(';') +
+          '&display=swap'
+        document.getElementsByTagName('head')[0].appendChild(link)
+      }
+    },
+    [loadAllVariants]
+  )
+
+  const autoLoadFont = useCallback(
+    (font: Font) => {
+      if (autoLoad) {
+        loadFontFromObject(font)
+      }
+    },
+    [autoLoad, loadFontFromObject]
+  )
 
   const loadFontByName = (font: string | Font, variants: Variant[] = []) => {
     if (font === '') {
@@ -473,45 +512,13 @@ export default function FontPicker({
     return fourVariants
   }
 
-  const loadFontFromObject = (font: Font, variants: Variant[] = []) => {
-    if (variants?.length > 0) {
-      variants = font.variants.filter((v: Variant) => variants.includes(v))
-    } else if (loadAllVariants) {
-      variants = font.variants
-    } else {
-      variants = getFourVariants(font.variants.map((v) => toString(v)))
-    }
-
-    let cssId = 'google-font-' + font.sane
-    const cssIdAll = cssId + '-all'
-    if (variants.length === font.variants.length) {
-      cssId = cssIdAll
-    } else {
-      cssId += '-' + variants.sort().join('-').replaceAll('1,', 'i').replaceAll('0,', '')
-    }
-
-    const existing = document.getElementById(cssId)
-    const existingAll = document.getElementById(cssIdAll)
-    if (!existing && !existingAll && font?.name && variants?.length > 0) {
-      const link = document.createElement('link')
-      link.rel = 'stylesheet'
-      link.id = cssId
-      link.href =
-        'https://fonts.googleapis.com/css2?family=' +
-        font.name +
-        ':ital,wght@' +
-        variants.sort().join(';') +
-        '&display=swap'
-      document.getElementsByTagName('head')[0].appendChild(link)
-    }
-  }
-
   const defaultCurrent = getFontByName(defaultValue) || defaultFont
   const [current, setCurrentState] = useState<Font>(defaultCurrent)
 
   handleLoadFont()
 
   useEffect(() => {
+    autoLoadFont(defaultCurrent)
     emitFontVariants(defaultCurrent)
     emitValue(defaultCurrent)
   }, [defaultCurrent])
