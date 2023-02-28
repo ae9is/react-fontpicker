@@ -86,7 +86,7 @@ export default function App() {
           />
         </div>
         <p>fontVariants:</p>
-        <pre>{fontVariants?.variants?.join('\n') ?? 'None'}</pre>
+        <pre>{JSON.stringify(fontVariants ?? 'None', null, 2)}</pre>
         <pre>
           {`<FontPicker
   defaultValue="Mountains of Christmas"
@@ -94,7 +94,7 @@ export default function App() {
     setFontVariants(variants)
   }}
 />
-<pre>{fontVariants?.variants?.join('\\n') ?? 'None'}</pre>
+<pre>{JSON.stringify(fontVariants ?? 'None', null, 2)}</pre>
 `}
         </pre>
 
@@ -190,7 +190,7 @@ export default function App() {
 <p>Current value: <span style={{fontFamily: font3}}>{font3}</span></p>
 `}
         </pre>
-        <p>fontVariants:</p>
+        <p>Font variants:</p>
         <pre>
           {fontVariants3 &&
             fontVariants3.variants?.map((value, index) => {
@@ -203,6 +203,19 @@ export default function App() {
                 </div>
               )
             })}
+        </pre>
+        <pre>
+          {`{fontVariants3 &&
+  fontVariants3.variants?.map((value, index) => {
+    const fontFamily = fontVariants3.fontName
+    const [isItalic = '0', fontWeight = '400'] = value.toString().split(',')
+    const fontStyle = isItalic === '1' ? 'italic' : 'normal'
+    return (
+      <div key={index} style={{ fontFamily, fontWeight, fontStyle }}>
+        {fontVariants3.fontName + ' - ' + value ?? 'None'}
+      </div>
+    )
+  })}`}
         </pre>
 
         <h3 id="loadspecific">Load specific variants</h3>
