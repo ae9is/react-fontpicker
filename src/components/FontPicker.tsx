@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import fontInfos from '../../font-preview/fontInfo.json'
 import '../../font-preview/font-previews.css'
 import './FontPicker.css'
@@ -362,15 +362,18 @@ export default function FontPicker({
     setFocused(false)
   }
 
-  const getFontByName = (name: string) => {
-    let found: Font | null = null
-    fonts.forEach((font) => {
-      if (font.name === name.trim()) {
-        found = font
-      }
-    })
-    return found
-  }
+  const getFontByName = useCallback(
+    (name: string) => {
+      let found: Font | null = null
+      fonts.forEach((font) => {
+        if (font.name === name.trim()) {
+          found = font
+        }
+      })
+      return found
+    },
+    [fonts]
+  )
 
   const setCurrent = (font: Font) => {
     setCurrentState(font)
@@ -382,20 +385,26 @@ export default function FontPicker({
     emitValue(font)
   }
 
-  const emitFontVariants = (font: Font) => {
-    if (font?.name && font?.variants) {
-      fontVariants?.({
-        fontName: font.name,
-        variants: font.variants,
-      })
-    }
-  }
+  const emitFontVariants = useCallback(
+    (font: Font) => {
+      if (font?.name && font?.variants) {
+        fontVariants?.({
+          fontName: font.name,
+          variants: font.variants,
+        })
+      }
+    },
+    [fontVariants]
+  )
 
-  const emitValue = (font: Font) => {
-    if (font?.name) {
-      value?.(font.name)
-    }
-  }
+  const emitValue = useCallback(
+    (font: Font) => {
+      if (font?.name) {
+        value?.(font.name)
+      }
+    },
+    [value]
+  )
 
   const autoLoadFont = (font: Font) => {
     if (autoLoad) {
@@ -497,9 +506,15 @@ export default function FontPicker({
     }
   }
 
-  const [current, setCurrentState] = useState<Font>(getFontByName(defaultValue) || defaultFont)
+  const defaultCurrent = getFontByName(defaultValue) || defaultFont
+  const [current, setCurrentState] = useState<Font>(defaultCurrent)
 
   handleLoadFont()
+
+  useEffect(() => {
+    emitFontVariants(defaultCurrent)
+    emitValue(defaultCurrent)
+  }, [defaultCurrent])
 
   return (
     <>
