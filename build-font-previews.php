@@ -1,35 +1,18 @@
-/*
-MIT License
-
-Copyright (c) 2020 Mikk3lRo
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-*/
-
 <?php declare(strict_types = 1);
 
-namespace Mikk3lRo\vueFontpicker;
+namespace ae9is\reactFontpicker;
 
 ini_set('memory_limit', '5G');
 
+function println($line) {
+    return print($line . "\n");
+}
+
+println('Start building font previews at ' . date(DATE_RFC2822) . ' ...');
+
 if (!isset($argv[1]) || $argv[1] == 'googlefonts') {
-    $apiKey = file_exists(__DIR__ . '/GOOGLE_API_KEY') ? file_get_contents(__DIR__ . '/GOOGLE_API_KEY') : '';
+    println('Downloading and building previews for all Google fonts ...');
+    $apiKey = file_exists(__DIR__ . '/GOOGLE_API_KEY') ? trim(file_get_contents(__DIR__ . '/GOOGLE_API_KEY')) : '';
 
     if (!is_string($apiKey) || strlen($apiKey) < 20) {
         die('Invalid api key - get an api key for google fonts and put it in a file called GOOGLE_API_KEY (or hardcode it in
@@ -42,6 +25,7 @@ if (!isset($argv[1]) || $argv[1] == 'googlefonts') {
     );
     $outpath = __DIR__ . '/font-preview';
 } else {
+    println('Building manual font previews ...');
     $fonts = array();
     $dummy = array_shift($argv);
     $outpath = array_shift($argv);
@@ -87,7 +71,8 @@ class GoogleFonts
         self::$apiKey = $apiKey;
 
         if (!file_exists(self::$fontPath)) {
-            mkdir(self::$fontPath, 0700, true);
+            println('Creating cache directory: ' . self::$fontPath);
+            mkdir(self::$fontPath, 0755, true);
         }
 
         $fontInfos = self::getFontList();
@@ -111,6 +96,7 @@ class GoogleFonts
             $localFile = self::$fontPath . '/' . strtolower(preg_replace('#[^a-zA-Z0-9\-]#', '', str_replace(' ', '-', $font['family']))) . '.ttf';
 
             if (!file_exists($localFile)) {
+                println('Downloading font file ' . $remoteFile . ' ...');
                 file_put_contents($localFile, file_get_contents($remoteFile));
                 sleep(1);
             }
@@ -150,6 +136,7 @@ class GoogleFonts
     {
         $localJsonFile = self::$fontPath . '/fonts.json';
         if (!is_file($localJsonFile) || filemtime($localJsonFile) < time() - 60 * 60 * 24) {
+            println('Font cache info file missing or out of date, downloading ...');
             $url = 'https://www.googleapis.com/webfonts/v1/webfonts?key=' . self::$apiKey . '&sort=alpha';
             $remoteJson = json_decode(
                 file_get_contents($url),
@@ -163,7 +150,7 @@ class GoogleFonts
         if (!is_array($localJson) || !isset($localJson['items'])) {
             throw new Exception('Failed to get fonts');
         }
-
+        
         $fonts = array_filter($localJson['items'], function ($font) {
             //We only want fonts with a latin subset
             if (!in_array('latin', $font['subsets'])) {
@@ -187,13 +174,15 @@ class GoogleFonts
 class fontPreviewBuilder {
     private static $outputPath;
     private static $cellHeight = 40;
-    private static $sliceSize = 200;
+    private static $sliceSize = 20; // 200
 
 
     public static function generatePreview($fonts, $outputPath) {
+        println('Generating previews for ' . sizeof($fonts) . ' fonts to: ' . $outputPath);
         self::$outputPath = $outputPath;
         if (!file_exists(self::$outputPath)) {
-            mkdir(self::$outputPath, 0700, true);
+            println('Creating output font previews directory: ' . $outputPath);
+            mkdir(self::$outputPath, 0755, true);
         }
 
         foreach ($fonts as $num => &$font) {
@@ -201,12 +190,16 @@ class fontPreviewBuilder {
             $font['top'] = ($num % self::$sliceSize) * self::$cellHeight;
         }
 
+        println('Creating font info JSON file ...');
         self::makeJson($fonts);
 
+        println('Creating font preview images ...');
         self::makeImages($fonts);
 
+        println('Generating CSS ...');
         self::makeCss($fonts);
 
+        println('Generating HTML ...');
         self::makeHtml($fonts);
     }
 
@@ -368,3 +361,5 @@ class fontPreviewBuilder {
         file_put_contents(self::$outputPath . '/font-previews.html', implode("\n", $html));
     }
 }
+
+println('Done at ' . date(DATE_RFC2822));
