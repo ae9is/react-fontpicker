@@ -45,7 +45,7 @@
     "build:vite": "vite build",
     "dev": "run-s dev:*",
     "dev:vite": "vite --port 3000",
-    "test": "start-server-and-test start http://localhost:3000 cy:run",
+    "test": "start-server-and-test dev http://localhost:3000 cy:run",
     "cy:run": "run-p cy:run:*",
     "cy:run:e2e": "CYPRESS_CRASH_REPORTS=0 cypress run --e2e",
     "cy:run:comp": "CYPRESS_CRASH_REPORTS=0 cypress run --component",
