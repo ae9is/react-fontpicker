@@ -67,7 +67,7 @@ export default function App() {
           are pre-built into the picker.)
         </p>
         <div className={cs.example}>
-          <FontPicker defaultValue="Audiowide" value={(font1: string) => setFont1(font1)} />
+          <FontPicker defaultValue="Audiowide" value={(font1: string) => setFont1(font1)} data-test="fontpicker-default" />
         </div>
         <p>Current value: {font1}</p>
         <pre>{"<FontPicker defaultValue={'Audiowide'} value={(font1: string) => setFont1(font1)} />"}</pre>
@@ -83,6 +83,7 @@ export default function App() {
             fontVariants={(variants: FontToVariant) => {
               setFontVariants(variants)
             }}
+            data-test="fontpicker-fontvariants"
           />
         </div>
         <p>fontVariants:</p>
@@ -103,7 +104,7 @@ export default function App() {
           Customize the message when autocomplete yields no results using the <code>noMatches</code> prop.
         </p>
         <div className={cs.example}>
-          <FontPicker noMatches="I've got nothing" />
+          <FontPicker noMatches="I've got nothing" data-test="fontpicker-nomatches" />
         </div>
         <pre>{'<FontPicker noMatches="I\'ve got nothing" />'}</pre>
 
@@ -112,7 +113,7 @@ export default function App() {
           Automatically load fonts by setting the <code>autoLoad</code> prop.
         </p>
         <div className={cs.example}>
-          <FontPicker autoLoad defaultValue="Rock Salt" value={(font2: string) => setFont2(font2)} />
+          <FontPicker autoLoad defaultValue="Rock Salt" value={(font2: string) => setFont2(font2)} data-test="fontpicker-autoload" />
         </div>
         <p>
           Current value: <span style={{ fontFamily: font2 }}>{font2}</span>
@@ -139,7 +140,7 @@ export default function App() {
         </p>
         <p>Several fonts may be loaded by comma-separating the names.</p>
         <div className={cs.example}>
-          <FontPicker loadFonts={manuallyLoadFonts1} />
+          <FontPicker loadFonts={manuallyLoadFonts1} data-test="fontpicker-manualload" />
           <div className={cs.buttonGroup}>
             <button onClick={() => setManuallyLoadFonts1('Rubik Beastly')}>
               Load <span style={{ fontFamily: 'Rubik Beastly' }}>Rubik Beastly</span>
@@ -173,6 +174,7 @@ export default function App() {
             fontVariants={(variants: FontToVariant) => {
               setFontVariants3(variants)
             }}
+            data-test="fontpicker-loadallvariants"
           />
         </div>
         <p>
@@ -305,7 +307,7 @@ Current value:
           fonts.
         </p>
         <div className={cs.example}>
-          <FontPicker loadFonts={manuallyLoadFonts2} loaderOnly />
+          <FontPicker loadFonts={manuallyLoadFonts2} loaderOnly data-test="fontpicker-loaderonly" />
           <div className={cs.buttonGroup}>
             <button onClick={() => setManuallyLoadFonts2('Rancho')}>
               Load <span style={{ fontFamily: 'Rancho' }}>Rancho</span>
@@ -338,7 +340,7 @@ Current value:
           better off recompiling all previews - which is beyond the scope of this document at the moment.
         </p>
         <div className={cs.example}>
-          <FontPicker googleFonts={['Tinos', 'Open Sans']} />
+          <FontPicker googleFonts={['Tinos', 'Open Sans']} data-test="fontpicker-choosegooglefonts" />
         </div>
         <pre>{`<FontPicker googleFonts={['Tinos', 'Open Sans']} />`}</pre>
 
@@ -358,7 +360,7 @@ Current value:
             <option value="display, serif">display, serif</option>
             <option value={['display', 'handwriting']}>display, handwriting</option>
           </select>
-          <FontPicker fontCategories={fontCategories} />
+          <FontPicker fontCategories={fontCategories} data-test="fontpicker-fontcategories" />
         </div>
         <pre>
           {`<select value={fontCategories}>
@@ -402,6 +404,7 @@ Current value:
                 ],
               },
             ]}
+            data-test="manuallyadd"
           />
         </div>
         {typeof manuallyAddFontValue == 'string' && (
