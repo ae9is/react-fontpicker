@@ -26,9 +26,13 @@
     "strictNullChecks": true,
   },
   "include": [
-    "vite.config.ts",
-    "src/**/*",
+    "src",
     "font-preview/**/*.json",
     ".eslintrc.js",
+    "vite.config.ts",
+    "cypress.d.ts", // needed for vscode only
+  ],
+  "exclude": [
+    //"src/**/*.cy.{js,jsx,ts,tsx}", // commented for vscode
   ]
 }

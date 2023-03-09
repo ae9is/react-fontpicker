@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  // needed for eslint only
+  "compilerOptions": {
+  },
+  "include": [
+    "cypress.d.ts",
+    "cypress.config.ts",
+  ],
+  "exclude": []
+}
