@@ -124,7 +124,7 @@ php build-font-previews.php "FontName|sans-serif|0,400+0,700+1,400+1,700|/path/t
 
 # Testing
 
-This app uses (Cypress)[https://docs.cypress.io/guides/getting-started/installing-cypress] for testing. Make sure to setup the prerequisites for Cypress on your system.
+This app uses Vitest and [Cypress](https://docs.cypress.io/guides/getting-started/installing-cypress) for testing. Make sure to setup the prerequisites for Cypress on your system.
 
 On Ubuntu:
 
