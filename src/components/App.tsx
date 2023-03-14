@@ -5,14 +5,15 @@ import cs from './App.module.css'
 
 export default function App() {
   const [font1, setFont1] = useState('')
-  const [font2, setFont2] = useState('Open Sans')
+  const [font2, setFont2] = useState('Open Sans') // example has no fontVariants
   const [font3, setFont3] = useState('Open Sans')
+  const [thinnestFont, setThinnestFont] = useState<FontToVariant>() // basically, font4; subset of fontVariants4
   const [fontVariants, setFontVariants] = useState<FontToVariant>()
   const [fontVariants3, setFontVariants3] = useState<FontToVariant>()
+  const [fontVariants4, setFontVariants4] = useState<FontToVariant>()
   const [fontCategories, setFontCategories] = useState<string | string[]>('sans-serif')
   const [manuallyLoadFonts1, setManuallyLoadFonts1] = useState('')
   const [manuallyLoadFonts2, setManuallyLoadFonts2] = useState('')
-  const [thinnestFont, setThinnestFont] = useState<FontToVariant>()
   const [manuallyAddFontValue, setManuallyAddFontValue] = useState('Tinos')
 
   return (
@@ -232,7 +233,7 @@ export default function App() {
 
         <h3 id="loadspecific">Load specific variants</h3>
         <p>
-          The <code>loadFonts</code> prop can also accept an array of objects specifying fonts and variants. Example:
+          The <code>loadFonts</code> prop can also accept an array of objects specifying fonts and variants. An example:
         </p>
         <pre>
           {`[
@@ -261,8 +262,10 @@ export default function App() {
         <p>One use case could be loading only one variant - in this example whichever is first (least bold):</p>
         <div className={cs.example}>
           <FontPicker
+            defaultValue="Orbitron"
             loadFonts={thinnestFont ? [thinnestFont] : undefined}
             fontVariants={(v: FontToVariant) => {
+              setFontVariants4(v)
               const thinnestFont: FontToVariant = {
                 fontName: v.fontName,
                 variants: v.variants.slice(0, 1),
@@ -288,10 +291,25 @@ export default function App() {
             )) || 'None'
           }
         </p>
+        <p>Font variants (note: all rendered in lowest weight!):</p>
+        <pre data-testid="loadallvariants-fontvariants">
+          {fontVariants4 &&
+            fontVariants4.variants?.map((value, index) => {
+              const fontFamily = fontVariants4.fontName
+              const [isItalic = '0', fontWeight = '400'] = value.toString().split(',')
+              const fontStyle = isItalic === '1' ? 'italic' : 'normal'
+              return (
+                <div key={index} style={{ fontFamily, fontWeight, fontStyle }}>
+                  {fontVariants4.fontName + ' - ' + value ?? 'None'}
+                </div>
+              )
+            })}
+        </pre>
         <pre>
           {`<FontPicker
   loadFonts={thinnestFont ? [thinnestFont] : undefined}
   fontVariants={(v: FontToVariant) => {
+    setFontVariants4(v)
     const thinnestFont: FontToVariant = {
       fontName: v.fontName,
       variants: v.variants.slice(0, 1),
@@ -309,6 +327,19 @@ Current value:
 >
   {thinnestFont?.fontName}
 </span>
+
+Font variants:
+{fontVariants4 &&
+  fontVariants4.variants?.map((value, index) => {
+    const fontFamily = fontVariants4.fontName
+    const [isItalic = '0', fontWeight = '400'] = value.toString().split(',')
+    const fontStyle = isItalic === '1' ? 'italic' : 'normal'
+    return (
+      <div key={index} style={{ fontFamily, fontWeight, fontStyle }}>
+        {fontVariants4.fontName + ' - ' + value ?? 'None'}
+      </div>
+    )
+  })}
 `}
         </pre>
 
