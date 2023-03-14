@@ -1,3 +1,4 @@
+/// <reference types="cypress" />
 import FontPicker from './FontPicker'
 
 describe('<FontPicker />', () => {
@@ -17,15 +18,12 @@ describe('<FontPicker />', () => {
     const defaultValue = 'Mountains of Christmas'
     const fontVariants = cy.spy().as('fontVariants')
     const expectedResult = {
-      "fontName": "Mountains of Christmas",
-      "variants": [
-        "0,400",
-        "0,700"
-      ]
+      fontName: 'Mountains of Christmas',
+      variants: ['0,400', '0,700'],
     }
     cy.mount(<FontPicker defaultValue={defaultValue} fontVariants={fontVariants} />)
     cy.get('@fontVariants').should('have.been.called', 1)
-    cy.get('@fontVariants').should('have.been.calledWith', expectedResult)
+    cy.get('@fontVariants').should('have.been.calledWithMatch', expectedResult)
   })
 
   it('returns custom no matches', () => {
@@ -34,5 +32,31 @@ describe('<FontPicker />', () => {
     cy.get('input').type('Not a font name')
     cy.contains(noMatches)
   })
-})
 
+  it('gets all variants', () => {
+    // Doesn't test the css style loading, just that all variants are emitted by the fontpicker.
+    // See e2e test for loading.
+    const defaultValue = 'Open Sans'
+    const fontVariants = cy.spy().as('fontVariants')
+    const expectedResult = {
+      fontName: 'Open Sans',
+      variants: [
+        '0,300',
+        '0,400',
+        '0,500',
+        '0,600',
+        '0,700',
+        '0,800',
+        '1,300',
+        '1,400',
+        '1,500',
+        '1,600',
+        '1,700',
+        '1,800',
+      ],
+    }
+    cy.mount(<FontPicker loadAllVariants defaultValue={defaultValue} fontVariants={fontVariants} />)
+    cy.get('@fontVariants').should('have.been.called', 1)
+    cy.get('@fontVariants').should('have.been.calledWithMatch', expectedResult)
+  })
+})
