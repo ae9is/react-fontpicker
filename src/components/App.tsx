@@ -67,9 +67,11 @@ export default function App() {
           are pre-built into the picker.)
         </p>
         <div className={cs.example}>
-          <FontPicker defaultValue="Audiowide" value={(font1: string) => setFont1(font1)} data-test="fontpicker-default" />
+          <FontPicker defaultValue="Audiowide" value={(font1: string) => setFont1(font1)}
+            data-testid="default-fontpicker"
+          />
         </div>
-        <p>Current value: {font1}</p>
+        <p data-testid="default-value">Current value: {font1}</p>
         <pre>{"<FontPicker defaultValue={'Audiowide'} value={(font1: string) => setFont1(font1)} />"}</pre>
         <h3 id="fontvariants">Font variants</h3>
         <p>
@@ -83,11 +85,11 @@ export default function App() {
             fontVariants={(variants: FontToVariant) => {
               setFontVariants(variants)
             }}
-            data-test="fontpicker-fontvariants"
+            data-testid="fontvariants-fontpicker"
           />
         </div>
         <p>fontVariants:</p>
-        <pre>{JSON.stringify(fontVariants ?? 'None', null, 2)}</pre>
+        <pre data-testid="fontvariants-fontvariants">{JSON.stringify(fontVariants ?? 'None', null, 2)}</pre>
         <pre>
           {`<FontPicker
   defaultValue="Mountains of Christmas"
@@ -104,7 +106,7 @@ export default function App() {
           Customize the message when autocomplete yields no results using the <code>noMatches</code> prop.
         </p>
         <div className={cs.example}>
-          <FontPicker noMatches="I've got nothing" data-test="fontpicker-nomatches" />
+          <FontPicker noMatches="I've got nothing" data-testid="nomatches-fontpicker" />
         </div>
         <pre>{'<FontPicker noMatches="I\'ve got nothing" />'}</pre>
 
@@ -113,9 +115,9 @@ export default function App() {
           Automatically load fonts by setting the <code>autoLoad</code> prop.
         </p>
         <div className={cs.example}>
-          <FontPicker autoLoad defaultValue="Rock Salt" value={(font2: string) => setFont2(font2)} data-test="fontpicker-autoload" />
+          <FontPicker autoLoad defaultValue="Rock Salt" value={(font2: string) => setFont2(font2)} data-testid="autoload-fontpicker" />
         </div>
-        <p>
+        <p data-testid="autoload-value">
           Current value: <span style={{ fontFamily: font2 }}>{font2}</span>
         </p>
         <pre>{`<FontPicker
@@ -140,12 +142,12 @@ export default function App() {
         </p>
         <p>Several fonts may be loaded by comma-separating the names.</p>
         <div className={cs.example}>
-          <FontPicker loadFonts={manuallyLoadFonts1} data-test="fontpicker-manualload" />
+          <FontPicker loadFonts={manuallyLoadFonts1} data-testid="manualload-fontpicker" />
           <div className={cs.buttonGroup}>
-            <button onClick={() => setManuallyLoadFonts1('Rubik Beastly')}>
+            <button onClick={() => setManuallyLoadFonts1('Rubik Beastly')} data-testid="manualload-beastly">
               Load <span style={{ fontFamily: 'Rubik Beastly' }}>Rubik Beastly</span>
             </button>
-            <button onClick={() => setManuallyLoadFonts1('Pacifico, Teko')}>
+            <button onClick={() => setManuallyLoadFonts1('Pacifico, Teko')} data-testid="manualload-pacifico-teko">
               Load <span style={{ fontFamily: 'Pacifico' }}>Pacifico</span> and{' '}
               <span style={{ fontFamily: 'Teko' }}>Teko</span>
             </button>
@@ -174,10 +176,10 @@ export default function App() {
             fontVariants={(variants: FontToVariant) => {
               setFontVariants3(variants)
             }}
-            data-test="fontpicker-loadallvariants"
+            data-testid="loadallvariants-fontpicker"
           />
         </div>
-        <p>
+        <p data-testid="loadallvariants-value">
           Current value: <span style={{ fontFamily: font3 }}>{font3}</span>
         </p>
         <pre>
@@ -193,7 +195,7 @@ export default function App() {
 `}
         </pre>
         <p>Font variants:</p>
-        <pre>
+        <pre data-testid="loadallvariants-fontvariants">
           {fontVariants3 &&
             fontVariants3.variants?.map((value, index) => {
               const fontFamily = fontVariants3.fontName
@@ -259,9 +261,10 @@ export default function App() {
               }
               setThinnestFont(thinnestFont)
             }}
+            data-testid="loadspecific-fontpicker"
           />
         </div>
-        <p>
+        <p data-testid="loadspecific-value">
           Current value:{' '}
           {
             // prettier-ignore
@@ -307,12 +310,12 @@ Current value:
           fonts.
         </p>
         <div className={cs.example}>
-          <FontPicker loadFonts={manuallyLoadFonts2} loaderOnly data-test="fontpicker-loaderonly" />
+          <FontPicker loadFonts={manuallyLoadFonts2} loaderOnly data-testid="loaderonly-fontpicker" />
           <div className={cs.buttonGroup}>
-            <button onClick={() => setManuallyLoadFonts2('Rancho')}>
+            <button onClick={() => setManuallyLoadFonts2('Rancho')} data-testid="loaderonly-rancho">
               Load <span style={{ fontFamily: 'Rancho' }}>Rancho</span>
             </button>
-            <button onClick={() => setManuallyLoadFonts2('Smooch, Risque')}>
+            <button onClick={() => setManuallyLoadFonts2('Smooch, Risque')} data-testid="loaderonly-smooch-risque">
               Load <span style={{ fontFamily: 'Smooch' }}>Smooch</span> and{' '}
               <span style={{ fontFamily: 'Risque' }}>Risque</span>
             </button>
@@ -340,7 +343,7 @@ Current value:
           better off recompiling all previews - which is beyond the scope of this document at the moment.
         </p>
         <div className={cs.example}>
-          <FontPicker googleFonts={['Tinos', 'Open Sans']} data-test="fontpicker-choosegooglefonts" />
+          <FontPicker googleFonts={['Tinos', 'Open Sans']} data-testid="choosegooglefonts-fontpicker" />
         </div>
         <pre>{`<FontPicker googleFonts={['Tinos', 'Open Sans']} />`}</pre>
 
@@ -350,7 +353,7 @@ Current value:
         </p>
         <p>You can supply category names as an array or as a comma-seperated string.</p>
         <div className={cs.example}>
-          <select value={fontCategories} onChange={(e) => setFontCategories(e.currentTarget.value)}>
+          <select value={fontCategories} onChange={(e) => setFontCategories(e.currentTarget.value)} data-testid="fontcategories-select">
             <option value="all">All</option>
             <option value="serif">Serif</option>
             <option value="sans-serif">Sans-serif</option>
@@ -360,7 +363,7 @@ Current value:
             <option value="display, serif">display, serif</option>
             <option value={['display', 'handwriting']}>display, handwriting</option>
           </select>
-          <FontPicker fontCategories={fontCategories} data-test="fontpicker-fontcategories" />
+          <FontPicker fontCategories={fontCategories} data-testid="fontcategories-fontpicker" />
         </div>
         <pre>
           {`<select value={fontCategories}>
@@ -404,11 +407,11 @@ Current value:
                 ],
               },
             ]}
-            data-test="manuallyadd"
+            data-testid="manuallyadd-fontpicker"
           />
         </div>
         {typeof manuallyAddFontValue == 'string' && (
-          <p>
+          <p data-testid="manuallyadd-value">
             Current value:{' '}
             <span
               style={{
