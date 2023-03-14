@@ -3,6 +3,11 @@
   // needed for eslint only
   "compilerOptions": {
   },
+  "typeAcquisition": {
+    "include": [
+      "cypress"
+    ],
+  },
   "include": [
     "cypress.d.ts",
     "cypress.config.ts",

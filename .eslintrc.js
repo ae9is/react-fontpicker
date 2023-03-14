@@ -25,7 +25,8 @@ module.exports = {
       //
       './tsconfig.json',
       './tsconfig.types.json',
-      './tsconfig.test.json',
+      './tsconfig.cypress.json',
+      './tsconfig.vitest.json',
       './cypress/tsconfig.json',
     ],
   },
@@ -36,5 +37,6 @@ module.exports = {
   },
   rules: {
     "@typescript-eslint/no-namespace": "off",
+    "@typescript-eslint/triple-slash-reference": "off",
   }
 }
