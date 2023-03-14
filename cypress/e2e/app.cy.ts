@@ -20,6 +20,23 @@ describe('react fontpicker docs', () => {
     cy.getBySel('google-font-rock_salt-all').should('exist')
   })
 
+  it('loads all variants', () => {
+    cy.getBySel('google-font-open_sans-all').as('link')
+    cy.get('@link').should('have.attr', 'rel', 'stylesheet')
+    cy.get('@link').should(
+      'have.attr',
+      'href',
+      'https://fonts.googleapis.com/css2?family=Open Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap'
+    )
+  })
+
+  it('loads specific variants', () => {
+    // Test id like: google-font-orbitron.*00
+    // Only one variant (the thinnest) should be loaded for this example, which is currently: google-font-orbitron-400
+    cy.get('[data-testid^="google-font-orbitron-"][data-testid$="00"]').as('link')
+    cy.get('@link').should('have.attr', 'rel', 'stylesheet')
+  })
+
   it('limits included fonts', () => {
     const includedFonts = ['font-preview-open_sans', 'font-preview-tinos']
     cy.getBySel('choosegooglefonts-fontpicker')
