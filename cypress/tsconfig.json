@@ -4,14 +4,10 @@
   // https://github.com/cypress-io/cypress-realworld-app/blob/develop/cypress/tsconfig.json
   "compilerOptions": {
     "allowJs": true,
-    "types": [
-      "cypress",
-    ],
+    "types": ["cypress"],
     "lib": ["ES2015", "DOM"],
-    "isolatedModules": false,
+    "isolatedModules": false
   },
-  "include": [
-    "**/*.ts",
-  ],
+  "include": ["**/*.ts"],
   "exclude": []
 }

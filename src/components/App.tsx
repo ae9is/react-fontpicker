@@ -67,7 +67,9 @@ export default function App() {
           are pre-built into the picker.)
         </p>
         <div className={cs.example}>
-          <FontPicker defaultValue="Audiowide" value={(font1: string) => setFont1(font1)}
+          <FontPicker
+            defaultValue="Audiowide"
+            value={(font1: string) => setFont1(font1)}
             data-testid="default-fontpicker"
           />
         </div>
@@ -115,7 +117,12 @@ export default function App() {
           Automatically load fonts by setting the <code>autoLoad</code> prop.
         </p>
         <div className={cs.example}>
-          <FontPicker autoLoad defaultValue="Rock Salt" value={(font2: string) => setFont2(font2)} data-testid="autoload-fontpicker" />
+          <FontPicker
+            autoLoad
+            defaultValue="Rock Salt"
+            value={(font2: string) => setFont2(font2)}
+            data-testid="autoload-fontpicker"
+          />
         </div>
         <p data-testid="autoload-value">
           Current value: <span style={{ fontFamily: font2 }}>{font2}</span>
@@ -306,7 +313,7 @@ Current value:
 
         <h3 id="loaderonly">Font loader only</h3>
         <p>
-          Set the <code>loaderOnly</code> prop to completely hide the font picker if you just need to load one or more
+          Set the <code>loaderOnly</code> prop to completely hide the fontpicker if you just need to load one or more
           fonts.
         </p>
         <div className={cs.example}>
@@ -353,7 +360,11 @@ Current value:
         </p>
         <p>You can supply category names as an array or as a comma-seperated string.</p>
         <div className={cs.example}>
-          <select value={fontCategories} onChange={(e) => setFontCategories(e.currentTarget.value)} data-testid="fontcategories-select">
+          <select
+            value={fontCategories}
+            onChange={(e) => setFontCategories(e.currentTarget.value)}
+            data-testid="fontcategories-select"
+          >
             <option value="all">All</option>
             <option value="serif">Serif</option>
             <option value="sans-serif">Sans-serif</option>
