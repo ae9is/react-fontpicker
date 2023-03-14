@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import '../../manual-fonts-test/font-previews.css'
 import FontPicker, { FontToVariant } from './FontPicker'
 import cs from './App.module.css'
 
@@ -405,9 +406,9 @@ Current value:
             googleFonts={['Tinos', 'Open Sans']}
             localFonts={[
               {
-                name: 'Bickley Script',
-                sane: 'bickley_script',
-                cased: 'bickley script',
+                name: 'BickleyScript',
+                sane: 'bickleyscript',
+                cased: 'bickleyscript',
                 category: 'handwriting',
                 variants: [
                   {
@@ -439,9 +440,9 @@ Current value:
   googleFonts={['Tinos', 'Open Sans']}
   localFonts={[
     {
-      name: 'Bickley Script',
-      sane: 'bickley_script',
-      cased: 'bickley script',
+      name: 'BickleyScript',
+      sane: 'bickleyscript',
+      cased: 'bickleyscript',
       category: 'handwriting',
       variants: [
         {
