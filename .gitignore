@@ -13,6 +13,8 @@ dist-ssr
 *.local
 font-cache
 .tsbuildinfo
+cypress/videos
+cypress/screenshots
 
 # local env files
 .env.local

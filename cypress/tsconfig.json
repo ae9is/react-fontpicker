@@ -1,0 +1,13 @@
+{
+  "extends": "../tsconfig.json",
+  // https://docs.cypress.io/guides/tooling/ide-integration
+  // https://github.com/cypress-io/cypress-realworld-app/blob/develop/cypress/tsconfig.json
+  "compilerOptions": {
+    "allowJs": true,
+    "types": ["cypress"],
+    "lib": ["ES2015", "DOM"],
+    "isolatedModules": false
+  },
+  "include": ["**/*.ts"],
+  "exclude": []
+}

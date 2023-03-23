@@ -26,9 +26,14 @@
     "strictNullChecks": true,
   },
   "include": [
-    "vite.config.ts",
-    "src/**/*",
+    "src",
     "font-preview/**/*.json",
     ".eslintrc.js",
+    "vite.config.ts",
+    "cypress.d.ts", // needed for ide only
+  ],
+  "exclude": [
+    //"src/**/*.{cy,test,spec}.{js,jsx,ts,tsx}", // commented for ide
+    //"src/test", // commented for ide
   ]
 }

@@ -3,7 +3,7 @@ import fontInfos from '../../font-preview/fontInfo.json'
 import '../../font-preview/font-previews.css'
 import './FontPicker.css'
 
-export interface FontPickerProps {
+export interface FontPickerProps extends React.ComponentPropsWithoutRef<'div'> {
   defaultValue?: string
   noMatches?: string
   autoLoad?: boolean
@@ -86,6 +86,7 @@ export default function FontPicker({
   localFonts = [],
   fontVariants,
   value,
+  ...rest
 }: FontPickerProps) {
   const [focused, setFocused] = useState(false)
   const [typedSearch, setTypedSearch] = useState(defaultValue)
@@ -436,6 +437,7 @@ export default function FontPicker({
           ':ital,wght@' +
           variants.sort().join(';') +
           '&display=swap'
+        link.setAttribute('data-testid', cssId) // for react testing library
         document.getElementsByTagName('head')[0].appendChild(link)
       }
     },
@@ -526,7 +528,7 @@ export default function FontPicker({
   return (
     <>
       {!loaderOnly && (
-        <div className={outerClasses()?.join(' ')}>
+        <div className={outerClasses()?.join(' ')} {...rest}>
           <div ref={previewRef} className={previewClasses()?.join(' ')} />
           <input
             className={'fontpicker__search'}

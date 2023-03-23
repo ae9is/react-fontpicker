@@ -12,14 +12,22 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'plugin:react/jsx-runtime',
     'prettier',
+    'plugin:cypress/recommended',
   ],
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint'],
+  plugins: [
+    //
+    '@typescript-eslint',
+    'cypress',
+  ],
   parserOptions: {
     project: [
       //
       './tsconfig.json',
       './tsconfig.types.json',
+      './tsconfig.cypress.json',
+      './tsconfig.vitest.json',
+      './cypress/tsconfig.json',
     ],
   },
   settings: {
@@ -27,4 +35,8 @@ module.exports = {
       version: 'detect',
     },
   },
+  rules: {
+    "@typescript-eslint/no-namespace": "off",
+    "@typescript-eslint/triple-slash-reference": "off",
+  }
 }

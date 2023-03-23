@@ -24,4 +24,5 @@
     "font-preview/**/*.json",
     ".eslintrc.js",
   ],
+  "exclude": [],
 }
