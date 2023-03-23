@@ -1,0 +1,105 @@
+# Workflow to build and test node.js app with install, build, and test scripts.
+# The workflow also expects that the app will have a github pages built using build 
+#  that will live under /docs, and so also automatically adds and commits /docs 
+#  whenever "release:" prefixed commits are made.
+
+name: main
+
+# Any event listed can trigger build/test; only push triggers docs build and new tag
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  # Manual run from GitHub UI
+  workflow_dispatch:
+  # Wednesdays at 0400
+#  schedule:
+#    - cron: '0 4 * * 3'
+
+permissions:
+  pages: write
+  contents: write
+
+jobs:
+  build-and-test:
+    timeout-minutes: 2
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [lts/*]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+    env:
+      # Suppresses annoying warning https://github.com/cypress-io/cypress/issues/15679
+      TERM: xterm
+      # Suppress Cypress installation progress messages
+      CI: 1
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+
+    # Warning: Caching node_modules can't be used across node versions or with npm ci
+    # ref: https://github.com/actions/cache/blob/main/examples.md#node---npm
+    - name: Cache node_modules and Cypress
+      id: cache-deps
+      uses: actions/cache@v3
+      with:
+        path: |
+          node_modules
+          ~/.cache/Cypress
+        key: node-${{ matrix.node-version }}-on-${{ runner.os }}-deps-${{ hashFiles('package-lock.json') }}
+
+    - name: Install
+      # Run install unless exact cache hit occurred i.e. package-lock.json did not change
+      if: steps.cache-deps.outputs.cache-hit != 'true'
+      run: npm install
+
+    - name: Build
+      run: npm run build --if-present
+
+    - name: Test
+      run: npm run test
+
+    # For push events only, rebuild docs page and create a tag.
+    # Ideally this would be in a separate job, but jobs execute on different runners which means 
+    #  some duplication with above.
+
+    - name: Test is release
+      if: startsWith(github.event.head_commit.message, 'release:') && github.event_name == 'push'
+      id: isRelease
+      run: |
+        echo "value=true" >> $GITHUB_OUTPUT
+
+    - name: Get release version string
+      if: steps.isRelease.outputs.value
+      id: getVersion
+      run: |
+        VALUE=$(echo ${{ github.event.head_commit.message }} | sed 's/release://' | sed 's/[[:space:]]*//g')
+        echo "value=${VALUE}" >> $GITHUB_OUTPUT
+
+    - name: Commit /docs
+      if: steps.isRelease.outputs.value
+      # EndBug/add-and-commit@v9.1.1
+      uses: EndBug/add-and-commit@61a88be553afe4206585b31aa72387c64295d08b
+      with:
+        default_author: github_actions
+        add: 'docs'
+        message: "docs: rebuild for release ${{ steps.getVersion.outputs.value }}"
+
+    - name: Create tag
+      if: steps.isRelease.outputs.value
+      uses: actions/github-script@v6
+      with:
+        script: |
+          github.rest.git.createRef({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            ref: "refs/tags/${{ steps.getVersion.outputs.value }}",
+            sha: context.sha
+          })
