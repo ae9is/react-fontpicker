@@ -23,7 +23,7 @@ permissions:
 
 jobs:
   build-and-test:
-    timeout-minutes: 2
+    timeout-minutes: 5
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -44,27 +44,29 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
 
-    # Warning: Caching node_modules can't be used across node versions or with npm ci
-    # ref: https://github.com/actions/cache/blob/main/examples.md#node---npm
-    - name: Cache node_modules and Cypress
-      id: cache-deps
-      uses: actions/cache@v3
-      with:
-        path: |
-          node_modules
-          ~/.cache/Cypress
-        key: node-${{ matrix.node-version }}-on-${{ runner.os }}-deps-${{ hashFiles('package-lock.json') }}
-
     - name: Install
-      # Run install unless exact cache hit occurred i.e. package-lock.json did not change
-      if: steps.cache-deps.outputs.cache-hit != 'true'
-      run: npm install
+      run: npm ci
 
     - name: Build
       run: npm run build --if-present
 
-    - name: Test
-      run: npm run test
+#    - name: Test
+#      run: npm run test
+
+    - name: Test using Cypress - E2E
+      uses: cypress-io/github-action@v5
+      with:
+        # Test against the build we just created
+        start: npm run preview
+        config: baseUrl=http://localhost:4173/ci/
+        
+    - name: Test using Cypress - Component
+      uses: cypress-io/github-action@v5
+      with:
+        component: true
+        
+    - name: Test using Vitest
+      run: npm run test:vitest
 
     # For push events only, rebuild docs page and create a tag.
     # Ideally this would be in a separate job, but jobs execute on different runners which means 
