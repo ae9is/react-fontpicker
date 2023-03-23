@@ -58,7 +58,7 @@ jobs:
       with:
         # Test against the build we just created
         start: npm run preview
-        config: baseUrl=http://localhost:4173/ci/
+        config: baseUrl=http://localhost:4173/react-fontpicker
         
     - name: Test using Cypress - Component
       uses: cypress-io/github-action@v5
