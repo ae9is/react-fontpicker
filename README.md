@@ -104,7 +104,7 @@ php ./build-font-previews.php
 npm run build-font-previews
 ```
 
-_Note: For 1410 fonts, budget 20-30 minutes and 700 MB to download all the fonts. Compiling the image previews themselves should be less than a minute. When re-running, the script only retrieves new font info if it's older than 1 day and skips downloading cached fonts._
+_Note: For 1410 fonts, budget 20-30 minutes and 700 MB to download all the fonts. Compiling the image previews themselves should be less than a minute. When re-running, the script only retrieves new font info if it's older than 1 week and skips downloading cached fonts._
 
 ### Custom fonts
 
