@@ -1,0 +1,1 @@
+TODO: add shared tsconfig whenever https://github.com/microsoft/TypeScript/issues/29172 is resolved
