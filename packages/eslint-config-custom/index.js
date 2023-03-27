@@ -13,6 +13,7 @@ module.exports = {
     'plugin:react/jsx-runtime',
     'prettier',
     'plugin:cypress/recommended',
+    'turbo',
   ],
   parser: '@typescript-eslint/parser',
   plugins: [
@@ -21,13 +22,14 @@ module.exports = {
     'cypress',
   ],
   parserOptions: {
+    tsconfigRootDir: __dirname,
     project: [
       //
-      './tsconfig.json',
-      './tsconfig.types.json',
-      './tsconfig.cypress.json',
-      './tsconfig.vitest.json',
-      './cypress/tsconfig.json',
+      './packages/*/tsconfig.json',
+      './packages/*/tsconfig.types.json',
+      './packages/*/tsconfig.cypress.json',
+      './packages/*/tsconfig.vitest.json',
+      './packages/*/cypress/tsconfig.json',
     ],
   },
   settings: {
