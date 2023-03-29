@@ -10,7 +10,10 @@
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "test": "turbo run test"
+    "test": "turbo run test",
+    "test:vitest": "turbo run test:vitest",
+    "preview": "turbo run preview",
+    "kill": "killall turbo && rm -r /tmp/turbod"
   },
   "devDependencies": {
     "eslint-config-custom": "workspace:*",
