@@ -38,26 +38,17 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
-    - name: Setup pnpm
-      # pnpm/action-setup@v2.2.4
-      uses: pnpm/action-setup@c3b53f6a16e57305370b4ae5a540c2077a1d50dd
-      with:
-        version: 8
-
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'pnpm'
+        cache: 'npm'
 
     - name: Install
-      run: pnpm install --frozen-lockfile
+      run: npm ci
 
     - name: Build
-      run: pnpm run build
-
-#    - name: Test
-#      run: pnpm run test
+      run: npm run build --if-present
 
     - name: Install Cypress
       uses: cypress-io/github-action@v5
@@ -68,7 +59,7 @@ jobs:
       uses: cypress-io/github-action@v5
       with:
         # Test against the build we just created
-        start: pnpm run preview
+        start: npm run preview
         config: baseUrl=http://localhost:4173/react-fontpicker
         working-directory: packages/fontpicker
         install: false
@@ -80,8 +71,8 @@ jobs:
         working-directory: packages/fontpicker
         install: false
         
-    - name: Test using Vitest
-      run: pnpm run test:vitest
+    - name: Test
+      run: npm run test
 
     # For push events only, rebuild docs page and create a tag.
     # Ideally this would be in a separate job, but jobs execute on different runners which means 
