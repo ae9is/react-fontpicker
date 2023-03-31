@@ -32,7 +32,7 @@ import 'react-fontpicker-ts/dist/index.css'
 
 # Styling
 
-See css classnames in: [src/components/FontPicker.css](https://github.com/ae9is/react-fontpicker/tree/main/src/components/FontPicker.css)
+See css classnames in: [packages/fontpicker/src/components/FontPicker.css](https://github.com/ae9is/react-fontpicker/tree/main/packages/fontpicker/src/components/FontPicker.css)
 
 # Project structure
 
