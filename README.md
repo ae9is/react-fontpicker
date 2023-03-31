@@ -32,7 +32,7 @@ import 'react-fontpicker-ts/dist/index.css'
 
 # Styling
 
-See css classnames in: [src/components/FontPicker.css](https://github.com/ae9is/react-fontpicker/tree/main/src/components/FontPicker.css)
+See css classnames in: [packages/fontpicker/src/components/FontPicker.css](https://github.com/ae9is/react-fontpicker/tree/main/packages/fontpicker/src/components/FontPicker.css)
 
 # Project structure
 
@@ -122,7 +122,15 @@ For example:
 php build-font-previews.php "FontName|sans-serif|0,400+0,700+1,400+1,700|/path/to/font.ttf" "Font2|serif|0,400|/path/to/font2.ttf"
 ```
 
-# Testing
+# Development
+
+## Installation
+
+This monorepo uses [Turborepo](https://turbo.build/repo/docs) and [pnpm](https://pnpm.io). Set it up using `corepack enable` then `pnpm install`.
+
+You can then use Turbo to run commands from the root (or sub project) directory, for ex: `turbo build` or `turbo dev`.
+
+## Testing
 
 This app uses Vitest and [Cypress](https://docs.cypress.io/guides/getting-started/installing-cypress) for testing. Make sure to setup the prerequisites for Cypress on your system.
 

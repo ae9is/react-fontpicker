@@ -13,7 +13,7 @@ export default defineConfig({
     supportFile: 'cypress/support/component.ts',
   },
   e2e: {
-    baseUrl: 'http://localhost:3000',
+    baseUrl: 'http://localhost:4173/react-fontpicker',
     specPattern: 'cypress/e2e/*.cy.{js,jsx,ts,tsx}',
     supportFile: 'cypress/support/e2e.ts',
     experimentalStudio: true,

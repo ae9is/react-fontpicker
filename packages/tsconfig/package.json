@@ -1,0 +1,7 @@
+{
+  "name": "tsconfig",
+  "version": "0.0.0",
+  "files": [
+    "tsconfig.json"
+  ]
+}
