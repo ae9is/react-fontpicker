@@ -38,6 +38,12 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
+    - name: Setup pnpm
+      # pnpm/action-setup@v2.2.4
+      uses: pnpm/action-setup@c3b53f6a16e57305370b4ae5a540c2077a1d50dd
+      with:
+        version: 8
+
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
@@ -48,10 +54,10 @@ jobs:
       run: pnpm install --frozen-lockfile
 
     - name: Build
-      run: npm run build --if-present
+      run: pnpm run build
 
 #    - name: Test
-#      run: npm run test
+#      run: pnpm run test
 
     - name: Test using Cypress - E2E
       uses: cypress-io/github-action@v5
