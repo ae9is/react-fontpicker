@@ -59,6 +59,11 @@ jobs:
 #    - name: Test
 #      run: pnpm run test
 
+    - name: Install Cypress
+      uses: cypress-io/github-action@v5
+      with:
+        runTests: false
+
     - name: Test using Cypress - E2E
       uses: cypress-io/github-action@v5
       with:
@@ -66,12 +71,14 @@ jobs:
         start: pnpm run preview
         config: baseUrl=http://localhost:4173/react-fontpicker
         working-directory: packages/fontpicker
+        install: false
         
     - name: Test using Cypress - Component
       uses: cypress-io/github-action@v5
       with:
         component: true
         working-directory: packages/fontpicker
+        install: false
         
     - name: Test using Vitest
       run: pnpm run test:vitest
