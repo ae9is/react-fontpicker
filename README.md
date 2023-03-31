@@ -36,7 +36,9 @@ See css classnames in: [packages/fontpicker/src/components/FontPicker.css](https
 
 # Project structure
 
-The live demo is a Vite app you can run yourself via `npm run dev` and which builds to `/docs`. Uses `tsconfig.json`.
+The font picker project lives in this [Turborepo](https://turbo.build/repo/docs) monorepo at [packages/fontpicker/](https://github.com/ae9is/react-fontpicker/tree/main/packages/fontpicker/)
+
+The [live demo](https://ae9is.github.io/react-fontpicker/) is a Vite app you can run yourself via `npm run dev` and which builds to `/docs`. Uses `tsconfig.json`.
 
 The font picker component itself builds via `tsup` (i.e. `esbuild`) to `/dist` with type definitions generated via `tsc` according to `tsconfig.types.json`.
 
@@ -126,7 +128,7 @@ php build-font-previews.php "FontName|sans-serif|0,400+0,700+1,400+1,700|/path/t
 
 ## Installation
 
-This monorepo uses [Turborepo](https://turbo.build/repo/docs) and [pnpm](https://pnpm.io). Set it up using `corepack enable` then `pnpm install`.
+This monorepo uses [Turborepo](https://turbo.build/repo/docs). Set it up using `npm install`.
 
 You can then use Turbo to run commands from the root (or sub project) directory, for ex: `turbo build` or `turbo dev`.
 
