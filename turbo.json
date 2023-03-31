@@ -16,17 +16,16 @@
     "test": {
       // A package's `test` script depends on that package's own `build` script being completed first.
       // Note: the ^ is important, otherwise build cache will always be missed.
-      // 
-      // TODO FIXME test depends on preview, which is a persistent task, but Turbo doesn't support depending on long-running tasks.
-      // TODO FIXME test includes both cypress and vitest tests, but Turbo can't run cypress (only "cypress open" works, not "cypress run").
-      "dependsOn": ["^build"], // , "^preview"],
-      // A package's `test` script should only be rerun when
-      // either a `.tsx` or `.ts` file has changed in `src` or `test` folders.
-      "inputs": ["src/**/*.tsx", "src/**/*.ts", "cypress/**/.*tsx", "cypress/**/.*ts"]
-    },
-    "test:vitest": {
       "dependsOn": ["^build"],
       "inputs": ["src/**/*.tsx", "src/**/*.ts"]
+    },
+    "test-all": {
+      // TODO FIXME test-all includes both Cypress and Vitest tests, but Cypress can't run via Turbo (only "cypress open" works, not "cypress run").
+      // TODO FIXME test-all depends on preview, which is a persistent task, but Turbo doesn't support depending on long-running tasks.
+      "dependsOn": ["^build"], // , "^preview"],
+      // A package's `test` script should only be rerun when
+      // either a `.tsx` or `.ts` file has changed in `src` or `cypress` folders.
+      "inputs": ["src/**/*.tsx", "src/**/*.ts", "cypress/**/.*tsx", "cypress/**/.*ts"]
     },
     "dev": {
       "cache": false,
