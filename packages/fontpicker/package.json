@@ -57,7 +57,7 @@
     "cypress:fast:comp": "npm run cypress:run:comp --config video=false screenshot=false useExperimentalComponentTesting=true",
     "cypress:open": "CYPRESS_CRASH_REPORTS=0 cypress open",
     "vitest": "vitest run",
-    "format": "prettier --write src cypress",
+    "format": "prettier --write src cypress scripts",
     "lint": "eslint src cypress",
     "build-font-previews": "php ./build-font-previews.php",
     "svg-text-test": "tsc -p tsconfig.scripts.json && node ./scripts/getTextSvg.js",

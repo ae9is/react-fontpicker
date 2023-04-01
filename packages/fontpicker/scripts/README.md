@@ -1,6 +1,6 @@
 # Fonted text SVG generation
 
-## References 
+## References
 
 List of reference material on generating fonted text in SVG format.
 
