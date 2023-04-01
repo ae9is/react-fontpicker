@@ -2,17 +2,21 @@
 
 namespace ae9is\reactFontpicker;
 
+require 'easySVG.php';
+
 ini_set('memory_limit', '5G');
 
 function println($line) {
     return print($line . "\n");
 }
 
+$replaceOldFontInfos = true;
+
 println('Start building font previews at ' . date(DATE_RFC2822) . ' ...');
 
 if (!isset($argv[1]) || $argv[1] == 'googlefonts') {
     println('Downloading and building previews for all Google fonts ...');
-    $apiKey = file_exists(__DIR__ . '/GOOGLE_API_KEY') ? trim(file_get_contents(__DIR__ . '/GOOGLE_API_KEY')) : '';
+    $apiKey = file_exists(__DIR__ . '/../GOOGLE_API_KEY') ? trim(file_get_contents(__DIR__ . '/../GOOGLE_API_KEY')) : '';
 
     if (!is_string($apiKey) || strlen($apiKey) < 20) {
         die('Invalid api key - get an api key for google fonts and put it in a file called GOOGLE_API_KEY (or hardcode it in
@@ -21,9 +25,9 @@ if (!isset($argv[1]) || $argv[1] == 'googlefonts') {
 
     $fonts = GoogleFonts::fetchAll(
         $apiKey,
-        __DIR__ . '/font-cache',
+        __DIR__ . '/../font-cache',
     );
-    $outpath = __DIR__ . '/font-preview';
+    $outpath = __DIR__ . '/../font-preview';
 } else {
     println('Building manual font previews ...');
     $fonts = array();
@@ -93,7 +97,9 @@ class GoogleFonts
                 $remoteFile = reset($font['files']);
             }
 
-            $localFile = self::$fontPath . '/' . strtolower(preg_replace('#[^a-zA-Z0-9\-]#', '', str_replace(' ', '-', $font['family']))) . '.ttf';
+            $localFileBase = self::$fontPath . '/' . strtolower(preg_replace('#[^a-zA-Z0-9\-]#', '', str_replace(' ', '-', $font['family'])));
+            $localFile = $localFileBase . '.ttf';
+            $localFileSvg = $localFileBase . '.svg';
 
             if (!file_exists($localFile)) {
                 println('Downloading font file ' . $remoteFile . ' ...');
@@ -105,6 +111,7 @@ class GoogleFonts
                 'name' => $font['family'],
                 'category' => $font['category'],
                 'localFile' => $localFile,
+                'localFileSvg' => $localFileSvg,
                 'variants' => self::shortVariants($font),
             ];
         }
@@ -135,7 +142,7 @@ class GoogleFonts
     private static function getFontList()
     {
         $localJsonFile = self::$fontPath . '/fonts.json';
-        if (!is_file($localJsonFile) || filemtime($localJsonFile) < time() - 60 * 60 * 24) {
+        if (!is_file($localJsonFile) || (replaceOldFontInfos && filemtime($localJsonFile) < time() - 60 * 60 * 24 * 7)) {
             println('Font cache info file missing or out of date, downloading ...');
             $url = 'https://www.googleapis.com/webfonts/v1/webfonts?key=' . self::$apiKey . '&sort=alpha';
             $remoteJson = json_decode(
@@ -277,6 +284,59 @@ class fontPreviewBuilder {
             imagesavealpha($dst, true);
             imagepng($dst, $outFile . '.' . $outScale . 'x.png');
             imagedestroy($dst);
+        }
+    }
+
+
+    private static function makeImageSvg($fonts, $outFile)
+    {
+        foreach ([1, 1.5, 2] as $outScale) {
+            echo $outScale . "x\n";
+            $scale = $outScale * 2;
+
+            $dstW = intval(ceil(600 * $outScale));
+            $dstH = intval(ceil(self::$cellHeight * count($fonts) * $outScale));
+            $dstCellH = intval(ceil(self::$cellHeight * $outScale));
+
+            $srcW = intval(ceil(600 * $scale));
+            $srcH = intval(ceil(self::$cellHeight * $scale));
+
+            $fontSize = 16 * $scale;
+            $indent = intval(ceil(10 * $scale));
+            $baseline = intval(ceil((self::$cellHeight - 12) * $scale));
+
+            $svgImage = [];
+
+            $svgImage[] = '<svg xmlns="http://www.w3.org/2000/svg" ';
+            $svgImage[] = 'xmlns:xlink="http://www.w3.org/1999/xlink" ';
+            $svgImage[] = 'version="1.1" ';
+            $svgImage[] = 'x="0px" y="0px" ';
+            $svgImage[] = 'width="' . $dstW . 'px" height="' . $dstH . 'px" ';
+            $svgImage[] = 'viewBox="0 0 ' . $dstW . ' ' . $dstH . '">';
+
+            foreach ($fonts as $num => $font) {
+                $text = $font['name'];
+                $svg = new EasySVG();
+                $svg->setFontSVG($font['localFileSvg']);
+                $svg->setFontSize($fontSize);
+                $svg->setFontColor('#000000');
+                //$svg->setLineHeight(1.2);
+                //$svg->setLetterSpacing(.1);
+                //$svg->setUseKerning(true);
+                $svg->addText($text, $indent, $baseline);
+                // set width/height according to text
+                //list($textWidth, $textHeight) = $svg->textDimensions($text);
+                //$svg->addAttribute("width", $textWidth."px");
+                //$svg->addAttribute("height", $textHeight."px");
+                $svg->addAttribute("width", $srcW."px");
+                $svg->addAttribute("height", $srcH."px");
+                //echo $svg->asXML();
+                $svgImage[] = $svg->asXML();
+            }
+
+            $svgImage[] = '</svg>';
+
+            file_put_contents($outFile . '.' . $outScale . 'x.svg', implode("\n", $svgImages));
         }
     }
 

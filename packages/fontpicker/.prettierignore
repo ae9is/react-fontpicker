@@ -1,15 +1,3 @@
-.DS_Store
-node_modules
-dist
-dist-ssr
-*.local
-font-cache
-GOOGLE_API_KEY
-
-# local env files
-.env.local
-.env.*.local
-
 # Log files
 logs
 *.log
@@ -19,11 +7,31 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Local env files
+.env.local
+.env.*.local
+GOOGLE_API_KEY
+
 # Editor directories and files
+.vscode/*
+!.vscode/extensions.json
 .idea
-.vscode
+.DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+# Test output
+cypress/screenshots
+cypress/videos
+
+# Build files, cached files, etc
+node_modules
+dist
+dist-ssr
+*.local
+font-cache
+.tsbuildinfo
+scripts/batik-1.16

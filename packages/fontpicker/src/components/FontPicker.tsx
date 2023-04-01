@@ -1,6 +1,6 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import fontInfos from '../../font-preview/fontInfo.json'
-import '../../font-preview/font-previews.css'
+const FontPreviews = lazy(() => import('./FontPreviews'))
 import './FontPicker.css'
 
 export interface FontPickerProps extends React.ComponentPropsWithoutRef<'div'> {
@@ -17,6 +17,9 @@ export interface FontPickerProps extends React.ComponentPropsWithoutRef<'div'> {
   // Callbacks to emit selected font
   fontVariants?: (fontVariants: FontToVariant) => void
   value?: (value: string) => void
+
+  // Fallback component to display inside picker input while loading preview CSS
+  loading?: React.ReactNode
 }
 
 export interface Font {
@@ -86,6 +89,7 @@ export default function FontPicker({
   localFonts = [],
   fontVariants,
   value,
+  loading = <div>Font previews loading ...</div>,
   ...rest
 }: FontPickerProps) {
   const [focused, setFocused] = useState(false)
@@ -529,38 +533,41 @@ export default function FontPicker({
     <>
       {!loaderOnly && (
         <div className={outerClasses()?.join(' ')} {...rest}>
-          <div ref={previewRef} className={previewClasses()?.join(' ')} />
-          <input
-            className={'fontpicker__search'}
-            ref={inputRef}
-            type="text"
-            onInput={searchChanged}
-            onFocus={onFocus}
-            onBlur={hide}
-            onKeyDown={onKeyDown}
-            value={searchContent}
-          />
-          <div //
-            ref={popoutRef}
-            tabIndex={-1}
-            className={popoutClasses()?.join(' ')}
-            onMouseDown={cancelBlur}
-          >
-            {matchingFonts.map((font, i) => (
-              <div
-                ref={saveOptionsRef(font.sane)}
-                key={font.sane + i}
-                className={'fontpicker__option' + (i === selectedFontIndex ? ' selected' : '')}
-                onMouseDown={() => onClick(font)}
-                onMouseMove={() => {
-                  setSelectedFontIndex(i)
-                }}
-              >
-                <div className={'font-preview-' + font.sane} />
-              </div>
-            ))}
-            {matchingFonts.length === 0 && <div className={'fontpicker__nomatches'}>{noMatches}</div>}
-          </div>
+          <Suspense fallback={<>{loading}</>}>
+            <FontPreviews />
+            <div ref={previewRef} className={previewClasses()?.join(' ')} />
+            <input
+              className={'fontpicker__search'}
+              ref={inputRef}
+              type="text"
+              onInput={searchChanged}
+              onFocus={onFocus}
+              onBlur={hide}
+              onKeyDown={onKeyDown}
+              value={searchContent}
+            />
+            <div //
+              ref={popoutRef}
+              tabIndex={-1}
+              className={popoutClasses()?.join(' ')}
+              onMouseDown={cancelBlur}
+            >
+              {matchingFonts.map((font, i) => (
+                <div
+                  ref={saveOptionsRef(font.sane)}
+                  key={font.sane + i}
+                  className={'fontpicker__option' + (i === selectedFontIndex ? ' selected' : '')}
+                  onMouseDown={() => onClick(font)}
+                  onMouseMove={() => {
+                    setSelectedFontIndex(i)
+                  }}
+                >
+                  <div className={'font-preview-' + font.sane} />
+                </div>
+              ))}
+              {matchingFonts.length === 0 && <div className={'fontpicker__nomatches'}>{noMatches}</div>}
+            </div>
+          </Suspense>
         </div>
       )}
     </>

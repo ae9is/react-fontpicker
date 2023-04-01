@@ -65,14 +65,22 @@ describe('react fontpicker docs', () => {
     cy.get('@picker').find('.fontpicker__option .font-preview-annie_use_your_telescope').should('not.exist')
   })
 
-  it('includes manually added fonts', () => {
+  it('can search for and select manually added fonts', () => {
+    // Type manual font name into search input, select it, and check that it's emitted.
+    cy.getBySel('manuallyadd-value').as('value')
+    cy.getBySel('manuallyadd-fontpicker').as('picker')
+    cy.get('@picker').find('.fontpicker__search').type('BickleyScript{enter}');
+    cy.get('@value').should('have.text', 'Current value: BickleyScript')
+  })
+
+  it('can click and emit manually added fonts', () => {
     // Open the picker, scroll to bottommost font which is the manually added font,
     //  and verify that the font is emitted correctly.
     cy.getBySel('manuallyadd-value').as('value')
     cy.getBySel('manuallyadd-fontpicker').as('picker')
-    cy.get('@picker').click()
+    cy.get('@picker').find('.fontpicker__search').click()
     cy.get('@picker').find('.fontpicker__popout').scrollTo('bottom', { ensureScrollable: false })
-    cy.get('@picker').find('.font-preview-bickleyscript').click()
+    cy.get('@picker').find('.font-preview-bickleyscript').click({ force: true })
     cy.get('@value').should('have.text', 'Current value: BickleyScript')
   })
 })
