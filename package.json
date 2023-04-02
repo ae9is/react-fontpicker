@@ -11,6 +11,7 @@
     "lint": "turbo run lint",
     "format": "turbo run format",
     "test": "turbo run test",
+    "test-all": "turbo run test-all",
     "preview": "turbo run preview",
     "kill": "killall turbo && rm -r /tmp/turbod"
   },

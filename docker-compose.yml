@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  app:
+    image: app
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: app
+    volumes:
+      # To mount entire project folder in container
+      #- ./:/app
+      # To mount just the directories needed for container Cypress to write test results back to host
+      - ./packages/fontpicker/cypress/screenshots:/app/packages/fontpicker/cypress/screenshots
+      - ./packages/fontpicker/cypress/videos:/app/packages/fontpicker/cypress/videos
+    ports:
+      - '4173:4173' # Vite preview
+      - '5173:5173' # Cypress component testing
