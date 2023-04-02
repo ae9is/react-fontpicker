@@ -21,8 +21,7 @@
     },
     "test-all": {
       // TODO FIXME test-all includes both Cypress and Vitest tests, but Cypress can't run via Turbo (only "cypress open" works, not "cypress run").
-      // TODO FIXME test-all depends on preview, which is a persistent task, but Turbo doesn't support depending on long-running tasks.
-      "dependsOn": ["^build"], // , "^preview"],
+      "dependsOn": ["^build"],
       // A package's `test` script should only be rerun when
       // either a `.tsx` or `.ts` file has changed in `src` or `cypress` folders.
       "inputs": ["src/**/*.tsx", "src/**/*.ts", "cypress/**/.*tsx", "cypress/**/.*ts"]

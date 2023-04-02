@@ -61,7 +61,7 @@
     "lint": "eslint src cypress",
     "build-font-previews": "php ./build-font-previews.php",
     "svg-text-test": "tsc -p tsconfig.scripts.json && node ./scripts/getTextSvg.js",
-    "preview": "vite preview --outDir docs"
+    "preview": "vite preview --host 0.0.0.0 --outDir docs"
   },
   "tsup": {
     "entry": [
