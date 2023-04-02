@@ -75,7 +75,7 @@ FROM build-stage as run-stage
 EXPOSE 4173 5173
 
 # (A) Use one of the following to drop to a shell inside the container:
-#  docker compose run app
+#  docker compose run app bash
 #  docker run -it -p 4173 -p 5173 app bash
 
 # OR
