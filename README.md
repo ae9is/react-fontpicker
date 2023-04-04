@@ -11,7 +11,7 @@ Forked from https://github.com/Mikk3lRo/vue-fontpicker/
 
 # Documentation
 
-Documentation and live demo is available at:
+A live demo including usage is available at:
 https://ae9is.github.io/react-fontpicker/
 
 # Installing
