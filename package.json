@@ -13,7 +13,8 @@
     "test": "turbo run test",
     "test-all": "turbo run test-all",
     "preview": "turbo run preview",
-    "kill": "killall turbo && rm -r /tmp/turbod"
+    "kill": "killall turbo && rm -r /tmp/turbod",
+    "upgrade-packages": "turbo run upgrade-packages"
   },
   "devDependencies": {
     "eslint-config-custom": "workspace:*",
