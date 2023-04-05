@@ -33,6 +33,7 @@
     "preview": {
       "cache": false,
       "persistent": true
-    }
+    },
+    "upgrade-packages": {}
   }
 }
