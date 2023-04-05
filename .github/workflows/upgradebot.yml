@@ -1,0 +1,110 @@
+# Upgrade packages using npm-check-updates, test, and create a PR if successful.
+# Add an upgrade-packages script in your package.json, for ex:
+#  "upgrade-packages": "ncu -u"
+
+name: upgradebot
+
+on:
+  # Manual run from GitHub UI
+  workflow_dispatch:
+    inputs:
+      upgradeBranchName:
+        description: 'Branch to run updates in'
+        required: true
+        default: 'upgradebot'
+      baseBranchName:
+        description: 'Branch to merge upgrades into'
+        required: true
+        default: 'main'
+  # Wednesdays at 1337
+  #schedule:
+  #  - cron: '37 13 * * 3'
+
+permissions:
+  pull-requests: write
+  contents: write
+
+jobs:
+  upgrade-packages:
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [lts/*]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+    env:
+      # Suppresses annoying warning https://github.com/cypress-io/cypress/issues/15679
+      TERM: xterm
+      # Suppress Cypress installation progress messages
+      CI: 1
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+
+    - name: Upgrade packages
+      run: npm run upgrade-packages
+
+    # Note: not npm ci, we want the lockfile to change
+    - name: Install
+      run: npm install
+
+    - name: Build
+      run: npm run build --if-present
+
+    - name: Install Cypress
+      uses: cypress-io/github-action@v5
+      with:
+        runTests: false
+
+    - name: Test using Cypress - E2E
+      uses: cypress-io/github-action@v5
+      with:
+        # Test against the build we just created
+        start: npm run preview
+        config: baseUrl=http://localhost:4173/react-fontpicker
+        working-directory: packages/fontpicker
+        install: false
+        
+    - name: Test using Cypress - Component
+      uses: cypress-io/github-action@v5
+      with:
+        component: true
+        working-directory: packages/fontpicker
+        install: false
+        
+    - name: Test
+      run: npm run test
+
+    - name: Commit package.json updates
+      # EndBug/add-and-commit@v9.1.1
+      uses: EndBug/add-and-commit@61a88be553afe4206585b31aa72387c64295d08b
+      with:
+        default_author: github_actions
+        add: package.json package-lock.json
+        message: "build(upgradebot): upgrade dependencies"
+        # If no updates to both files, exit action
+        pathspec_error_handling: exitImmediately
+        new_branch: ${{ github.event.inputs.upgradeBranchName }}
+
+    - name: Create package updates PR
+      uses: actions/github-script@v6
+      with:
+        script: |
+          console.log('Creating PR for dependencies upgrade');
+          const head = '${{ github.event.inputs.upgradeBranchName }}' || 'upgradebot';
+          const baseBranch = '${{ github.event.inputs.baseBranchName }}' || 'main';
+          const body = '✅ This PR was created by UpgradeBot';
+          await github.rest.pulls.create({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            title: 'UpgradeBot',
+            head: head,
+            base: baseBranch,
+            body: body
+          });
