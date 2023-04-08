@@ -1,0 +1,75 @@
+DM Sans
+Inter
+Space Mono
+Space Grotesk
+Work Sans
+Syne
+Libre Franklin
+Cormorant
+Fira Sans
+Eczar
+Alegreya Sans
+Alegreya
+Source Sans Pro
+Source Serif Pro
+Roboto
+Roboto Slab
+Inknut Antiqua
+BioRhyme
+Poppins
+Archivo Narrow
+Libre Baskerville
+Playfair Display
+Karla
+Lora
+Proza Libre
+Spectral
+IBM Plex Sans
+Manrope
+Montserrat
+Lato
+PT Sans
+PT Serif
+Cardo
+Chivo
+Neuton
+Rubik
+Open Sans
+Inconsolata
+Raleway
+Merriweather
+Zilla Slab
+Overpass
+Josefin Sans
+Josefin Slab
+Old Standard TT
+Varela Round
+Rajdhani
+Bitter
+Nunito Sans
+Roboto Serif
+Newsreader
+Plus Jakarta Sans
+Familjen Grotesk
+Azeret Mono
+Fraunces
+DM Serif Text
+DM Serif Display
+Literata
+Outfit
+Tangerine
+Dancing Script
+Bad Script
+Sacramento
+Abril Fatface
+Ultra
+UnifrakturMaguntia
+New Rocker
+Roboto Condensed
+Oswald
+Comic Neue
+Noto Sans JP
+Roboto Mono
+Ubuntu
+Nunito
+Mukta

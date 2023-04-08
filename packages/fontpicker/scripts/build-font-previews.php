@@ -33,17 +33,27 @@ if (isset($args['no-replace'])) {
 }
 
 $outScales = [1, 1.5, 2];
-
-# Only 1x scale font preview generation, limited to $numFonts most popular fonts.
+$filterFile = null;
+$numFonts = null;
 $lite = false;
 $sliceSize = 200;
+$googlefonts = false;
+
+# --lite mode limits to only 1x scale font preview generation, for a selection of fonts.
+# Font filter list curated by [Typewolf](https://www.typewolf.com/google-fonts),
+#  adding of the extras in the article's FAQ for flavour, plus some of the most popular 
+#  Google fonts to make it 75.
 if (isset($args['lite'])) {
     $lite = $args['lite'];
-    $outScales = [1];
-    $sliceSize = 20;
+    if ($lite) {
+        $googlefonts = true;
+        $outScales = [1];
+        $sliceSize = 15;
+        $numFonts = 75;
+        $filterFile = './75-google-fonts.txt';
+    }
 }
 
-$numFonts = 50;
 if (isset($args['num-fonts'])) {
     $numFonts = $args['num-fonts'];
 }
@@ -52,9 +62,12 @@ if (isset($args['slice-size'])) {
     $sliceSize = $args['slice-size'];
 }
 
-$googlefonts = false;
 if (isset($args['googlefonts'])) {
     $googlefonts = $args['googlefonts'];
+}
+
+if (isset($args['filter'])) {
+    $filterFile = $args['filter'];
 }
 
 println('Script called with arguments:');
@@ -71,9 +84,9 @@ if (!isset($argv[1]) || $googlefonts) {
     $fonts = GoogleFonts::fetchAll(
         $apiKey,
         __DIR__ . '/../font-cache',
-        $lite,
         $numFonts,
         $noReplaceOldFontInfos,
+        $filterFile,
     );
     $outpath = __DIR__ . '/../font-preview';
 } else {
@@ -116,7 +129,7 @@ class GoogleFonts
     private static $apiKey;
     private static $fontPath;
 
-    public static function fetchAll($apiKey, $fontPath, $lite, $numFonts, $noReplaceOldFontInfos)
+    public static function fetchAll($apiKey, $fontPath, $numFonts, $noReplaceOldFontInfos, $filterFile)
     {
         self::$fontPath = $fontPath;
         self::$apiKey = $apiKey;
@@ -124,8 +137,7 @@ class GoogleFonts
             println('Creating cache directory: ' . self::$fontPath);
             mkdir(self::$fontPath, 0755, true);
         }
-        $fontInfos = self::getFontList($lite, $noReplaceOldFontInfos);
-        $fontInfos = array_slice($fontInfos, 0, $numFonts);
+        $fontInfos = self::getFontList($noReplaceOldFontInfos, $numFonts, $filterFile);
         $fonts = [];
         foreach ($fontInfos as $num => $font) {
             if (isset($font['files']['regular'])) {
@@ -177,8 +189,18 @@ class GoogleFonts
         return $shortVariants;
     }
 
-    private static function getFontList($lite, $noReplaceOldFontInfos)
+    private static function getFontList($noReplaceOldFontInfos, $numFonts, $filterFile)
     {
+        $filterList = [];
+        if (isset($filterFile)) {
+            if (!is_file($filterFile)) {
+                die('Font filter file does not exist: ' . $filterFile);
+            }
+            foreach (file($filterFile) as $line) {
+                $font = trim($line);
+                $filterList[] = $font;
+            }
+        }
         $localJsonFile = self::$fontPath . '/fonts.json';
         if (!is_file($localJsonFile) || (!$noReplaceOldFontInfos && filemtime($localJsonFile) < time() - 60 * 60 * 24 * 7)) {
             println('Font cache info file missing or out of date, downloading ...');
@@ -186,7 +208,8 @@ class GoogleFonts
             // ref: https://developers.google.com/fonts/docs/developer_api
             $apiBaseUrl = 'https://www.googleapis.com/webfonts/v1/webfonts?key=';
             $url = $apiBaseUrl . self::$apiKey;
-            if ($lite) {
+            if ($numFonts) {
+                // Sort by popularity if we are limiting the fonts
                 $url = $url . '&sort=popularity';
             } else {
                 $url = $url . '&sort=alpha';
@@ -203,19 +226,37 @@ class GoogleFonts
         if (!is_array($localJson) || !isset($localJson['items'])) {
             throw new Exception('Failed to get fonts');
         }
-        $fonts = array_filter($localJson['items'], function ($font) {
-            //We only want fonts with a latin subset
-            if (!in_array('latin', $font['subsets'])) {
+        $filter = function ($font) { return true; };
+        if ($filterList) {
+            $filter = function ($font) use ($filterList) {
+                if (in_array($font['family'], $filterList)) {
+                    return true;
+                }
                 return false;
-            }
-            //A few fonts just don't work for some reason
-            if (in_array($font['family'], [
-                'Kumar One',
-                'Kumar One Outline',
-            ])) {
-                return false;
-            }
-            return true;
+            };
+        } else {
+            $filter = function ($font) {
+                // We only want fonts with a latin subset
+                if (!in_array('latin', $font['subsets'])) {
+                    return false;
+                }
+                // A few fonts just don't work for some reason
+                if (in_array($font['family'], [
+                    'Kumar One',
+                    'Kumar One Outline',
+                ])) {
+                    return false;
+                }
+                return true;
+            };
+        }
+        $fonts = array_filter($localJson['items'], $filter);
+        // Slice off extra before sorting, i.e. respect user font order in manual font filter list
+        if ($numFonts) {
+            array_slice($fonts, 0, $numFonts);
+        }
+        usort($fonts, function ($fontA, $fontB) {
+            return strnatcasecmp($fontA['family'], $fontB['family']);
         });
         return array_values($fonts);
     }
