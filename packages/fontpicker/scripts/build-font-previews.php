@@ -9,7 +9,27 @@ function println($line) {
     return print($line . "\n");
 }
 
-println('Start building font previews at ' . date(DATE_RFC2822) . ' ...');
+function printHelp($scriptName) {
+    $l = [];
+    $l[] = 'Usage:';
+    $l[] = '';
+    $l[] = "Manual font previews generation...";
+    $l[] = "\t" . $scriptName . ' ' . '<output-directory> "FontName|font-category|0,400+0,700+1,400+1,700|/path/to/font.ttf" "Font2|serif|0,400|/path/to/font2.ttf"';
+    $l[] = '';
+    $l[] = "Google font previews generation...";
+    $l[] = "\t" . $scriptName . ' OPTIONS';
+    $l[] = '';
+    $l[] = "\tOPTIONS:";
+    $l[] = "\t--filter <file>: Font filter file, one font name per line. Additional filter on fonts included in previews.";
+    $l[] = "\t--googlefonts: Retrieve fonts from Google (as opposed to manual preview generation). Implied by --lite.";
+    $l[] = "\t--lite: Build a lighter weight set of font previews. Implies --lite.";
+    $l[] = "\t--no-replace: Don't replace old downloaded Google font info JSON.";
+    $l[] = "\t--num-fonts <int>: Number of fonts to limit the list to.";
+    $l[] = "\t--slice-size <int>: Number of fonts to include per preview image.";
+    foreach ($l as $line) {
+        println($line);
+    }
+}
 
 # Convert from space delimited arguments to ' --' delimited arguments.
 $argsString = implode(' ', $argv);
@@ -27,11 +47,12 @@ for ($i = 1; $i < count($newArgs); $i++) {
     }
 }
 
-$noReplaceOldFontInfos = false;
-if (isset($args['no-replace'])) {
-    $noReplaceOldFontInfos = $args['no-replace'];
+if (isset($args['help'])) {
+    printHelp($argv[0]);
+    exit(0);
 }
 
+$noReplaceOldFontInfos = false;
 $outScales = [1, 1.5, 2];
 $filterFile = null;
 $numFonts = null;
@@ -54,6 +75,10 @@ if (isset($args['lite'])) {
     }
 }
 
+if (isset($args['no-replace'])) {
+    $noReplaceOldFontInfos = $args['no-replace'];
+}
+
 if (isset($args['num-fonts'])) {
     $numFonts = $args['num-fonts'];
 }
@@ -69,6 +94,8 @@ if (isset($args['googlefonts'])) {
 if (isset($args['filter'])) {
     $filterFile = $args['filter'];
 }
+
+println('Start building font previews at ' . date(DATE_RFC2822) . ' ...');
 
 println('Script called with arguments:');
 print_r($args);
@@ -204,16 +231,11 @@ class GoogleFonts
         $localJsonFile = self::$fontPath . '/fonts.json';
         if (!is_file($localJsonFile) || (!$noReplaceOldFontInfos && filemtime($localJsonFile) < time() - 60 * 60 * 24 * 7)) {
             println('Font cache info file missing or out of date, downloading ...');
-            // Sort values: alpha, date (updated/added), popularity, style (font family with most styles first), trending
+            // Only useful to sort by popularity if we're limiting the number of fonts. But this lets us keep our font-cache
+            //  the same between --lite and regular builds.
             // ref: https://developers.google.com/fonts/docs/developer_api
             $apiBaseUrl = 'https://www.googleapis.com/webfonts/v1/webfonts?key=';
-            $url = $apiBaseUrl . self::$apiKey;
-            if ($numFonts) {
-                // Sort by popularity if we are limiting the fonts
-                $url = $url . '&sort=popularity';
-            } else {
-                $url = $url . '&sort=alpha';
-            }
+            $url = $apiBaseUrl . self::$apiKey . '&sort=popularity';
             $remoteJson = json_decode(
                 file_get_contents($url),
                 true,
