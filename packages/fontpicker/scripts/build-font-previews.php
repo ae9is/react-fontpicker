@@ -64,12 +64,10 @@ print_r($args);
 if (!isset($argv[1]) || $googlefonts) {
     println('Downloading and building previews for all Google fonts ...');
     $apiKey = file_exists(__DIR__ . '/../GOOGLE_API_KEY') ? trim(file_get_contents(__DIR__ . '/../GOOGLE_API_KEY')) : '';
-
     if (!is_string($apiKey) || strlen($apiKey) < 20) {
         die('Invalid api key - get an api key for google fonts and put it in a file called GOOGLE_API_KEY (or hardcode it in
         build-font-previews.php)');
     }
-
     $fonts = GoogleFonts::fetchAll(
         $apiKey,
         __DIR__ . '/../font-cache',
@@ -101,7 +99,6 @@ if (!isset($argv[1]) || $googlefonts) {
             } else if (!file_exists($fontFile)) {
                 die('File does not exist: ' . $fontFile);
             }
-
             $fonts[] = [
                 'name' => $fontName,
                 'category' => $fontCategory,
@@ -123,15 +120,12 @@ class GoogleFonts
     {
         self::$fontPath = $fontPath;
         self::$apiKey = $apiKey;
-
         if (!file_exists(self::$fontPath)) {
             println('Creating cache directory: ' . self::$fontPath);
             mkdir(self::$fontPath, 0755, true);
         }
-
         $fontInfos = self::getFontList($lite, $noReplaceOldFontInfos);
         $fontInfos = array_slice($fontInfos, 0, $numFonts);
-
         $fonts = [];
         foreach ($fontInfos as $num => $font) {
             if (isset($font['files']['regular'])) {
@@ -145,17 +139,14 @@ class GoogleFonts
             } else {
                 $remoteFile = reset($font['files']);
             }
-
             $localFileBase = self::$fontPath . '/' . strtolower(preg_replace('#[^a-zA-Z0-9\-]#', '', str_replace(' ', '-', $font['family'])));
             $localFile = $localFileBase . '.ttf';
             $localFileSvg = $localFileBase . '.svg';
-
             if (!file_exists($localFile)) {
                 println('Downloading font file ' . $remoteFile . ' ...');
                 file_put_contents($localFile, file_get_contents($remoteFile));
                 sleep(1);
             }
-
             $fonts[] = [
                 'name' => $font['family'],
                 'category' => $font['category'],
@@ -183,7 +174,6 @@ class GoogleFonts
                 die($longVariant);
             }
         }
-
         return $shortVariants;
     }
 
@@ -213,7 +203,6 @@ class GoogleFonts
         if (!is_array($localJson) || !isset($localJson['items'])) {
             throw new Exception('Failed to get fonts');
         }
-        
         $fonts = array_filter($localJson['items'], function ($font) {
             //We only want fonts with a latin subset
             if (!in_array('latin', $font['subsets'])) {
@@ -228,7 +217,6 @@ class GoogleFonts
             }
             return true;
         });
-
         return array_values($fonts);
     }
 }
@@ -244,21 +232,16 @@ class fontPreviewBuilder {
             println('Creating output font previews directory: ' . $outputPath);
             mkdir(self::$outputPath, 0755, true);
         }
-
         foreach ($fonts as $num => &$font) {
             $font['sanename'] = strtolower(preg_replace('#[^a-zA-Z0-9\_]#', '', str_replace(' ', '_', $font['name'])));
             $font['top'] = ($num % $sliceSize) * self::$cellHeight;
         }
-
         println('Creating font info JSON file ...');
         self::makeJson($fonts);
-
         println('Creating font preview images ...');
         self::makeImages($fonts, $outScales, $sliceSize);
-
         println('Generating CSS ...');
         self::makeCss($fonts, $outScales, $sliceSize);
-
         println('Generating HTML ...');
         self::makeHtml($fonts);
     }
@@ -266,7 +249,6 @@ class fontPreviewBuilder {
     private static function makeJson($fonts)
     {
         $json = [];
-
         foreach ($fonts as $font) {
             $json[] = [
                 'category' => $font['category'],
@@ -292,11 +274,9 @@ class fontPreviewBuilder {
         foreach ($outScales as $outScale) {
             echo $outScale . "x\n";
             $scale = $outScale * 2;
-
             $dstW = intval(ceil(600 * $outScale));
             $dstH = intval(ceil(self::$cellHeight * count($fonts) * $outScale));
             $dstCellH = intval(ceil(self::$cellHeight * $outScale));
-
             $srcW = intval(ceil(600 * $scale));
             $srcH = intval(ceil(self::$cellHeight * $scale));
 
@@ -304,36 +284,33 @@ class fontPreviewBuilder {
             $indent = intval(ceil(10 * $scale));
             $baseline = intval(ceil((self::$cellHeight - 12) * $scale));
 
-            $dst = imagecreatetruecolor($dstW, $dstH);
-            $trans = imagecolorallocatealpha($dst, 255, 255, 255, 127);
-            imagealphablending($dst, true);
-            imagefill($dst, 0, 0, $trans);
-
-            foreach ($fonts as $num => $font) {
-                $src = imagecreatetruecolor($srcW, $srcH);
-                $trans = imagecolorallocatealpha($src, 255, 255, 255, 127);
-                $black = imagecolorallocate($src, 0, 0, 0);
-                imagefill($src, 0, 0, $trans);
-                imagealphablending($src, true);
-
-                imagettftext(
-                    $src,
-                    $fontSize,
-                    0,
-                    $indent,
-                    $baseline,
-                    $black,
-                    $font['localFile'],
-                    $font['name'],
-                );
-                $dstTop = intval(ceil($font['top'] * $outScale));
-                imagecopyresampled($dst, $src, 0, $dstTop, 0, 0, $dstW, $dstCellH, $srcW, $srcH);
-                imagedestroy($src);
-            }
-
-            imagesavealpha($dst, true);
-            imagepng($dst, $outFile . '.' . $outScale . 'x.png');
-            imagedestroy($dst);
+                $dst = imagecreatetruecolor($dstW, $dstH);
+                $trans = imagecolorallocatealpha($dst, 255, 255, 255, 127);
+                imagealphablending($dst, true);
+                imagefill($dst, 0, 0, $trans);
+                foreach ($fonts as $num => $font) {
+                    $src = imagecreatetruecolor($srcW, $srcH);
+                    $trans = imagecolorallocatealpha($src, 255, 255, 255, 127);
+                    $black = imagecolorallocate($src, 0, 0, 0);
+                    imagefill($src, 0, 0, $trans);
+                    imagealphablending($src, true);
+                    imagettftext(
+                        $src,
+                        $fontSize,
+                        0,
+                        $indent,
+                        $baseline,
+                        $black,
+                        $font['localFile'],
+                        $font['name'],
+                    );
+                    $dstTop = intval(ceil($font['top'] * $outScale));
+                    imagecopyresampled($dst, $src, 0, $dstTop, 0, 0, $dstW, $dstCellH, $srcW, $srcH);
+                    imagedestroy($src);
+                }
+                imagesavealpha($dst, true);
+                imagepng($dst, $outFile . '.' . $outScale . 'x.png');
+                imagedestroy($dst);
         }
     }
 
@@ -342,27 +319,21 @@ class fontPreviewBuilder {
         foreach ($outScales as $outScale) {
             echo $outScale . "x\n";
             $scale = $outScale * 2;
-
             $dstW = intval(ceil(600 * $outScale));
             $dstH = intval(ceil(self::$cellHeight * count($fonts) * $outScale));
             $dstCellH = intval(ceil(self::$cellHeight * $outScale));
-
             $srcW = intval(ceil(600 * $scale));
             $srcH = intval(ceil(self::$cellHeight * $scale));
-
             $fontSize = intval(16 * $scale);
             $indent = intval(ceil(10 * $scale));
             $baseline = intval(ceil((self::$cellHeight - 12) * $scale));
-
             $svgImage = [];
-
             $svgImage[] = '<svg xmlns="http://www.w3.org/2000/svg" ';
             $svgImage[] = 'xmlns:xlink="http://www.w3.org/1999/xlink" ';
             $svgImage[] = 'version="1.1" ';
             $svgImage[] = 'x="0px" y="0px" ';
             $svgImage[] = 'width="' . $dstW . 'px" height="' . $dstH . 'px" ';
             $svgImage[] = 'viewBox="0 0 ' . $dstW . ' ' . $dstH . '">';
-
             foreach ($fonts as $num => $font) {
                 $text = $font['name'];
                 $svg = new EasySVG();
@@ -382,9 +353,7 @@ class fontPreviewBuilder {
                 //echo $svg->asXML();
                 $svgImage[] = $svg->asXML();
             }
-
             $svgImage[] = '</svg>';
-
             file_put_contents($outFile . '.' . $outScale . 'x.svg', implode("\n", $svgImage));
         }
     }
@@ -392,7 +361,6 @@ class fontPreviewBuilder {
     private static function makeCss($fonts, $outScales, $sliceSize)
     {
         $css = [];
-
         $css[] = '[class*=" font-preview-"],';
         $css[] = '[class^="font-preview-"] {';
         $css[] = '  background-size: 30em auto;';
@@ -400,7 +368,6 @@ class fontPreviewBuilder {
         $css[] = '  height: 2em;';
         $css[] = '  image-rendering: optimizequality;';
         $css[] = '}';
-
         $i = 0;
         $numScales = sizeof($outScales);
         foreach ($outScales as $outScale) {
@@ -433,18 +400,15 @@ class fontPreviewBuilder {
                 $css[] = '}';
             }
         }
-
         foreach ($fonts as $font) {
             $css[] = '.font-preview-' . $font['sanename'] . '{ background-position: 0px -' . ($font['top'] / 20) . 'em }';
         }
-
         file_put_contents(self::$outputPath . '/font-previews.css', implode("\n", $css));
     }
 
     private static function makeHtml($fonts)
     {
         $html = [];
-
         $html[] = '<!DOCTYPE html>';
         $html[] = '<html>';
         $html[] = '<head>';
@@ -454,13 +418,11 @@ class fontPreviewBuilder {
         $html[] = '    <link href="font-previews.css" rel="stylesheet" />';
         $html[] = '</head>';
         $html[] = '<body>';
-
         foreach ($fonts as $font) {
             $html[] = '    <div class="font-preview-' . $font['sanename'] . '" title="' . $font['name'] . '"></div>';
         }
         $html[] = '</body>';
         $html[] = '</html>';
-
         file_put_contents(self::$outputPath . '/font-previews.html', implode("\n", $html));
     }
 }
