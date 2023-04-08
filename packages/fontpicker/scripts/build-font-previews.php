@@ -1,20 +1,67 @@
 <?php declare(strict_types = 1);
-
 namespace ae9is\reactFontpicker;
-
 require 'easySVG.php';
-
+use EasySVG;
+use Exception;
 ini_set('memory_limit', '5G');
 
 function println($line) {
     return print($line . "\n");
 }
 
-$replaceOldFontInfos = true;
-
 println('Start building font previews at ' . date(DATE_RFC2822) . ' ...');
 
-if (!isset($argv[1]) || $argv[1] == 'googlefonts') {
+# Convert from space delimited arguments to ' --' delimited arguments.
+$argsString = implode(' ', $argv);
+$newArgs = explode(' --', $argsString);
+
+$args = array();
+for ($i = 1; $i < count($newArgs); $i++) {
+    if (preg_match('/^([^=\s]+)([=\s]?)(.*)/', $newArgs[$i], $matches)) {
+        $key = $matches[1];
+        $val = $matches[3];
+        if ($val == null) {
+            $val = true;
+        }
+        $args[$key] = $val;
+    }
+}
+
+$noReplaceOldFontInfos = false;
+if (isset($args['no-replace'])) {
+    $noReplaceOldFontInfos = $args['no-replace'];
+}
+
+$outScales = [1, 1.5, 2];
+
+# Only 1x scale font preview generation, limited to $numFonts most popular fonts.
+$lite = false;
+$sliceSize = 200;
+if (isset($args['lite'])) {
+    $lite = $args['lite'];
+    $outScales = [1];
+    $sliceSize = 20;
+}
+
+$numFonts = 50;
+if (isset($args['num-fonts'])) {
+    $numFonts = $args['num-fonts'];
+}
+
+if (isset($args['slice-size'])) {
+    $sliceSize = $args['slice-size'];
+}
+
+$googlefonts = false;
+if (isset($args['googlefonts'])) {
+    $googlefonts = $args['googlefonts'];
+}
+
+println('Script called with arguments:');
+print_r($args);
+
+// If no arguments passed, by default assume Google fonts preview job.
+if (!isset($argv[1]) || $googlefonts) {
     println('Downloading and building previews for all Google fonts ...');
     $apiKey = file_exists(__DIR__ . '/../GOOGLE_API_KEY') ? trim(file_get_contents(__DIR__ . '/../GOOGLE_API_KEY')) : '';
 
@@ -26,6 +73,9 @@ if (!isset($argv[1]) || $argv[1] == 'googlefonts') {
     $fonts = GoogleFonts::fetchAll(
         $apiKey,
         __DIR__ . '/../font-cache',
+        $lite,
+        $numFonts,
+        $noReplaceOldFontInfos,
     );
     $outpath = __DIR__ . '/../font-preview';
 } else {
@@ -40,7 +90,7 @@ if (!isset($argv[1]) || $argv[1] == 'googlefonts') {
         mkdir($outpath);
     }
     foreach ($argv as $arg) {
-        // build-font-previews.php "FontName|sans-serif|0,400+0,700+1,400+1,700|/path/to/font.ttf" "Font2|serif|0,400|/path/to/font2.ttf"
+        // build-font-previews.php manual-fonts-test "FontName|sans-serif|0,400+0,700+1,400+1,700|/path/to/font.ttf" "Font2|serif|0,400|/path/to/font2.ttf"
         if (preg_match('#^(.+)\|(.+)\|((?:[0,1],[0-9]{1,4}\+)*(?:[0,1],[0-9]{1,4}))\|(.+)$#', $arg, $matches)) {
             $fontName = $matches[1];
             $fontCategory = $matches[2];
@@ -62,14 +112,14 @@ if (!isset($argv[1]) || $argv[1] == 'googlefonts') {
     }
 }
 
-fontPreviewBuilder::generatePreview($fonts, $outpath);
+fontPreviewBuilder::generatePreview($fonts, $outpath, $outScales, $sliceSize);
 
 class GoogleFonts
 {
     private static $apiKey;
     private static $fontPath;
 
-    public static function fetchAll($apiKey, $fontPath)
+    public static function fetchAll($apiKey, $fontPath, $lite, $numFonts, $noReplaceOldFontInfos)
     {
         self::$fontPath = $fontPath;
         self::$apiKey = $apiKey;
@@ -79,9 +129,8 @@ class GoogleFonts
             mkdir(self::$fontPath, 0755, true);
         }
 
-        $fontInfos = self::getFontList();
-
-        //$fontInfos = array_slice($fontInfos, 0, 50);
+        $fontInfos = self::getFontList($lite, $noReplaceOldFontInfos);
+        $fontInfos = array_slice($fontInfos, 0, $numFonts);
 
         $fonts = [];
         foreach ($fontInfos as $num => $font) {
@@ -118,7 +167,6 @@ class GoogleFonts
         return $fonts;
     }
 
-
     private static function shortVariants($font)
     {
         $shortVariants = [];
@@ -139,12 +187,20 @@ class GoogleFonts
         return $shortVariants;
     }
 
-    private static function getFontList()
+    private static function getFontList($lite, $noReplaceOldFontInfos)
     {
         $localJsonFile = self::$fontPath . '/fonts.json';
-        if (!is_file($localJsonFile) || (replaceOldFontInfos && filemtime($localJsonFile) < time() - 60 * 60 * 24 * 7)) {
+        if (!is_file($localJsonFile) || (!$noReplaceOldFontInfos && filemtime($localJsonFile) < time() - 60 * 60 * 24 * 7)) {
             println('Font cache info file missing or out of date, downloading ...');
-            $url = 'https://www.googleapis.com/webfonts/v1/webfonts?key=' . self::$apiKey . '&sort=alpha';
+            // Sort values: alpha, date (updated/added), popularity, style (font family with most styles first), trending
+            // ref: https://developers.google.com/fonts/docs/developer_api
+            $apiBaseUrl = 'https://www.googleapis.com/webfonts/v1/webfonts?key=';
+            $url = $apiBaseUrl . self::$apiKey;
+            if ($lite) {
+                $url = $url . '&sort=popularity';
+            } else {
+                $url = $url . '&sort=alpha';
+            }
             $remoteJson = json_decode(
                 file_get_contents($url),
                 true,
@@ -177,14 +233,11 @@ class GoogleFonts
     }
 }
 
-
 class fontPreviewBuilder {
     private static $outputPath;
-    private static $cellHeight = 40;
-    private static $sliceSize = 20; // 200
+    private static int $cellHeight = 40;
 
-
-    public static function generatePreview($fonts, $outputPath) {
+    public static function generatePreview($fonts, $outputPath, $outScales, $sliceSize) {
         println('Generating previews for ' . sizeof($fonts) . ' fonts to: ' . $outputPath);
         self::$outputPath = $outputPath;
         if (!file_exists(self::$outputPath)) {
@@ -194,22 +247,21 @@ class fontPreviewBuilder {
 
         foreach ($fonts as $num => &$font) {
             $font['sanename'] = strtolower(preg_replace('#[^a-zA-Z0-9\_]#', '', str_replace(' ', '_', $font['name'])));
-            $font['top'] = ($num % self::$sliceSize) * self::$cellHeight;
+            $font['top'] = ($num % $sliceSize) * self::$cellHeight;
         }
 
         println('Creating font info JSON file ...');
         self::makeJson($fonts);
 
         println('Creating font preview images ...');
-        self::makeImages($fonts);
+        self::makeImages($fonts, $outScales, $sliceSize);
 
         println('Generating CSS ...');
-        self::makeCss($fonts);
+        self::makeCss($fonts, $outScales, $sliceSize);
 
         println('Generating HTML ...');
         self::makeHtml($fonts);
     }
-
 
     private static function makeJson($fonts)
     {
@@ -226,20 +278,18 @@ class fontPreviewBuilder {
         file_put_contents(self::$outputPath . '/fontInfo.json', json_encode($json, JSON_PRETTY_PRINT));
     }
 
-
-    private static function makeImages($fonts)
+    private static function makeImages($fonts, $outScales, $sliceSize)
     {
-        for ($i = 0; $i < count($fonts) / self::$sliceSize; $i++) {
-            echo 'Slice ' . ($i + 1) . '/' . (intdiv(count($fonts), self::$sliceSize) + 1) . "\n";
-            $slice = array_slice($fonts, $i * self::$sliceSize, self::$sliceSize);
-            self::makeImage($slice, self::$outputPath . '/sprite.' . ($i + 1));
+        for ($i = 0; $i < count($fonts) / $sliceSize; $i++) {
+            echo 'Slice ' . ($i + 1) . '/' . (intdiv(count($fonts), $sliceSize) + 1) . "\n";
+            $slice = array_slice($fonts, intval(ceil($i * $sliceSize)), $sliceSize);
+            self::makeImage($slice, self::$outputPath . '/sprite.' . ($i + 1), $outScales);
         }
     }
 
-
-    private static function makeImage($fonts, $outFile)
+    private static function makeImage($fonts, $outFile, $outScales, $svg = false)
     {
-        foreach ([1, 1.5, 2] as $outScale) {
+        foreach ($outScales as $outScale) {
             echo $outScale . "x\n";
             $scale = $outScale * 2;
 
@@ -287,10 +337,9 @@ class fontPreviewBuilder {
         }
     }
 
-
-    private static function makeImageSvg($fonts, $outFile)
+    private static function makeImageSvg($fonts, $outFile, $outScales)
     {
-        foreach ([1, 1.5, 2] as $outScale) {
+        foreach ($outScales as $outScale) {
             echo $outScale . "x\n";
             $scale = $outScale * 2;
 
@@ -301,7 +350,7 @@ class fontPreviewBuilder {
             $srcW = intval(ceil(600 * $scale));
             $srcH = intval(ceil(self::$cellHeight * $scale));
 
-            $fontSize = 16 * $scale;
+            $fontSize = intval(16 * $scale);
             $indent = intval(ceil(10 * $scale));
             $baseline = intval(ceil((self::$cellHeight - 12) * $scale));
 
@@ -336,12 +385,11 @@ class fontPreviewBuilder {
 
             $svgImage[] = '</svg>';
 
-            file_put_contents($outFile . '.' . $outScale . 'x.svg', implode("\n", $svgImages));
+            file_put_contents($outFile . '.' . $outScale . 'x.svg', implode("\n", $svgImage));
         }
     }
 
-
-    private static function makeCss($fonts)
+    private static function makeCss($fonts, $outScales, $sliceSize)
     {
         $css = [];
 
@@ -353,42 +401,38 @@ class fontPreviewBuilder {
         $css[] = '  image-rendering: optimizequality;';
         $css[] = '}';
 
-        for ($i = 0; $i < count($fonts) / self::$sliceSize; $i++) {
-            $slice = array_slice($fonts, $i * self::$sliceSize, self::$sliceSize);
-            foreach ($slice as $font) {
-                $css[] = '.font-preview-' . $font['sanename'] . ',';
+        $i = 0;
+        $numScales = sizeof($outScales);
+        foreach ($outScales as $outScale) {
+            $i += 1;
+            if ($numScales > 1) {
+                $css[] = '@media';
+                if ($i == $numScales) {
+                    // Highest resolution previews use lowerbound instead
+                    $css[] = '(-webkit-min-device-pixel-ratio: ' . ($outScale + 0.01) . '),';
+                    $css[] = '(min-resolution: ' . ($outScale + 0.01) . 'dppx) {';
+                } else {
+                    $css[] = '(-webkit-max-device-pixel-ratio: ' . $outScale .'),';
+                    $css[] = '(max-resolution: ' . $outScale . 'dppx) {';
+                }
             }
-            $css[] = '.font-preview-on-medium-sized-screens {';
-            $css[] = '  background-image: url(sprite.' . ($i + 1) . '.1.5x.png);';
-            $css[] = '}';
-        }
-
-        $css[] = '@media';
-        $css[] = '(-webkit-max-device-pixel-ratio: 1),';
-        $css[] = '(max-resolution: 96dpi) {';
-        for ($i = 0; $i < count($fonts) / self::$sliceSize; $i++) {
-            $slice = array_slice($fonts, $i * self::$sliceSize, self::$sliceSize);
-            foreach ($slice as $font) {
-                $css[] = '  .font-preview-' . $font['sanename'] . ',';
+            for ($i = 0; $i < count($fonts) / $sliceSize; $i++) {
+                $slice = array_slice($fonts, intval(ceil($i * $sliceSize)), $sliceSize);
+                foreach ($slice as $font) {
+                    $css[] = '  .font-preview-' . $font['sanename'] . ',';
+                }
+                if ($numScales > 1) {
+                    $css[] = '  .font-preview-on-max-' . $outScale . 'x {';
+                } else {
+                    $css[] = '  .font-preview-on-all {';
+                }
+                $css[] = '    background-image: url(sprite.' . ($i + 1) . '.' . $outScale . 'x.png);';
+                $css[] = '  }';
             }
-            $css[] = '  .font-preview-on-worse-than-1x {';
-            $css[] = '    background-image: url(sprite.' . ($i + 1) . '.1x.png);';
-            $css[] = '  }';
-        }
-        $css[] = '}';
-        $css[] = '@media';
-        $css[] = '(-webkit-min-device-pixel-ratio: 1.51),';
-        $css[] = '(min-resolution: 145dpi) {';
-        for ($i = 0; $i < count($fonts) / self::$sliceSize; $i++) {
-            $slice = array_slice($fonts, $i * self::$sliceSize, self::$sliceSize);
-            foreach ($slice as $font) {
-                $css[] = '  .font-preview-' . $font['sanename'] . ',';
+            if ($numScales > 1) {
+                $css[] = '}';
             }
-            $css[] = '  .font-preview-on-better-than-1-and-a-half-x {';
-            $css[] = '    background-image: url(sprite.' . ($i + 1) . '.2x.png);';
-            $css[] = '  }';
         }
-        $css[] = '}';
 
         foreach ($fonts as $font) {
             $css[] = '.font-preview-' . $font['sanename'] . '{ background-position: 0px -' . ($font['top'] / 20) . 'em }';
@@ -396,7 +440,6 @@ class fontPreviewBuilder {
 
         file_put_contents(self::$outputPath . '/font-previews.css', implode("\n", $css));
     }
-
 
     private static function makeHtml($fonts)
     {
