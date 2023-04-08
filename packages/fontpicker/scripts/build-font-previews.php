@@ -279,11 +279,38 @@ class fontPreviewBuilder {
             $dstCellH = intval(ceil(self::$cellHeight * $outScale));
             $srcW = intval(ceil(600 * $scale));
             $srcH = intval(ceil(self::$cellHeight * $scale));
-
-            $fontSize = 16 * $scale;
+            $fontSize = intval(ceil(16 * $scale));
             $indent = intval(ceil(10 * $scale));
             $baseline = intval(ceil((self::$cellHeight - 12) * $scale));
-
+            if ($svg) {
+                $svgImage = [];
+                $svgImage[] = '<svg xmlns="http://www.w3.org/2000/svg" ';
+                $svgImage[] = 'xmlns:xlink="http://www.w3.org/1999/xlink" ';
+                $svgImage[] = 'version="1.1" ';
+                $svgImage[] = 'x="0px" y="0px" ';
+                $svgImage[] = 'width="' . $dstW . 'px" height="' . $dstH . 'px" ';
+                $svgImage[] = 'viewBox="0 0 ' . $dstW . ' ' . $dstH . '">';
+                foreach ($fonts as $num => $font) {
+                    $text = $font['name'];
+                    $svg = new EasySVG();
+                    $svg->setFontSVG($font['localFileSvg']);
+                    $svg->setFontSize($fontSize);
+                    $svg->setFontColor('#000000');
+                    //$svg->setLineHeight(1.2);
+                    //$svg->setLetterSpacing(.1);
+                    //$svg->setUseKerning(true);
+                    $svg->addText($text, $indent, $baseline);
+                    // Set width/height according to text
+                    //list($textWidth, $textHeight) = $svg->textDimensions($text);
+                    //$svg->addAttribute("width", $textWidth."px");
+                    //$svg->addAttribute("height", $textHeight."px");
+                    $svg->addAttribute("width", $srcW."px");
+                    $svg->addAttribute("height", $srcH."px");
+                    $svgImage[] = $svg->asXML();
+                }
+                $svgImage[] = '</svg>';
+                file_put_contents($outFile . '.' . $outScale . 'x.svg', implode("\n", $svgImage));
+            } else {
                 $dst = imagecreatetruecolor($dstW, $dstH);
                 $trans = imagecolorallocatealpha($dst, 255, 255, 255, 127);
                 imagealphablending($dst, true);
@@ -311,50 +338,7 @@ class fontPreviewBuilder {
                 imagesavealpha($dst, true);
                 imagepng($dst, $outFile . '.' . $outScale . 'x.png');
                 imagedestroy($dst);
-        }
-    }
-
-    private static function makeImageSvg($fonts, $outFile, $outScales)
-    {
-        foreach ($outScales as $outScale) {
-            echo $outScale . "x\n";
-            $scale = $outScale * 2;
-            $dstW = intval(ceil(600 * $outScale));
-            $dstH = intval(ceil(self::$cellHeight * count($fonts) * $outScale));
-            $dstCellH = intval(ceil(self::$cellHeight * $outScale));
-            $srcW = intval(ceil(600 * $scale));
-            $srcH = intval(ceil(self::$cellHeight * $scale));
-            $fontSize = intval(16 * $scale);
-            $indent = intval(ceil(10 * $scale));
-            $baseline = intval(ceil((self::$cellHeight - 12) * $scale));
-            $svgImage = [];
-            $svgImage[] = '<svg xmlns="http://www.w3.org/2000/svg" ';
-            $svgImage[] = 'xmlns:xlink="http://www.w3.org/1999/xlink" ';
-            $svgImage[] = 'version="1.1" ';
-            $svgImage[] = 'x="0px" y="0px" ';
-            $svgImage[] = 'width="' . $dstW . 'px" height="' . $dstH . 'px" ';
-            $svgImage[] = 'viewBox="0 0 ' . $dstW . ' ' . $dstH . '">';
-            foreach ($fonts as $num => $font) {
-                $text = $font['name'];
-                $svg = new EasySVG();
-                $svg->setFontSVG($font['localFileSvg']);
-                $svg->setFontSize($fontSize);
-                $svg->setFontColor('#000000');
-                //$svg->setLineHeight(1.2);
-                //$svg->setLetterSpacing(.1);
-                //$svg->setUseKerning(true);
-                $svg->addText($text, $indent, $baseline);
-                // set width/height according to text
-                //list($textWidth, $textHeight) = $svg->textDimensions($text);
-                //$svg->addAttribute("width", $textWidth."px");
-                //$svg->addAttribute("height", $textHeight."px");
-                $svg->addAttribute("width", $srcW."px");
-                $svg->addAttribute("height", $srcH."px");
-                //echo $svg->asXML();
-                $svgImage[] = $svg->asXML();
             }
-            $svgImage[] = '</svg>';
-            file_put_contents($outFile . '.' . $outScale . 'x.svg', implode("\n", $svgImage));
         }
     }
 
