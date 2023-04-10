@@ -59,7 +59,7 @@
     "vitest": "vitest run",
     "format": "prettier --write src cypress scripts",
     "lint": "eslint src cypress",
-    "build-font-previews": "php ./build-font-previews.php",
+    "build-font-previews": "php ./scripts/build-font-previews.php",
     "svg-text-test": "tsc -p tsconfig.scripts.json && node ./scripts/getTextSvg.js",
     "preview": "vite preview --host 0.0.0.0 --outDir docs",
     "upgrade": "npm run upgrade-packages && npm install && npm run build && npm run test",
