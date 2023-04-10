@@ -1,0 +1,18 @@
+{
+  "extends": "./tsconfig.json",
+  // for ide
+  "compilerOptions": {
+    "types": ["vitest/globals"],
+  },
+  "typeAcquisition": {
+    "include": [
+      "vitest",
+    ],
+  },
+  "include": [
+    "src",
+    ".eslintrc.js",
+    "vite.config.ts",
+   ],
+  "exclude": []
+}

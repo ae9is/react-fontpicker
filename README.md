@@ -21,6 +21,9 @@ https://ae9is.github.io/react-fontpicker/
 npm i react-fontpicker-ts
 # yarn
 yarn add react-fontpicker-ts
+
+# much smaller package with fewer fonts
+npm i react-fontpicker-ts-lite
 ```
 
 Then, import the component and stylesheet:
@@ -71,7 +74,11 @@ The big trade-off of this approach is that the component's bundle is quite large
 - 1.5x &rarr; 4.4 MB
 - 1x &rarr; 2.7 MB
 
-For a different font picker following an on demand approach, check out: [https://github.com/samuelmeuli/font-picker-react](https://github.com/samuelmeuli/font-picker-react)
+If you're looking for a lighter weight option, you can use `react-fontpicker-ts-lite` instead:
+
+- 1x (only) &rarr; ~150 KB
+
+Or, for a different font picker following an on demand approach, check out: [https://github.com/samuelmeuli/font-picker-react](https://github.com/samuelmeuli/font-picker-react)
 
 `font-picker-react` requires a Google API key, and works best at the default font limit of 50 (fonts to choose from).
 
