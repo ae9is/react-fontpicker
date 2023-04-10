@@ -239,23 +239,6 @@
         ]
     },
     {
-        "category": "serif",
-        "name": "Alegreya SC",
-        "sane": "alegreya_sc",
-        "variants": [
-            "0,400",
-            "1,400",
-            "0,500",
-            "1,500",
-            "0,700",
-            "1,700",
-            "0,800",
-            "1,800",
-            "0,900",
-            "1,900"
-        ]
-    },
-    {
         "category": "sans-serif",
         "name": "Alegreya Sans",
         "sane": "alegreya_sans",
@@ -299,6 +282,23 @@
     },
     {
         "category": "serif",
+        "name": "Alegreya SC",
+        "sane": "alegreya_sc",
+        "variants": [
+            "0,400",
+            "1,400",
+            "0,500",
+            "1,500",
+            "0,700",
+            "1,700",
+            "0,800",
+            "1,800",
+            "0,900",
+            "1,900"
+        ]
+    },
+    {
+        "category": "serif",
         "name": "Aleo",
         "sane": "aleo",
         "variants": [
@@ -308,14 +308,6 @@
             "1,400",
             "0,700",
             "1,700"
-        ]
-    },
-    {
-        "category": "handwriting",
-        "name": "Alex Brush",
-        "sane": "alex_brush",
-        "variants": [
-            "0,400"
         ]
     },
     {
@@ -332,6 +324,14 @@
             "0,700",
             "0,800",
             "0,900"
+        ]
+    },
+    {
+        "category": "handwriting",
+        "name": "Alex Brush",
+        "sane": "alex_brush",
+        "variants": [
+            "0,400"
         ]
     },
     {
@@ -372,6 +372,17 @@
         "sane": "alkalami",
         "variants": [
             "0,400"
+        ]
+    },
+    {
+        "category": "display",
+        "name": "Alkatra",
+        "sane": "alkatra",
+        "variants": [
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700"
         ]
     },
     {
@@ -828,6 +839,20 @@
         ]
     },
     {
+        "category": "sans-serif",
+        "name": "Anuphan",
+        "sane": "anuphan",
+        "variants": [
+            "0,100",
+            "0,200",
+            "0,300",
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700"
+        ]
+    },
+    {
         "category": "display",
         "name": "Anybody",
         "sane": "anybody",
@@ -934,14 +959,6 @@
         ]
     },
     {
-        "category": "handwriting",
-        "name": "Are You Serious",
-        "sane": "are_you_serious",
-        "variants": [
-            "0,400"
-        ]
-    },
-    {
         "category": "serif",
         "name": "Aref Ruqaa",
         "sane": "aref_ruqaa",
@@ -960,6 +977,14 @@
         ]
     },
     {
+        "category": "handwriting",
+        "name": "Are You Serious",
+        "sane": "are_you_serious",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
         "category": "display",
         "name": "Arima",
         "sane": "arima",
@@ -971,21 +996,6 @@
             "0,500",
             "0,600",
             "0,700"
-        ]
-    },
-    {
-        "category": "display",
-        "name": "Arima Madurai",
-        "sane": "arima_madurai",
-        "variants": [
-            "0,100",
-            "0,200",
-            "0,300",
-            "0,400",
-            "0,500",
-            "0,700",
-            "0,800",
-            "0,900"
         ]
     },
     {
@@ -1330,42 +1340,6 @@
             "1,400",
             "0,700",
             "1,700"
-        ]
-    },
-    {
-        "category": "sans-serif",
-        "name": "BIZ UDGothic",
-        "sane": "biz_udgothic",
-        "variants": [
-            "0,400",
-            "0,700"
-        ]
-    },
-    {
-        "category": "serif",
-        "name": "BIZ UDMincho",
-        "sane": "biz_udmincho",
-        "variants": [
-            "0,400",
-            "0,700"
-        ]
-    },
-    {
-        "category": "sans-serif",
-        "name": "BIZ UDPGothic",
-        "sane": "biz_udpgothic",
-        "variants": [
-            "0,400",
-            "0,700"
-        ]
-    },
-    {
-        "category": "serif",
-        "name": "BIZ UDPMincho",
-        "sane": "biz_udpmincho",
-        "variants": [
-            "0,400",
-            "0,700"
         ]
     },
     {
@@ -1719,31 +1693,6 @@
         ]
     },
     {
-        "category": "sans-serif",
-        "name": "Be Vietnam Pro",
-        "sane": "be_vietnam_pro",
-        "variants": [
-            "0,100",
-            "1,100",
-            "0,200",
-            "1,200",
-            "0,300",
-            "1,300",
-            "0,400",
-            "1,400",
-            "0,500",
-            "1,500",
-            "0,600",
-            "1,600",
-            "0,700",
-            "1,700",
-            "0,800",
-            "1,800",
-            "0,900",
-            "1,900"
-        ]
-    },
-    {
         "category": "handwriting",
         "name": "Beau Rivage",
         "sane": "beau_rivage",
@@ -1880,9 +1829,50 @@
         ]
     },
     {
+        "category": "sans-serif",
+        "name": "Be Vietnam Pro",
+        "sane": "be_vietnam_pro",
+        "variants": [
+            "0,100",
+            "1,100",
+            "0,200",
+            "1,200",
+            "0,300",
+            "1,300",
+            "0,400",
+            "1,400",
+            "0,500",
+            "1,500",
+            "0,600",
+            "1,600",
+            "0,700",
+            "1,700",
+            "0,800",
+            "1,800",
+            "0,900",
+            "1,900"
+        ]
+    },
+    {
         "category": "display",
         "name": "BhuTuka Expanded One",
         "sane": "bhutuka_expanded_one",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "display",
+        "name": "Bigelow Rules",
+        "sane": "bigelow_rules",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "display",
+        "name": "Bigshot One",
+        "sane": "bigshot_one",
         "variants": [
             "0,400"
         ]
@@ -1984,22 +1974,6 @@
         ]
     },
     {
-        "category": "display",
-        "name": "Bigelow Rules",
-        "sane": "bigelow_rules",
-        "variants": [
-            "0,400"
-        ]
-    },
-    {
-        "category": "display",
-        "name": "Bigshot One",
-        "sane": "bigshot_one",
-        "variants": [
-            "0,400"
-        ]
-    },
-    {
         "category": "handwriting",
         "name": "Bilbo",
         "sane": "bilbo",
@@ -2093,6 +2067,42 @@
             "1,700",
             "1,800",
             "1,900"
+        ]
+    },
+    {
+        "category": "sans-serif",
+        "name": "BIZ UDGothic",
+        "sane": "biz_udgothic",
+        "variants": [
+            "0,400",
+            "0,700"
+        ]
+    },
+    {
+        "category": "serif",
+        "name": "BIZ UDMincho",
+        "sane": "biz_udmincho",
+        "variants": [
+            "0,400",
+            "0,700"
+        ]
+    },
+    {
+        "category": "sans-serif",
+        "name": "BIZ UDPGothic",
+        "sane": "biz_udpgothic",
+        "variants": [
+            "0,400",
+            "0,700"
+        ]
+    },
+    {
+        "category": "serif",
+        "name": "BIZ UDPMincho",
+        "sane": "biz_udpmincho",
+        "variants": [
+            "0,400",
+            "0,700"
         ]
     },
     {
@@ -3347,50 +3357,6 @@
         ]
     },
     {
-        "category": "monospace",
-        "name": "DM Mono",
-        "sane": "dm_mono",
-        "variants": [
-            "0,300",
-            "1,300",
-            "0,400",
-            "1,400",
-            "0,500",
-            "1,500"
-        ]
-    },
-    {
-        "category": "sans-serif",
-        "name": "DM Sans",
-        "sane": "dm_sans",
-        "variants": [
-            "0,400",
-            "1,400",
-            "0,500",
-            "1,500",
-            "0,700",
-            "1,700"
-        ]
-    },
-    {
-        "category": "serif",
-        "name": "DM Serif Display",
-        "sane": "dm_serif_display",
-        "variants": [
-            "0,400",
-            "1,400"
-        ]
-    },
-    {
-        "category": "serif",
-        "name": "DM Serif Text",
-        "sane": "dm_serif_text",
-        "variants": [
-            "0,400",
-            "1,400"
-        ]
-    },
-    {
         "category": "handwriting",
         "name": "Damion",
         "sane": "damion",
@@ -3475,6 +3441,14 @@
     },
     {
         "category": "handwriting",
+        "name": "Delicious Handrawn",
+        "sane": "delicious_handrawn",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "handwriting",
         "name": "Delius",
         "sane": "delius",
         "variants": [
@@ -3552,6 +3526,50 @@
         "sane": "diplomata_sc",
         "variants": [
             "0,400"
+        ]
+    },
+    {
+        "category": "monospace",
+        "name": "DM Mono",
+        "sane": "dm_mono",
+        "variants": [
+            "0,300",
+            "1,300",
+            "0,400",
+            "1,400",
+            "0,500",
+            "1,500"
+        ]
+    },
+    {
+        "category": "sans-serif",
+        "name": "DM Sans",
+        "sane": "dm_sans",
+        "variants": [
+            "0,400",
+            "1,400",
+            "0,500",
+            "1,500",
+            "0,700",
+            "1,700"
+        ]
+    },
+    {
+        "category": "serif",
+        "name": "DM Serif Display",
+        "sane": "dm_serif_display",
+        "variants": [
+            "0,400",
+            "1,400"
+        ]
+    },
+    {
+        "category": "serif",
+        "name": "DM Serif Text",
+        "sane": "dm_serif_text",
+        "variants": [
+            "0,400",
+            "1,400"
         ]
     },
     {
@@ -3655,17 +3673,6 @@
     },
     {
         "category": "display",
-        "name": "DynaPuff",
-        "sane": "dynapuff",
-        "variants": [
-            "0,400",
-            "0,500",
-            "0,600",
-            "0,700"
-        ]
-    },
-    {
-        "category": "display",
         "name": "Dynalight",
         "sane": "dynalight",
         "variants": [
@@ -3673,20 +3680,14 @@
         ]
     },
     {
-        "category": "serif",
-        "name": "EB Garamond",
-        "sane": "eb_garamond",
+        "category": "display",
+        "name": "DynaPuff",
+        "sane": "dynapuff",
         "variants": [
             "0,400",
             "0,500",
             "0,600",
-            "0,700",
-            "0,800",
-            "1,400",
-            "1,500",
-            "1,600",
-            "1,700",
-            "1,800"
+            "0,700"
         ]
     },
     {
@@ -3711,6 +3712,23 @@
         "sane": "eater",
         "variants": [
             "0,400"
+        ]
+    },
+    {
+        "category": "serif",
+        "name": "EB Garamond",
+        "sane": "eb_garamond",
+        "variants": [
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700",
+            "0,800",
+            "1,400",
+            "1,500",
+            "1,600",
+            "1,700",
+            "1,800"
         ]
     },
     {
@@ -3793,6 +3811,14 @@
     },
     {
         "category": "sans-serif",
+        "name": "Electrolize",
+        "sane": "electrolize",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "sans-serif",
         "name": "El Messiri",
         "sane": "el_messiri",
         "variants": [
@@ -3800,14 +3826,6 @@
             "0,500",
             "0,600",
             "0,700"
-        ]
-    },
-    {
-        "category": "sans-serif",
-        "name": "Electrolize",
-        "sane": "electrolize",
-        "variants": [
-            "0,400"
         ]
     },
     {
@@ -4591,14 +4609,6 @@
     },
     {
         "category": "display",
-        "name": "Fredoka One",
-        "sane": "fredoka_one",
-        "variants": [
-            "0,400"
-        ]
-    },
-    {
-        "category": "display",
         "name": "Freehand",
         "sane": "freehand",
         "variants": [
@@ -4808,17 +4818,6 @@
             "1,700",
             "1,800",
             "1,900"
-        ]
-    },
-    {
-        "category": "serif",
-        "name": "Gentium Book Basic",
-        "sane": "gentium_book_basic",
-        "variants": [
-            "0,400",
-            "1,400",
-            "0,700",
-            "1,700"
         ]
     },
     {
@@ -5603,6 +5602,21 @@
         ]
     },
     {
+        "category": "serif",
+        "name": "Ibarra Real Nova",
+        "sane": "ibarra_real_nova",
+        "variants": [
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700",
+            "1,400",
+            "1,500",
+            "1,600",
+            "1,700"
+        ]
+    },
+    {
         "category": "monospace",
         "name": "IBM Plex Mono",
         "sane": "ibm_plex_mono",
@@ -5785,20 +5799,35 @@
         ]
     },
     {
-        "category": "serif",
-        "name": "IM Fell DW Pica",
-        "sane": "im_fell_dw_pica",
+        "category": "display",
+        "name": "Iceberg",
+        "sane": "iceberg",
         "variants": [
-            "0,400",
-            "1,400"
+            "0,400"
+        ]
+    },
+    {
+        "category": "display",
+        "name": "Iceland",
+        "sane": "iceland",
+        "variants": [
+            "0,400"
         ]
     },
     {
         "category": "serif",
-        "name": "IM Fell DW Pica SC",
-        "sane": "im_fell_dw_pica_sc",
+        "name": "Imbue",
+        "sane": "imbue",
         "variants": [
-            "0,400"
+            "0,100",
+            "0,200",
+            "0,300",
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700",
+            "0,800",
+            "0,900"
         ]
     },
     {
@@ -5814,6 +5843,23 @@
         "category": "serif",
         "name": "IM Fell Double Pica SC",
         "sane": "im_fell_double_pica_sc",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "serif",
+        "name": "IM Fell DW Pica",
+        "sane": "im_fell_dw_pica",
+        "variants": [
+            "0,400",
+            "1,400"
+        ]
+    },
+    {
+        "category": "serif",
+        "name": "IM Fell DW Pica SC",
+        "sane": "im_fell_dw_pica_sc",
         "variants": [
             "0,400"
         ]
@@ -5867,53 +5913,6 @@
         "sane": "im_fell_great_primer_sc",
         "variants": [
             "0,400"
-        ]
-    },
-    {
-        "category": "serif",
-        "name": "Ibarra Real Nova",
-        "sane": "ibarra_real_nova",
-        "variants": [
-            "0,400",
-            "0,500",
-            "0,600",
-            "0,700",
-            "1,400",
-            "1,500",
-            "1,600",
-            "1,700"
-        ]
-    },
-    {
-        "category": "display",
-        "name": "Iceberg",
-        "sane": "iceberg",
-        "variants": [
-            "0,400"
-        ]
-    },
-    {
-        "category": "display",
-        "name": "Iceland",
-        "sane": "iceland",
-        "variants": [
-            "0,400"
-        ]
-    },
-    {
-        "category": "serif",
-        "name": "Imbue",
-        "sane": "imbue",
-        "variants": [
-            "0,100",
-            "0,200",
-            "0,300",
-            "0,400",
-            "0,500",
-            "0,600",
-            "0,700",
-            "0,800",
-            "0,900"
         ]
     },
     {
@@ -6683,8 +6682,8 @@
     },
     {
         "category": "sans-serif",
-        "name": "KoHo",
-        "sane": "koho",
+        "name": "Kodchasan",
+        "sane": "kodchasan",
         "variants": [
             "0,200",
             "1,200",
@@ -6702,8 +6701,8 @@
     },
     {
         "category": "sans-serif",
-        "name": "Kodchasan",
-        "sane": "kodchasan",
+        "name": "KoHo",
+        "sane": "koho",
         "variants": [
             "0,200",
             "1,200",
@@ -7218,22 +7217,6 @@
     },
     {
         "category": "display",
-        "name": "Libre Barcode 128",
-        "sane": "libre_barcode_128",
-        "variants": [
-            "0,400"
-        ]
-    },
-    {
-        "category": "display",
-        "name": "Libre Barcode 128 Text",
-        "sane": "libre_barcode_128_text",
-        "variants": [
-            "0,400"
-        ]
-    },
-    {
-        "category": "display",
         "name": "Libre Barcode 39",
         "sane": "libre_barcode_39",
         "variants": [
@@ -7260,6 +7243,22 @@
         "category": "display",
         "name": "Libre Barcode 39 Text",
         "sane": "libre_barcode_39_text",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "display",
+        "name": "Libre Barcode 128",
+        "sane": "libre_barcode_128",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "display",
+        "name": "Libre Barcode 128 Text",
+        "sane": "libre_barcode_128_text",
         "variants": [
             "0,400"
         ]
@@ -7524,22 +7523,6 @@
     },
     {
         "category": "handwriting",
-        "name": "Love Light",
-        "sane": "love_light",
-        "variants": [
-            "0,400"
-        ]
-    },
-    {
-        "category": "display",
-        "name": "Love Ya Like A Sister",
-        "sane": "love_ya_like_a_sister",
-        "variants": [
-            "0,400"
-        ]
-    },
-    {
-        "category": "handwriting",
         "name": "Loved by the King",
         "sane": "loved_by_the_king",
         "variants": [
@@ -7548,8 +7531,24 @@
     },
     {
         "category": "handwriting",
+        "name": "Love Light",
+        "sane": "love_light",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "handwriting",
         "name": "Lovers Quarrel",
         "sane": "lovers_quarrel",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "display",
+        "name": "Love Ya Like A Sister",
+        "sane": "love_ya_like_a_sister",
         "variants": [
             "0,400"
         ]
@@ -7591,102 +7590,6 @@
         "category": "handwriting",
         "name": "Luxurious Script",
         "sane": "luxurious_script",
-        "variants": [
-            "0,400"
-        ]
-    },
-    {
-        "category": "sans-serif",
-        "name": "M PLUS 1",
-        "sane": "m_plus_1",
-        "variants": [
-            "0,100",
-            "0,200",
-            "0,300",
-            "0,400",
-            "0,500",
-            "0,600",
-            "0,700",
-            "0,800",
-            "0,900"
-        ]
-    },
-    {
-        "category": "sans-serif",
-        "name": "M PLUS 1 Code",
-        "sane": "m_plus_1_code",
-        "variants": [
-            "0,100",
-            "0,200",
-            "0,300",
-            "0,400",
-            "0,500",
-            "0,600",
-            "0,700"
-        ]
-    },
-    {
-        "category": "sans-serif",
-        "name": "M PLUS 1p",
-        "sane": "m_plus_1p",
-        "variants": [
-            "0,100",
-            "0,300",
-            "0,400",
-            "0,500",
-            "0,700",
-            "0,800",
-            "0,900"
-        ]
-    },
-    {
-        "category": "sans-serif",
-        "name": "M PLUS 2",
-        "sane": "m_plus_2",
-        "variants": [
-            "0,100",
-            "0,200",
-            "0,300",
-            "0,400",
-            "0,500",
-            "0,600",
-            "0,700",
-            "0,800",
-            "0,900"
-        ]
-    },
-    {
-        "category": "sans-serif",
-        "name": "M PLUS Code Latin",
-        "sane": "m_plus_code_latin",
-        "variants": [
-            "0,100",
-            "0,200",
-            "0,300",
-            "0,400",
-            "0,500",
-            "0,600",
-            "0,700"
-        ]
-    },
-    {
-        "category": "sans-serif",
-        "name": "M PLUS Rounded 1c",
-        "sane": "m_plus_rounded_1c",
-        "variants": [
-            "0,100",
-            "0,300",
-            "0,400",
-            "0,500",
-            "0,700",
-            "0,800",
-            "0,900"
-        ]
-    },
-    {
-        "category": "handwriting",
-        "name": "Ma Shan Zheng",
-        "sane": "ma_shan_zheng",
         "variants": [
             "0,400"
         ]
@@ -7979,12 +7882,102 @@
         ]
     },
     {
+        "category": "handwriting",
+        "name": "Ma Shan Zheng",
+        "sane": "ma_shan_zheng",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
         "category": "serif",
         "name": "Mate",
         "sane": "mate",
         "variants": [
             "0,400",
             "1,400"
+        ]
+    },
+    {
+        "category": "monospace",
+        "name": "Material Icons",
+        "sane": "material_icons",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "monospace",
+        "name": "Material Icons Outlined",
+        "sane": "material_icons_outlined",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "monospace",
+        "name": "Material Icons Round",
+        "sane": "material_icons_round",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "monospace",
+        "name": "Material Icons Sharp",
+        "sane": "material_icons_sharp",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "monospace",
+        "name": "Material Icons Two Tone",
+        "sane": "material_icons_two_tone",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "monospace",
+        "name": "Material Symbols Outlined",
+        "sane": "material_symbols_outlined",
+        "variants": [
+            "0,100",
+            "0,200",
+            "0,300",
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700"
+        ]
+    },
+    {
+        "category": "monospace",
+        "name": "Material Symbols Rounded",
+        "sane": "material_symbols_rounded",
+        "variants": [
+            "0,100",
+            "0,200",
+            "0,300",
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700"
+        ]
+    },
+    {
+        "category": "monospace",
+        "name": "Material Symbols Sharp",
+        "sane": "material_symbols_sharp",
+        "variants": [
+            "0,100",
+            "0,200",
+            "0,300",
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700"
         ]
     },
     {
@@ -8092,14 +8085,6 @@
             "0,700",
             "0,800",
             "0,900"
-        ]
-    },
-    {
-        "category": "handwriting",
-        "name": "Merienda One",
-        "sane": "merienda_one",
-        "variants": [
-            "0,400"
         ]
     },
     {
@@ -8519,6 +8504,94 @@
         ]
     },
     {
+        "category": "sans-serif",
+        "name": "M PLUS 1",
+        "sane": "m_plus_1",
+        "variants": [
+            "0,100",
+            "0,200",
+            "0,300",
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700",
+            "0,800",
+            "0,900"
+        ]
+    },
+    {
+        "category": "sans-serif",
+        "name": "M PLUS 1 Code",
+        "sane": "m_plus_1_code",
+        "variants": [
+            "0,100",
+            "0,200",
+            "0,300",
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700"
+        ]
+    },
+    {
+        "category": "sans-serif",
+        "name": "M PLUS 1p",
+        "sane": "m_plus_1p",
+        "variants": [
+            "0,100",
+            "0,300",
+            "0,400",
+            "0,500",
+            "0,700",
+            "0,800",
+            "0,900"
+        ]
+    },
+    {
+        "category": "sans-serif",
+        "name": "M PLUS 2",
+        "sane": "m_plus_2",
+        "variants": [
+            "0,100",
+            "0,200",
+            "0,300",
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700",
+            "0,800",
+            "0,900"
+        ]
+    },
+    {
+        "category": "sans-serif",
+        "name": "M PLUS Code Latin",
+        "sane": "m_plus_code_latin",
+        "variants": [
+            "0,100",
+            "0,200",
+            "0,300",
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700"
+        ]
+    },
+    {
+        "category": "sans-serif",
+        "name": "M PLUS Rounded 1c",
+        "sane": "m_plus_rounded_1c",
+        "variants": [
+            "0,100",
+            "0,300",
+            "0,400",
+            "0,500",
+            "0,700",
+            "0,800",
+            "0,900"
+        ]
+    },
+    {
         "category": "handwriting",
         "name": "Mr Bedfort",
         "sane": "mr_bedfort",
@@ -8688,16 +8761,16 @@
     },
     {
         "category": "handwriting",
-        "name": "My Soul",
-        "sane": "my_soul",
+        "name": "Mynerve",
+        "sane": "mynerve",
         "variants": [
             "0,400"
         ]
     },
     {
         "category": "handwriting",
-        "name": "Mynerve",
-        "sane": "mynerve",
+        "name": "My Soul",
+        "sane": "my_soul",
         "variants": [
             "0,400"
         ]
@@ -8706,14 +8779,6 @@
         "category": "display",
         "name": "Mystery Quest",
         "sane": "mystery_quest",
-        "variants": [
-            "0,400"
-        ]
-    },
-    {
-        "category": "sans-serif",
-        "name": "NTR",
-        "sane": "ntr",
         "variants": [
             "0,400"
         ]
@@ -8817,14 +8882,6 @@
         ]
     },
     {
-        "category": "serif",
-        "name": "New Tegomin",
-        "sane": "new_tegomin",
-        "variants": [
-            "0,400"
-        ]
-    },
-    {
         "category": "sans-serif",
         "name": "News Cycle",
         "sane": "news_cycle",
@@ -8852,6 +8909,14 @@
             "1,600",
             "1,700",
             "1,800"
+        ]
+    },
+    {
+        "category": "serif",
+        "name": "New Tegomin",
+        "sane": "new_tegomin",
+        "variants": [
+            "0,400"
         ]
     },
     {
@@ -9326,19 +9391,6 @@
     },
     {
         "category": "sans-serif",
-        "name": "Noto Sans HK",
-        "sane": "noto_sans_hk",
-        "variants": [
-            "0,100",
-            "0,300",
-            "0,400",
-            "0,500",
-            "0,700",
-            "0,900"
-        ]
-    },
-    {
-        "category": "sans-serif",
         "name": "Noto Sans Hanifi Rohingya",
         "sane": "noto_sans_hanifi_rohingya",
         "variants": [
@@ -9374,8 +9426,8 @@
     },
     {
         "category": "sans-serif",
-        "name": "Noto Sans JP",
-        "sane": "noto_sans_jp",
+        "name": "Noto Sans HK",
+        "sane": "noto_sans_hk",
         "variants": [
             "0,100",
             "0,300",
@@ -9398,8 +9450,8 @@
     },
     {
         "category": "sans-serif",
-        "name": "Noto Sans KR",
-        "sane": "noto_sans_kr",
+        "name": "Noto Sans JP",
+        "sane": "noto_sans_jp",
         "variants": [
             "0,100",
             "0,300",
@@ -9458,6 +9510,19 @@
         "sane": "noto_sans_khojki",
         "variants": [
             "0,400"
+        ]
+    },
+    {
+        "category": "sans-serif",
+        "name": "Noto Sans KR",
+        "sane": "noto_sans_kr",
+        "variants": [
+            "0,100",
+            "0,300",
+            "0,400",
+            "0,500",
+            "0,700",
+            "0,900"
         ]
     },
     {
@@ -9636,8 +9701,8 @@
     },
     {
         "category": "sans-serif",
-        "name": "Noto Sans NKo",
-        "sane": "noto_sans_nko",
+        "name": "Noto Sans Newa",
+        "sane": "noto_sans_newa",
         "variants": [
             "0,400"
         ]
@@ -9655,8 +9720,8 @@
     },
     {
         "category": "sans-serif",
-        "name": "Noto Sans Newa",
-        "sane": "noto_sans_newa",
+        "name": "Noto Sans NKo",
+        "sane": "noto_sans_nko",
         "variants": [
             "0,400"
         ]
@@ -9730,6 +9795,14 @@
     },
     {
         "category": "sans-serif",
+        "name": "Noto Sans Saurashtra",
+        "sane": "noto_sans_saurashtra",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "sans-serif",
         "name": "Noto Sans SC",
         "sane": "noto_sans_sc",
         "variants": [
@@ -9739,14 +9812,6 @@
             "0,500",
             "0,700",
             "0,900"
-        ]
-    },
-    {
-        "category": "sans-serif",
-        "name": "Noto Sans Saurashtra",
-        "sane": "noto_sans_saurashtra",
-        "variants": [
-            "0,400"
         ]
     },
     {
@@ -9845,19 +9910,6 @@
     },
     {
         "category": "sans-serif",
-        "name": "Noto Sans TC",
-        "sane": "noto_sans_tc",
-        "variants": [
-            "0,100",
-            "0,300",
-            "0,400",
-            "0,500",
-            "0,700",
-            "0,900"
-        ]
-    },
-    {
-        "category": "sans-serif",
         "name": "Noto Sans Tagalog",
         "sane": "noto_sans_tagalog",
         "variants": [
@@ -9932,6 +9984,19 @@
             "0,500",
             "0,600",
             "0,700"
+        ]
+    },
+    {
+        "category": "sans-serif",
+        "name": "Noto Sans TC",
+        "sane": "noto_sans_tc",
+        "variants": [
+            "0,100",
+            "0,300",
+            "0,400",
+            "0,500",
+            "0,700",
+            "0,900"
         ]
     },
     {
@@ -10204,21 +10269,6 @@
     },
     {
         "category": "serif",
-        "name": "Noto Serif HK",
-        "sane": "noto_serif_hk",
-        "variants": [
-            "0,200",
-            "0,300",
-            "0,400",
-            "0,500",
-            "0,600",
-            "0,700",
-            "0,800",
-            "0,900"
-        ]
-    },
-    {
-        "category": "serif",
         "name": "Noto Serif Hebrew",
         "sane": "noto_serif_hebrew",
         "variants": [
@@ -10235,8 +10285,8 @@
     },
     {
         "category": "serif",
-        "name": "Noto Serif JP",
-        "sane": "noto_serif_jp",
+        "name": "Noto Serif HK",
+        "sane": "noto_serif_hk",
         "variants": [
             "0,200",
             "0,300",
@@ -10244,13 +10294,14 @@
             "0,500",
             "0,600",
             "0,700",
+            "0,800",
             "0,900"
         ]
     },
     {
         "category": "serif",
-        "name": "Noto Serif KR",
-        "sane": "noto_serif_kr",
+        "name": "Noto Serif JP",
+        "sane": "noto_serif_jp",
         "variants": [
             "0,200",
             "0,300",
@@ -10302,6 +10353,20 @@
             "0,500",
             "0,600",
             "0,700"
+        ]
+    },
+    {
+        "category": "serif",
+        "name": "Noto Serif KR",
+        "sane": "noto_serif_kr",
+        "variants": [
+            "0,200",
+            "0,300",
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700",
+            "0,900"
         ]
     },
     {
@@ -10390,20 +10455,6 @@
     },
     {
         "category": "serif",
-        "name": "Noto Serif TC",
-        "sane": "noto_serif_tc",
-        "variants": [
-            "0,200",
-            "0,300",
-            "0,400",
-            "0,500",
-            "0,600",
-            "0,700",
-            "0,900"
-        ]
-    },
-    {
-        "category": "serif",
         "name": "Noto Serif Tamil",
         "sane": "noto_serif_tamil",
         "variants": [
@@ -10425,6 +10476,20 @@
             "1,700",
             "1,800",
             "1,900"
+        ]
+    },
+    {
+        "category": "serif",
+        "name": "Noto Serif TC",
+        "sane": "noto_serif_tc",
+        "variants": [
+            "0,200",
+            "0,300",
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700",
+            "0,900"
         ]
     },
     {
@@ -10552,6 +10617,14 @@
     },
     {
         "category": "sans-serif",
+        "name": "NTR",
+        "sane": "ntr",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "sans-serif",
         "name": "Numans",
         "sane": "numans",
         "variants": [
@@ -10643,6 +10716,14 @@
         ]
     },
     {
+        "category": "display",
+        "name": "Oldenburg",
+        "sane": "oldenburg",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
         "category": "serif",
         "name": "Old Standard TT",
         "sane": "old_standard_tt",
@@ -10650,14 +10731,6 @@
             "0,400",
             "1,400",
             "0,700"
-        ]
-    },
-    {
-        "category": "display",
-        "name": "Oldenburg",
-        "sane": "oldenburg",
-        "variants": [
-            "0,400"
         ]
     },
     {
@@ -10797,14 +10870,6 @@
         ]
     },
     {
-        "category": "handwriting",
-        "name": "Over the Rainbow",
-        "sane": "over_the_rainbow",
-        "variants": [
-            "0,400"
-        ]
-    },
-    {
         "category": "display",
         "name": "Overlock",
         "sane": "overlock",
@@ -10863,6 +10928,14 @@
         ]
     },
     {
+        "category": "handwriting",
+        "name": "Over the Rainbow",
+        "sane": "over_the_rainbow",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
         "category": "serif",
         "name": "Ovo",
         "sane": "ovo",
@@ -10900,63 +10973,6 @@
         "sane": "oxygen_mono",
         "variants": [
             "0,400"
-        ]
-    },
-    {
-        "category": "monospace",
-        "name": "PT Mono",
-        "sane": "pt_mono",
-        "variants": [
-            "0,400"
-        ]
-    },
-    {
-        "category": "sans-serif",
-        "name": "PT Sans",
-        "sane": "pt_sans",
-        "variants": [
-            "0,400",
-            "1,400",
-            "0,700",
-            "1,700"
-        ]
-    },
-    {
-        "category": "sans-serif",
-        "name": "PT Sans Caption",
-        "sane": "pt_sans_caption",
-        "variants": [
-            "0,400",
-            "0,700"
-        ]
-    },
-    {
-        "category": "sans-serif",
-        "name": "PT Sans Narrow",
-        "sane": "pt_sans_narrow",
-        "variants": [
-            "0,400",
-            "0,700"
-        ]
-    },
-    {
-        "category": "serif",
-        "name": "PT Serif",
-        "sane": "pt_serif",
-        "variants": [
-            "0,400",
-            "1,400",
-            "0,700",
-            "1,700"
-        ]
-    },
-    {
-        "category": "serif",
-        "name": "PT Serif Caption",
-        "sane": "pt_serif_caption",
-        "variants": [
-            "0,400",
-            "1,400"
         ]
     },
     {
@@ -11382,7 +11398,11 @@
         "name": "Pontano Sans",
         "sane": "pontano_sans",
         "variants": [
-            "0,400"
+            "0,300",
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700"
         ]
     },
     {
@@ -11560,6 +11580,63 @@
             "1,700",
             "0,800",
             "1,800"
+        ]
+    },
+    {
+        "category": "monospace",
+        "name": "PT Mono",
+        "sane": "pt_mono",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "sans-serif",
+        "name": "PT Sans",
+        "sane": "pt_sans",
+        "variants": [
+            "0,400",
+            "1,400",
+            "0,700",
+            "1,700"
+        ]
+    },
+    {
+        "category": "sans-serif",
+        "name": "PT Sans Caption",
+        "sane": "pt_sans_caption",
+        "variants": [
+            "0,400",
+            "0,700"
+        ]
+    },
+    {
+        "category": "sans-serif",
+        "name": "PT Sans Narrow",
+        "sane": "pt_sans_narrow",
+        "variants": [
+            "0,400",
+            "0,700"
+        ]
+    },
+    {
+        "category": "serif",
+        "name": "PT Serif",
+        "sane": "pt_serif",
+        "variants": [
+            "0,400",
+            "1,400",
+            "0,700",
+            "1,700"
+        ]
+    },
+    {
+        "category": "serif",
+        "name": "PT Serif Caption",
+        "sane": "pt_serif_caption",
+        "variants": [
+            "0,400",
+            "1,400"
         ]
     },
     {
@@ -11922,6 +11999,24 @@
         ]
     },
     {
+        "category": "display",
+        "name": "Redacted",
+        "sane": "redacted",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "display",
+        "name": "Redacted Script",
+        "sane": "redacted_script",
+        "variants": [
+            "0,300",
+            "0,400",
+            "0,700"
+        ]
+    },
+    {
         "category": "sans-serif",
         "name": "Red Hat Display",
         "sane": "red_hat_display",
@@ -11977,6 +12072,14 @@
         ]
     },
     {
+        "category": "handwriting",
+        "name": "Redressed",
+        "sane": "redressed",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
         "category": "display",
         "name": "Red Rose",
         "sane": "red_rose",
@@ -11986,32 +12089,6 @@
             "0,500",
             "0,600",
             "0,700"
-        ]
-    },
-    {
-        "category": "display",
-        "name": "Redacted",
-        "sane": "redacted",
-        "variants": [
-            "0,400"
-        ]
-    },
-    {
-        "category": "display",
-        "name": "Redacted Script",
-        "sane": "redacted_script",
-        "variants": [
-            "0,300",
-            "0,400",
-            "0,700"
-        ]
-    },
-    {
-        "category": "handwriting",
-        "name": "Redressed",
-        "sane": "redressed",
-        "variants": [
-            "0,400"
         ]
     },
     {
@@ -12227,17 +12304,17 @@
         ]
     },
     {
-        "category": "handwriting",
-        "name": "Rock Salt",
-        "sane": "rock_salt",
+        "category": "sans-serif",
+        "name": "RocknRoll One",
+        "sane": "rocknroll_one",
         "variants": [
             "0,400"
         ]
     },
     {
-        "category": "sans-serif",
-        "name": "RocknRoll One",
-        "sane": "rocknroll_one",
+        "category": "handwriting",
+        "name": "Rock Salt",
+        "sane": "rock_salt",
         "variants": [
             "0,400"
         ]
@@ -12471,6 +12548,14 @@
     },
     {
         "category": "display",
+        "name": "Rubik Pixels",
+        "sane": "rubik_pixels",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "display",
         "name": "Rubik Puddles",
         "sane": "rubik_puddles",
         "variants": [
@@ -12585,21 +12670,6 @@
         "sane": "rye",
         "variants": [
             "0,400"
-        ]
-    },
-    {
-        "category": "serif",
-        "name": "STIX Two Text",
-        "sane": "stix_two_text",
-        "variants": [
-            "0,400",
-            "0,500",
-            "0,600",
-            "0,700",
-            "1,400",
-            "1,500",
-            "1,600",
-            "1,700"
         ]
     },
     {
@@ -12865,6 +12935,25 @@
         "variants": [
             "0,400",
             "0,700"
+        ]
+    },
+    {
+        "category": "sans-serif",
+        "name": "Schibsted Grotesk",
+        "sane": "schibsted_grotesk",
+        "variants": [
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700",
+            "0,800",
+            "0,900",
+            "1,400",
+            "1,500",
+            "1,600",
+            "1,700",
+            "1,800",
+            "1,900"
         ]
     },
     {
@@ -13811,6 +13900,21 @@
     },
     {
         "category": "serif",
+        "name": "STIX Two Text",
+        "sane": "stix_two_text",
+        "variants": [
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700",
+            "1,400",
+            "1,500",
+            "1,600",
+            "1,700"
+        ]
+    },
+    {
+        "category": "serif",
         "name": "Stoke",
         "sane": "stoke",
         "variants": [
@@ -14646,14 +14750,6 @@
         ]
     },
     {
-        "category": "monospace",
-        "name": "VT323",
-        "sane": "vt323",
-        "variants": [
-            "0,400"
-        ]
-    },
-    {
         "category": "display",
         "name": "Vampiro One",
         "sane": "vampiro_one",
@@ -14817,6 +14913,14 @@
         "category": "sans-serif",
         "name": "Voltaire",
         "sane": "voltaire",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "monospace",
+        "name": "VT323",
+        "sane": "vt323",
         "variants": [
             "0,400"
         ]
