@@ -6,6 +6,11 @@
 
 echo "Building react-fontpicker-ts-lite at `date` ..."
 
+# Allow calling script from other folders
+# ref: https://stackoverflow.com/questions/59895
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+cd "${SCRIPT_DIR}"
+
 cd ../fontpicker
 
 # Move font-preview, dist to backup
