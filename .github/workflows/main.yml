@@ -125,6 +125,7 @@ jobs:
         default_author: github_actions
         add: 'packages/fontpicker/docs'
         message: "docs: rebuild for release ${{ steps.getVersion.outputs.value }}"
+        commit: --signoff
 
     - name: Create tag
       if: steps.isRelease.outputs.value
