@@ -25,6 +25,7 @@ jobs:
   build-and-test:
     timeout-minutes: 5
     runs-on: ubuntu-latest
+    environment: build-fonts
     strategy:
       matrix:
         node-version: [lts/*]
@@ -73,6 +74,22 @@ jobs:
         
     - name: Test
       run: npm run test
+
+    - name: Add GOOGLE_API_KEY
+      run: echo "${{secrets.GOOGLE_API_KEY}}" > packages/fontpicker/GOOGLE_API_KEY
+
+    - name: Cache font-cache
+      uses: actions/cache@v3
+      with:
+        path: |
+          packages/fontpicker/font-cache
+        key: font-cache-${{ hashFiles('packages/fontpicker/75-google-fonts.txt') }}
+
+    - name: Build fontpicker-lite package
+      run: bash packages/fontpicker-lite/build-lite.sh
+
+    - name: Test fontpicker-lite package
+      run: bash packages/fontpicker-lite/test-lite.sh
 
     # For push events only, rebuild docs page and create a tag.
     # Ideally this would be in a separate job, but jobs execute on different runners which means 
