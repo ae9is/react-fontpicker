@@ -23,7 +23,7 @@ permissions:
 
 jobs:
   build-and-test:
-    timeout-minutes: 5
+    timeout-minutes: 10
     runs-on: ubuntu-latest
     environment: build-fonts
     strategy:
@@ -78,15 +78,24 @@ jobs:
     - name: Add GOOGLE_API_KEY
       run: echo "${{secrets.GOOGLE_API_KEY}}" > packages/fontpicker/GOOGLE_API_KEY
 
-    - name: Cache font-cache
-      uses: actions/cache@v3
+    - name: Restore font-cache
+      id: cache-font-restore
+      uses: actions/cache/restore@v3
       with:
         path: |
           packages/fontpicker/font-cache
-        key: font-cache-${{ hashFiles('packages/fontpicker/75-google-fonts.txt') }}
+        key: font-cache-${{ hashFiles('packages/fontpicker/scripts/75-google-fonts.txt') }}
 
     - name: Build fontpicker-lite package
       run: bash packages/fontpicker-lite/build-lite.sh
+
+    - name: Save font-cache
+      id: cache-font-save
+      uses: actions/cache/save@v3
+      with:
+        path: |
+          packages/fontpicker/font-cache
+        key: ${{ steps.cache-font-restore.outputs.cache-primary-key }}
 
     - name: Test fontpicker-lite package
       run: bash packages/fontpicker-lite/test-lite.sh
