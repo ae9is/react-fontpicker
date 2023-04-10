@@ -74,6 +74,12 @@ jobs:
     - name: Test
       run: npm run test
 
+    - name: Build fontpicker-lite package
+      run: bash packages/fontpicker-lite/build-lite.sh
+
+    - name: Test fontpicker-lite package
+      run: bash packages/fontpicker-lite/test-lite.sh
+
     # For push events only, rebuild docs page and create a tag.
     # Ideally this would be in a separate job, but jobs execute on different runners which means 
     #  some duplication with above.
