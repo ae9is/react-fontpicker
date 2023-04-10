@@ -436,7 +436,7 @@ class fontPreviewBuilder {
                     $css[] = '  .font-preview-' . $font['sanename'] . ',';
                 }
                 if ($numScales > 1) {
-                    $css[] = '  .font-preview-on-max-' . $outScale . 'x {';
+                    $css[] = '  .font-preview-on-max-' . str_replace(".", "", strval($outScale)) . 'x {';
                 } else {
                     $css[] = '  .font-preview-on-all {';
                 }
