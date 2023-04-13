@@ -7,13 +7,15 @@
     "dev": "vite --port 3000",
     "test": "vitest run",
     "format": "prettier --write src",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "prep": "bash prep-pack-test.sh"
   },
   "dependencies": {
     "@vitejs/plugin-react-swc": "^3.0.0",
     "react": ">=18",
     "react-dom": ">=18",
-    "react-fontpicker-ts-lite": "file:../fontpicker-lite/react-fontpicker-ts-lite-0.2.0.tgz",
+    "react-fontpicker-ts": "file:../../packages/fontpicker/react-fontpicker-ts-0.2.1.tgz",
+    "react-fontpicker-ts-lite": "file:../../packages/fontpicker-lite/react-fontpicker-ts-lite-0.2.1.tgz",
     "vite": "<=4.1.4"
   },
   "devDependencies": {
