@@ -1,7 +1,7 @@
 /// <reference types="vitest" />
 import { describe, it, expect } from 'vitest'
 import { render, within } from './test/utils'
-import App from './App'
+import App from './Lite'
 
 function checkFontLoaded(cssId: string) {
   const link = within(document.head).getByTestId(cssId)
