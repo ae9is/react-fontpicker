@@ -1,3 +1,10 @@
+/* ref: https://tailwindcss.com/docs/guides/vite */
+/*
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+*/
+
 :root {
   font-family: system-ui;
   line-height: 1.6em;
