@@ -47,11 +47,15 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
 
+    # Need to install turbo first
+    - name: Install
+      run: npm ci
+
     - name: Upgrade packages
       run: npm run upgrade-packages
 
     # Note: not npm ci, we want the lockfile to change
-    - name: Install
+    - name: Install updates
       run: npm install
 
     - name: Build
