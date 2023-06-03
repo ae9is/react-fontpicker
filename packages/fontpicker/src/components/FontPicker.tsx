@@ -14,6 +14,9 @@ export interface FontPickerProps extends React.ComponentPropsWithoutRef<'div'> {
   fontCategories?: string[] | string
   localFonts?: Font[] | undefined
 
+  // For pairing with form labels
+  inputId?: string
+
   // Callbacks to emit selected font
   fontVariants?: (fontVariants: FontToVariant) => void
   value?: (value: string) => void
@@ -90,6 +93,7 @@ export default function FontPicker({
   fontVariants,
   value,
   loading = <div>Font previews loading ...</div>,
+  inputId,
   ...rest
 }: FontPickerProps) {
   const [focused, setFocused] = useState(false)
@@ -537,6 +541,7 @@ export default function FontPicker({
             <FontPreviews />
             <div ref={previewRef} className={previewClasses()?.join(' ')} />
             <input
+              id={inputId}
               className={'fontpicker__search'}
               ref={inputRef}
               type="text"

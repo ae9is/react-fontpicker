@@ -61,6 +61,9 @@ export default function App() {
             <li>
               <a href="#manuallyadd">Manually add fonts</a>
             </li>
+            <li>
+              <a href="#forms">Forms</a>
+            </li>
           </ul>
         </div>
         <h3 id="default">Default behaviour</h3>
@@ -493,6 +496,34 @@ Font variants:
     {manuallyAddFontValue}
   </span>
 </p>
+`}
+        </pre>
+        <h3 id="forms">Forms</h3>
+        <p>
+          You can set the id of the font picker&rsquo;s input via the <code>inputId</code> prop,
+          for pairing with a <code>{`<label>`}</code>.
+        </p>
+        <form name="fontForm">
+          <label htmlFor="font">
+            Font
+          </label>
+          <div className={cs.example}>
+            <FontPicker
+              inputId="font"
+              defaultValue="Special Elite"
+              data-testid="forms-fontpicker"
+            />
+          </div>
+        </form>
+        <pre>{`<form name="fontForm">
+  <label htmlFor="font">
+    Font
+  </label>
+  <FontPicker
+    inputId="font"
+    defaultValue="Special Elite"
+  />
+</form>
 `}
         </pre>
       </div>
