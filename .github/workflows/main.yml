@@ -113,8 +113,10 @@ jobs:
     - name: Get release version string
       if: steps.isRelease.outputs.value
       id: getVersion
+      env:
+        MESSAGE: ${{ github.event.head_commit.message }}
       run: |
-        VALUE=$(echo ${{ github.event.head_commit.message }} | sed 's/release://' | sed 's/[[:space:]]*//g')
+        VALUE=$(echo '$MESSAGE' | sed 's/release://' | sed 's/[[:space:]]*//g')
         echo "value=${VALUE}" >> $GITHUB_OUTPUT
 
     - name: Commit /docs
