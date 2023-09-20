@@ -52,12 +52,12 @@ jobs:
       run: npm run build --if-present
 
     - name: Install Cypress
-      uses: cypress-io/github-action@v5
+      uses: cypress-io/github-action@v6
       with:
         runTests: false
 
     - name: Test using Cypress - E2E
-      uses: cypress-io/github-action@v5
+      uses: cypress-io/github-action@v6
       with:
         # Test against the build we just created
         start: npm run preview
@@ -66,7 +66,7 @@ jobs:
         install: false
         
     - name: Test using Cypress - Component
-      uses: cypress-io/github-action@v5
+      uses: cypress-io/github-action@v6
       with:
         component: true
         working-directory: packages/fontpicker
