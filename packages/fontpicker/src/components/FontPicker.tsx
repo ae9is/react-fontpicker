@@ -528,9 +528,7 @@ export default function FontPicker({
   handleLoadFont()
 
   useEffect(() => {
-    autoLoadFont(defaultCurrent)
-    emitFontVariants(defaultCurrent)
-    emitValue(defaultCurrent)
+    setCurrent(defaultCurrent)
   }, [defaultCurrent])
 
   return (
