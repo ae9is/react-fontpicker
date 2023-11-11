@@ -15,6 +15,8 @@ export default function App() {
   const [manuallyLoadFonts1, setManuallyLoadFonts1] = useState('')
   const [manuallyLoadFonts2, setManuallyLoadFonts2] = useState('')
   const [manuallyAddFontValue, setManuallyAddFontValue] = useState('Tinos')
+  const [inputFont, setInputFont] = useState('')
+  const [outputFont, setOutputFont] = useState('')
 
   return (
     <>
@@ -63,6 +65,9 @@ export default function App() {
             </li>
             <li>
               <a href="#forms">Forms</a>
+            </li>
+            <li>
+              <a href="#controlled">Controlled values</a>
             </li>
           </ul>
         </div>
@@ -524,6 +529,38 @@ Font variants:
     defaultValue="Special Elite"
   />
 </form>
+`}
+        </pre>
+        <h3 id="controlled">Controlled values</h3>
+        <p>
+          Default value can be dynamically controlled. The following example chains two font pickers.
+        </p>
+        <div className={cs.example}>
+          <FontPicker
+            defaultValue="Ubuntu"
+            value={(font: string) => setInputFont(font)}
+            data-testid="controlled-fontpicker-input"
+          />
+          <p data-testid="controlled-value-input">Input font value: {inputFont}</p>
+          <FontPicker
+            defaultValue={inputFont}
+            value={(font: string) => setOutputFont(font)}
+            data-testid="controlled-fontpicker-output"
+          />
+          <p data-testid="controlled-value-output">Output font value: {outputFont}</p>
+        </div>
+        <pre>{`const [inputFont, setInputFont] = useState('')
+const [outputFont, setOutputFont] = useState('')
+<FontPicker
+  defaultValue="Ubuntu"
+  value={(font: string) => setInputFont(font)}
+/>
+<p>Input font value: {inputFont}</p>
+<FontPicker
+  defaultValue={inputFont}
+  value={(font: string) => setOutputFont(font)}
+/>
+<p>Output font value: {outputFont}</p>
 `}
         </pre>
       </div>

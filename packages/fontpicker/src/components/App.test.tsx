@@ -30,4 +30,11 @@ describe('<App />', () => {
     await userEvent.click(screen.getByTestId('loaderonly-rancho'))
     checkFontLoaded('google-font-rancho-all')
   })
+
+  it('can dynamically control defaultValue', async () => {
+    await screen.findByTestId('controlled-fontpicker-input')
+    await screen.findByTestId('controlled-fontpicker-output')
+    expect(screen.queryByTestId('controlled-value-input')).toHaveTextContent('Ubuntu')
+    expect(screen.queryByTestId('controlled-value-output')).toHaveTextContent('Ubuntu')
+  })
 })
