@@ -10,8 +10,8 @@ Fira Sans
 Eczar
 Alegreya Sans
 Alegreya
-Source Sans Pro
-Source Serif Pro
+Source Sans 3
+Source Serif 4
 Roboto
 Roboto Slab
 Inknut Antiqua
