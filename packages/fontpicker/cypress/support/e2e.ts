@@ -13,4 +13,6 @@
 // https://on.cypress.io/configuration
 // ***********************************************************
 
-import './commands'
+// ref: https://docs.cypress.io/api/cypress-api/custom-commands#6-Create-a-function-that-adds-the-custom-command
+import { registerCommands } from './commands'
+registerCommands()
