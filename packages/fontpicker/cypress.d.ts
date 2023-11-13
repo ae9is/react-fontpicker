@@ -8,6 +8,7 @@ declare global {
   namespace Cypress {
     interface Chainable {
       mount: typeof mount
+      /* eslint-disable @typescript-eslint/no-explicit-any */
       getBySel(dataTestAttribute: string, args?: any): Chainable<JQuery<HTMLElement>>
       getBySelLike(dataTestPrefixAttribute: string, args?: any): Chainable<JQuery<HTMLElement>>
     }
