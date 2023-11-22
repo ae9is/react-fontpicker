@@ -5,8 +5,8 @@ import cs from './App.module.css'
 
 export default function App() {
   const [font1, setFont1] = useState('')
-  const [font2, setFont2] = useState('Open Sans') // example has no fontVariants
-  const [font3, setFont3] = useState('Open Sans')
+  const [font2, setFont2] = useState('') // example has no fontVariants
+  const [font3, setFont3] = useState('')
   const [thinnestFont, setThinnestFont] = useState<FontToVariant>() // basically, font4; subset of fontVariants4
   const [fontVariants, setFontVariants] = useState<FontToVariant>()
   const [fontVariants3, setFontVariants3] = useState<FontToVariant>()
@@ -17,6 +17,9 @@ export default function App() {
   const [manuallyAddFontValue, setManuallyAddFontValue] = useState('Tinos')
   const [inputFont, setInputFont] = useState('')
   const [outputFont, setOutputFont] = useState('')
+  const [checkLoadedFont, setCheckLoadedFont] = useState('')
+  const [fontToLoad, setFontToLoad] = useState<string | string[] | undefined>(undefined)
+  const [fontsLoaded, setFontsLoaded] = useState(false)
 
   return (
     <>
@@ -68,6 +71,9 @@ export default function App() {
             </li>
             <li>
               <a href="#controlled">Controlled values</a>
+            </li>
+            <li>
+              <a href="#checkloaded">Check font loading</a>
             </li>
           </ul>
         </div>
@@ -531,6 +537,7 @@ Font variants:
 </form>
 `}
         </pre>
+
         <h3 id="controlled">Controlled values</h3>
         <p>
           Default value can be dynamically controlled. The following example chains two font pickers.
@@ -561,6 +568,55 @@ const [outputFont, setOutputFont] = useState('')
   value={(font: string) => setOutputFont(font)}
 />
 <p>Output font value: {outputFont}</p>
+`}
+        </pre>
+
+        <h3 id="checkloaded">Check font loading</h3>
+        <p>
+          The <code>fontsLoaded</code> callback emits whether the currently selected font and all the 
+          font families specified in <code>loadFonts</code> have <strong>all</strong> been loaded by the browser.
+        </p>
+        <div className={cs.example}>
+          <FontPicker
+            defaultValue="Unlock"
+            loadFonts={fontToLoad}
+            value={(font: string) => setCheckLoadedFont(font)}
+            fontsLoaded={(loaded: boolean) => setFontsLoaded(loaded)}
+            data-testid="checkloaded-fontpicker"
+          />
+          <div className={cs.buttonGroup}>
+            <button onClick={() => setFontToLoad(['Unkempt','Annie Use Your Telescope'])} data-testid="checkloaded-button">
+              Load <span style={{ fontFamily: 'Unkempt' }}>Unkempt</span>&nbsp;
+              and <span style={{ fontFamily: 'Annie Use Your Telescope' }}>Annie Use Your Telescope</span>
+            </button>
+          </div>
+        </div>
+        <p data-testid="checkloaded-value">
+          Current font value: <span style={{ fontFamily: checkLoadedFont }}>{checkLoadedFont}</span>
+        </p>
+        <p data-testid="checkloaded-loaded">
+          All fonts are loaded (current font and loadFonts): <span style={{ fontFamily: checkLoadedFont }}>{fontsLoaded ? 'true' : 'false'}</span>
+        </p>
+        <pre>
+          {`const [checkLoadedFont, setCheckLoadedFont] = useState('')
+const [fontToLoad, setFontToLoad] = useState<string | string[] | undefined>(undefined)
+const [fontsLoaded, setFontsLoaded] = useState(false)
+<FontPicker
+  loadFonts={fontToLoad}
+  value={(font: string) => setCheckLoadedFont(font)}
+  fontsLoaded={(loaded: boolean) => setFontsLoaded(loaded)}
+/>
+<button onClick={() => setFontToLoad(['Unkempt','Annie Use Your Telescope'])}>
+  Load <span style={{ fontFamily: 'Unkempt' }}>Unkempt</span> &nbsp;
+  and <span style={{ fontFamily: 'Annie Use Your Telescope' }}>Annie Use Your Telescope</span>
+</button>
+<p>
+  Current font value: <span style={{ fontFamily: checkLoadedFont }}>{checkLoadedFont}</span>
+</p>
+<p>
+  All fonts are loaded (current font and loadFonts):
+  <span style={{ fontFamily: checkLoadedFont }}>{fontsLoaded ? 'true' : 'false'}</span>
+</p>
 `}
         </pre>
       </div>
