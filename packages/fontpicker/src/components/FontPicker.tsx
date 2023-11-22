@@ -1,5 +1,6 @@
 import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import fontInfos from '../../font-preview/fontInfo.json'
+import { checkLoaded } from '../lib/fontChecker'
 const FontPreviews = lazy(() => import('./FontPreviews'))
 import './FontPicker.css'
 
@@ -20,6 +21,10 @@ export interface FontPickerProps extends React.ComponentPropsWithoutRef<'div'> {
   // Callbacks to emit selected font
   fontVariants?: (fontVariants: FontToVariant) => void
   value?: (value: string) => void
+
+  // To have the fontpicker poll and emit whether fonts have been loaded, if applicable
+  fontsLoaded?: (fontsLoaded: boolean) => void
+  fontsLoadedTimeout?: number // ms
 
   // Fallback component to display inside picker input while loading preview CSS
   loading?: React.ReactNode
@@ -92,6 +97,8 @@ export default function FontPicker({
   localFonts = [],
   fontVariants,
   value,
+  fontsLoaded,
+  fontsLoadedTimeout,
   loading = <div>Font previews loading ...</div>,
   inputId,
   ...rest
@@ -136,6 +143,25 @@ export default function FontPicker({
       })
     }
   }
+
+  // Map loadFonts, a string or array of fonts or font variants to load specified by user, to just the font names (families).
+  const loadFontsFontNames = useMemo(() => {
+    const names: string[] = []
+    if (loadFonts) {
+      if (typeof loadFonts === 'string') {
+        names.push(loadFonts)
+      } else {
+        loadFonts?.forEach((font: FontToVariant | string) => {
+          const fontName = typeof font === 'string' ? font : font?.fontName
+          if (!fontName) {
+            return
+          }
+          names.push(fontName)
+        })
+      }
+    }
+    return names
+  }, [loadFonts])
 
   // Dynamic refs to allow immediately updating highlighted state of selected font option in picker
   const fontPickerOptionsRef = useRef<Map<string, HTMLDivElement | null> | null>(null)
@@ -415,6 +441,13 @@ export default function FontPicker({
     [value]
   )
 
+  const emitFontLoaded = useCallback(
+    (isLoaded: boolean) => {
+      fontsLoaded?.(isLoaded)
+    },
+    [fontsLoaded]
+  )
+
   const loadFontFromObject = useCallback(
     (font: Font, variants: Variant[] = []) => {
       if (variants?.length > 0) {
@@ -446,7 +479,7 @@ export default function FontPicker({
           variants.sort().join(';') +
           '&display=swap'
         link.setAttribute('data-testid', cssId) // for react testing library
-        document.getElementsByTagName('head')[0].appendChild(link)
+        document.head.appendChild(link)
       }
     },
     [loadAllVariants]
@@ -530,6 +563,39 @@ export default function FontPicker({
   useEffect(() => {
     setCurrent(defaultCurrent)
   }, [defaultCurrent])
+
+  useEffect(() => {
+    // Check if the currently selected font family and all font families in loadFonts are loaded.
+    // Note: Ignores font variants specified by loadFonts! To check all variants themselves are loaded: need to recreate four variants 
+    //  if loadAllVariants not specified, and then parse variant strings into font styles and weights, and then check each variant.
+    async function callCheckLoaded(fontNames: string[]) {
+      try {
+        const promises = fontNames?.map(async (font): Promise<boolean> => {
+          try {
+            const fontLoaded = await checkLoaded({
+              fontFamily: font,
+              timeout: fontsLoadedTimeout,
+            })
+            return fontLoaded
+          } catch (e) {
+            return false
+          }
+        })
+        const results = await Promise.all(promises)
+        // If any of the results are false, not all fonts are loaded
+        const allLoaded = !results.some((res) => !res)
+        emitFontLoaded(allLoaded)
+      } catch (e) {
+        console.error(`Exception thrown checking if font families loaded`)
+        console.error(e)
+        emitFontLoaded(false)
+      }
+    }
+    const fontsToCheck: string[] = [...new Set([current.name, ...loadFontsFontNames])]
+    if (fontsLoaded) {
+      callCheckLoaded(fontsToCheck)
+    }
+  }, [autoLoad, loadFonts, current.name, emitFontLoaded, fontsLoaded, loadFontsFontNames, fontsLoadedTimeout])
 
   return (
     <>

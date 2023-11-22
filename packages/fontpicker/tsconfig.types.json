@@ -22,6 +22,7 @@
     "index.ts",
     "src/components/FontPicker.tsx",
     "src/components/FontPreviews.tsx",
+    "src/lib",
     "font-preview/**/*.json",
     ".eslintrc.js",
   ],
