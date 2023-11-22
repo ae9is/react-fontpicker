@@ -83,4 +83,23 @@ describe('react fontpicker docs', () => {
     cy.get('@picker').find('.font-preview-bickleyscript').click({ force: true })
     cy.get('@value').should('have.text', 'Current value: BickleyScript')
   })
+
+  it('can test whether fonts have been loaded by the client', () => {
+    cy.getBySel('checkloaded-fontpicker').as('picker')
+    cy.getBySel('checkloaded-button').as('loadButton')
+    cy.getBySel('checkloaded-value').as('value')
+    cy.getBySel('checkloaded-loaded').as('isLoaded')
+    // Currently selected fontpicker font should not be loaded
+    cy.get('@value').contains('Unlock')
+    cy.get('@isLoaded').contains('false')
+    // Load some fonts specified in loadFonts which don't include currently selected font,
+    //  and check that load test still fails
+    cy.get('@loadButton').click()
+    cy.get('@value').contains('Unlock')
+    cy.get('@isLoaded').contains('false')
+    // Select one of the loaded fonts and check that load test succeeds
+    cy.get('@picker').find('.fontpicker__search').type('Unkempt{enter}');
+    cy.get('@value').contains('Unkempt')
+    cy.get('@isLoaded').contains('true')
+  })
 })
