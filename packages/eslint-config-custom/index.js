@@ -40,5 +40,6 @@ module.exports = {
   rules: {
     "@typescript-eslint/no-namespace": "off",
     "@typescript-eslint/triple-slash-reference": "off",
+    "@typescript-eslint/no-unused-vars": "warn",
   }
 }
