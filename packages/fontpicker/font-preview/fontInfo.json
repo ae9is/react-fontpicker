@@ -118,6 +118,21 @@
         ]
     },
     {
+        "category": "sans-serif",
+        "name": "Afacad",
+        "sane": "afacad",
+        "variants": [
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700",
+            "1,400",
+            "1,500",
+            "1,600",
+            "1,700"
+        ]
+    },
+    {
         "category": "display",
         "name": "Agbalumo",
         "sane": "agbalumo",
@@ -824,6 +839,15 @@
         ]
     },
     {
+        "category": "serif",
+        "name": "Annapurna SIL",
+        "sane": "annapurna_sil",
+        "variants": [
+            "0,400",
+            "0,700"
+        ]
+    },
+    {
         "category": "handwriting",
         "name": "Annie Use Your Telescope",
         "sane": "annie_use_your_telescope",
@@ -840,6 +864,14 @@
             "1,400",
             "0,700",
             "1,700"
+        ]
+    },
+    {
+        "category": "sans-serif",
+        "name": "Anta",
+        "sane": "anta",
+        "variants": [
+            "0,400"
         ]
     },
     {
@@ -5048,12 +5080,12 @@
         "sane": "gelasio",
         "variants": [
             "0,400",
-            "1,400",
             "0,500",
-            "1,500",
             "0,600",
-            "1,600",
             "0,700",
+            "1,400",
+            "1,500",
+            "1,600",
             "1,700"
         ]
     },
@@ -5757,6 +5789,22 @@
     },
     {
         "category": "sans-serif",
+        "name": "Hedvig Letters Sans",
+        "sane": "hedvig_letters_sans",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "serif",
+        "name": "Hedvig Letters Serif",
+        "sane": "hedvig_letters_serif",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "sans-serif",
         "name": "Heebo",
         "sane": "heebo",
         "variants": [
@@ -5899,6 +5947,14 @@
         "category": "sans-serif",
         "name": "Homenaje",
         "sane": "homenaje",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "display",
+        "name": "Honk",
+        "sane": "honk",
         "variants": [
             "0,400"
         ]
@@ -6471,6 +6527,38 @@
         ]
     },
     {
+        "category": "display",
+        "name": "Jacquard 12 Charted",
+        "sane": "jacquard_12_charted",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "display",
+        "name": "Jacquard 24",
+        "sane": "jacquard_24",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "display",
+        "name": "Jacquarda Bastarda 9",
+        "sane": "jacquarda_bastarda_9",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "display",
+        "name": "Jacquarda Bastarda 9 Charted",
+        "sane": "jacquarda_bastarda_9_charted",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
         "category": "serif",
         "name": "Jacques Francois",
         "sane": "jacques_francois",
@@ -6493,6 +6581,62 @@
         "variants": [
             "0,400",
             "0,700"
+        ]
+    },
+    {
+        "category": "display",
+        "name": "Jersey 10",
+        "sane": "jersey_10",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "display",
+        "name": "Jersey 10 Charted",
+        "sane": "jersey_10_charted",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "display",
+        "name": "Jersey 15",
+        "sane": "jersey_15",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "display",
+        "name": "Jersey 15 Charted",
+        "sane": "jersey_15_charted",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "display",
+        "name": "Jersey 20",
+        "sane": "jersey_20",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "display",
+        "name": "Jersey 20 Charted",
+        "sane": "jersey_20_charted",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "display",
+        "name": "Jersey 25",
+        "sane": "jersey_25",
+        "variants": [
+            "0,400"
         ]
     },
     {
@@ -6804,6 +6948,20 @@
     },
     {
         "category": "serif",
+        "name": "Kalnia",
+        "sane": "kalnia",
+        "variants": [
+            "0,100",
+            "0,200",
+            "0,300",
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700"
+        ]
+    },
+    {
+        "category": "serif",
         "name": "Kameron",
         "sane": "kameron",
         "variants": [
@@ -7069,6 +7227,17 @@
             "1,600",
             "0,700",
             "1,700"
+        ]
+    },
+    {
+        "category": "monospace",
+        "name": "Kode Mono",
+        "sane": "kode_mono",
+        "variants": [
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700"
         ]
     },
     {
@@ -8071,6 +8240,14 @@
     },
     {
         "category": "sans-serif",
+        "name": "Madimi One",
+        "sane": "madimi_one",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "sans-serif",
         "name": "Magra",
         "sane": "magra",
         "variants": [
@@ -8602,6 +8779,22 @@
         "category": "sans-serif",
         "name": "Michroma",
         "sane": "michroma",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "display",
+        "name": "Micro 5",
+        "sane": "micro_5",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "display",
+        "name": "Micro 5 Charted",
+        "sane": "micro_5_charted",
         "variants": [
             "0,400"
         ]
@@ -9261,6 +9454,18 @@
         ]
     },
     {
+        "category": "serif",
+        "name": "Namdhinggo",
+        "sane": "namdhinggo",
+        "variants": [
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700",
+            "0,800"
+        ]
+    },
+    {
         "category": "handwriting",
         "name": "Nanum Brush Script",
         "sane": "nanum_brush_script",
@@ -9306,11 +9511,15 @@
         ]
     },
     {
-        "category": "sans-serif",
+        "category": "serif",
         "name": "Narnoor",
         "sane": "narnoor",
         "variants": [
-            "0,400"
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700",
+            "0,800"
         ]
     },
     {
@@ -9501,6 +9710,22 @@
     },
     {
         "category": "sans-serif",
+        "name": "Noto Kufi Arabic",
+        "sane": "noto_kufi_arabic",
+        "variants": [
+            "0,100",
+            "0,200",
+            "0,300",
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700",
+            "0,800",
+            "0,900"
+        ]
+    },
+    {
+        "category": "sans-serif",
         "name": "Noto Music",
         "sane": "noto_music",
         "variants": [
@@ -9551,22 +9776,22 @@
         "sane": "noto_sans",
         "variants": [
             "0,100",
-            "1,100",
             "0,200",
-            "1,200",
             "0,300",
-            "1,300",
             "0,400",
-            "1,400",
             "0,500",
-            "1,500",
             "0,600",
-            "1,600",
             "0,700",
-            "1,700",
             "0,800",
-            "1,800",
             "0,900",
+            "1,100",
+            "1,200",
+            "1,300",
+            "1,400",
+            "1,500",
+            "1,600",
+            "1,700",
+            "1,800",
             "1,900"
         ]
     },
@@ -11692,6 +11917,14 @@
         ]
     },
     {
+        "category": "sans-serif",
+        "name": "Noto Znamenny Musical Notation",
+        "sane": "noto_znamenny_musical_notation",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
         "category": "display",
         "name": "Nova Cut",
         "sane": "nova_cut",
@@ -11855,6 +12088,20 @@
         "sane": "oi",
         "variants": [
             "0,400"
+        ]
+    },
+    {
+        "category": "sans-serif",
+        "name": "Ojuju",
+        "sane": "ojuju",
+        "variants": [
+            "0,200",
+            "0,300",
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700",
+            "0,800"
         ]
     },
     {
@@ -12489,6 +12736,25 @@
         ]
     },
     {
+        "category": "serif",
+        "name": "Platypi",
+        "sane": "platypi",
+        "variants": [
+            "0,300",
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700",
+            "0,800",
+            "1,300",
+            "1,400",
+            "1,500",
+            "1,600",
+            "1,700",
+            "1,800"
+        ]
+    },
+    {
         "category": "sans-serif",
         "name": "Play",
         "sane": "play",
@@ -12822,6 +13088,38 @@
         "category": "display",
         "name": "Prosto One",
         "sane": "prosto_one",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "display",
+        "name": "Protest Guerrilla",
+        "sane": "protest_guerrilla",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "display",
+        "name": "Protest Revolution",
+        "sane": "protest_revolution",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "display",
+        "name": "Protest Riot",
+        "sane": "protest_riot",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "display",
+        "name": "Protest Strike",
+        "sane": "protest_strike",
         "variants": [
             "0,400"
         ]
@@ -13278,6 +13576,21 @@
         ]
     },
     {
+        "category": "monospace",
+        "name": "Reddit Mono",
+        "sane": "reddit_mono",
+        "variants": [
+            "0,200",
+            "0,300",
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700",
+            "0,800",
+            "0,900"
+        ]
+    },
+    {
         "category": "sans-serif",
         "name": "Red Hat Display",
         "sane": "red_hat_display",
@@ -13421,6 +13734,23 @@
             "1,700",
             "1,800",
             "1,900"
+        ]
+    },
+    {
+        "category": "sans-serif",
+        "name": "Rethink Sans",
+        "sane": "rethink_sans",
+        "variants": [
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700",
+            "0,800",
+            "1,400",
+            "1,500",
+            "1,600",
+            "1,700",
+            "1,800"
         ]
     },
     {
@@ -13758,6 +14088,14 @@
     },
     {
         "category": "display",
+        "name": "Rubik Broken Fax",
+        "sane": "rubik_broken_fax",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "display",
         "name": "Rubik Bubbles",
         "sane": "rubik_bubbles",
         "variants": [
@@ -13790,6 +14128,22 @@
     },
     {
         "category": "display",
+        "name": "Rubik Doodle Shadow",
+        "sane": "rubik_doodle_shadow",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "display",
+        "name": "Rubik Doodle Triangles",
+        "sane": "rubik_doodle_triangles",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "display",
         "name": "Rubik Gemstones",
         "sane": "rubik_gemstones",
         "variants": [
@@ -13806,8 +14160,32 @@
     },
     {
         "category": "display",
+        "name": "Rubik Glitch Pop",
+        "sane": "rubik_glitch_pop",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "display",
         "name": "Rubik Iso",
         "sane": "rubik_iso",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "display",
+        "name": "Rubik Lines",
+        "sane": "rubik_lines",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "display",
+        "name": "Rubik Maps",
+        "sane": "rubik_maps",
         "variants": [
             "0,400"
         ]
@@ -13864,6 +14242,14 @@
         "category": "display",
         "name": "Rubik Puddles",
         "sane": "rubik_puddles",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "display",
+        "name": "Rubik Scribble",
+        "sane": "rubik_scribble",
         "variants": [
             "0,400"
         ]
@@ -14308,6 +14694,15 @@
         ]
     },
     {
+        "category": "serif",
+        "name": "Sedan",
+        "sane": "sedan",
+        "variants": [
+            "0,400",
+            "1,400"
+        ]
+    },
+    {
         "category": "handwriting",
         "name": "Sedgwick Ave",
         "sane": "sedgwick_ave",
@@ -14590,6 +14985,14 @@
         "category": "sans-serif",
         "name": "Six Caps",
         "sane": "six_caps",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "monospace",
+        "name": "Sixtyfour",
+        "sane": "sixtyfour",
         "variants": [
             "0,400"
         ]
@@ -15407,6 +15810,14 @@
         "category": "display",
         "name": "Syne Tactile",
         "sane": "syne_tactile",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "sans-serif",
+        "name": "Tac One",
+        "sane": "tac_one",
         "variants": [
             "0,400"
         ]
@@ -16468,6 +16879,14 @@
         ]
     },
     {
+        "category": "monospace",
+        "name": "Workbench",
+        "sane": "workbench",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
         "category": "sans-serif",
         "name": "Work Sans",
         "sane": "work_sans",
@@ -16538,6 +16957,38 @@
             "0,500",
             "0,700",
             "0,900"
+        ]
+    },
+    {
+        "category": "display",
+        "name": "Yarndings 12",
+        "sane": "yarndings_12",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "display",
+        "name": "Yarndings 12 Charted",
+        "sane": "yarndings_12_charted",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "display",
+        "name": "Yarndings 20",
+        "sane": "yarndings_20",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "display",
+        "name": "Yarndings 20 Charted",
+        "sane": "yarndings_20_charted",
+        "variants": [
+            "0,400"
         ]
     },
     {
