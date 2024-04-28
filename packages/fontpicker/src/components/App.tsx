@@ -226,7 +226,7 @@ export default function App() {
               const fontStyle = isItalic === '1' ? 'italic' : 'normal'
               return (
                 <div key={index} style={{ fontFamily, fontWeight, fontStyle }}>
-                  {fontVariants3.fontName + ' - ' + value ?? 'None'}
+                  {fontVariants3.fontName + ' - ' + (value ?? 'None')}
                 </div>
               )
             })}
@@ -239,7 +239,7 @@ export default function App() {
     const fontStyle = isItalic === '1' ? 'italic' : 'normal'
     return (
       <div key={index} style={{ fontFamily, fontWeight, fontStyle }}>
-        {fontVariants3.fontName + ' - ' + value ?? 'None'}
+        {fontVariants3.fontName + ' - ' + (value ?? 'None')}
       </div>
     )
   })}`}
@@ -314,7 +314,7 @@ export default function App() {
               const fontStyle = isItalic === '1' ? 'italic' : 'normal'
               return (
                 <div key={index} style={{ fontFamily, fontWeight, fontStyle }}>
-                  {fontVariants4.fontName + ' - ' + value ?? 'None'}
+                  {fontVariants4.fontName + ' - ' + (value ?? 'None')}
                 </div>
               )
             })}
@@ -350,7 +350,7 @@ Font variants:
     const fontStyle = isItalic === '1' ? 'italic' : 'normal'
     return (
       <div key={index} style={{ fontFamily, fontWeight, fontStyle }}>
-        {fontVariants4.fontName + ' - ' + value ?? 'None'}
+        {fontVariants4.fontName + ' - ' + (value ?? 'None')}
       </div>
     )
   })}

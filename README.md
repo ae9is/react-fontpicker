@@ -3,7 +3,7 @@
 A Google font picker component for React.
 
 - No dependencies (other than React)
-- 1410+ Google fonts
+- 1600+ Google fonts
 - Font previews from pre-generated images
 - Optionally autoloads fonts
 
@@ -68,15 +68,15 @@ For example:
 </head>
 ```
 
-The big trade-off of this approach is that the component's bundle is quite large due to all the font image previews (~14 MB). Only a subset of this is served depending on the client's device pixel ratio:
+The big trade-off of this approach is that the component's bundle is quite large due to all the font image previews (16 MB in images for 1614 fonts). Only a subset of this is served depending on the client's device pixel ratio:
 
-- 2x &rarr; 6.2 MB
-- 1.5x &rarr; 4.4 MB
-- 1x &rarr; 2.7 MB
+- 2x &rarr; 7.4 MB
+- 1.5x &rarr; 5.1 MB
+- 1x &rarr; 3.1 MB
 
 If you're looking for a lighter weight option, you can use `react-fontpicker-ts-lite` instead:
 
-- 1x (only) &rarr; ~150 KB
+- 1x (only) &rarr; ~160 KB
 
 Or, for a different font picker following an on demand approach, check out: [https://github.com/samuelmeuli/font-picker-react](https://github.com/samuelmeuli/font-picker-react)
 
@@ -97,7 +97,7 @@ apt install php-cli php-gd
 
 ### 2\. Google API key
 
-Get a Google API key here [https://developers.google.com/fonts/docs/developer_api#APIKey](https://developers.google.com/fonts/docs/developer_api#APIKey) and create a new file called `GOOGLE_API_KEY` in the same directory as the `build-font-previews.php` script.
+Get a Google API key here [https://developers.google.com/fonts/docs/developer_api#APIKey](https://developers.google.com/fonts/docs/developer_api#APIKey) and create a new file called `GOOGLE_API_KEY` in `react-fontpicker/packages/fontpicker`, one level above the `scripts/build-font-previews.php` script.
 
 ### 3\. Font preview script
 
@@ -106,12 +106,11 @@ Get a Google API key here [https://developers.google.com/fonts/docs/developer_ap
 To generate font previews for all currently available Google fonts (latin font families only, minus `Kumar One`).
 
 ```bash
-php ./build-font-previews.php
-# or npm alias:
+cd react-fontpicker/packages/fontpicker
 npm run build-font-previews
 ```
 
-_Note: For 1410 fonts, budget 20-30 minutes and 700 MB to download all the fonts. Compiling the image previews themselves should be less than a minute. When re-running, the script only retrieves new font info if it's older than 1 week and skips downloading cached fonts._
+_Note: For 1600 fonts, budget 20-30 minutes and 800 MB to download all the fonts. Compiling the image previews themselves should be less than a minute. When re-running, the script only retrieves new font info if it's older than 1 week and skips downloading cached fonts._
 
 ### Custom fonts
 
