@@ -29,7 +29,7 @@
     "src",
     "font-preview/**/*.json",
     ".eslintrc.js",
-    "vite.config.ts",
+    "vite.config.mts",
     "cypress.d.ts", // needed for ide only
   ],
   "exclude": [
