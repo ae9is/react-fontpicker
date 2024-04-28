@@ -1,6 +1,6 @@
 /// <reference types="vitest" />
 import { describe, it, expect } from 'vitest'
-import { screen, render, within, userEvent } from '../test/utils'
+import { act, screen, render, within, userEvent } from '../test/utils'
 import App from './App'
 
 function checkFontLoaded(cssId: string) {
@@ -11,7 +11,9 @@ function checkFontLoaded(cssId: string) {
 }
 
 beforeEach(() => {
-  render(<App />)
+  act(() => {
+    render(<App />)
+  })
 })
 
 describe('<App />', () => {
@@ -21,13 +23,17 @@ describe('<App />', () => {
 
   it('manually loads fonts', async () => {
     await screen.findByTestId('manualload-fontpicker')
-    await userEvent.click(screen.getByTestId('manualload-beastly'))
+    await act(async () => {
+      await userEvent.click(screen.getByTestId('manualload-beastly'))
+    })
     checkFontLoaded('google-font-rubik_beastly-all')
   })
 
   it('loads fonts while hidden', async () => {
     expect(screen.queryByTestId('loaderonly-fontpicker')).to.be.null
-    await userEvent.click(screen.getByTestId('loaderonly-rancho'))
+    await act(async () => {
+      await userEvent.click(screen.getByTestId('loaderonly-rancho'))
+    })
     checkFontLoaded('google-font-rancho-all')
   })
 
