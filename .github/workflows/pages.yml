@@ -7,8 +7,8 @@ on:
     branches: ["main"]
     # Only run if docs or self updated
     paths:
-      - './packages/fontpicker/docs'
-      - './.github/workflows/pages.yml'
+      - packages/fontpicker/docs/**
+      - .github/workflows/pages.yml
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -40,7 +40,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './packages/fontpicker/docs'
+          path: 'packages/fontpicker/docs'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
