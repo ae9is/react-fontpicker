@@ -1,6 +1,6 @@
 /// <reference types="vitest" />
-import { describe, it, expect } from 'vitest'
-import { render, within } from './test/utils'
+import { describe, it, expect, beforeEach } from 'vitest'
+import { act, render, within } from './test/utils'
 import App from './Lite'
 
 function checkFontLoaded(cssId: string) {
@@ -11,7 +11,9 @@ function checkFontLoaded(cssId: string) {
 }
 
 beforeEach(() => {
-  render(<App />)
+  act(() => {
+    render(<App />)
+  })
 })
 
 describe('<App />', () => {

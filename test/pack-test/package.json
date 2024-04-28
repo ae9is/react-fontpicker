@@ -15,7 +15,7 @@
     "@vitejs/plugin-react-swc": "^3.4.1",
     "react": ">=18",
     "react-dom": ">=18",
-    "react-fontpicker-ts-lite": "file:../../packages/fontpicker-lite/react-fontpicker-ts-lite-0.3.1.tgz",
+    "react-fontpicker-ts-lite": "file:../../packages/fontpicker-lite/react-fontpicker-ts-lite-0.4.0.tgz",
     "vite": "^4.5.2"
   },
   "devDependencies": {

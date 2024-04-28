@@ -1,5 +1,5 @@
 /// <reference types="vitest" />
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, beforeEach } from 'vitest'
 import { act, screen, render, within, userEvent } from '../test/utils'
 import App from './App'
 
