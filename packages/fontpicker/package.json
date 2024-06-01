@@ -47,7 +47,7 @@
     "dev:vite": "vite --port 3000",
     "test-all": "run-p test:*",
     "test": "run-p test:vitest",
-    "test:cypress-e2e": "start-server-and-test preview http://localhost:4173/react-fontpicker cypress:fast:e2e",
+    "test:cypress-e2e": "start-server-and-test preview http://localhost:4173/react-fontpicker/ cypress:fast:e2e",
     "test:cypress-comp": "npm run cypress:fast:comp",
     "test:vitest": "npm run vitest",
     "cypress:run": "run-p cypress:run:*",
