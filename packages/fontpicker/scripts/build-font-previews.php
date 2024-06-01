@@ -417,33 +417,32 @@ class fontPreviewBuilder {
         $css[] = '}';
         $i = 0;
         $numScales = sizeof($outScales);
-        foreach ($outScales as $outScale) {
-            $i += 1;
+        for ($i = 0; $i < $numScales; $i++) {
+            $outScale = $outScales[$i];
+            $tab = '';
             if ($numScales > 1) {
-                $css[] = '@media';
-                if ($i == $numScales) {
-                    // Highest resolution previews use lowerbound instead
-                    $css[] = '(-webkit-min-device-pixel-ratio: ' . ($outScale + 0.01) . '),';
-                    $css[] = '(min-resolution: ' . ($outScale + 0.01) . 'dppx) {';
-                } else {
-                    $css[] = '(-webkit-max-device-pixel-ratio: ' . $outScale .'),';
-                    $css[] = '(max-resolution: ' . $outScale . 'dppx) {';
+                if ($i !== 0) {
+                    $tab = '  ';
+                    $css[] = '@media';
+                    $prevScale = $outScales[$i - 1];
+                    $css[] = '(-webkit-min-device-pixel-ratio: ' . ($prevScale + 0.01) . '),';
+                    $css[] = '(min-resolution: ' . ($prevScale + 0.01) . 'dppx) {';
                 }
             }
-            for ($i = 0; $i < count($fonts) / $sliceSize; $i++) {
-                $slice = array_slice($fonts, intval(ceil($i * $sliceSize)), $sliceSize);
+            for ($j = 0; $j < count($fonts) / $sliceSize; $j++) {
+                $slice = array_slice($fonts, intval(ceil($j * $sliceSize)), $sliceSize);
                 foreach ($slice as $font) {
-                    $css[] = '  .font-preview-' . $font['sanename'] . ',';
+                    $css[] = $tab . '.font-preview-' . $font['sanename'] . ',';
                 }
                 if ($numScales > 1) {
-                    $css[] = '  .font-preview-on-max-' . str_replace(".", "", strval($outScale)) . 'x {';
+                    $css[] = $tab . '.font-preview-for-' . str_replace(".", "", strval($outScale)) . 'x {';
                 } else {
-                    $css[] = '  .font-preview-on-all {';
+                    $css[] = $tab . '.font-preview-on-all {';
                 }
-                $css[] = '    background-image: url(sprite.' . ($i + 1) . '.' . $outScale . 'x.png);';
-                $css[] = '  }';
+                $css[] = $tab . '  background-image: url(sprite.' . ($j + 1) . '.' . $outScale . 'x.png);';
+                $css[] = $tab . '}';
             }
-            if ($numScales > 1) {
+            if ($numScales > 1 && $i !== 0) {
                 $css[] = '}';
             }
         }

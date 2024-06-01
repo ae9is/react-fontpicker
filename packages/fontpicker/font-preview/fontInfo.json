@@ -2585,6 +2585,14 @@
         ]
     },
     {
+        "category": "serif",
+        "name": "Cactus Classical Serif",
+        "sane": "cactus_classical_serif",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
         "category": "display",
         "name": "Caesar Dressing",
         "sane": "caesar_dressing",
@@ -3094,6 +3102,14 @@
             "1,700",
             "1,800",
             "1,900"
+        ]
+    },
+    {
+        "category": "sans-serif",
+        "name": "Chocolate Classical Sans",
+        "sane": "chocolate_classical_sans",
+        "variants": [
+            "0,400"
         ]
     },
     {
@@ -3616,6 +3632,14 @@
             "0,500",
             "0,600",
             "0,700"
+        ]
+    },
+    {
+        "category": "serif",
+        "name": "Danfo",
+        "sane": "danfo",
+        "variants": [
+            "0,400"
         ]
     },
     {
@@ -4898,6 +4922,14 @@
         "category": "display",
         "name": "Freehand",
         "sane": "freehand",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "display",
+        "name": "Freeman",
+        "sane": "freeman",
         "variants": [
             "0,400"
         ]
@@ -6528,6 +6560,14 @@
     },
     {
         "category": "display",
+        "name": "Jacquard 12",
+        "sane": "jacquard_12",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "display",
         "name": "Jacquard 12 Charted",
         "sane": "jacquard_12_charted",
         "variants": [
@@ -6538,6 +6578,14 @@
         "category": "display",
         "name": "Jacquard 24",
         "sane": "jacquard_24",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "display",
+        "name": "Jacquard 24 Charted",
+        "sane": "jacquard_24_charted",
         "variants": [
             "0,400"
         ]
@@ -6575,12 +6623,36 @@
         ]
     },
     {
+        "category": "display",
+        "name": "Jaini",
+        "sane": "jaini",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "display",
+        "name": "Jaini Purva",
+        "sane": "jaini_purva",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
         "category": "sans-serif",
         "name": "Jaldi",
         "sane": "jaldi",
         "variants": [
             "0,400",
             "0,700"
+        ]
+    },
+    {
+        "category": "sans-serif",
+        "name": "Jaro",
+        "sane": "jaro",
+        "variants": [
+            "0,400"
         ]
     },
     {
@@ -6635,6 +6707,14 @@
         "category": "display",
         "name": "Jersey 25",
         "sane": "jersey_25",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "display",
+        "name": "Jersey 25 Charted",
+        "sane": "jersey_25_charted",
         "variants": [
             "0,400"
         ]
@@ -7607,7 +7687,7 @@
         ]
     },
     {
-        "category": "sans-serif",
+        "category": "monospace",
         "name": "Lekton",
         "sane": "lekton",
         "variants": [
@@ -8205,6 +8285,26 @@
         "sane": "luxurious_script",
         "variants": [
             "0,400"
+        ]
+    },
+    {
+        "category": "monospace",
+        "name": "LXGW WenKai Mono TC",
+        "sane": "lxgw_wenkai_mono_tc",
+        "variants": [
+            "0,300",
+            "0,400",
+            "0,700"
+        ]
+    },
+    {
+        "category": "handwriting",
+        "name": "LXGW WenKai TC",
+        "sane": "lxgw_wenkai_tc",
+        "variants": [
+            "0,300",
+            "0,400",
+            "0,700"
         ]
     },
     {
@@ -11600,6 +11700,7 @@
             "0,500",
             "0,600",
             "0,700",
+            "0,800",
             "0,900"
         ]
     },
@@ -11665,6 +11766,7 @@
             "0,500",
             "0,600",
             "0,700",
+            "0,800",
             "0,900"
         ]
     },
@@ -11757,6 +11859,7 @@
             "0,500",
             "0,600",
             "0,700",
+            "0,800",
             "0,900"
         ]
     },
@@ -11820,6 +11923,7 @@
             "0,500",
             "0,600",
             "0,700",
+            "0,800",
             "0,900"
         ]
     },
@@ -12874,6 +12978,14 @@
     },
     {
         "category": "display",
+        "name": "Poetsen One",
+        "sane": "poetsen_one",
+        "variants": [
+            "0,400"
+        ]
+    },
+    {
+        "category": "display",
         "name": "Poiret One",
         "sane": "poiret_one",
         "variants": [
@@ -13368,6 +13480,21 @@
         ]
     },
     {
+        "category": "sans-serif",
+        "name": "Radio Canada Big",
+        "sane": "radio_canada_big",
+        "variants": [
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700",
+            "1,400",
+            "1,500",
+            "1,600",
+            "1,700"
+        ]
+    },
+    {
         "category": "serif",
         "name": "Radley",
         "sane": "radley",
@@ -13579,6 +13706,44 @@
         "category": "monospace",
         "name": "Reddit Mono",
         "sane": "reddit_mono",
+        "variants": [
+            "0,200",
+            "0,300",
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700",
+            "0,800",
+            "0,900"
+        ]
+    },
+    {
+        "category": "sans-serif",
+        "name": "Reddit Sans",
+        "sane": "reddit_sans",
+        "variants": [
+            "0,200",
+            "0,300",
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700",
+            "0,800",
+            "0,900",
+            "1,200",
+            "1,300",
+            "1,400",
+            "1,500",
+            "1,600",
+            "1,700",
+            "1,800",
+            "1,900"
+        ]
+    },
+    {
+        "category": "sans-serif",
+        "name": "Reddit Sans Condensed",
+        "sane": "reddit_sans_condensed",
         "variants": [
             "0,200",
             "0,300",
@@ -14700,6 +14865,14 @@
         "variants": [
             "0,400",
             "1,400"
+        ]
+    },
+    {
+        "category": "serif",
+        "name": "Sedan SC",
+        "sane": "sedan_sc",
+        "variants": [
+            "0,400"
         ]
     },
     {
@@ -15905,6 +16078,23 @@
     },
     {
         "category": "sans-serif",
+        "name": "Teachers",
+        "sane": "teachers",
+        "variants": [
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700",
+            "0,800",
+            "1,400",
+            "1,500",
+            "1,600",
+            "1,700",
+            "1,800"
+        ]
+    },
+    {
+        "category": "sans-serif",
         "name": "Teko",
         "sane": "teko",
         "variants": [
@@ -16396,6 +16586,44 @@
             "0,400",
             "1,400",
             "0,700",
+            "1,700"
+        ]
+    },
+    {
+        "category": "sans-serif",
+        "name": "Ubuntu Sans",
+        "sane": "ubuntu_sans",
+        "variants": [
+            "0,100",
+            "0,200",
+            "0,300",
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700",
+            "0,800",
+            "1,100",
+            "1,200",
+            "1,300",
+            "1,400",
+            "1,500",
+            "1,600",
+            "1,700",
+            "1,800"
+        ]
+    },
+    {
+        "category": "monospace",
+        "name": "Ubuntu Sans Mono",
+        "sane": "ubuntu_sans_mono",
+        "variants": [
+            "0,400",
+            "0,500",
+            "0,600",
+            "0,700",
+            "1,400",
+            "1,500",
+            "1,600",
             "1,700"
         ]
     },
