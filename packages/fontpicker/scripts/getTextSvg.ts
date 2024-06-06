@@ -31,19 +31,25 @@ export async function getTextSvg({
   fontSize = 16,
   options,
 }: GetTextSvgOptions) {
-  const font = await opentype.load(fontFile)
+  // opentype.load() deprecated/removed in upcoming Opentype.js v2.0
+  //const font = await opentype.load(fontFile)
+  const buff = await fs.promises.readFile(fontFile)
+  const arrayBuffer = new Uint8Array(buff).buffer
+  // const font = await opentype.parse(buff) Opentype.js v2.0
+  const font = await opentype.parse(arrayBuffer) // v1.x
   const path = font.getPath(text, x, y, fontSize, options)
   path.stroke = 'black'
+  path.strokeWidth = 0.1
   let svg = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${width}" height="${height}">`
   svg += path.toSVG(2)
   svg += '</svg>'
   return svg
 }
 
-async function main() {
-  const fontFile = './font-cache/aclonica.ttf'
-  const svgFile = './font-cache/aclonica.svg'
-  const text = 'Aclonica'
+async function generateOnePreview() {
+  const fontFile = './font-cache/audiowide.ttf'
+  const svgFile = './font-cache/audiowide.svg'
+  const text = 'Audiowide'
   console.log(`Calling getTextSvg(${fontFile}, ${text}) ...`)
   const svg = await getTextSvg({ fontFile, text })
   fs.writeFile(svgFile, svg, (err) => {
@@ -51,8 +57,46 @@ async function main() {
       console.log(err)
     }
   })
-  console.log('SVG: ', svg)
+  //console.log('SVG: ', svg)
   console.log('Done')
+}
+
+async function generateAllPreviews() {
+  const FONT_CACHE_DIR = './font-cache/'
+  try {
+    console.log('Generating SVG font representations ...')
+    const files = (
+      await fs.promises.readdir(FONT_CACHE_DIR, {
+        withFileTypes: true,
+        recursive: false,
+      })
+    )
+      .filter((x) => x.isFile() && x.name.endsWith('.ttf'))
+      .sort()
+    const promises = files.map((f) =>
+      (async () => {
+        const fontFile = f.parentPath + f.name
+        const svgFile = fontFile.replace('.ttf', '.svg')
+        const text = f.name.charAt(0).toUpperCase() + f.name.substring(1).replace(/-/g, ' ').replace(/.ttf$/, '')
+        const svg = await getTextSvg({ fontFile, text })
+        fs.writeFile(svgFile, svg, (err) => {
+          if (err) {
+            console.log(err)
+          }
+          console.log(`${text}`)
+        })
+      })()
+    )
+    await Promise.all(promises)
+    console.log('Done')
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+async function main() {
+  //await generateOnePreview()
+  await generateAllPreviews()
 }
 
 main()
