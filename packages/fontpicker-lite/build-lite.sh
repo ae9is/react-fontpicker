@@ -29,9 +29,7 @@ if [ -e dist ]; then
   mv dist dist-bak
 fi
 
-cd ./scripts
-php ./build-font-previews.php --lite
-cd ..
+npm run build-font-previews-lite
 
 npm run build:tsup
 if [ -e .tsbuildinfo ]; then
