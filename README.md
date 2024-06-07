@@ -4,17 +4,17 @@ A Google font picker component for React.
 
 - No dependencies (other than React)
 - 1600+ Google fonts
-- Font previews from pre-generated images
+- Font previews from pre-generated SVG images
 - Optionally autoloads fonts
 
 Forked from https://github.com/Mikk3lRo/vue-fontpicker/
 
-# Documentation
+## Documentation
 
 A live demo including usage is available at:
 https://ae9is.github.io/react-fontpicker/
 
-# Installing
+## Installing
 
 ```bash
 # npm
@@ -33,11 +33,11 @@ import FontPicker from 'react-fontpicker-ts'
 import 'react-fontpicker-ts/dist/index.css'
 ```
 
-# Styling
+## Styling
 
 See css classnames in: [packages/fontpicker/src/components/FontPicker.css](https://github.com/ae9is/react-fontpicker/tree/main/packages/fontpicker/src/components/FontPicker.css)
 
-# Project structure
+## Project structure
 
 The font picker project lives in this [Turborepo](https://turbo.build/repo/docs) monorepo at [packages/fontpicker/](https://github.com/ae9is/react-fontpicker/tree/main/packages/fontpicker/)
 
@@ -47,7 +47,7 @@ The font picker component itself builds via `tsup` (i.e. `esbuild`) to `/dist` w
 
 The font preview generation PHP script downloads font files to `/font-cache` and builds font image previews to `/font-preview`.
 
-# Performance
+## Performance
 
 The font picker previews work by loading font preview image files in CSS. The fonts are split across many image files for faster initial preview.
 
@@ -68,40 +68,25 @@ For example:
 </head>
 ```
 
-The big trade-off of this approach is that the component's bundle is quite large due to all the font image previews (16 MB in images for 1614 fonts). Only a subset of this is served depending on the client's device pixel ratio:
+The big trade-off of this approach is that the component's bundle is quite large due to all the font image previews: 8 MB in compressed SVG images for 1633 fonts. Make sure you serve compressed SVGs! [See here for an example for Vite.](packages/fontpicker/vite.config.mts)
 
-- 2x &rarr; 7.4 MB
-- 1.5x &rarr; 5.1 MB
-- 1x &rarr; 3.1 MB
-
-If you're looking for a lighter weight option, you can use `react-fontpicker-ts-lite` instead:
-
-- 1x (only) &rarr; ~160 KB
+If you're looking for a lighter weight option, you can use `react-fontpicker-ts-lite` instead which is around 180 KB.
 
 Or, for a different font picker following an on demand approach, check out: [https://github.com/samuelmeuli/font-picker-react](https://github.com/samuelmeuli/font-picker-react)
 
 `font-picker-react` requires a Google API key, and works best at the default font limit of 50 (fonts to choose from).
 
-# Building font previews
+## Building font previews
 
 _Note: most users shouldn't need to rebuild the font previews, but this section is included for convenience if you need to grab the latest fonts or edit the previews._
 
-### 1\. Setup PHP
+### 1\. Google API key
 
-Setup a PHP installation with the GD image processing library. The `php-cli` package lets you run PHP scripts without needing a server.
+Get a Google API key here [https://developers.google.com/fonts/docs/developer_api#APIKey](https://developers.google.com/fonts/docs/developer_api#APIKey) and create a new file called `GOOGLE_API_KEY` in `react-fontpicker/packages/fontpicker/scripts`, in the same directory as the `scripts/buildFontPreviews.ts` script.
 
-```bash
-# Ubuntu 22.04
-apt install php-cli php-gd
-```
+### 2\. Font preview script
 
-### 2\. Google API key
-
-Get a Google API key here [https://developers.google.com/fonts/docs/developer_api#APIKey](https://developers.google.com/fonts/docs/developer_api#APIKey) and create a new file called `GOOGLE_API_KEY` in `react-fontpicker/packages/fontpicker`, one level above the `scripts/build-font-previews.php` script.
-
-### 3\. Font preview script
-
-### All Google fonts
+#### All Google fonts
 
 To generate font previews for all currently available Google fonts (latin font families only, minus `Kumar One`).
 
@@ -112,12 +97,12 @@ npm run build-font-previews
 
 _Note: For 1600 fonts, budget 20-30 minutes and 800 MB to download all the fonts. Compiling the image previews themselves should be less than a minute. When re-running, the script only retrieves new font info if it's older than 1 week and skips downloading cached fonts._
 
-### Custom fonts
+#### Custom fonts
 
 To generate font previews for custom fonts you'll need some info about the fonts and paths to the font file downloaded in TTF format.
 
 ```bash
-php build-font-previews.php "font-name|font-category|font-variants-info|font-file" "font-name-2..."
+buildFontPreviews.ts output-dir "font-name|font-category|font-variants-info|font-file" "font-name-2..."
 ```
 
 Where font-variants-info is an array of values like 0,400 and 1,700 joined by +.
@@ -127,18 +112,20 @@ The second value is the font weight (i.e. 100 = thin, 400 = normal, 700 = bold, 
 For example:
 
 ```bash
-php build-font-previews.php "FontName|sans-serif|0,400+0,700+1,400+1,700|/path/to/font.ttf" "Font2|serif|0,400|/path/to/font2.ttf"
+buildFontPreviews.ts output-dir "FontName|sans-serif|0,400+0,700+1,400+1,700|/path/to/font.ttf" "Font2|serif|0,400|/path/to/font2.ttf"
 ```
 
-# Development
+See the `build-font-previews-manual` run script in: [packages/fontpicker/package.json](packages/fontpicker/package.json)
 
-## Installation
+## Development
+
+### Installation
 
 This monorepo uses [Turborepo](https://turbo.build/repo/docs). Set it up using `npm install`.
 
 You can then use Turbo to run commands from the root (or sub project) directory, for ex: `turbo build` or `turbo dev`.
 
-## Testing
+### Testing
 
 This app uses Vitest and [Cypress](https://docs.cypress.io/guides/getting-started/installing-cypress) for testing. Make sure to setup the prerequisites for Cypress on your system.
 
