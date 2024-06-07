@@ -103,7 +103,7 @@ print_r($args);
 // If no arguments passed, by default assume Google fonts preview job.
 if (!isset($argv[1]) || $googlefonts) {
     println('Downloading and building previews for all Google fonts ...');
-    $apiKey = file_exists(__DIR__ . '/../GOOGLE_API_KEY') ? trim(file_get_contents(__DIR__ . '/../GOOGLE_API_KEY')) : '';
+    $apiKey = file_exists(__DIR__ . '/GOOGLE_API_KEY') ? trim(file_get_contents(__DIR__ . '/GOOGLE_API_KEY')) : '';
     if (!is_string($apiKey) || strlen($apiKey) < 20) {
         die('Invalid api key - get an api key for google fonts and put it in a file called GOOGLE_API_KEY (or hardcode it in
         build-font-previews.php)');
