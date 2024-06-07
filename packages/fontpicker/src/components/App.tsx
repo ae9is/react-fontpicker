@@ -574,7 +574,12 @@ const [outputFont, setOutputFont] = useState('')
         <h3 id="checkloaded">Check font loading</h3>
         <p>
           The <code>fontsLoaded</code> callback emits whether the currently selected font and all the 
-          font families specified in <code>loadFonts</code> have <strong>all</strong> been loaded by the browser.
+          font families specified in <code>loadFonts</code> have been loaded by the browser after loading is triggered.
+        </p>
+        <p>
+          If font loading has not been triggered (fontpicker not set to <code>autoLoad</code>, no values in <code>loadFonts</code>),
+          <code>fontsLoaded</code> will be true. 
+          See: <a href="https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSet/check#nonexistent_fonts">MDN Web Docs - Font Loading API</a>
         </p>
         <div className={cs.example}>
           <FontPicker
