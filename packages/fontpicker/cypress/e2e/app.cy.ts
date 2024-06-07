@@ -69,7 +69,7 @@ describe('react fontpicker docs', () => {
     // Type manual font name into search input, select it, and check that it's emitted.
     cy.getBySel('manuallyadd-value').as('value')
     cy.getBySel('manuallyadd-fontpicker').as('picker')
-    cy.get('@picker').find('.fontpicker__search').type('BickleyScript{enter}');
+    cy.get('@picker').find('.fontpicker__search').type('BickleyScript{enter}')
     cy.get('@value').should('have.text', 'Current value: BickleyScript')
   })
 
@@ -98,7 +98,7 @@ describe('react fontpicker docs', () => {
     cy.get('@value').contains('Unlock')
     cy.get('@isLoaded').contains('false')
     // Select one of the loaded fonts and check that load test succeeds
-    cy.get('@picker').find('.fontpicker__search').type('Unkempt{enter}');
+    cy.get('@picker').find('.fontpicker__search').type('Unkempt{enter}')
     cy.get('@value').contains('Unkempt')
     cy.get('@isLoaded').contains('true')
   })

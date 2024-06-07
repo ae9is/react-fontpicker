@@ -566,7 +566,7 @@ export default function FontPicker({
 
   useEffect(() => {
     // Check if the currently selected font family and all font families in loadFonts are loaded.
-    // Note: Ignores font variants specified by loadFonts! To check all variants themselves are loaded: need to recreate four variants 
+    // Note: Ignores font variants specified by loadFonts! To check all variants themselves are loaded: need to recreate four variants
     //  if loadAllVariants not specified, and then parse variant strings into font styles and weights, and then check each variant.
     async function callCheckLoaded(fontNames: string[]) {
       try {
