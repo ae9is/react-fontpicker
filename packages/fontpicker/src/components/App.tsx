@@ -511,22 +511,17 @@ Font variants:
         </pre>
         <h3 id="forms">Forms</h3>
         <p>
-          You can set the id of the font picker&rsquo;s input via the <code>inputId</code> prop,
-          for pairing with a <code>{`<label>`}</code>.
+          You can set the id of the font picker&rsquo;s input via the <code>inputId</code> prop, for pairing with a{' '}
+          <code>{`<label>`}</code>.
         </p>
         <form name="fontForm">
-          <label htmlFor="font">
-            Font
-          </label>
+          <label htmlFor="font">Font</label>
           <div className={cs.example}>
-            <FontPicker
-              inputId="font"
-              defaultValue="Special Elite"
-              data-testid="forms-fontpicker"
-            />
+            <FontPicker inputId="font" defaultValue="Special Elite" data-testid="forms-fontpicker" />
           </div>
         </form>
-        <pre>{`<form name="fontForm">
+        <pre>
+          {`<form name="fontForm">
   <label htmlFor="font">
     Font
   </label>
@@ -539,9 +534,7 @@ Font variants:
         </pre>
 
         <h3 id="controlled">Controlled values</h3>
-        <p>
-          Default value can be dynamically controlled. The following example chains two font pickers.
-        </p>
+        <p>Default value can be dynamically controlled. The following example chains two font pickers.</p>
         <div className={cs.example}>
           <FontPicker
             defaultValue="Ubuntu"
@@ -556,7 +549,8 @@ Font variants:
           />
           <p data-testid="controlled-value-output">Output font value: {outputFont}</p>
         </div>
-        <pre>{`const [inputFont, setInputFont] = useState('')
+        <pre>
+          {`const [inputFont, setInputFont] = useState('')
 const [outputFont, setOutputFont] = useState('')
 <FontPicker
   defaultValue="Ubuntu"
@@ -573,13 +567,16 @@ const [outputFont, setOutputFont] = useState('')
 
         <h3 id="checkloaded">Check font loading</h3>
         <p>
-          The <code>fontsLoaded</code> callback emits whether the currently selected font and all the 
-          font families specified in <code>loadFonts</code> have been loaded by the browser after loading is triggered.
+          The <code>fontsLoaded</code> callback emits whether the currently selected font and all the font families
+          specified in <code>loadFonts</code> have been loaded by the browser after loading is triggered.
         </p>
         <p>
-          If font loading has not been triggered (fontpicker not set to <code>autoLoad</code>, no values in <code>loadFonts</code>),
-          <code>fontsLoaded</code> will be true. 
-          See: <a href="https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSet/check#nonexistent_fonts">MDN Web Docs - Font Loading API</a>
+          If font loading has not been triggered (fontpicker not set to <code>autoLoad</code>, no values in{' '}
+          <code>loadFonts</code>),
+          <code>fontsLoaded</code> will be true. See:{' '}
+          <a href="https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSet/check#nonexistent_fonts">
+            MDN Web Docs - Font Loading API
+          </a>
         </p>
         <div className={cs.example}>
           <FontPicker
@@ -590,9 +587,12 @@ const [outputFont, setOutputFont] = useState('')
             data-testid="checkloaded-fontpicker"
           />
           <div className={cs.buttonGroup}>
-            <button onClick={() => setFontToLoad(['Unkempt','Annie Use Your Telescope'])} data-testid="checkloaded-button">
-              Load <span style={{ fontFamily: 'Unkempt' }}>Unkempt</span>&nbsp;
-              and <span style={{ fontFamily: 'Annie Use Your Telescope' }}>Annie Use Your Telescope</span>
+            <button
+              onClick={() => setFontToLoad(['Unkempt', 'Annie Use Your Telescope'])}
+              data-testid="checkloaded-button"
+            >
+              Load <span style={{ fontFamily: 'Unkempt' }}>Unkempt</span>&nbsp; and{' '}
+              <span style={{ fontFamily: 'Annie Use Your Telescope' }}>Annie Use Your Telescope</span>
             </button>
           </div>
         </div>
@@ -600,7 +600,8 @@ const [outputFont, setOutputFont] = useState('')
           Current font value: <span style={{ fontFamily: checkLoadedFont }}>{checkLoadedFont}</span>
         </p>
         <p data-testid="checkloaded-loaded">
-          All fonts are loaded (current font and loadFonts): <span style={{ fontFamily: checkLoadedFont }}>{fontsLoaded ? 'true' : 'false'}</span>
+          All fonts are loaded (current font and loadFonts):{' '}
+          <span style={{ fontFamily: checkLoadedFont }}>{fontsLoaded ? 'true' : 'false'}</span>
         </p>
         <pre>
           {`const [checkLoadedFont, setCheckLoadedFont] = useState('')
