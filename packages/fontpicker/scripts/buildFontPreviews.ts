@@ -219,7 +219,7 @@ class FontPreviewBuilder {
   static outputPath: string
   static cellHeight = 40
 
-  static async generatePreview(fonts: DownloadedFont[], outputPath: string, outScales: number[], sliceSize: number) {
+  static async generatePreview(fonts: DownloadedFont[], outputPath: string, sliceSize: number) {
     println('Generating previews for ' + fonts.length + ' fonts to: ' + outputPath)
     this.outputPath = outputPath
     if (!fs.existsSync(outputPath)) {
@@ -237,8 +237,8 @@ class FontPreviewBuilder {
     }
     await Promise.all([
       this.makeJson(fonts),
-      this.makeImages(fonts, outScales, sliceSize),
-      this.makeCss(fonts, outScales, sliceSize),
+      this.makeImages(fonts, sliceSize),
+      this.makeCss(fonts, sliceSize),
       this.makeHtml(fonts),
     ])
   }
@@ -258,58 +258,49 @@ class FontPreviewBuilder {
     fs.writeFileSync(this.outputPath + '/fontInfo.json', JSON.stringify(json, null, 2))
   }
 
-  static async makeImages(fonts: DownloadedFont[], outScales: number[], sliceSize: number) {
+  static async makeImages(fonts: DownloadedFont[], sliceSize: number) {
     println('Creating font preview images ...')
     for (let i = 0; i < fonts.length / sliceSize; i++) {
       println('Slice ' + (i + 1) + '/' + Math.ceil(fonts.length / sliceSize))
       const start = Math.ceil(i * sliceSize)
       const end = start + sliceSize
       const slice = fonts.slice(start, end)
-      await this.makeImage(slice, this.outputPath + '/sprite.' + (i + 1), outScales)
+      await this.makeImage(slice, this.outputPath + '/sprite.' + (i + 1))
     }
   }
 
-  static async makeImage(fonts: DownloadedFont[], outFile: string, outScales: number[]) {
-    for (const outScale of outScales) {
-      println(outScale + 'x')
-      const dstW = Math.ceil(600 * outScale)
-      const dstH = Math.ceil(this.cellHeight * fonts?.length * outScale)
-      const fontSize = Math.ceil(22 * outScale)
-      const indent = Math.ceil(10 * outScale)
-      const baseline = Math.ceil((this.cellHeight * 0.7) * outScale)
-      const svgImage: string[] = []
-      svgImage.push('<svg xmlns="http://www.w3.org/2000/svg" ')
-      svgImage.push('xmlns:xlink="http://www.w3.org/1999/xlink" ')
-      svgImage.push('version="1.1" ')
-      svgImage.push('x="0px" y="0px" ')
-      //svgImage.push('stroke="black" fill="black"')
-      svgImage.push('width="' + dstW + 'px" height="' + dstH + 'px" ')
-      svgImage.push('viewBox="0 0 ' + dstW + ' ' + dstH + '">')
-      for (const font of fonts) {
-        // opentype.load() deprecated/removed in upcoming Opentype.js v2.0
-        // ref: https://github.com/opentypejs/opentype.js/issues/675
-        // const opentypeFont = await opentype.load(fontFile)
-        const buff = await fs.promises.readFile(font.localFile)
-        const arrayBuffer = new Uint8Array(buff).buffer
-        // const opentypeFont = await opentype.parse(buff) Opentype.js v2.0
-        const opentypeFont = await opentype.parse(arrayBuffer) // v1.x
-        const text = font.name
-        const dstTop = Math.ceil(font.top ?? 0 * outScale) + baseline
-        const path = opentypeFont.getPath(text, indent, dstTop, fontSize, {
-          kerning: true,
-          //letterSpacing: 0.1,
-        })
-        //path.stroke = 'black'
-        //path.fill = 'black'
-        path.strokeWidth = 0.1
-        svgImage.push(path.toSVG(2))
-      }
-      svgImage.push('</svg>')
-      fs.writeFileSync(outFile + '.' + outScale + 'x.svg', svgImage.join('\n'))
+  static async makeImage(fonts: DownloadedFont[], outFile: string) {
+    const outScale = 1
+    const dstW = Math.ceil(600 * outScale)
+    const dstH = Math.ceil(this.cellHeight * fonts?.length * outScale)
+    const fontSize = Math.ceil(22 * outScale)
+    const indent = Math.ceil(10 * outScale)
+    const baseline = Math.ceil((this.cellHeight * 0.7) * outScale)
+    const svgImage: string[] = []
+    svgImage.push('<svg xmlns="http://www.w3.org/2000/svg" ')
+    svgImage.push('xmlns:xlink="http://www.w3.org/1999/xlink" ')
+    svgImage.push('version="1.1" ')
+    svgImage.push('x="0px" y="0px" ')
+    svgImage.push('width="' + dstW + 'px" height="' + dstH + 'px" ')
+    svgImage.push('viewBox="0 0 ' + dstW + ' ' + dstH + '">')
+    for (const font of fonts) {
+      const buff = await fs.promises.readFile(font.localFile)
+      const arrayBuffer = new Uint8Array(buff).buffer
+      // const opentypeFont = await opentype.parse(buff) // for Opentype.js v2.0
+      const opentypeFont = await opentype.parse(arrayBuffer) // for v1.x
+      const text = font.name
+      const dstTop = Math.ceil(font.top ?? 0 * outScale) + baseline
+      const path = opentypeFont.getPath(text, indent, dstTop, fontSize, {
+        kerning: true,
+      })
+      path.strokeWidth = 0.1
+      svgImage.push(path.toSVG(2))
     }
+    svgImage.push('</svg>')
+    fs.writeFileSync(outFile + '.svg', svgImage.join('\n'))
   }
 
-  static async makeCss(fonts: DownloadedFont[], outScales: number[], sliceSize: number) {
+  static async makeCss(fonts: DownloadedFont[], sliceSize: number) {
     println('Generating CSS ...')
     const css: string[] = []
     css.push('[class*=" font-preview-"],')
@@ -319,37 +310,16 @@ class FontPreviewBuilder {
     css.push('  height: 2em;')
     css.push('  image-rendering: optimizequality;')
     css.push('}')
-    const numScales = outScales.length
-    for (let i = 0; i < numScales; i++) {
-      const outScale = outScales[i]
-      let tab = ''
-      if (numScales > 1) {
-        if (i !== 0) {
-          tab = '  '
-          css.push('@media')
-          const prevScale = outScales[i - 1]
-          css.push('(-webkit-min-device-pixel-ratio: ' + (prevScale + 0.01) + '),')
-          css.push('(min-resolution: ' + (prevScale + 0.01) + 'dppx) {')
-        }
+    for (let i = 0; i < fonts.length / sliceSize; i++) {
+      const start = Math.ceil(i * sliceSize)
+      const end = start + sliceSize
+      const slice = fonts.slice(start, end)
+      for (const font of slice) {
+        css.push('.font-preview-' + font['sanename'] + ',')
       }
-      for (let j = 0; j < fonts.length / sliceSize; j++) {
-        const start = Math.ceil(j * sliceSize)
-        const end = start + sliceSize
-        const slice = fonts.slice(start, end)
-        for (const font of slice) {
-          css.push(tab + '.font-preview-' + font['sanename'] + ',')
-        }
-        if (numScales > 1) {
-          css.push(tab + '.font-preview-for-' + outScale.toString().replace('.', '') + 'x {')
-        } else {
-          css.push(tab + '.font-preview-on-all {')
-        }
-        css.push(tab + '  background-image: url(sprite.' + (j + 1) + '.' + outScale + 'x.svg);')
-        css.push(tab + '}')
-      }
-      if (numScales > 1 && i !== 0) {
-        css.push('}')
-      }
+      css.push('.font-preview-on-all {')
+      css.push('  background-image: url(sprite.' + (i + 1) + '.svg);')
+      css.push('}')
     }
     for (const font of fonts) {
       css.push('.font-preview-' + font['sanename'] + '{ background-position: 0px -' + ((font.top ?? 0) / 20) + 'em }')
@@ -408,7 +378,6 @@ async function main() {
     process.exit(0)
   }
 
-  let outScales = [1] // , 1.5, 2]
   let filterFile: string | undefined = undefined
   let numFonts: number | undefined = undefined
   let lite = false
@@ -432,7 +401,6 @@ async function main() {
   lite = 'lite' in opts
   if (lite) {
     googlefonts = true
-    outScales = [1]
     sliceSize = 15
     numFonts = 75
     filterFile = './75-google-fonts.txt'
@@ -499,7 +467,7 @@ async function main() {
       }
     }
   }
-  await FontPreviewBuilder.generatePreview(fonts, outpath, outScales, sliceSize)
+  await FontPreviewBuilder.generatePreview(fonts, outpath, sliceSize)
   println('Done at ' + new Date().toLocaleString())
 }
 
