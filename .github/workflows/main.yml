@@ -76,7 +76,7 @@ jobs:
       run: npm run test
 
     - name: Add GOOGLE_API_KEY
-      run: echo "${{secrets.GOOGLE_API_KEY}}" > packages/fontpicker/GOOGLE_API_KEY
+      run: echo "${{secrets.GOOGLE_API_KEY}}" > packages/fontpicker/scripts/GOOGLE_API_KEY
 
     - name: Restore font-cache
       id: cache-font-restore
