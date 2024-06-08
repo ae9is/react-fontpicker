@@ -37,6 +37,8 @@ import 'react-fontpicker-ts/dist/index.css'
 
 See css classnames in: [packages/fontpicker/src/components/FontPicker.css](https://github.com/ae9is/react-fontpicker/tree/main/packages/fontpicker/src/components/FontPicker.css)
 
+For an example integrating the font picker into an app, see here: [ae9is/uimix](https://github.com/ae9is/uimix/commit/52fd0292a094bbcdfa766ce36ace055a7de93838)
+
 ## Project structure
 
 The font picker project lives in this [Turborepo](https://turbo.build/repo/docs) monorepo at [packages/fontpicker/](https://github.com/ae9is/react-fontpicker/tree/main/packages/fontpicker/)
