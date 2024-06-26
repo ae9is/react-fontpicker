@@ -23,6 +23,7 @@
   cursor: pointer;
   font-size: 16px;
   background-color: #555;
+  color: #fff;
 }
 .fontpicker__search:focus {
   cursor: text;
@@ -47,10 +48,11 @@
   transform: scale(1);
 }
 .fontpicker__option {
-  background: #555;
+  -webkit-filter: invert(100%);
+  filter: invert(100%);
 }
 .fontpicker__option.selected {
-  background: #6789ab;
+  background: #ccc;
 }
 .fontpicker__nomatches {
   height: 2em;
