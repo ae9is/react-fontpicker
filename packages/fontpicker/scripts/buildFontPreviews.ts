@@ -157,8 +157,8 @@ class GoogleFonts {
       }
     }
     const localJsonFile = this.fontPath + '/fonts.json'
-    const modifiedTime = fs.statSync(localJsonFile).mtime
-    const age = Math.abs(new Date().getTime() - modifiedTime.getTime())
+    const modifiedTime = fs.statSync(localJsonFile, { throwIfNoEntry: false })?.mtime
+    const age = Math.abs(new Date().getTime() - (modifiedTime?.getTime() ?? 0))
     const oneWeekMillis = 1000 * 60 * 60 * 24 * 7
     if (!fs.existsSync(localJsonFile) || (!noReplaceOldFontInfos && age > oneWeekMillis)) {
       println('Font cache info file missing or out of date, downloading ...')
