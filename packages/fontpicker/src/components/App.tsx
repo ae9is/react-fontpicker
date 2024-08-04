@@ -447,6 +447,7 @@ Font variants:
         </p>
         <div className={cs.example}>
           <FontPicker
+            autoLoad
             value={(font: string) => setManuallyAddFontValue(font)}
             googleFonts={['Tinos', 'Open Sans']}
             localFonts={[
