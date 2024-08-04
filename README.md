@@ -52,7 +52,7 @@ The [live demo](https://ae9is.github.io/react-fontpicker/) is a Vite app you can
 
 The font picker component itself builds via `tsup` (i.e. `esbuild`) to `/dist` with type definitions generated via `tsc` according to `tsconfig.types.json`.
 
-The font preview generation PHP script downloads font files to `/font-cache` and builds font image previews to `/font-preview`.
+The font preview generation script downloads font files to `/font-cache` and builds font image previews to `/font-preview`.
 
 ## Performance
 
@@ -128,13 +128,11 @@ See the `build-font-previews-manual` run script in: [packages/fontpicker/package
 
 ### Installation
 
-This monorepo uses [Turborepo](https://turbo.build/repo/docs). Set it up using `npm install`.
-
-You can then use Turbo to run commands from the root (or sub project) directory, for ex: `turbo build` or `turbo dev`.
+This monorepo uses [Turborepo](https://turbo.build/repo/docs).
 
 ### Testing
 
-This app uses Vitest and [Cypress](https://docs.cypress.io/guides/getting-started/installing-cypress) for testing. Make sure to setup the prerequisites for Cypress on your system.
+The app uses Vitest and [Cypress](https://docs.cypress.io/guides/getting-started/installing-cypress) for testing. Make sure to setup the prerequisites for Cypress on your system.
 
 On Ubuntu:
 
