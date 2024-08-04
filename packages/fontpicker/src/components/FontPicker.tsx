@@ -36,6 +36,7 @@ export interface Font {
   sane: string
   cased: string
   variants: Variant[]
+  isLocal?: boolean
 }
 
 export interface FourFonts {
@@ -240,6 +241,7 @@ export default function FontPicker({
           .replaceAll(/[^a-zA-Z0-9-]/g, '')
           .toLowerCase(),
         variants: font.variants.map((v: Variant) => toString(v)),
+        isLocal: true,
       })
     })
     let activeFontsInCategory: Font[]
@@ -450,6 +452,10 @@ export default function FontPicker({
 
   const loadFontFromObject = useCallback(
     (font: Font, variants: Variant[] = []) => {
+      if (font?.isLocal) {
+        // Don't try to load manually added fonts
+        return
+      }
       if (variants?.length > 0) {
         variants = font.variants.filter((v: Variant) => variants.includes(v))
       } else if (loadAllVariants) {
