@@ -17,7 +17,7 @@
     "react-dom": ">=18",
     "react-fontpicker-ts-lite": "file:../../packages/fontpicker-lite/react-fontpicker-ts-lite-1.0.0.tgz",
     "react-fontpicker-ts": "file:../../packages/fontpicker/react-fontpicker-ts-1.0.0.tgz",
-    "vite": "^5.4.6"
+    "vite": "^5.4.14"
   },
   "devDependencies": {
     "@testing-library/dom": "^10.1.0",
