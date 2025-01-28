@@ -51,6 +51,7 @@ interface FontPreviewInfo {
   name: string
   sane: string
   variants: string[]
+  subsets?: string[]
 }
 
 interface DownloadedFont {
@@ -59,6 +60,7 @@ interface DownloadedFont {
   localFile: string
   localFileSvg: string
   variants: string[]
+  subsets?: string[]
   sanename?: string
   top?: number
 }
@@ -114,6 +116,7 @@ class GoogleFonts {
         localFile: localFile,
         localFileSvg: localFileSvg,
         variants: this.shortVariants(info),
+        subsets: info['subsets'],
       }
       fonts.push(font)
     }
@@ -252,6 +255,7 @@ class FontPreviewBuilder {
         name: font['name'],
         sane: font['sanename'] ?? sanify(font.name),
         variants: font['variants'],
+        subsets: font['subsets'],
       }
       json.push(j)
     }
