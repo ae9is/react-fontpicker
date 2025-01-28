@@ -15,6 +15,8 @@ export interface FontPickerProps extends React.ComponentPropsWithoutRef<'div'> {
   fontCategories?: string[] | string
   localFonts?: Font[] | undefined
 
+  mode?: 'combo' | 'list'
+
   // For pairing with form labels
   inputId?: string
 
@@ -96,6 +98,7 @@ export default function FontPicker({
   googleFonts = 'all',
   fontCategories = 'all',
   localFonts = [],
+  mode = 'combo',
   fontVariants,
   value,
   fontsLoaded,
@@ -609,39 +612,59 @@ export default function FontPicker({
         <div className={outerClasses()?.join(' ')} {...rest}>
           <Suspense fallback={<>{loading}</>}>
             <FontPreviews />
-            <div ref={previewRef} className={previewClasses()?.join(' ')} />
-            <input
-              id={inputId}
-              className={'fontpicker__search'}
-              ref={inputRef}
-              type="text"
-              onInput={searchChanged}
-              onFocus={onFocus}
-              onBlur={hide}
-              onKeyDown={onKeyDown}
-              value={searchContent}
-            />
-            <div //
-              ref={popoutRef}
-              tabIndex={-1}
-              className={popoutClasses()?.join(' ')}
-              onMouseDown={cancelBlur}
-            >
-              {matchingFonts.map((font, i) => (
-                <div
-                  ref={saveOptionsRef(font.sane)}
-                  key={font.sane + i}
-                  className={'fontpicker__option' + (i === selectedFontIndex ? ' selected' : '')}
-                  onMouseDown={() => onClick(font)}
-                  onMouseMove={() => {
-                    setSelectedFontIndex(i)
-                  }}
+            {mode === 'combo' ? (
+              <>
+                <div ref={previewRef} className={previewClasses()?.join(' ')} />
+                <input
+                  id={inputId}
+                  className={'fontpicker__search'}
+                  ref={inputRef}
+                  type="text"
+                  onInput={searchChanged}
+                  onFocus={onFocus}
+                  onBlur={hide}
+                  onKeyDown={onKeyDown}
+                  value={searchContent}
+                />
+                <div //
+                  ref={popoutRef}
+                  tabIndex={-1}
+                  className={popoutClasses()?.join(' ')}
+                  onMouseDown={cancelBlur}
                 >
-                  <div className={'font-preview-' + font.sane} />
+                  {matchingFonts.map((font, i) => (
+                    <div
+                      ref={saveOptionsRef(font.sane)}
+                      key={font.sane + i}
+                      className={'fontpicker__option' + (i === selectedFontIndex ? ' selected' : '')}
+                      onMouseDown={() => onClick(font)}
+                      onMouseMove={() => {
+                        setSelectedFontIndex(i)
+                      }}
+                    >
+                      <div className={'font-preview-' + font.sane} />
+                    </div>
+                  ))}
+                  {matchingFonts.length === 0 && <div className={'fontpicker__nomatches'}>{noMatches}</div>}
                 </div>
-              ))}
-              {matchingFonts.length === 0 && <div className={'fontpicker__nomatches'}>{noMatches}</div>}
-            </div>
+              </>
+            ) : (
+              <div className='fontpicker__listbox'>
+                {fonts.map((font, i) => (
+                  <div
+                    ref={saveOptionsRef(font.sane)}
+                    key={font.sane + i}
+                    className={'fontpicker__option' + (i === selectedFontIndex ? ' selected' : '')}
+                    onMouseDown={() => onClick(font)}
+                    onMouseMove={() => {
+                      setSelectedFontIndex(i)
+                    }}
+                  >
+                    <div className={'font-preview-' + font.sane} />
+                  </div>
+                ))}
+              </div>
+            )}
           </Suspense>
         </div>
       )}

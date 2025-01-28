@@ -61,3 +61,9 @@
   text-align: center;
   color: #eee;
 }
+.fontpicker__listbox {
+  height: 100%;
+  background: #555;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
