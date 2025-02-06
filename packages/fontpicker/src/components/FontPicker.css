@@ -51,6 +51,9 @@
   -webkit-filter: invert(100%);
   filter: invert(100%);
 }
+.fontpicker__option.current {
+  background: #bbb;
+}
 .fontpicker__option.selected {
   background: #ccc;
 }

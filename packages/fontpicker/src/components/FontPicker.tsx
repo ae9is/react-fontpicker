@@ -111,6 +111,7 @@ export default function FontPicker({
   const [typedSearch, setTypedSearch] = useState(defaultValue)
   const [searchContent, setSearchContent] = useState(defaultValue)
   const [selectedFontIndex, setSelectedFontIndex] = useState(-1)
+  const [currentFontIndex, setCurrentFontIndex] = useState(-1)
   const [prevLoadFonts, setPrevLoadFonts] = useState<string[]>([])
   const inputRef = useRef<HTMLInputElement>(null)
   const popoutRef = useRef<HTMLDivElement>(null)
@@ -342,6 +343,26 @@ export default function FontPicker({
     }
   }
 
+  const onKeyDownList = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key && e.key === 'Enter') {
+      if (selectedFontIndex > -1) {
+        setCurrent(fonts[selectedFontIndex])
+      } else {
+        setCurrent(current)
+      }
+    } else if (e.key && e.key === 'ArrowDown') {
+      e.preventDefault()
+      if (selectedFontIndex < fonts.length - 1) {
+        setSelectedFontIndex((prev) => prev + 1)
+      }
+    } else if (e.key && e.key === 'ArrowUp') {
+      e.preventDefault()
+      if (selectedFontIndex > 0) {
+        setSelectedFontIndex((prev) => prev - 1)
+      }
+    }
+  }
+
   const showSelectedFont = (why = 'key', index = selectedFontIndex) => {
     const popout = popoutRef?.current
     if (popout && index >= 0) {
@@ -423,7 +444,23 @@ export default function FontPicker({
     autoLoadFont(font)
     emitFontVariants(font)
     emitValue(font)
+    setCurrentFontIndex(fontIndex(font))
   }
+
+  const fontIndex = useCallback(
+    (font: Font) => {
+      let idx
+      if (mode === 'list') {
+        idx = fonts?.findIndex(f => f.name === font.name) ?? -1
+      } else {
+        idx = matchingFonts?.findIndex(f => f.name === font.name) ?? -1
+      }
+      if (idx < 0) {
+        idx = 0
+      }
+      return idx
+    }, [fonts, matchingFonts, mode]
+  )
 
   const emitFontVariants = useCallback(
     (font: Font) => {
@@ -606,13 +643,43 @@ export default function FontPicker({
     }
   }, [autoLoad, loadFonts, current.name, emitFontLoaded, fontsLoaded, loadFontsFontNames, fontsLoadedTimeout])
 
+  const renderFontOption = (font: Font, i: number) => {
+    return (
+      <div
+        ref={saveOptionsRef(font.sane)}
+        key={font.sane + i}
+        className={
+          'fontpicker__option' +
+          (i === selectedFontIndex ? ' selected' : '') +
+          (i === currentFontIndex ? ' current' : '')
+        }
+        onMouseDown={() => onClick(font)}
+        onMouseMove={() => {
+          setSelectedFontIndex(i)
+        }}
+        role="option"
+      >
+        <div className={'font-preview-' + font.sane} />
+      </div>
+    )
+  }
+
   return (
     <>
       {!loaderOnly && (
         <div className={outerClasses()?.join(' ')} {...rest}>
           <Suspense fallback={<>{loading}</>}>
             <FontPreviews />
-            {mode === 'combo' ? (
+            {mode === 'list' ? (
+              <div
+                className="fontpicker__listbox"
+                role="listbox"
+                tabIndex={0}
+                onKeyDown={onKeyDownList}
+              >
+                {fonts.map((font, i) => renderFontOption(font, i))}
+              </div>
+            ) : (
               <>
                 <div ref={previewRef} className={previewClasses()?.join(' ')} />
                 <input
@@ -631,39 +698,12 @@ export default function FontPicker({
                   tabIndex={-1}
                   className={popoutClasses()?.join(' ')}
                   onMouseDown={cancelBlur}
+                  role="listbox"
                 >
-                  {matchingFonts.map((font, i) => (
-                    <div
-                      ref={saveOptionsRef(font.sane)}
-                      key={font.sane + i}
-                      className={'fontpicker__option' + (i === selectedFontIndex ? ' selected' : '')}
-                      onMouseDown={() => onClick(font)}
-                      onMouseMove={() => {
-                        setSelectedFontIndex(i)
-                      }}
-                    >
-                      <div className={'font-preview-' + font.sane} />
-                    </div>
-                  ))}
+                  {matchingFonts.map((font, i) => renderFontOption(font, i))}
                   {matchingFonts.length === 0 && <div className={'fontpicker__nomatches'}>{noMatches}</div>}
                 </div>
               </>
-            ) : (
-              <div className='fontpicker__listbox'>
-                {fonts.map((font, i) => (
-                  <div
-                    ref={saveOptionsRef(font.sane)}
-                    key={font.sane + i}
-                    className={'fontpicker__option' + (i === selectedFontIndex ? ' selected' : '')}
-                    onMouseDown={() => onClick(font)}
-                    onMouseMove={() => {
-                      setSelectedFontIndex(i)
-                    }}
-                  >
-                    <div className={'font-preview-' + font.sane} />
-                  </div>
-                ))}
-              </div>
             )}
           </Suspense>
         </div>
