@@ -632,22 +632,22 @@ const [fontsLoaded, setFontsLoaded] = useState(false)
         </pre>
         <h3 id="listbox">List box mode</h3>
         <p>
-          By default the fontpicker is a combo box. You can instead use it as a list box where all options are shown to the user by default. 
+          By default the fontpicker is a combo box. You can instead use it as a list box where all options are shown to
+          the user by default.
         </p>
-        <p>
-          Make sure to filter the list of options, your user probably does not want to see 1000 fonts at once!
-        </p>
+        <p>Make sure to filter the list of options, your user probably does not want to see 1000 fonts at once!</p>
         <div className={cs.example}>
           <FontPicker
             data-testid="listbox-fontpicker"
+            defaultValue="Tinos"
             googleFonts={['Tinos', 'Open Sans', 'Orbitron', 'Roboto']}
             value={(font: string) => setListboxFont(font)}
-            mode='list'
+            mode="list"
           />
         </div>
-        <p data-testid="listbox">Current value: {listboxFont}</p>
+        <p data-testid="listbox-value">Current value: {listboxFont}</p>
         <pre>
-{`<FontPicker
+          {`<FontPicker
   value={(font: string) => setListboxFont(font)}
   googleFonts={['Tinos', 'Open Sans', 'Orbitron', 'Roboto']}
   mode='list'

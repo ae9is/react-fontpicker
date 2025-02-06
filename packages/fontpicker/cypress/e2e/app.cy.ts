@@ -102,4 +102,12 @@ describe('react fontpicker docs', () => {
     cy.get('@value').contains('Unkempt')
     cy.get('@isLoaded').contains('true')
   })
+
+  it('can select fonts in list box mode', () => {
+    cy.getBySel('listbox-fontpicker').as('picker')
+    cy.getBySel('listbox-value').as('value')
+    cy.get('@value').contains('Tinos')
+    cy.get('@picker').find('.font-preview-orbitron').click({ force: true })
+    cy.get('@value').contains('Orbitron')
+  })
 })
