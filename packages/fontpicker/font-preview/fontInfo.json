@@ -1,6 +1,23 @@
 [
   {
     "category": "sans-serif",
+    "name": "42dot Sans",
+    "sane": "42dot_sans",
+    "variants": [
+      "0,300",
+      "0,400",
+      "0,500",
+      "0,600",
+      "0,700",
+      "0,800"
+    ],
+    "subsets": [
+      "korean",
+      "latin"
+    ]
+  },
+  {
+    "category": "sans-serif",
     "name": "ABeeZee",
     "sane": "abeezee",
     "variants": [
@@ -9205,18 +9222,18 @@
     "sane": "ibm_plex_sans",
     "variants": [
       "0,100",
-      "1,100",
       "0,200",
-      "1,200",
       "0,300",
-      "1,300",
       "0,400",
-      "1,400",
       "0,500",
-      "1,500",
       "0,600",
-      "1,600",
       "0,700",
+      "1,100",
+      "1,200",
+      "1,300",
+      "1,400",
+      "1,500",
+      "1,600",
       "1,700"
     ],
     "subsets": [
@@ -9610,8 +9627,16 @@
     "name": "Inclusive Sans",
     "sane": "inclusive_sans",
     "variants": [
+      "0,300",
       "0,400",
-      "1,400"
+      "0,500",
+      "0,600",
+      "0,700",
+      "1,300",
+      "1,400",
+      "1,500",
+      "1,600",
+      "1,700"
     ],
     "subsets": [
       "latin",
@@ -12084,6 +12109,19 @@
       "latin",
       "latin-ext",
       "lisu"
+    ]
+  },
+  {
+    "category": "sans-serif",
+    "name": "Liter",
+    "sane": "liter",
+    "variants": [
+      "0,400"
+    ],
+    "subsets": [
+      "cyrillic",
+      "latin",
+      "latin-ext"
     ]
   },
   {
@@ -17570,6 +17608,26 @@
   },
   {
     "category": "serif",
+    "name": "Noto Serif Hentaigana",
+    "sane": "noto_serif_hentaigana",
+    "variants": [
+      "0,200",
+      "0,300",
+      "0,400",
+      "0,500",
+      "0,600",
+      "0,700",
+      "0,800",
+      "0,900"
+    ],
+    "subsets": [
+      "kana-extended",
+      "latin",
+      "latin-ext"
+    ]
+  },
+  {
+    "category": "serif",
     "name": "Noto Serif HK",
     "sane": "noto_serif_hk",
     "variants": [
@@ -20757,6 +20815,19 @@
       "latin",
       "latin-ext",
       "vietnamese"
+    ]
+  },
+  {
+    "category": "display",
+    "name": "Pochaevsk",
+    "sane": "pochaevsk",
+    "variants": [
+      "0,400"
+    ],
+    "subsets": [
+      "cyrillic",
+      "cyrillic-ext",
+      "latin"
     ]
   },
   {
@@ -25931,6 +26002,19 @@
       "japanese",
       "latin",
       "latin-ext"
+    ]
+  },
+  {
+    "category": "display",
+    "name": "Triodion",
+    "sane": "triodion",
+    "variants": [
+      "0,400"
+    ],
+    "subsets": [
+      "cyrillic",
+      "cyrillic-ext",
+      "latin"
     ]
   },
   {
