@@ -11,7 +11,7 @@ export interface FontPickerProps extends React.ComponentPropsWithoutRef<'div'> {
   loaderOnly?: boolean
   loadAllVariants?: boolean
   loadFonts?: string[] | FontToVariant[] | string
-  googleFonts?: string[] | Font[] | string
+  googleFonts?: string[] | Font[] | string | ((font: Font) => boolean)
   fontCategories?: string[] | string
   localFonts?: Font[] | undefined
 
@@ -39,6 +39,7 @@ export interface Font {
   cased: string
   variants: Variant[]
   isLocal?: boolean
+  subsets?: string[]
 }
 
 export interface FourFonts {
@@ -225,14 +226,16 @@ export default function FontPicker({
         .split(',')
         .map((v) => v.toLowerCase())
       activeFonts = [...allGoogleFonts.filter((a: Font) => fontNames.includes(a.cased))]
+    } else if (typeof googleFonts === 'function') {
+      activeFonts = [...allGoogleFonts.filter(googleFonts)]
     } else {
-      const fontNames = googleFonts.map((v) => {
+      const fontNames = googleFonts?.map((v) => {
         if (typeof v === 'string') {
           return v.toLowerCase()
         } else {
           return v.cased
         }
-      })
+      }) ?? []
       activeFonts = [...allGoogleFonts.filter((a: Font) => fontNames.includes(a.cased))]
     }
     localFonts.forEach((font: Font) => {

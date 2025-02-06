@@ -103,6 +103,13 @@ describe('react fontpicker docs', () => {
     cy.get('@isLoaded').contains('true')
   })
 
+  it('can apply a googleFonts filter function', () => {
+    cy.getBySel('filterlanguage-fontpicker').as('picker')
+    cy.get('@picker').click() // Need to open picker to render options list
+    cy.get('@picker').find('.fontpicker__option .font-preview-open-sans').should('have.length', 0)
+    cy.get('@picker').find('.fontpicker__option .font-preview-zcool_kuaile').should('have.length', 1)
+  })
+
   it('can select fonts in list box mode', () => {
     cy.getBySel('listbox-fontpicker').as('picker')
     cy.getBySel('listbox-value').as('value')

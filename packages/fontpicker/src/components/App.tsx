@@ -62,6 +62,9 @@ export default function App() {
               <a href="#choosegooglefonts">Choose Google fonts</a>
             </li>
             <li>
+              <a href="#filterlanguage">Filter by language</a>
+            </li>
+            <li>
               <a href="#fontcategories">Filter font categories</a>
             </li>
             <li>
@@ -403,6 +406,19 @@ Font variants:
           <FontPicker googleFonts={['Tinos', 'Open Sans']} data-testid="choosegooglefonts-fontpicker" />
         </div>
         <pre>{`<FontPicker googleFonts={['Tinos', 'Open Sans']} />`}</pre>
+
+        <h3 id="filterlanguage">Filter by language</h3>
+        <p>
+          The <code>googleFonts</code> prop also accepts a custom filter function. You may use this, for example, to
+          filter fonts by only those capable of rendering a target language&apos;s script.
+        </p>
+        <div className={cs.example}>
+          <FontPicker
+            googleFonts={(font) => !!font.subsets?.includes('chinese-simplified')}
+            data-testid="filterlanguage-fontpicker"
+          />
+        </div>
+        <pre>{`<FontPicker googleFonts={(font) => !!font.subsets?.includes('chinese-simplified')} />`}</pre>
 
         <h3 id="fontcategories">Filter font categories</h3>
         <p>
