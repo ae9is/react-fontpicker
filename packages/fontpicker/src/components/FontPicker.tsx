@@ -226,17 +226,17 @@ export default function FontPicker({
         .split(',')
         .map((v) => v.toLowerCase())
       activeFonts = [...allGoogleFonts.filter((a: Font) => fontNames.includes(a.cased))]
-    } else if (Array.isArray(googleFonts)) {
-      const fontNames = googleFonts.map((v) => {
+    } else if (typeof googleFonts === 'function') {
+      activeFonts = [...allGoogleFonts.filter(googleFonts)]
+    } else {
+      const fontNames = googleFonts?.map((v) => {
         if (typeof v === 'string') {
           return v.toLowerCase()
         } else {
           return v.cased
         }
-      })
+      }) ?? []
       activeFonts = [...allGoogleFonts.filter((a: Font) => fontNames.includes(a.cased))]
-    } else if (typeof googleFonts === 'function') {
-      activeFonts = [...allGoogleFonts.filter(googleFonts)]
     }
     localFonts.forEach((font: Font) => {
       activeFonts.push({
