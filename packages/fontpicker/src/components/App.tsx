@@ -20,6 +20,7 @@ export default function App() {
   const [checkLoadedFont, setCheckLoadedFont] = useState('')
   const [fontToLoad, setFontToLoad] = useState<string | string[] | undefined>(undefined)
   const [fontsLoaded, setFontsLoaded] = useState(false)
+  const [listboxFont, setListboxFont] = useState('')
 
   return (
     <>
@@ -74,6 +75,9 @@ export default function App() {
             </li>
             <li>
               <a href="#checkloaded">Check font loading</a>
+            </li>
+            <li>
+              <a href="#listbox">List box mode</a>
             </li>
           </ul>
         </div>
@@ -624,6 +628,30 @@ const [fontsLoaded, setFontsLoaded] = useState(false)
   All fonts are loaded (current font and loadFonts):
   <span style={{ fontFamily: checkLoadedFont }}>{fontsLoaded ? 'true' : 'false'}</span>
 </p>
+`}
+        </pre>
+        <h3 id="listbox">List box mode</h3>
+        <p>
+          By default the fontpicker is a combo box. You can instead use it as a list box where all options are shown to the user by default. 
+        </p>
+        <p>
+          Make sure to filter the list of options, your user probably does not want to see 1000 fonts at once!
+        </p>
+        <div className={cs.example}>
+          <FontPicker
+            data-testid="listbox-fontpicker"
+            googleFonts={['Tinos', 'Open Sans', 'Orbitron', 'Roboto']}
+            value={(font: string) => setListboxFont(font)}
+            mode='list'
+          />
+        </div>
+        <p data-testid="listbox">Current value: {listboxFont}</p>
+        <pre>
+{`<FontPicker
+  value={(font: string) => setListboxFont(font)}
+  googleFonts={['Tinos', 'Open Sans', 'Orbitron', 'Roboto']}
+  mode='list'
+/>
 `}
         </pre>
       </div>
