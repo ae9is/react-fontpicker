@@ -51,6 +51,9 @@
   -webkit-filter: invert(100%);
   filter: invert(100%);
 }
+.fontpicker__option.current {
+  background: #bbb;
+}
 .fontpicker__option.selected {
   background: #ccc;
 }
@@ -60,4 +63,10 @@
   background: #555;
   text-align: center;
   color: #eee;
+}
+.fontpicker__listbox {
+  height: 100%;
+  background: #555;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
