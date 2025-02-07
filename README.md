@@ -34,8 +34,8 @@ npm i react-fontpicker-ts-lite
 Then, import the component and stylesheet:
 
 ```js
-import FontPicker from 'react-fontpicker-ts';
-import 'react-fontpicker-ts/dist/index.css';
+import FontPicker from 'react-fontpicker-ts'
+import 'react-fontpicker-ts/dist/index.css'
 ```
 
 ## Styling
