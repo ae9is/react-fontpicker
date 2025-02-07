@@ -3,6 +3,8 @@ import * as fs from 'fs'
 import * as process from 'process'
 import * as path from 'path'
 
+import { sanify } from '../src/lib/util'
+
 function printHelp() {
   const scriptName = process.argv[0]
   const l: string[] = []
@@ -209,13 +211,6 @@ class GoogleFonts {
     })
     return fontInfos
   }
-}
-
-function sanify(fontName: string): string {
-  return fontName
-    .replace(/\s+/g, '_')
-    .replace(/[^a-zA-Z0-9_]/g, '')
-    .toLowerCase()
 }
 
 class FontPreviewBuilder {

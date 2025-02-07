@@ -1,6 +1,7 @@
 import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import fontInfos from '../../font-preview/fontInfo.json'
 import { checkLoaded } from '../lib/fontChecker'
+import { sanify } from '../lib/util'
 const FontPreviews = lazy(() => import('./FontPreviews'))
 import './FontPicker.css'
 
@@ -241,10 +242,7 @@ export default function FontPicker({
         category: font.category,
         name: font.name,
         cased: font.name.toLowerCase(),
-        sane: font.name
-          .replaceAll(' ', '_')
-          .replaceAll(/[^a-zA-Z0-9-]/g, '')
-          .toLowerCase(),
+        sane: sanify(font.name),
         variants: font.variants.map((v: Variant) => toString(v)),
         isLocal: true,
       })
