@@ -70,3 +70,36 @@
   overflow-y: auto;
   overflow-x: hidden;
 }
+@media (prefers-color-scheme: light) {
+  .fontpicker {
+    background: #eee;
+  }
+  .fontpicker__preview {
+    -webkit-filter: none;
+    filter: none;
+  }
+  .fontpicker__search {
+    background-color: #eee;
+    color: #000;
+  }
+  .fontpicker__popout {
+    background: #eee;
+  }
+  .fontpicker__option {
+    -webkit-filter: none;
+    filter: none;
+  }
+  .fontpicker__option.current {
+    background: #ccc;
+  }
+  .fontpicker__option.selected {
+    background: #aaa;
+  }
+  .fontpicker__nomatches {
+    background: #eee;
+    color: #111;
+  }
+  .fontpicker__listbox {
+    background: #eee;
+  }
+}
