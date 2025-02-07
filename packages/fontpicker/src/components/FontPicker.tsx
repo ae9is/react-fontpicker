@@ -109,8 +109,6 @@ export default function FontPicker({
   ...rest
 }: FontPickerProps) {
   const [focused, setFocused] = useState(false)
-  const [typedSearch, setTypedSearch] = useState(defaultValue)
-  const [searchContent, setSearchContent] = useState(defaultValue)
   const [selectedFontIndex, setSelectedFontIndex] = useState(-1)
   const [currentFontIndex, setCurrentFontIndex] = useState(-1)
   const [prevLoadFonts, setPrevLoadFonts] = useState<string[]>([])
@@ -266,6 +264,21 @@ export default function FontPicker({
     }
     return [...activeFontsInCategory]
   }, [googleFonts, allGoogleFonts, localFonts, fontCategories])
+
+  // Corrected from default font ("Open Sans") if default doesn't exist in currently allowed (filtered) fonts
+  const saneDefaultValue = useMemo(() => {
+    const search = defaultValue.toLowerCase().trim()
+    if (!fonts || fonts?.length <= 0) {
+      return defaultValue
+    }
+    if (fonts.some((a) => a.cased === search)) {
+      return defaultValue
+    }
+    return fonts[0].name
+  }, [fonts, defaultValue])
+
+  const [typedSearch, setTypedSearch] = useState(saneDefaultValue)
+  const [searchContent, setSearchContent] = useState(saneDefaultValue)
 
   const matchingFonts = useMemo(() => {
     const search = typedSearch.toLowerCase().trim()
@@ -604,7 +617,7 @@ export default function FontPicker({
     return fourVariants
   }
 
-  const defaultCurrent = getFontByName(defaultValue) || defaultFont
+  const defaultCurrent = getFontByName(saneDefaultValue) || defaultFont
   const [current, setCurrentState] = useState<Font>(defaultCurrent)
 
   handleLoadFont()
