@@ -35,6 +35,12 @@ jobs:
       TERM: xterm
       # Suppress Cypress installation progress messages
       CI: 1
+      # Some telemetry disables
+      TURBO_TELEMETRY_DISABLED: 1
+      DO_NOT_TRACK: 1
+      CYPRESS_CRASH_REPORTS: 0
+      CYPRESS_COMMERCIAL_RECOMMENDATIONS: 0
+
     steps:
     - name: Checkout
       uses: actions/checkout@v4
