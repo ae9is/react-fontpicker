@@ -54,12 +54,28 @@ describe('<App />', () => {
     await waitFor(() => screen.queryByTestId('checkloaded-loaded')?.textContent?.includes('false'))
     await act(async () => {
       const search = await picker.querySelector('.fontpicker__search')
-      expect(search).toBeDefined()
+      expect(search).toBeTruthy()
       if (search) {
         fireEvent.change(search, { target: { value: 'Unkempt' } })
         fireEvent.keyDown(search, { key: 'Enter', code: 'Enter', keyCode: 13 })
       }
     })
     await waitFor(() => screen.queryByTestId('checkloaded-loaded')?.textContent?.includes('true'))
+  })
+
+  it('can apply a googleFonts filter function', async () => {
+    const picker = await screen.findByTestId('filterlanguage-fontpicker')
+    await act(async () => {
+      // Need to open picker to render options list
+      const pickerInput = await picker.querySelector('.fontpicker__search')
+      expect(pickerInput).toBeTruthy()
+      if (pickerInput) {
+        await userEvent.click(pickerInput)
+      }
+    })
+    const missingFont = await picker.querySelector('.fontpicker__option .font-preview-open-sans')
+    expect(missingFont).toBeFalsy()
+    const presentFont = await picker.querySelector('.fontpicker__option .font-preview-zcool_kuaile')
+    expect(presentFont).toBeTruthy()
   })
 })

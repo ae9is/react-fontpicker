@@ -84,13 +84,6 @@ describe('react fontpicker docs', () => {
     cy.get('@value').should('have.text', 'Current value: BickleyScript')
   })
 
-  it('can apply a googleFonts filter function', () => {
-    cy.getBySel('filterlanguage-fontpicker').as('picker')
-    cy.get('@picker').click() // Need to open picker to render options list
-    cy.get('@picker').find('.fontpicker__option .font-preview-open-sans').should('have.length', 0)
-    cy.get('@picker').find('.fontpicker__option .font-preview-zcool_kuaile').should('have.length', 1)
-  })
-
   it('falls back to sane default font with googleFonts filter applied', () => {
     cy.getBySel('filterlanguage-fontpicker').as('picker')
     cy.get('@picker').find('.fontpicker__preview .font-preview-open-sans').should('have.length', 0)
