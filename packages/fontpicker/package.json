@@ -87,6 +87,7 @@
     "react": ">=16.8"
   },
   "devDependencies": {
+    "@cypress/react": "^9.0.0",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
