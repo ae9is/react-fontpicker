@@ -1,6 +1,6 @@
 /// <reference types="vitest" />
 import { describe, it, expect, beforeEach } from 'vitest'
-import { act, screen, render, within, userEvent } from '../test/utils'
+import { act, screen, render, within, userEvent, waitFor, fireEvent } from '../test/utils'
 import App from './App'
 
 function checkFontLoaded(cssId: string) {
@@ -10,8 +10,8 @@ function checkFontLoaded(cssId: string) {
   expect(link).toHaveAttribute('id', cssId)
 }
 
-beforeEach(() => {
-  act(() => {
+beforeEach(async () => {
+  await act(() => {
     render(<App />)
   })
 })
@@ -42,5 +42,24 @@ describe('<App />', () => {
     await screen.findByTestId('controlled-fontpicker-output')
     expect(screen.queryByTestId('controlled-value-input')).toHaveTextContent('Ubuntu')
     expect(screen.queryByTestId('controlled-value-output')).toHaveTextContent('Ubuntu')
+  })
+
+  it('can test whether fonts have been loaded by the client', async () => {
+    // fontsLoaded should emit a brief change in state while fonts are loading
+    const picker = await screen.findByTestId('checkloaded-fontpicker')
+    await waitFor(() => screen.queryByTestId('checkloaded-loaded')?.textContent?.includes('true'))
+    await act(async () => {
+      await userEvent.click(screen.getByTestId('checkloaded-button'))
+    })
+    await waitFor(() => screen.queryByTestId('checkloaded-loaded')?.textContent?.includes('false'))
+    await act(async () => {
+      const search = await picker.querySelector('.fontpicker__search')
+      expect(search).toBeDefined()
+      if (search) {
+        fireEvent.change(search, { target: { value: 'Unkempt' } })
+        fireEvent.keyDown(search, { key: 'Enter', code: 'Enter', keyCode: 13 })
+      }
+    })
+    await waitFor(() => screen.queryByTestId('checkloaded-loaded')?.textContent?.includes('true'))
   })
 })
