@@ -20,3 +20,11 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           environment: build-fonts
           onlyRemoveDeployments: true
+
+      - name: 🗑 Delete github-pages deployments
+        # strumwolf/delete-deployment-environment@v3.0.0
+        uses: strumwolf/delete-deployment-environment@a4825dd9648c57da8437a4885c3fcad58beac69c
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          environment: github-pages
+          onlyRemoveDeployments: true
