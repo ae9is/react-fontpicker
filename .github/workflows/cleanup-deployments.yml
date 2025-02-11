@@ -1,0 +1,22 @@
+# Workflow to cleanup old deployments.
+
+name: main
+
+on:
+  # Manual run from GitHub UI
+  workflow_dispatch:
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    permissions:
+        deployments: write
+
+    steps:
+      - name: 🗑 Delete build-fonts deployments
+        # strumwolf/delete-deployment-environment@v3.0.0
+        uses: strumwolf/delete-deployment-environment@a4825dd9648c57da8437a4885c3fcad58beac69c
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          environment: build-fonts
+          onlyRemoveDeployments: true
