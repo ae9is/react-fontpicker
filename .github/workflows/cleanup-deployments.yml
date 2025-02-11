@@ -1,6 +1,6 @@
 # Workflow to cleanup old deployments.
 
-name: main
+name: cleanup-deployments
 
 on:
   # Manual run from GitHub UI
