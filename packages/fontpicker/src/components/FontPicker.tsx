@@ -112,7 +112,7 @@ export default function FontPicker({
   const [focused, setFocused] = useState(false)
   const [selectedFontIndex, setSelectedFontIndex] = useState(-1)
   const [currentFontIndex, setCurrentFontIndex] = useState(-1)
-  const [prevLoadFonts, setPrevLoadFonts] = useState<string[]>([])
+  const prevLoadFontsRef = useRef<string[]>([])
   const inputRef = useRef<HTMLInputElement>(null)
   const popoutRef = useRef<HTMLDivElement>(null)
   const previewRef = useRef<HTMLDivElement>(null)
@@ -122,8 +122,8 @@ export default function FontPicker({
       if (loadFonts !== '') {
         const fontNames = loadFonts.trim().split(',')
         fontNames?.forEach((fontName: string) => {
-          if (!prevLoadFonts.includes(fontName)) {
-            setPrevLoadFonts([...prevLoadFonts, fontName])
+          if (!prevLoadFontsRef.current.includes(fontName)) {
+            prevLoadFontsRef.current.push(fontName)
             loadFontByName(fontName)
           }
         })
@@ -134,8 +134,8 @@ export default function FontPicker({
         if (!fontName) {
           return
         }
-        if (!prevLoadFonts.includes(fontName)) {
-          setPrevLoadFonts([...prevLoadFonts, fontName])
+        if (!prevLoadFontsRef.current.includes(fontName)) {
+          prevLoadFontsRef.current.push(fontName)
           if (typeof font === 'object' && font.variants) {
             loadFontByName(
               fontName,
