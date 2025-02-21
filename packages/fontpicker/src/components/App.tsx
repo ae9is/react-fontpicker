@@ -621,7 +621,7 @@ const [outputFont, setOutputFont] = useState('')
           Current font value: <span style={{ fontFamily: checkLoadedFont }}>{checkLoadedFont}</span>
         </p>
         <p data-testid="checkloaded-loaded">
-          All fonts are loaded (current font and loadFonts):{' '}
+          No fonts currently loading:{' '}
           <span style={{ fontFamily: checkLoadedFont }}>{fontsLoaded ? 'true' : 'false'}</span>
         </p>
         <pre>

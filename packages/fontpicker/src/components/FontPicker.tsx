@@ -384,15 +384,16 @@ export default function FontPicker({
       // selectedFont should be undefined IFF fontCategories is changed and the currently
       //  selectedFont is not in the new category.
       if (selectedFont) {
-        const fontElement = popout.querySelector('.font-preview-' + selectedFont.sane) as HTMLElement
-        if (fontElement && fontElement instanceof HTMLElement) {
-          const fontTop = fontElement.offsetTop
-          const fontBottom = fontTop + fontElement.offsetHeight
+        const fontPreviewElement = popout.querySelector('.font-preview-' + selectedFont.sane) as HTMLElement
+        const fontOptionElement = fontPreviewElement?.parentElement
+        if (fontOptionElement && fontOptionElement instanceof HTMLElement) {
+          const fontTop = fontOptionElement.offsetTop
+          const fontBottom = fontTop + fontOptionElement.offsetHeight
           const popTop = popout.scrollTop
           const popBottom = popTop + popout.clientHeight
           if (why === 'opening' || fontTop <= popTop) {
             popout.scrollTop = fontTop
-            fontElement.parentElement?.classList.add('selected')
+            fontOptionElement.classList.add('selected')
             const optionRef = getOptionsRef()?.get(selectedFont.sane)
             optionRef?.classList.add('selected')
           } else if (fontBottom >= popBottom) {

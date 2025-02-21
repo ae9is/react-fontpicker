@@ -17,7 +17,7 @@
 import { registerCommands } from './commands'
 registerCommands()
 
-import { mount } from 'cypress/react18'
+import { mount } from '@cypress/react'
 
 // Add typing to cypress.d.ts:
 declare global {

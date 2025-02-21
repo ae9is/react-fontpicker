@@ -1,13 +1,20 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDependencies": ["**/.env.*local"],
-  "pipeline": {
+  "globalDependencies": [
+    "**/.env.*local"
+  ],
+  "tasks": {
     "build": {
       // A package's `build` script depends on that package's dependencies and devDependencies
       // `build` tasks  being completed first (the `^` symbol signifies `upstream`).
-      "dependsOn": ["^build"],
+      "dependsOn": [
+        "^build"
+      ],
       // Note: output globs are relative to each package's `package.json` (and not the monorepo root)
-      "outputs": ["dist/**", "docs/**"]
+      "outputs": [
+        "dist/**",
+        "docs/**"
+      ]
     },
     "format": {},
     // A package's `lint` script has no dependencies and can be run whenever.
@@ -16,15 +23,27 @@
     "test": {
       // A package's `test` script depends on that package's own `build` script being completed first.
       // Note: the ^ is important, otherwise build cache will always be missed.
-      "dependsOn": ["^build"],
-      "inputs": ["src/**/*.tsx", "src/**/*.ts"]
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "src/**/*.tsx",
+        "src/**/*.ts"
+      ]
     },
     "test-all": {
       // TODO FIXME test-all includes both Cypress and Vitest tests, but Cypress can't run via Turbo (only "cypress open" works, not "cypress run").
-      "dependsOn": ["^build"],
+      "dependsOn": [
+        "^build"
+      ],
       // A package's `test` script should only be rerun when
       // either a `.tsx` or `.ts` file has changed in `src` or `cypress` folders.
-      "inputs": ["src/**/*.tsx", "src/**/*.ts", "cypress/**/.*tsx", "cypress/**/.*ts"]
+      "inputs": [
+        "src/**/*.tsx",
+        "src/**/*.ts",
+        "cypress/**/.*tsx",
+        "cypress/**/.*ts"
+      ]
     },
     "dev": {
       "cache": false,

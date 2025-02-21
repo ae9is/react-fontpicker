@@ -1,6 +1,6 @@
 # react-fontpicker
 
-[![npm version](https://img.shields.io/npm/v/react-fontpicker-ts.svg)](https://www.npmjs.com/package/react-fontpicker-ts)
+[![Fontpicker](https://img.shields.io/npm/v/react-fontpicker-ts.svg?label=npm/fontpicker)](https://www.npmjs.com/package/react-fontpicker-ts) &nbsp; [![Fontpicker-Lite](https://img.shields.io/npm/v/react-fontpicker-ts-lite.svg?label=npm/fontpicker-lite)](https://www.npmjs.com/package/react-fontpicker-ts-lite)
 
 A Google font picker component for React.
 
