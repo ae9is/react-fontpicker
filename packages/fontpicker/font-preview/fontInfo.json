@@ -13851,6 +13851,20 @@
     ]
   },
   {
+    "category": "display",
+    "name": "Monomakh",
+    "sane": "monomakh",
+    "variants": [
+      "0,400"
+    ],
+    "subsets": [
+      "cyrillic",
+      "cyrillic-ext",
+      "latin",
+      "latin-ext"
+    ]
+  },
+  {
     "category": "sans-serif",
     "name": "Monomaniac One",
     "sane": "monomaniac_one",
@@ -23811,6 +23825,21 @@
       "0,400"
     ],
     "subsets": [
+      "latin",
+      "latin-ext"
+    ]
+  },
+  {
+    "category": "display",
+    "name": "Shafarik",
+    "sane": "shafarik",
+    "variants": [
+      "0,400"
+    ],
+    "subsets": [
+      "cyrillic",
+      "cyrillic-ext",
+      "glagolitic",
       "latin",
       "latin-ext"
     ]
