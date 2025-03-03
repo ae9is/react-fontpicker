@@ -55,7 +55,7 @@ jobs:
       run: npm ci
 
     - name: Build
-      run: npm run build --if-present
+      run: npm run build
 
     - name: Install Cypress
       uses: cypress-io/github-action@v6
@@ -84,18 +84,20 @@ jobs:
     - name: Add GOOGLE_API_KEY
       run: echo "${{secrets.GOOGLE_API_KEY}}" > packages/fontpicker/scripts/GOOGLE_API_KEY
 
-    - name: Restore font-cache
+    - name: Restore font cache
       id: cache-font-restore
       uses: actions/cache/restore@v4
       with:
         path: |
           packages/fontpicker/font-cache
-        key: font-cache-${{ hashFiles('packages/fontpicker/scripts/75-google-fonts.txt') }}
+        key: ${{ runner.os }}-font-cache-${{ hashFiles('packages/fontpicker/scripts/buildFontPreviews.ts') }}
+        restore-keys: |
+          ${{ runner.os }}-font-cache-
 
     - name: Build fontpicker-lite package
       run: bash packages/fontpicker-lite/build-lite.sh
 
-    - name: Save font-cache
+    - name: Save font cache
       id: cache-font-save
       uses: actions/cache/save@v4
       with:
@@ -106,7 +108,7 @@ jobs:
     - name: Test fontpicker-lite package
       run: bash packages/fontpicker-lite/test-lite.sh
 
-    # For push events only, rebuild docs page and create a tag.
+    # For push events only, commit previously built docs page and create a tag.
     # Ideally this would be in a separate job, but jobs execute on different runners which means 
     #  some duplication with above.
 

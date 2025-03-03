@@ -1,0 +1,92 @@
+name: publish
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Package version override (leave empty to use version from package.json)'
+        required: false
+        type: string
+
+jobs:
+  publish:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    environment: publish
+    permissions:
+      contents: read
+      id-token: write
+    strategy:
+      matrix:
+        node-version: [lts/*]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Add GOOGLE_API_KEY
+        run: echo "${{secrets.GOOGLE_API_KEY}}" > packages/fontpicker/scripts/GOOGLE_API_KEY
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          registry-url: 'https://registry.npmjs.org'
+          cache: 'npm'
+
+      - name: Install jq for editing package.json
+        run: sudo apt install -y jq
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build fontpicker package
+        run: npm run build
+        working-directory: packages/fontpicker
+
+      - name: Run partial tests
+        run: npm run test
+        working-directory: packages/fontpicker
+
+      - name: Set package version if override provided
+        if: ${{ inputs.version != '' }}
+        run: npm version ${{ inputs.version }} --no-git-tag-version
+        working-directory: packages/fontpicker
+
+      - name: Update package.json to make it public
+        run: |
+          jq '.private = false' package.json > package.json.tmp
+          mv package.json.tmp package.json
+        working-directory: packages/fontpicker
+
+      - name: Publish fontpicker package to npm
+        run: npm publish --provenance --access public
+        working-directory: packages/fontpicker
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Restore font cache
+        id: cache-font-restore
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            packages/fontpicker/font-cache
+          key: ${{ runner.os }}-font-cache-${{ hashFiles('packages/fontpicker/scripts/buildFontPreviews.ts') }}
+          restore-keys: |
+            ${{ runner.os }}-font-cache-
+
+      - name: Build fontpicker-lite package
+        run: bash packages/fontpicker-lite/build-lite.sh
+
+      - name: Save font cache
+        id: cache-font-save
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            packages/fontpicker/font-cache
+          key: ${{ steps.cache-font-restore.outputs.cache-primary-key }}
+
+      - name: Publish fontpicker-lite package to npm
+        run: npm publish --provenance --access public
+        working-directory: packages/fontpicker-lite
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
