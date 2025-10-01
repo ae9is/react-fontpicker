@@ -22,7 +22,7 @@ jobs:
         run: echo "${{secrets.GOOGLE_API_KEY}}" > packages/fontpicker/scripts/GOOGLE_API_KEY
 
       - name: Setup Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
