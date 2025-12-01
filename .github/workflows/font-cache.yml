@@ -16,7 +16,7 @@ jobs:
         node-version: [lts/*]
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Add GOOGLE_API_KEY
         run: echo "${{secrets.GOOGLE_API_KEY}}" > packages/fontpicker/scripts/GOOGLE_API_KEY
