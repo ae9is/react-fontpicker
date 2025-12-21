@@ -57,10 +57,22 @@ jobs:
     - name: Build
       run: npm run build
 
-    - name: Install Cypress
+    - name: Cache Cypress binary
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache/Cypress
+        key: cypress-${{ runner.os }}-cypress-${{ hashFiles('package-lock.json') }}
+
+    - name: Verify Cypress binary and manually install if needed
+      run: npx cypress verify || npx cypress install
+      working-directory: packages/fontpicker
+
+    - name: Setup Cypress
       uses: cypress-io/github-action@v6
       with:
+        install: false
         runTests: false
+        working-directory: packages/fontpicker
 
     - name: Test using Cypress - E2E
       uses: cypress-io/github-action@v6
