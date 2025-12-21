@@ -67,9 +67,10 @@ jobs:
       run: npx cypress verify || npx cypress install
       working-directory: packages/fontpicker
 
-    - name: Install Cypress
+    - name: Setup Cypress
       uses: cypress-io/github-action@v6
       with:
+        install: false
         runTests: false
         working-directory: packages/fontpicker
 
