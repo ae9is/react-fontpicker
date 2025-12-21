@@ -61,8 +61,6 @@ jobs:
       - name: Publish fontpicker package to npm
         run: npm publish --provenance --access public
         working-directory: packages/fontpicker
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Restore font cache
         id: cache-font-restore
@@ -88,5 +86,3 @@ jobs:
       - name: Publish fontpicker-lite package to npm
         run: npm publish --provenance --access public
         working-directory: packages/fontpicker-lite
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
