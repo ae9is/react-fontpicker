@@ -32,7 +32,7 @@ jobs:
 
       - name: Restore font cache
         id: cache-font-restore
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v5
         with:
           path: |
             packages/fontpicker/font-cache
@@ -46,7 +46,7 @@ jobs:
 
       - name: Save font-cache
         id: cache-font-save
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@v5
         with:
           path: |
             packages/fontpicker/font-cache
