@@ -68,14 +68,14 @@ jobs:
       working-directory: packages/fontpicker
 
     - name: Setup Cypress
-      uses: cypress-io/github-action@v6
+      uses: cypress-io/github-action@v7
       with:
         install: false
         runTests: false
         working-directory: packages/fontpicker
 
     - name: Test using Cypress - E2E
-      uses: cypress-io/github-action@v6
+      uses: cypress-io/github-action@v7
       with:
         # Test against the build we just created
         start: npm run preview
@@ -84,7 +84,7 @@ jobs:
         install: false
         
     - name: Test using Cypress - Component
-      uses: cypress-io/github-action@v6
+      uses: cypress-io/github-action@v7
       with:
         component: true
         working-directory: packages/fontpicker
