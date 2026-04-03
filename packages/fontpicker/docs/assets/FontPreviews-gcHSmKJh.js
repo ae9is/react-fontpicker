@@ -1,0 +1,1 @@
+import{t as e}from"./index.js";var t=e(),n=({children:e})=>(0,t.jsx)(t.Fragment,{children:e});export{n as default};
