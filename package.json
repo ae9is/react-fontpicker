@@ -18,10 +18,10 @@
   },
   "devDependencies": {
     "eslint-config-custom": "workspace:*",
-    "turbo": "^2.4.0"
+    "turbo": "2.9.3"
   },
   "engines": {
     "node": ">=14.0.0"
   },
-  "packageManager": "npm@11.7.0"
+  "packageManager": "npm@11.11.0"
 }
