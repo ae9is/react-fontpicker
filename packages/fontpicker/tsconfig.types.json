@@ -4,7 +4,6 @@
     // @tsconfig/recommended
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "module": "commonjs",
     "skipLibCheck": true,
     "strict": true,
     "target": "ES2015",
@@ -16,7 +15,7 @@
     "emitDeclarationOnly": true,
     "noEmit": false,
     "outDir": "dist",
-    "tsBuildInfoFile": ".tsbuildinfo",
+    "tsBuildInfoFile": ".tsbuildinfo"
   },
   "include": [
     "index.ts",
@@ -24,7 +23,7 @@
     "src/components/FontPreviews.tsx",
     "src/lib",
     "font-preview/**/*.json",
-    ".eslintrc.js",
+    ".eslintrc.js"
   ],
-  "exclude": [],
+  "exclude": []
 }

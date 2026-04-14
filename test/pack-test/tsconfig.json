@@ -10,7 +10,7 @@
     "jsx": "react-jsx",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "module": "ESNext",
-    "moduleResolution": "Node",
+    "moduleResolution": "bundler",
     "noEmit": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
@@ -23,13 +23,13 @@
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
     "noImplicitThis": true,
-    "strictNullChecks": true,
+    "strictNullChecks": true
   },
   "include": [
     "src",
     ".eslintrc.js",
     "vite.config.ts",
-    "src/App.tsx", // needed for ide only
+    "src/App.tsx" // needed for ide only
   ],
   "exclude": [
     //"src/**/*.{cy,test,spec}.{js,jsx,ts,tsx}", // commented for ide
