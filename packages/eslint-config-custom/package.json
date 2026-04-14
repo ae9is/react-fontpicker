@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "upgrade-packages": "ncu -u"
+    "upgrade-packages": "ncu -u -c 7"
   },
   "dependencies": {
     "eslint": "9.39.4",

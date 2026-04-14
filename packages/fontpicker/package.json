@@ -66,7 +66,7 @@
     "svg-text-test": "tsc -p tsconfig.scripts.json && node ./scripts/getTextSvg.js",
     "preview": "vite preview --host 0.0.0.0 --outDir docs",
     "upgrade": "npm run upgrade-packages && npm install && npm run build && npm run test",
-    "upgrade-packages": "ncu -u"
+    "upgrade-packages": "ncu -u -c 7"
   },
   "tsup": {
     "entry": [

@@ -1,6 +1,8 @@
 # Upgrade packages using npm-check-updates, test, and create a PR if successful.
 # Add an upgrade-packages script in your package.json, for ex:
-#  "upgrade-packages": "ncu -u"
+#  "upgrade-packages": "ncu -u -c 7"
+# Note: --cooldown 7d means ignore package versions newer than 7 days ago, 
+#  should match npm setting `min-release-age=7` in .npmrc
 
 name: upgradebot
 
