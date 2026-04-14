@@ -9,7 +9,7 @@
     "format": "prettier --write src",
     "lint": "eslint src",
     "prep": "bash prep-pack-test.sh",
-    "upgrade-packages": "ncu -u"
+    "upgrade-packages": "ncu -u -c 7"
   },
   "dependencies": {
     "@vitejs/plugin-react-swc": "4.3.0",
