@@ -6,9 +6,10 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "node"
+    "moduleResolution": "nodenext"
   },
   "include": [
-    "scripts/**/*.ts",
+    //
+    "scripts/**/*.ts"
   ]
 }
