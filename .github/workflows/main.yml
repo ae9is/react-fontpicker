@@ -150,7 +150,7 @@ jobs:
 
     - name: Create tag
       if: steps.isRelease.outputs.value
-      uses: actions/github-script@v8
+      uses: actions/github-script@v9
       with:
         script: |
           github.rest.git.createRef({
