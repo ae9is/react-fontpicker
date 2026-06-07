@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: 🗑 Delete build-fonts deployments
         # strumwolf/delete-deployment-environment@v3.0.0
-        uses: strumwolf/delete-deployment-environment@a4825dd9648c57da8437a4885c3fcad58beac69c
+        uses: strumwolf/delete-deployment-environment@035f6d27c8b8951729f4d71b2d3d6a7975139476
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           environment: build-fonts
@@ -23,7 +23,7 @@ jobs:
 
       - name: 🗑 Delete github-pages deployments
         # strumwolf/delete-deployment-environment@v3.0.0
-        uses: strumwolf/delete-deployment-environment@a4825dd9648c57da8437a4885c3fcad58beac69c
+        uses: strumwolf/delete-deployment-environment@035f6d27c8b8951729f4d71b2d3d6a7975139476
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           environment: github-pages
@@ -31,7 +31,7 @@ jobs:
 
       - name: 🗑 Delete publish deployments
         # strumwolf/delete-deployment-environment@v3.0.0
-        uses: strumwolf/delete-deployment-environment@a4825dd9648c57da8437a4885c3fcad58beac69c
+        uses: strumwolf/delete-deployment-environment@035f6d27c8b8951729f4d71b2d3d6a7975139476
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           environment: publish
